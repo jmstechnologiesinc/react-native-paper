@@ -98,6 +98,7 @@ const MD2Surface = ({ style, ...rest }: Omit<Props, 'elevation'>) => {
 const Surface = ({ elevation = 1, children, style, ...props }: Props) => {
   if (!theme.isV3)
     return (
+      //  @ts-ignore:next-line
       <MD2Surface {...props} theme={theme} style={style}>
         {children}
       </MD2Surface>

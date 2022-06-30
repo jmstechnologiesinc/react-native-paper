@@ -92,6 +92,7 @@ const Text: React.ForwardRefRenderFunction<{}, Props> = (
     const stylesByVariant = Object.keys(MD3TypescaleKey).reduce(
       (acc, key) => {
         const { fontSize, fontWeight, lineHeight, letterSpacing, fontFamily } =
+          //  @ts-ignore:next-line
           theme.typescale[key as keyof typeof MD3TypescaleKey];
 
         return {

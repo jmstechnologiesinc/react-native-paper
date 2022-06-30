@@ -189,6 +189,7 @@ const Banner = ({
     <Surface
       {...rest}
       style={[!theme.isV3 && styles.elevation, style]}
+      //  @ts-ignore:next-line
       theme={theme}
       {...(theme.isV3 && { elevation })}
     >

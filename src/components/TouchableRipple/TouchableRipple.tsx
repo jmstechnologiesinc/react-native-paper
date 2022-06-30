@@ -103,6 +103,7 @@ const TouchableRipple = ({
     onPressIn?.(e);
 
     const { calculatedRippleColor } = getTouchableRippleColors({
+      //  @ts-ignore:next-line
       theme,
       rippleColor,
     });

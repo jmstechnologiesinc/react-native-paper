@@ -40,6 +40,7 @@ const TouchableRipple = ({
   const disabled = disabledProp || !rest.onPress;
   const { calculatedRippleColor, calculatedUnderlayColor } =
     getTouchableRippleColors({
+      //  @ts-ignore:next-line
       theme,
       rippleColor,
       underlayColor,

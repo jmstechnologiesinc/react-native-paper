@@ -230,7 +230,7 @@ const Card = ({
               elevation: computedElevation as unknown as number,
             },
         style,
-      ]}
+      ]} //  @ts-ignore:next-line
       theme={theme}
       {...(isV3 && {
         elevation: isMode('elevated') ? computedElevation : 0,
