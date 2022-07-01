@@ -7,7 +7,6 @@ import TouchableRipple from '../TouchableRipple/TouchableRipple';
 
 import type { $RemoveChildren } from '../../types';
 import { getSelectionControlIOSColor } from '../Checkbox/utils';
-import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
@@ -75,7 +74,6 @@ const RadioButtonIOS = ({
           }) === 'checked';
 
         const { checkedColor, rippleColor } = getSelectionControlIOSColor({
-          theme,
           disabled,
           customColor: rest.color,
         });

@@ -6,7 +6,6 @@ import AppbarContent from './AppbarContent';
 import AppbarAction from './AppbarAction';
 import AppbarBackAction from './AppbarBackAction';
 import Surface from '../Surface';
-import { withTheme } from '../../core/theming';
 import type { MD3Elevation } from '../../types';
 import theme from '../../styles/themes/v3/LightTheme';
 import {

@@ -120,7 +120,6 @@ const RadioButtonAndroid = ({
 
         const { rippleColor, selectionControlColor } =
           getAndroidSelectionControlColor({
-            theme,
             disabled,
             checked,
             customColor: rest.color,
