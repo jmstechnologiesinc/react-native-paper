@@ -9,8 +9,8 @@ import {
 import Icon, { IconSource } from '../Icon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
-import { withTheme } from '../../core/theming';
-import type { Theme } from '../../types';
+
+import theme from '../../styles/themes/v3/LightTheme';
 import {
   getContentMaxWidth,
   getMenuItemColor,
@@ -58,7 +58,7 @@ type Props = {
   /**
    * @optional
    */
-  theme: Theme;
+
   /**
    * TestID used for testing purposes
    */
@@ -109,10 +109,8 @@ const MenuItem = ({
   testID,
   titleStyle,
   accessibilityLabel,
-  theme,
 }: Props) => {
   const { titleColor, iconColor, underlayColor } = getMenuItemColor({
-    theme,
     disabled,
   });
   const { isV3 } = theme;
@@ -222,4 +220,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(MenuItem);
+export default MenuItem;

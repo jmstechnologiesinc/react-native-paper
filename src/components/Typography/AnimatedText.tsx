@@ -7,8 +7,10 @@ import {
   StyleSheet,
   Platform,
 } from 'react-native';
-import { withTheme } from '../../core/theming';
-import { Font, MD3TypescaleKey, Theme } from '../../types';
+
+import { Font, MD3TypescaleKey } from '../../types';
+
+import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentPropsWithRef<typeof Animated.Text> & {
   /**
@@ -30,7 +32,6 @@ type Props = React.ComponentPropsWithRef<typeof Animated.Text> & {
   /**
    * @optional
    */
-  theme: Theme;
 };
 
 /**
@@ -38,13 +39,14 @@ type Props = React.ComponentPropsWithRef<typeof Animated.Text> & {
  *
  * @extends Text props https://reactnative.dev/docs/text#props
  */
-function AnimatedText({ style, theme, variant, ...rest }: Props) {
+function AnimatedText({ style, variant, ...rest }: Props) {
   const writingDirection = I18nManager.isRTL ? 'rtl' : 'ltr';
 
   if (theme.isV3 && variant) {
     const stylesByVariant = Object.keys(MD3TypescaleKey).reduce(
       (acc, key) => {
         const { fontSize, fontWeight, lineHeight, letterSpacing, fontFamily } =
+          // @ts-ignore:next-line
           theme.typescale[key as keyof typeof MD3TypescaleKey];
 
         return {
@@ -101,4 +103,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(AnimatedText);
+export default AnimatedText;

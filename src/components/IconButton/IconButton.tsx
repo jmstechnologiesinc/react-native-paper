@@ -10,8 +10,9 @@ import {
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Icon, { IconSource } from '../Icon';
 import CrossFadeIcon from '../CrossFadeIcon';
-import { withTheme } from '../../core/theming';
-import type { $RemoveChildren, Theme } from '../../types';
+
+import type { $RemoveChildren } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
 import { getIconButtonColor } from './utils';
 import Surface from '../Surface';
 
@@ -69,7 +70,6 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * @optional
    */
-  theme: Theme;
 };
 
 /**
@@ -124,7 +124,7 @@ const IconButton = ({
   selected = false,
   animated = false,
   mode,
-  theme,
+
   style,
   ...rest
 }: Props) => {
@@ -208,4 +208,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(IconButton);
+export default IconButton;

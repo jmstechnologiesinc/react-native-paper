@@ -18,13 +18,13 @@ import Badge from '../Badge';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
 import { black, white } from '../../styles/themes/v2/colors';
-import { withTheme } from '../../core/theming';
+
 import useAnimatedValue from '../../utils/useAnimatedValue';
 import useAnimatedValueArray from '../../utils/useAnimatedValueArray';
 import useLayout from '../../utils/useLayout';
 import useIsKeyboardShown from '../../utils/useIsKeyboardShown';
 import BottomNavigationRouteScreen from './BottomNavigationRouteScreen';
-import type { Theme } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
 
 type Route = {
   key: string;
@@ -242,7 +242,6 @@ type Props = {
   /**
    * @optional
    */
-  theme: Theme;
 };
 
 const MIN_RIPPLE_SCALE = 0.001; // Minimum scale is not 0 due to bug with animation
@@ -352,7 +351,6 @@ const BottomNavigation = ({
   barStyle,
   labeled = true,
   style,
-  theme,
   sceneAnimationEnabled = false,
   onTabPress,
   onIndexChange,
@@ -1035,7 +1033,7 @@ BottomNavigation.SceneMap = (scenes: {
   );
 };
 
-export default withTheme(BottomNavigation);
+export default BottomNavigation;
 
 const styles = StyleSheet.create({
   container: {

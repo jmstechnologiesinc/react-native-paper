@@ -6,7 +6,7 @@ import {
   ViewStyle,
   StyleSheet,
 } from 'react-native';
-import type { Theme } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
 import { white, black } from '../../styles/themes/v2/colors';
 import getContrastingColor from '../../utils/getContrastingColor';
 
@@ -27,7 +27,6 @@ type Variant = 'primary' | 'secondary' | 'tertiary' | 'surface';
 
 type BaseProps = {
   isVariant: (variant: Variant) => boolean;
-  theme: Theme;
   disabled?: boolean;
 };
 
@@ -162,7 +161,6 @@ export const getCombinedStyles = ({
 };
 
 const getBackgroundColor = ({
-  theme,
   isVariant,
   disabled,
   style,
@@ -206,7 +204,6 @@ const getBackgroundColor = ({
 };
 
 const getForegroundColor = ({
-  theme,
   isVariant,
   disabled,
   backgroundColor,
@@ -257,13 +254,11 @@ const getForegroundColor = ({
 };
 
 export const getFABColors = ({
-  theme,
   variant,
   disabled,
   customColor,
   style,
 }: {
-  theme: Theme;
   variant: string;
   disabled?: boolean;
   customColor?: string;
@@ -293,7 +288,7 @@ export const getFABColors = ({
   };
 };
 
-const getLabelColor = ({ theme }: { theme: Theme }) => {
+const getLabelColor = () => {
   if (theme.isV3) {
     return theme.colors.onSurface;
   }
@@ -305,25 +300,25 @@ const getLabelColor = ({ theme }: { theme: Theme }) => {
   return color(theme.colors.text).fade(0.54).rgb().string();
 };
 
-const getBackdropColor = ({ theme }: { theme: Theme }) => {
+const getBackdropColor = () => {
   if (theme.isV3) {
     return color(theme.colors.background).alpha(0.95).rgb().string();
   }
   return theme.colors?.backdrop;
 };
 
-const getStackedFABBackgroundColor = ({ theme }: { theme: Theme }) => {
+const getStackedFABBackgroundColor = () => {
   if (theme.isV3) {
     return theme.colors.elevation.level3;
   }
   return theme.colors.surface;
 };
 
-export const getFABGroupColors = ({ theme }: { theme: Theme }) => {
+export const getFABGroupColors = () => {
   return {
-    labelColor: getLabelColor({ theme }),
-    backdropColor: getBackdropColor({ theme }),
-    stackedFABBackgroundColor: getStackedFABBackgroundColor({ theme }),
+    labelColor: getLabelColor(),
+    backdropColor: getBackdropColor(),
+    stackedFABBackgroundColor: getStackedFABBackgroundColor(),
   };
 };
 
@@ -358,12 +353,10 @@ const getCustomFabSize = (customSize: number, roundness: number) => ({
 
 export const getFabStyle = ({
   size,
-  theme,
   customSize,
 }: {
   customSize?: number;
   size: 'small' | 'medium' | 'large';
-  theme: Theme;
 }) => {
   const { isV3, roundness } = theme;
 
@@ -404,10 +397,8 @@ const getExtendedFabDimensions = (customSize: number) => ({
 
 export const getExtendedFabStyle = ({
   customSize,
-  theme,
 }: {
   customSize?: number;
-  theme: Theme;
 }) => {
   if (customSize) return getExtendedFabDimensions(customSize);
 

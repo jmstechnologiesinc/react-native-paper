@@ -16,10 +16,10 @@ import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Surface from '../Surface';
 import Text from '../Typography/Text';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import { withTheme } from '../../core/theming';
 import { white } from '../../styles/themes/v2/colors';
-import type { EllipsizeProp, Theme } from '../../types';
+import type { EllipsizeProp } from '../../types';
 import { getChipColors } from './helpers';
+import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentProps<typeof Surface> & {
   /**
@@ -100,7 +100,7 @@ type Props = React.ComponentProps<typeof Surface> & {
   /**
    * @optional
    */
-  theme: Theme;
+
   /**
    * Pass down testID from chip props to touchable for Detox tests.
    */
@@ -152,7 +152,6 @@ const Chip = ({
   closeIcon,
   textStyle,
   style,
-  theme,
   testID,
   selectedColor,
   showSelectedOverlay = false,
@@ -205,7 +204,6 @@ const Chip = ({
     backgroundColor,
   } = getChipColors({
     isOutlined,
-    theme,
     selectedColor,
     showSelectedOverlay,
     customBackgroundColor,
@@ -448,4 +446,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(Chip);
+export default Chip;

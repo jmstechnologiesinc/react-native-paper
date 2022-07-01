@@ -4,8 +4,8 @@ import { View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
 import Text from '../Typography/Text';
 import Icon, { IconSource } from '../Icon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import { withTheme } from '../../core/theming';
-import type { Theme } from '../../types';
+
+import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
@@ -36,7 +36,6 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
-  theme: Theme;
 };
 
 /**
@@ -68,7 +67,6 @@ const DrawerItem = ({
   icon,
   label,
   active,
-  theme,
   style,
   onPress,
   accessibilityLabel,
@@ -179,4 +177,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(DrawerItem);
+export default DrawerItem;

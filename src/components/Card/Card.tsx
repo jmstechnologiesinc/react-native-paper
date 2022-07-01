@@ -14,8 +14,7 @@ import CardCover, { CardCover as _CardCover } from './CardCover';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import CardTitle, { CardTitle as _CardTitle } from './CardTitle';
 import Surface from '../Surface';
-import { withTheme } from '../../core/theming';
-import type { Theme } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
 import { getCardColors } from './utils';
 
 type OutlinedCardProps = {
@@ -65,7 +64,7 @@ type Props = React.ComponentProps<typeof Surface> & {
   /**
    * @optional
    */
-  theme: Theme;
+
   /**
    * Pass down testID from card props to touchable
    */
@@ -126,7 +125,6 @@ const Card = ({
   mode: cardMode = 'elevated',
   children,
   style,
-  theme,
   testID,
   accessible,
   ...rest
@@ -213,7 +211,6 @@ const Card = ({
     dark && isAdaptiveMode ? elevationDarkAdaptive : elevation;
 
   const { backgroundColor, borderColor } = getCardColors({
-    theme,
     mode: cardMode,
   });
 
@@ -301,4 +298,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(Card);
+export default Card;

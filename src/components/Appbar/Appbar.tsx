@@ -7,7 +7,8 @@ import AppbarAction from './AppbarAction';
 import AppbarBackAction from './AppbarBackAction';
 import Surface from '../Surface';
 import { withTheme } from '../../core/theming';
-import type { MD3Elevation, Theme } from '../../types';
+import type { MD3Elevation } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
 import {
   getAppbarColor,
   renderAppbarContent,
@@ -44,7 +45,6 @@ type Props = Partial<React.ComponentPropsWithRef<typeof View>> & {
   /**
    * @optional
    */
-  theme: Theme;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -97,7 +97,7 @@ const Appbar = ({
   children,
   dark,
   style,
-  theme,
+
   mode = 'small',
   elevated,
   ...rest
@@ -115,6 +115,7 @@ const Appbar = ({
     theme,
     elevation,
     customBackground,
+    //  @ts-ignore:next-line
     elevated
   );
 
@@ -277,9 +278,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(Appbar);
+export default Appbar;
 
-// @component-docs ignore-next-line
-const AppbarWithTheme = withTheme(Appbar);
-// @component-docs ignore-next-line
-export { AppbarWithTheme as Appbar };
+export { Appbar };

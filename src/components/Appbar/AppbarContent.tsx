@@ -12,10 +12,10 @@ import color from 'color';
 
 import Text from '../Typography/Text';
 
-import { withTheme } from '../../core/theming';
+import theme from '../../styles/themes/v3/LightTheme';
 import { white } from '../../styles/themes/v2/colors';
 
-import type { $RemoveChildren, MD3TypescaleKey, Theme } from '../../types';
+import type { $RemoveChildren, MD3TypescaleKey } from '../../types';
 import { modeTextVariant } from './utils';
 
 type Props = $RemoveChildren<typeof View> & {
@@ -57,7 +57,6 @@ type Props = $RemoveChildren<typeof View> & {
   /**
    * @optional
    */
-  theme: Theme;
 };
 
 /**
@@ -89,7 +88,7 @@ const AppbarContent = ({
   style,
   titleRef,
   titleStyle,
-  theme,
+
   title,
   mode = 'small',
   ...rest
@@ -184,9 +183,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(AppbarContent);
+export default AppbarContent;
 
-// @component-docs ignore-next-line
-const AppbarContentWithTheme = withTheme(AppbarContent);
-// @component-docs ignore-next-line
-export { AppbarContentWithTheme as AppbarContent };
+export { AppbarContent };

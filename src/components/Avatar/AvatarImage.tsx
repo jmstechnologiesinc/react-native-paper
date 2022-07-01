@@ -8,8 +8,8 @@ import {
   ViewStyle,
   StyleProp,
 } from 'react-native';
-import { withTheme } from '../../core/theming';
-import type { Theme } from '../../types';
+
+import theme from '../../styles/themes/v3/LightTheme';
 
 const defaultSize = 64;
 
@@ -56,7 +56,6 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
-  theme: Theme;
 };
 
 /**
@@ -89,7 +88,6 @@ const AvatarImage = ({
   onLoadEnd,
   onLoadStart,
   onProgress,
-  theme,
   ...rest
 }: Props) => {
   const { colors } = theme;
@@ -128,4 +126,4 @@ const AvatarImage = ({
 
 AvatarImage.displayName = 'Avatar.Image';
 
-export default withTheme(AvatarImage);
+export default AvatarImage;

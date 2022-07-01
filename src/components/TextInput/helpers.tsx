@@ -25,7 +25,7 @@ import {
 import { AdornmentType, AdornmentSide } from './Adornment/enums';
 import type { TextInputLabelProp } from './types';
 import MD3LightTheme from '../../styles/themes/v3/LightTheme';
-import type { Theme } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
 
 type PaddingProps = {
   height: number | null;
@@ -312,17 +312,12 @@ export const calculateFlatInputHorizontalPadding = ({
 };
 
 type BaseProps = {
-  theme: Theme;
   disabled?: boolean;
 };
 
 type Mode = 'flat' | 'outlined';
 
-const getInputTextColor = ({
-  theme,
-  disabled,
-  mode,
-}: BaseProps & { mode: Mode }) => {
+const getInputTextColor = ({ disabled, mode }: BaseProps & { mode: Mode }) => {
   const isFlat = mode === 'flat';
   if (theme.isV3) {
     if (disabled) {
@@ -344,7 +339,6 @@ const getInputTextColor = ({
 };
 
 const getActiveColor = ({
-  theme,
   disabled,
   error,
   activeUnderlineColor,
@@ -378,7 +372,7 @@ const getActiveColor = ({
   return theme.colors.primary;
 };
 
-const getPlaceholderColor = ({ theme, disabled }: BaseProps) => {
+const getPlaceholderColor = ({ disabled }: BaseProps) => {
   if (theme.isV3) {
     if (disabled) {
       return theme.colors.onSurfaceDisabled;
@@ -394,7 +388,7 @@ const getPlaceholderColor = ({ theme, disabled }: BaseProps) => {
   return theme.colors.placeholder;
 };
 
-const getFlatBackgroundColor = ({ theme, disabled }: BaseProps) => {
+const getFlatBackgroundColor = ({ disabled }: BaseProps) => {
   if (theme.isV3) {
     if (disabled) {
       // @ts-ignore According to Figma for both themes the base color for disabled in `onSecondaryContainer`
@@ -417,7 +411,6 @@ const getFlatBackgroundColor = ({ theme, disabled }: BaseProps) => {
 };
 
 const getFlatUnderlineColor = ({
-  theme,
   disabled,
   underlineColor,
 }: BaseProps & { underlineColor?: string }) => {
@@ -441,7 +434,6 @@ const getFlatUnderlineColor = ({
 };
 
 const getOutlinedOutlineInputColor = ({
-  theme,
   disabled,
   customOutlineColor,
 }: BaseProps & { customOutlineColor?: string }) => {
@@ -476,13 +468,11 @@ export const getFlatInputColors = ({
   activeUnderlineColor,
   disabled,
   error,
-  theme,
 }: {
   underlineColor?: string;
   activeUnderlineColor?: string;
   disabled?: boolean;
   error?: boolean;
-  theme: Theme;
 }) => {
   const baseFlatColorProps = { theme, disabled };
   return {
@@ -508,13 +498,11 @@ export const getOutlinedInputColors = ({
   customOutlineColor,
   disabled,
   error,
-  theme,
 }: {
   activeOutlineColor?: string;
   customOutlineColor?: string;
   disabled?: boolean;
   error?: boolean;
-  theme: Theme;
 }) => {
   const baseOutlinedColorProps = { theme, disabled };
 

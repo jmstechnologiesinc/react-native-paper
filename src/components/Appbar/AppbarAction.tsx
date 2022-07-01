@@ -8,7 +8,7 @@ import type {
 import { black } from '../../styles/themes/v2/colors';
 import IconButton from '../IconButton/IconButton';
 import type { IconSource } from '../Icon';
-import { useTheme } from '../../core/theming';
+import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentPropsWithoutRef<typeof IconButton> & {
   /**
@@ -80,8 +80,6 @@ const AppbarAction = ({
   isLeading,
   ...rest
 }: Props) => {
-  const theme = useTheme();
-
   const actionIconColor = iconColor
     ? iconColor
     : theme.isV3

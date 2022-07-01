@@ -9,9 +9,8 @@ import {
 } from 'react-native';
 import { Appbar } from './Appbar';
 import shadow from '../../styles/shadow';
-import { withTheme } from '../../core/theming';
 import { APPROX_STATUSBAR_HEIGHT } from '../../constants';
-import type { Theme } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
 import {
   DEFAULT_APPBAR_HEIGHT,
   getAppbarColor,
@@ -52,7 +51,7 @@ type Props = React.ComponentProps<typeof Appbar> & {
   /**
    * @optional
    */
-  theme: Theme;
+
   style?: StyleProp<ViewStyle>;
 };
 
@@ -113,7 +112,7 @@ const AppbarHeader = ({
   elevated = false,
   ...rest
 }: Props) => {
-  const { isV3 } = rest.theme;
+  const { isV3 } = theme;
 
   const {
     height = isV3 ? modeAppbarHeight[mode] : DEFAULT_APPBAR_HEIGHT,
@@ -124,9 +123,10 @@ const AppbarHeader = ({
   }: ViewStyle = StyleSheet.flatten(style) || {};
 
   const backgroundColor = getAppbarColor(
-    rest.theme,
+    theme,
     elevation,
     customBackground,
+    //  @ts-ignore:next-line
     elevated
   );
 
@@ -166,9 +166,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(AppbarHeader);
+export default AppbarHeader;
 
-// @component-docs ignore-next-line
-const AppbarHeaderWithTheme = withTheme(AppbarHeader);
-// @component-docs ignore-next-line
-export { AppbarHeaderWithTheme as AppbarHeader };
+export { AppbarHeader };

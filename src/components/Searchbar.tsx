@@ -14,9 +14,8 @@ import {
 import color from 'color';
 import IconButton from './IconButton/IconButton';
 import Surface from './Surface';
-import { withTheme } from '../core/theming';
 import type { IconSource } from './Icon';
-import type { Theme } from '../types';
+import theme from '../styles/themes/v3/LightTheme';
 import MaterialCommunityIcon from './MaterialCommunityIcon';
 
 type Props = React.ComponentPropsWithRef<typeof TextInput> & {
@@ -61,7 +60,7 @@ type Props = React.ComponentPropsWithRef<typeof TextInput> & {
   /**
    * @optional
    */
-  theme: Theme;
+
   /**
    * Custom color for icon, default will be derived from theme
    */
@@ -120,7 +119,7 @@ const Searchbar = React.forwardRef<TextInputHandles, Props>(
       searchAccessibilityLabel = 'search',
       elevation = 1,
       style,
-      theme,
+
       value,
       ...rest
     }: Props,
@@ -261,4 +260,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(Searchbar);
+export default Searchbar;

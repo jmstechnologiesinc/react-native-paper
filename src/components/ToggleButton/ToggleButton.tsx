@@ -5,13 +5,13 @@ import {
   ViewStyle,
   GestureResponderEvent,
 } from 'react-native';
-import { withTheme } from '../../core/theming';
+
 import color from 'color';
 import IconButton from '../IconButton/IconButton';
 import { ToggleButtonGroupContext } from './ToggleButtonGroup';
 import { black, white } from '../../styles/themes/v2/colors';
 import type { IconSource } from '../Icon';
-import type { Theme } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
 import { getToggleButtonColor } from './utils';
 
 type Props = {
@@ -51,7 +51,6 @@ type Props = {
   /**
    * @optional
    */
-  theme: Theme;
 };
 
 /**
@@ -91,7 +90,6 @@ type Props = {
 const ToggleButton = ({
   icon,
   size,
-  theme,
   accessibilityLabel,
   disabled,
   style,
@@ -108,7 +106,7 @@ const ToggleButton = ({
         const checked: boolean | null =
           (context && context.value === value) || status === 'checked';
 
-        const backgroundColor = getToggleButtonColor({ theme, checked });
+        const backgroundColor = getToggleButtonColor({ checked });
         const borderColor = theme.isV3
           ? theme.colors.outline
           : color(theme.dark ? white : black)
@@ -158,9 +156,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(ToggleButton);
-
-// @component-docs ignore-next-line
-const ToggleButtonWithTheme = withTheme(ToggleButton);
-// @component-docs ignore-next-line
-export { ToggleButtonWithTheme as ToggleButton };
+export default ToggleButton;
+export { ToggleButton };

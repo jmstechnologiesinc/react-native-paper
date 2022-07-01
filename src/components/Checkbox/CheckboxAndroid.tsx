@@ -2,9 +2,10 @@ import * as React from 'react';
 import { Animated, View, StyleSheet } from 'react-native';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import { withTheme } from '../../core/theming';
-import type { $RemoveChildren, Theme } from '../../types';
+import type { $RemoveChildren } from '../../types';
 import { getAndroidSelectionControlColor } from './utils';
+
+import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
@@ -30,7 +31,7 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * @optional
    */
-  theme: Theme;
+
   /**
    * testID to be used on tests.
    */
@@ -58,7 +59,6 @@ const ANIMATION_DURATION = 100;
  */
 const CheckboxAndroid = ({
   status,
-  theme,
   disabled,
   onPress,
   testID,
@@ -103,7 +103,6 @@ const CheckboxAndroid = ({
 
   const { rippleColor, selectionControlColor } =
     getAndroidSelectionControlColor({
-      theme,
       disabled,
       checked,
       customColor: rest.color,
@@ -175,9 +174,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(CheckboxAndroid);
+export default CheckboxAndroid;
 
-// @component-docs ignore-next-line
-const CheckboxAndroidWithTheme = withTheme(CheckboxAndroid);
-// @component-docs ignore-next-line
-export { CheckboxAndroidWithTheme as CheckboxAndroid };
+export { CheckboxAndroid };

@@ -9,11 +9,10 @@ import {
 import color from 'color';
 import IconButton from '../IconButton/IconButton';
 import Text from '../Typography/Text';
-import { withTheme, useTheme } from '../../core/theming';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Menu from '../Menu/Menu';
 import Button from '../Button/Button';
-import type { Theme } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentPropsWithRef<typeof View> &
   PaginationControlsProps &
@@ -38,7 +37,6 @@ type Props = React.ComponentPropsWithRef<typeof View> &
     /**
      * @optional
      */
-    theme: Theme;
   };
 
 type PaginationDropdownProps = {
@@ -81,8 +79,6 @@ const PaginationControls = ({
   onPageChange,
   showFastPaginationControls,
 }: PaginationControlsProps) => {
-  const theme = useTheme();
-
   const textColor = theme.isV3 ? theme.colors.onSurface : theme.colors.text;
 
   return (
@@ -156,7 +152,7 @@ const PaginationDropdown = ({
   numberOfItemsPerPage,
   onItemsPerPageChange,
 }: PaginationDropdownProps) => {
-  const { colors } = useTheme();
+  const { colors } = theme;
   const [showSelect, toggleSelect] = React.useState<boolean>(false);
 
   return (
@@ -263,7 +259,6 @@ const DataTablePagination = ({
   numberOfPages,
   onPageChange,
   style,
-  theme,
   showFastPaginationControls = false,
   numberOfItemsPerPageList,
   numberOfItemsPerPage,
@@ -359,7 +354,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(DataTablePagination);
+export default DataTablePagination;
 
 // @component-docs ignore-next-line
 export { DataTablePagination };

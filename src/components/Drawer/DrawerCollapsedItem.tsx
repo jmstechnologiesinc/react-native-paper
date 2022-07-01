@@ -12,8 +12,7 @@ import {
 } from 'react-native';
 import Text from '../Typography/Text';
 import Icon, { IconSource } from '../Icon';
-import { withTheme } from '../../core/theming';
-import type { Theme } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
 import Badge from '../Badge';
 
 type Props = React.ComponentPropsWithRef<typeof View> & {
@@ -41,7 +40,7 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
-  theme: Theme;
+
   /**
    * Badge to show on the icon, can be `true` to show a dot, `string` or `number` to show text.
    */
@@ -82,7 +81,6 @@ const DrawerCollapsedItem = ({
   icon,
   label,
   active,
-  theme,
   style,
   onPress,
   accessibilityLabel,
@@ -247,4 +245,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(DrawerCollapsedItem);
+export default DrawerCollapsedItem;

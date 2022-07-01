@@ -41,6 +41,8 @@ import {
 } from './helpers';
 import { AdornmentType, AdornmentSide } from './Adornment/enums';
 
+import theme from '../../styles/themes/v3/LightTheme';
+
 const TextInputOutlined = ({
   disabled = false,
   editable = true,
@@ -52,7 +54,7 @@ const TextInputOutlined = ({
   activeOutlineColor,
   dense,
   style,
-  theme,
+
   render = (props: RenderProps) => <NativeTextInput {...props} />,
   multiline = false,
   parentState,
@@ -100,7 +102,6 @@ const TextInputOutlined = ({
     customOutlineColor,
     disabled,
     error,
-    theme,
   });
 
   const labelScale = MINIMIZED_LABEL_FONT_SIZE / fontSize;

@@ -2,8 +2,8 @@ import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import { withTheme } from '../../core/theming';
-import type { $RemoveChildren, Theme } from '../../types';
+import type { $RemoveChildren } from '../../types';
+
 import { getSelectionControlIOSColor } from './utils';
 
 type Props = $RemoveChildren<typeof TouchableRipple> & {
@@ -26,7 +26,7 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * @optional
    */
-  theme: Theme;
+
   /**
    * testID to be used on tests.
    */
@@ -49,19 +49,11 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
  *   </figure>
  * </div>
  */
-const CheckboxIOS = ({
-  status,
-  disabled,
-  onPress,
-  theme,
-  testID,
-  ...rest
-}: Props) => {
+const CheckboxIOS = ({ status, disabled, onPress, testID, ...rest }: Props) => {
   const checked = status === 'checked';
   const indeterminate = status === 'indeterminate';
 
   const { checkedColor, rippleColor } = getSelectionControlIOSColor({
-    theme,
     disabled,
     customColor: rest.color,
   });
@@ -103,9 +95,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(CheckboxIOS);
+export default CheckboxIOS;
 
-// @component-docs ignore-next-line
-const CheckboxIOSWithTheme = withTheme(CheckboxIOS);
-// @component-docs ignore-next-line
-export { CheckboxIOSWithTheme as CheckboxIOS };
+export { CheckboxIOS };

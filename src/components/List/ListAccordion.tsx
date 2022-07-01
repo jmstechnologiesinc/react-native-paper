@@ -12,8 +12,8 @@ import {
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Text from '../Typography/Text';
-import { withTheme } from '../../core/theming';
-import type { Theme } from '../../types';
+
+import theme from '../../styles/themes/v3/LightTheme';
 import { ListAccordionGroupContext } from './ListAccordionGroup';
 
 type Props = {
@@ -54,7 +54,6 @@ type Props = {
   /**
    * @optional
    */
-  theme: Theme;
   /**
    * Style that is passed to the wrapping TouchableRipple element.
    */
@@ -140,7 +139,6 @@ const ListAccordion = ({
   title,
   description,
   children,
-  theme,
   titleStyle,
   descriptionStyle,
   titleNumberOfLines = 1,
@@ -312,4 +310,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(ListAccordion);
+export default ListAccordion;

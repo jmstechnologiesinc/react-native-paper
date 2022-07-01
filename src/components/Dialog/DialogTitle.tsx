@@ -2,8 +2,7 @@ import * as React from 'react';
 import { StyleSheet, StyleProp, TextStyle } from 'react-native';
 import Title from '../Typography/v2/Title';
 import Text from '../Typography/Text';
-import { withTheme } from '../../core/theming';
-import type { Theme } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentPropsWithRef<typeof Title> & {
   /**
@@ -14,7 +13,6 @@ type Props = React.ComponentPropsWithRef<typeof Title> & {
   /**
    * @optional
    */
-  theme: Theme;
 };
 
 /**
@@ -51,7 +49,7 @@ type Props = React.ComponentPropsWithRef<typeof Title> & {
  * export default MyComponent;
  * ```
  */
-const DialogTitle = ({ children, theme, style, ...rest }: Props) => {
+const DialogTitle = ({ children, style, ...rest }: Props) => {
   const { isV3 } = theme;
 
   const TextComponent = isV3 ? Text : Title;
@@ -83,7 +81,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(DialogTitle);
+export default DialogTitle;
 
 // @component-docs ignore-next-line
 export { DialogTitle };
