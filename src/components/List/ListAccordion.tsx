@@ -16,6 +16,9 @@ import Text from '../Typography/Text';
 import theme from '../../styles/themes/v3/LightTheme';
 import { ListAccordionGroupContext } from './ListAccordionGroup';
 
+// @ts-ignore:next-line
+import { faArrowUp, faArrowDown } from '@fortawesome/pro-regular-svg-icons';
+
 type Props = {
   /**
    * Title text for the list accordion.
@@ -246,7 +249,7 @@ const ListAccordion = ({
                 })
               ) : (
                 <MaterialCommunityIcon
-                  name={isExpanded ? 'chevron-up' : 'chevron-down'}
+                  icon={isExpanded ? faArrowUp : faArrowDown}
                   color={theme.isV3 ? descriptionColor : titleColor}
                   size={24}
                   direction={I18nManager.isRTL ? 'rtl' : 'ltr'}

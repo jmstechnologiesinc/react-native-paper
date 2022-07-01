@@ -14,6 +14,13 @@ import Menu from '../Menu/Menu';
 import Button from '../Button/Button';
 import theme from '../../styles/themes/v3/LightTheme';
 
+import {
+  faAd,
+  faChevronCircleRight,
+  faChevronCircleLeft,
+  // @ts-ignore:next-line
+} from '@fortawesome/pro-regular-svg-icons';
+
 type Props = React.ComponentPropsWithRef<typeof View> &
   PaginationControlsProps &
   PaginationDropdownProps & {
@@ -87,7 +94,7 @@ const PaginationControls = ({
         <IconButton
           icon={({ size, color }) => (
             <MaterialCommunityIcon
-              name="page-first"
+              icon={faAd}
               color={color}
               size={size}
               direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
@@ -102,7 +109,7 @@ const PaginationControls = ({
       <IconButton
         icon={({ size, color }) => (
           <MaterialCommunityIcon
-            name="chevron-left"
+            icon={faChevronCircleLeft}
             color={color}
             size={size}
             direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
@@ -116,7 +123,7 @@ const PaginationControls = ({
       <IconButton
         icon={({ size, color }) => (
           <MaterialCommunityIcon
-            name="chevron-right"
+            icon={faChevronCircleRight}
             color={color}
             size={size}
             direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
@@ -131,7 +138,7 @@ const PaginationControls = ({
         <IconButton
           icon={({ size, color }) => (
             <MaterialCommunityIcon
-              name="page-last"
+              icon={faChevronCircleRight}
               color={color}
               size={size}
               direction={I18nManager.isRTL ? 'rtl' : 'ltr'}

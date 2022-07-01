@@ -6,6 +6,8 @@ import type { $RemoveChildren } from '../../types';
 import { getAndroidSelectionControlColor } from './utils';
 
 import theme from '../../styles/themes/v3/LightTheme';
+// @ts-ignore:next-line
+import { faMinus, faCheck, faSquare } from '@fortawesome/pro-regular-svg-icons';
 
 type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
@@ -114,11 +116,7 @@ const CheckboxAndroid = ({
     outputRange: [7, 0],
   });
 
-  const icon = indeterminate
-    ? 'minus-box'
-    : checked
-    ? 'checkbox-marked'
-    : 'checkbox-blank-outline';
+  const icon = indeterminate ? faMinus : checked ? faCheck : faSquare;
 
   return (
     <TouchableRipple
@@ -136,7 +134,7 @@ const CheckboxAndroid = ({
       <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
         <MaterialCommunityIcon
           allowFontScaling={false}
-          name={icon}
+          icon={icon}
           size={24}
           color={selectionControlColor}
           direction="ltr"

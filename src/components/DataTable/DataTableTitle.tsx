@@ -14,6 +14,8 @@ import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Text from '../Typography/Text';
 
 import theme from '../../styles/themes/v3/LightTheme';
+// @ts-ignore:next-line
+import { faArrowUp } from '@fortawesome/pro-regular-svg-icons';
 
 type Props = React.ComponentPropsWithRef<typeof TouchableWithoutFeedback> & {
   /**
@@ -113,7 +115,7 @@ const DataTableTitle = ({
   const icon = sortDirection ? (
     <Animated.View style={[styles.icon, { transform: [{ rotate: spin }] }]}>
       <MaterialCommunityIcon
-        name="arrow-up"
+        icon={faArrowUp}
         size={16}
         color={textColor}
         direction={I18nManager.isRTL ? 'rtl' : 'ltr'}

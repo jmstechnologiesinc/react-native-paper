@@ -8,6 +8,9 @@ import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import type { $RemoveChildren } from '../../types';
 import { getSelectionControlIOSColor } from '../Checkbox/utils';
 
+// @ts-ignore:next-line
+import { faCheck } from '@fortawesome/pro-regular-svg-icons';
+
 type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * Value of the radio button
@@ -103,7 +106,7 @@ const RadioButtonIOS = ({
             <View style={{ opacity: checked ? 1 : 0 }}>
               <MaterialCommunityIcon
                 allowFontScaling={false}
-                name="check"
+                icon={faCheck}
                 size={24}
                 color={checkedColor}
                 direction="ltr"

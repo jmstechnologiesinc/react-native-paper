@@ -21,6 +21,9 @@ import type { EllipsizeProp } from '../../types';
 import { getChipColors } from './helpers';
 import theme from '../../styles/themes/v3/LightTheme';
 
+// @ts-ignore:next-line
+import { faPlusCircle, faCheck } from '@fortawesome/pro-regular-svg-icons';
+
 type Props = React.ComponentProps<typeof Surface> & {
   /**
    * Mode of the chip.
@@ -309,7 +312,7 @@ const Chip = ({
                 />
               ) : (
                 <MaterialCommunityIcon
-                  name="check"
+                  icon={faCheck}
                   color={avatar ? white : iconColor}
                   size={18}
                   direction="ltr"
@@ -356,7 +359,7 @@ const Chip = ({
                 <Icon source={closeIcon} color={iconColor} size={iconSize} />
               ) : (
                 <MaterialCommunityIcon
-                  name={isV3 ? 'close' : 'close-circle'}
+                  icon={isV3 ? faPlusCircle : faPlusCircle}
                   size={iconSize}
                   color={iconColor}
                   direction="ltr"

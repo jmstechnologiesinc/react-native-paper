@@ -18,6 +18,8 @@ import type { IconSource } from './Icon';
 import theme from '../styles/themes/v3/LightTheme';
 import MaterialCommunityIcon from './MaterialCommunityIcon';
 
+// @ts-ignore:next-line
+import { faCars } from '@fortawesome/pro-regular-svg-icons';
 type Props = React.ComponentPropsWithRef<typeof TextInput> & {
   /**
    * Accessibility label for the button. This is read by the screen reader when the user taps the button.
@@ -185,7 +187,7 @@ const Searchbar = React.forwardRef<TextInputHandles, Props>(
             icon ||
             (({ size, color }) => (
               <MaterialCommunityIcon
-                name="magnify"
+                icon={faCars}
                 color={color}
                 size={size}
                 direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
@@ -228,7 +230,7 @@ const Searchbar = React.forwardRef<TextInputHandles, Props>(
             clearIcon ||
             (({ size, color }) => (
               <MaterialCommunityIcon
-                name="close"
+                icon={faCars}
                 color={color}
                 size={size}
                 direction={I18nManager.isRTL ? 'rtl' : 'ltr'}

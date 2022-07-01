@@ -106,7 +106,7 @@ const Icon = ({ source, color, size, ...rest }: Props) => {
       <SettingsConsumer>
         {({ icon }) => {
           return icon({
-            name: s,
+            icon: s,
             color: iconColor,
             size,
             direction,
