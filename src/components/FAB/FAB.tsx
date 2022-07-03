@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 import ActivityIndicator from '../ActivityIndicator';
 import Surface from '../Surface';
-import CrossFadeIcon from '../CrossFadeIcon';
-import Icon, { IconSource } from '../Icon';
+
+// @ts-ignore:next-line
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import Text from '../Typography/Text';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import { getExtendedFabStyle, getFABColors, getFabStyle } from './utils';
@@ -25,7 +26,7 @@ type Props = $RemoveChildren<typeof Surface> & {
   /**
    * Icon to display for the `FAB`.
    */
-  icon: IconSource;
+  icon: any;
   /**
    * Optional label for extended `FAB`.
    */
@@ -192,7 +193,7 @@ const FAB = ({
     }
   }, [visible, scale, visibility]);
 
-  const IconComponent = animated ? CrossFadeIcon : Icon;
+  // const IconComponent = animated ? CrossFadeIcon : FontAwesomeIcon;
 
   const { backgroundColor, foregroundColor, rippleColor } = getFABColors({
     variant,
@@ -259,8 +260,8 @@ const FAB = ({
           pointerEvents="none"
         >
           {icon && loading !== true ? (
-            <IconComponent
-              source={icon}
+            <FontAwesomeIcon
+              icon={icon}
               size={customSize ? customSize / 2 : iconSize}
               color={foregroundColor}
             />

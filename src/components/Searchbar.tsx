@@ -16,7 +16,6 @@ import IconButton from './IconButton/IconButton';
 import Surface from './Surface';
 import type { IconSource } from './Icon';
 import theme from '../styles/themes/v3/LightTheme';
-import MaterialCommunityIcon from './MaterialCommunityIcon';
 
 // @ts-ignore:next-line
 import { faCars } from '@fortawesome/pro-regular-svg-icons';
@@ -155,11 +154,6 @@ const Searchbar = React.forwardRef<TextInputHandles, Props>(
       };
     });
 
-    const handleClearPress = () => {
-      root.current?.clear();
-      rest.onChangeText?.('');
-    };
-
     const { colors, roundness, dark, isV3 } = theme;
     const textColor = isV3 ? theme.colors.onSurface : theme.colors.text;
     const iconColor =
@@ -183,17 +177,7 @@ const Searchbar = React.forwardRef<TextInputHandles, Props>(
           rippleColor={rippleColor}
           onPress={onIconPress}
           iconColor={iconColor}
-          icon={
-            icon ||
-            (({ size, color }) => (
-              <MaterialCommunityIcon
-                icon={faCars}
-                color={color}
-                size={size}
-                direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
-              />
-            ))
-          }
+          icon={icon}
           accessibilityLabel={searchAccessibilityLabel}
         />
         <TextInput
@@ -219,26 +203,16 @@ const Searchbar = React.forwardRef<TextInputHandles, Props>(
           value={value}
           {...rest}
         />
-        <IconButton
+        {/* <IconButton
           borderless
           disabled={!value}
           accessibilityLabel={clearAccessibilityLabel}
           iconColor={value ? iconColor : 'rgba(255, 255, 255, 0)'}
           rippleColor={rippleColor}
           onPress={handleClearPress}
-          icon={
-            clearIcon ||
-            (({ size, color }) => (
-              <MaterialCommunityIcon
-                icon={faCars}
-                color={color}
-                size={size}
-                direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
-              />
-            ))
-          }
+          icon={icon}
           accessibilityRole="button"
-        />
+        /> */}
       </Surface>
     );
   }

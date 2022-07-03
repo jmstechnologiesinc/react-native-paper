@@ -15,6 +15,8 @@ import overlay from '../../styles/overlay';
 
 // @ts-ignore:next-line
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+// @ts-ignore:next-line
+import { IconSource } from '../Icon';
 
 import Surface from '../Surface';
 import Badge from '../Badge';

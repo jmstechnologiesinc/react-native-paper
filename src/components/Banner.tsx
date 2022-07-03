@@ -5,8 +5,9 @@ import Text from './Typography/Text';
 import Button from './Button/Button';
 // @ts-ignore:next-line
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { withTheme } from '../core/theming';
-import type { $RemoveChildren, Theme } from '../types';
+import theme from '../styles/themes/v3/LightTheme';
+
+import type { $RemoveChildren } from '../types';
 
 const DEFAULT_MAX_WIDTH = 960;
 
@@ -52,7 +53,7 @@ type Props = $RemoveChildren<typeof Surface> & {
   /**
    * @optional
    */
-  theme: Theme;
+
   /**
    * @optional
    * Optional callback that will be called after the opening animation finished running normally
@@ -132,7 +133,6 @@ const Banner = ({
   contentStyle,
   elevation = 1,
   style,
-  theme,
   onShowAnimationFinished = () => {},
   onHideAnimationFinished = () => {},
   ...rest
@@ -190,8 +190,6 @@ const Banner = ({
     <Surface
       {...rest}
       style={[!theme.isV3 && styles.elevation, style]}
-      //  @ts-ignore:next-line
-      theme={theme}
       {...(theme.isV3 && { elevation })}
     >
       <View style={[styles.wrapper, contentStyle]}>
@@ -292,4 +290,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(Banner);
+export default Banner;
