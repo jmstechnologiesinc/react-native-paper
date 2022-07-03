@@ -11,7 +11,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import type { IconSource } from '../Icon';
-import Icon from '../Icon';
+
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Surface from '../Surface';
 import Text from '../Typography/Text';
@@ -23,6 +23,8 @@ import theme from '../../styles/themes/v3/LightTheme';
 
 // @ts-ignore:next-line
 import { faPlusCircle, faCheck } from '@fortawesome/pro-regular-svg-icons';
+// @ts-ignore:next-line
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 type Props = React.ComponentProps<typeof Surface> & {
   /**
@@ -299,8 +301,8 @@ const Chip = ({
               ]}
             >
               {icon ? (
-                <Icon
-                  source={icon}
+                <FontAwesomeIcon
+                  icon={icon}
                   color={
                     avatar
                       ? white
@@ -356,9 +358,13 @@ const Chip = ({
               ]}
             >
               {closeIcon ? (
-                <Icon source={closeIcon} color={iconColor} size={iconSize} />
+                <FontAwesomeIcon
+                  icon={faPlusCircle}
+                  color={iconColor}
+                  size={iconSize}
+                />
               ) : (
-                <MaterialCommunityIcon
+                <FontAwesomeIcon
                   icon={isV3 ? faPlusCircle : faPlusCircle}
                   size={iconSize}
                   color={iconColor}

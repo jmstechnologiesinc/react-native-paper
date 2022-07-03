@@ -2,7 +2,8 @@ import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RadioButtonContext, RadioButtonContextType } from './RadioButtonGroup';
 import { handlePress, isChecked } from './utils';
-import MaterialCommunityIcon from '../MaterialCommunityIcon';
+// @ts-ignore:next-line
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 
 import type { $RemoveChildren } from '../../types';
@@ -104,7 +105,7 @@ const RadioButtonIOS = ({
             testID={testID}
           >
             <View style={{ opacity: checked ? 1 : 0 }}>
-              <MaterialCommunityIcon
+              <FontAwesomeIcon
                 allowFontScaling={false}
                 icon={faCheck}
                 size={24}

@@ -10,7 +10,10 @@ import {
 import color from 'color';
 
 import ActivityIndicator from '../ActivityIndicator';
-import Icon, { IconSource } from '../Icon';
+
+// @ts-ignore:next-line
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+
 import Surface from '../Surface';
 import Text from '../Typography/Text';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
@@ -61,7 +64,7 @@ type Props = React.ComponentProps<typeof Surface> & {
   /**
    * Icon to display for the `Button`.
    */
-  icon?: IconSource;
+  icon?: any;
   /**
    * Whether the button is disabled. A disabled button is greyed out and `onPress` is not called on touch.
    */
@@ -297,8 +300,8 @@ const Button = ({
         <View style={[styles.content, contentStyle]}>
           {icon && loading !== true ? (
             <View style={iconStyle}>
-              <Icon
-                source={icon}
+              <FontAwesomeIcon
+                icon={icon}
                 size={customLabelSize ?? iconSize}
                 color={
                   typeof customLabelColor === 'string'

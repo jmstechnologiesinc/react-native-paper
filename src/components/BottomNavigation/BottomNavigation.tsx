@@ -12,7 +12,10 @@ import {
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import color from 'color';
 import overlay from '../../styles/overlay';
-import Icon, { IconSource } from '../Icon';
+
+// @ts-ignore:next-line
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+
 import Surface from '../Surface';
 import Badge from '../Badge';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
@@ -29,8 +32,8 @@ import theme from '../../styles/themes/v3/LightTheme';
 type Route = {
   key: string;
   title?: string;
-  focusedIcon: IconSource;
-  unfocusedIcon?: IconSource;
+  focusedIcon: any;
+  unfocusedIcon?: any;
   badge?: string | number | boolean;
   color?: string;
   accessibilityLabel?: string;
@@ -879,8 +882,8 @@ const BottomNavigation = ({
                             color: activeTintColor,
                           })
                         ) : (
-                          <Icon
-                            source={route.focusedIcon as IconSource}
+                          <FontAwesomeIcon
+                            icon={route.focusedIcon as IconSource}
                             color={activeTintColor}
                             size={24}
                           />
@@ -902,8 +905,8 @@ const BottomNavigation = ({
                             color: inactiveTintColor,
                           })
                         ) : (
-                          <Icon
-                            source={
+                          <FontAwesomeIcon
+                            icon={
                               theme.isV3 && route.unfocusedIcon !== undefined
                                 ? route.unfocusedIcon
                                 : (route.focusedIcon as IconSource)

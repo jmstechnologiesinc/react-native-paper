@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { View, ViewStyle, StyleSheet, StyleProp } from 'react-native';
-import Icon, { IconSource } from '../Icon';
+// @ts-ignore:next-line
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 import { white } from '../../styles/themes/v2/colors';
 import getContrastingColor from '../../utils/getContrastingColor';
@@ -12,7 +13,7 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Icon to display for the `Avatar`.
    */
-  icon: IconSource;
+  icon: any;
   /**
    * Size of the avatar.
    */
@@ -67,7 +68,7 @@ const Avatar = ({ icon, size = defaultSize, style, ...rest }: Props) => {
       ]}
       {...rest}
     >
-      <Icon source={icon} color={textColor} size={size * 0.6} />
+      <FontAwesomeIcon icon={icon} color={textColor} size={size * 0.6} />
     </View>
   );
 };

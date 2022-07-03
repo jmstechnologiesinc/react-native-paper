@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Platform, I18nManager, View, Image, StyleSheet } from 'react-native';
-import MaterialCommunityIcon from '../MaterialCommunityIcon';
+// @ts-ignore:next-line
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 // @ts-ignore:next-line
 import { faArrowLeft } from '@fortawesome/pro-regular-svg-icons';
 
@@ -27,7 +28,7 @@ const AppbarBackIcon = ({ size, color }: { size: number; color: string }) => {
       />
     </View>
   ) : (
-    <MaterialCommunityIcon
+    <FontAwesomeIcon
       icon={faArrowLeft}
       color={color}
       size={size}

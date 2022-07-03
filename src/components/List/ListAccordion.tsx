@@ -10,7 +10,8 @@ import {
   GestureResponderEvent,
 } from 'react-native';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import MaterialCommunityIcon from '../MaterialCommunityIcon';
+// @ts-ignore:next-line
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import Text from '../Typography/Text';
 
 import theme from '../../styles/themes/v3/LightTheme';
@@ -248,7 +249,7 @@ const ListAccordion = ({
                   isExpanded: isExpanded,
                 })
               ) : (
-                <MaterialCommunityIcon
+                <FontAwesomeIcon
                   icon={isExpanded ? faArrowUp : faArrowDown}
                   color={theme.isV3 ? descriptionColor : titleColor}
                   size={24}
