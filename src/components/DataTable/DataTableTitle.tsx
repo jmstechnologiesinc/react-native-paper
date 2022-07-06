@@ -10,10 +10,14 @@ import {
   TextStyle,
 } from 'react-native';
 import color from 'color';
-import MaterialCommunityIcon from '../MaterialCommunityIcon';
+
 import Text from '../Typography/Text';
-import { withTheme } from '../../core/theming';
-import type { Theme } from '../../types';
+
+import theme from '../../styles/themes/v3/LightTheme';
+// @ts-ignore:next-line
+import { faArrowUp } from '@fortawesome/pro-regular-svg-icons';
+// @ts-ignore:next-line
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 type Props = React.ComponentPropsWithRef<typeof TouchableWithoutFeedback> & {
   /**
@@ -44,7 +48,6 @@ type Props = React.ComponentPropsWithRef<typeof TouchableWithoutFeedback> & {
   /**
    * @optional
    */
-  theme: Theme;
 };
 
 /**
@@ -85,7 +88,6 @@ const DataTableTitle = ({
   children,
   onPress,
   sortDirection,
-  theme,
   textStyle,
   style,
   numberOfLines = 1,
@@ -114,8 +116,8 @@ const DataTableTitle = ({
 
   const icon = sortDirection ? (
     <Animated.View style={[styles.icon, { transform: [{ rotate: spin }] }]}>
-      <MaterialCommunityIcon
-        name="arrow-up"
+      <FontAwesomeIcon
+        icon={faArrowUp}
         size={16}
         color={textColor}
         direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
@@ -196,7 +198,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(DataTableTitle);
+export default DataTableTitle;
 
 // @component-docs ignore-next-line
 export { DataTableTitle };

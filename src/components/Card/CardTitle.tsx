@@ -7,12 +7,11 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { withTheme } from '../../core/theming';
-import type { MD3TypescaleKey, Theme } from '../../types';
+import type { MD3TypescaleKey } from '../../types';
 import Caption from '../Typography/v2/Caption';
 import Title from '../Typography/v2/Title';
 import Text from '../Typography/Text';
-
+import theme from '../../styles/themes/v3/LightTheme';
 type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Text for the title. Note that this will only accept a string or `<Text>`-based node.
@@ -100,7 +99,6 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
-  theme: Theme;
 };
 
 const LEFT_SIZE = 40;
@@ -143,7 +141,6 @@ const CardTitle = ({
   right,
   rightStyle,
   style,
-  theme,
 }: Props) => {
   const titleComponent = (props: any) =>
     theme.isV3 ? <Text {...props} /> : <Title {...props} />;
@@ -236,7 +233,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(CardTitle);
+export default CardTitle;
 
 // @component-docs ignore-next-line
 export { CardTitle };

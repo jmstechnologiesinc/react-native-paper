@@ -13,8 +13,8 @@ import CheckboxAndroid from './CheckboxAndroid';
 import CheckboxIOS from './CheckboxIOS';
 import Text from '../Typography/Text';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import { withTheme } from '../../core/theming';
-import type { MD3TypescaleKey, Theme } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
+import type { MD3TypescaleKey } from '../../types';
 
 type Props = {
   /**
@@ -73,7 +73,7 @@ type Props = {
   /**
    * @optional
    */
-  theme: Theme;
+
   /**
    * testID to be used on tests.
    */
@@ -114,7 +114,6 @@ const CheckboxItem = ({
   label,
   onPress,
   labelStyle,
-  theme,
   testID,
   mode,
   position = 'trailing',
@@ -183,12 +182,9 @@ const CheckboxItem = ({
 
 CheckboxItem.displayName = 'Checkbox.Item';
 
-export default withTheme(CheckboxItem);
+export default CheckboxItem;
 
-// @component-docs ignore-next-line
-const CheckboxItemWithTheme = withTheme(CheckboxItem);
-// @component-docs ignore-next-line
-export { CheckboxItemWithTheme as CheckboxItem };
+export { CheckboxItem };
 
 const styles = StyleSheet.create({
   container: {

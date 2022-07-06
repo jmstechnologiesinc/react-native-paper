@@ -11,9 +11,8 @@ import {
 import FAB from './FAB';
 import Text from '../Typography/Text';
 import Card from '../Card/Card';
-import { withTheme } from '../../core/theming';
 import type { IconSource } from '../Icon';
-import type { Theme } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
 import { getFABGroupColors } from './utils';
 
 type Props = {
@@ -90,7 +89,7 @@ type Props = {
   /**
    * @optional
    */
-  theme: Theme;
+
   /**
    * Pass down testID from Group props to FAB.
    */
@@ -162,7 +161,6 @@ const FABGroup = ({
   open,
   onPress,
   accessibilityLabel,
-  theme,
   style,
   fabStyle,
   visible,
@@ -238,7 +236,7 @@ const FABGroup = ({
   const toggle = () => onStateChange({ open: !open });
 
   const { labelColor, backdropColor, stackedFABBackgroundColor } =
-    getFABGroupColors({ theme });
+    getFABGroupColors();
 
   const backdropOpacity = open
     ? backdrop.interpolate({
@@ -403,12 +401,9 @@ const FABGroup = ({
 
 FABGroup.displayName = 'FAB.Group';
 
-export default withTheme(FABGroup);
+export default FABGroup;
 
-// @component-docs ignore-next-line
-const FABGroupWithTheme = withTheme(FABGroup);
-// @component-docs ignore-next-line
-export { FABGroupWithTheme as FABGroup };
+export { FABGroup };
 
 const styles = StyleSheet.create({
   safeArea: {

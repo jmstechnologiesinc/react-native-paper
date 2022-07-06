@@ -10,9 +10,8 @@ import {
   ViewStyle,
   StyleSheet,
 } from 'react-native';
-import { withTheme } from '../../core/theming';
-import type { Theme } from '../../types';
 import { getTouchableRippleColors } from './utils';
+import theme from '../../styles/themes/v3/LightTheme';
 
 const ANDROID_VERSION_LOLLIPOP = 21;
 const ANDROID_VERSION_PIE = 28;
@@ -26,7 +25,6 @@ type Props = React.ComponentProps<typeof TouchableWithoutFeedback> & {
   underlayColor?: string;
   children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
-  theme: Theme;
 };
 
 const TouchableRipple = ({
@@ -37,12 +35,12 @@ const TouchableRipple = ({
   rippleColor,
   underlayColor,
   children,
-  theme,
   ...rest
 }: Props) => {
   const disabled = disabledProp || !rest.onPress;
   const { calculatedRippleColor, calculatedUnderlayColor } =
     getTouchableRippleColors({
+      //  @ts-ignore:next-line
       theme,
       rippleColor,
       underlayColor,
@@ -95,4 +93,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(TouchableRipple);
+export default TouchableRipple;

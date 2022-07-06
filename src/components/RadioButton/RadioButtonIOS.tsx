@@ -2,11 +2,15 @@ import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RadioButtonContext, RadioButtonContextType } from './RadioButtonGroup';
 import { handlePress, isChecked } from './utils';
-import MaterialCommunityIcon from '../MaterialCommunityIcon';
+// @ts-ignore:next-line
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import { withTheme } from '../../core/theming';
-import type { $RemoveChildren, Theme } from '../../types';
+
+import type { $RemoveChildren } from '../../types';
 import { getSelectionControlIOSColor } from '../Checkbox/utils';
+
+// @ts-ignore:next-line
+import { faCheck } from '@fortawesome/pro-regular-svg-icons';
 
 type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
@@ -32,7 +36,7 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * @optional
    */
-  theme: Theme;
+
   /**
    * testID to be used on tests.
    */
@@ -58,7 +62,6 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
 const RadioButtonIOS = ({
   disabled,
   onPress,
-  theme,
   status,
   value,
   testID,
@@ -75,7 +78,6 @@ const RadioButtonIOS = ({
           }) === 'checked';
 
         const { checkedColor, rippleColor } = getSelectionControlIOSColor({
-          theme,
           disabled,
           customColor: rest.color,
         });
@@ -103,9 +105,9 @@ const RadioButtonIOS = ({
             testID={testID}
           >
             <View style={{ opacity: checked ? 1 : 0 }}>
-              <MaterialCommunityIcon
+              <FontAwesomeIcon
                 allowFontScaling={false}
-                name="check"
+                icon={faCheck}
                 size={24}
                 color={checkedColor}
                 direction="ltr"
@@ -127,9 +129,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(RadioButtonIOS);
+export default RadioButtonIOS;
 
-// @component-docs ignore-next-line
-const RadioButtonIOSWithTheme = withTheme(RadioButtonIOS);
-// @component-docs ignore-next-line
-export { RadioButtonIOSWithTheme as RadioButtonIOS };
+export { RadioButtonIOS };

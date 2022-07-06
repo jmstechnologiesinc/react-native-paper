@@ -2,10 +2,11 @@ import color from 'color';
 import * as React from 'react';
 import { View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
 import Text from '../Typography/Text';
-import Icon, { IconSource } from '../Icon';
+// @ts-ignore:next-line
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import { withTheme } from '../../core/theming';
-import type { Theme } from '../../types';
+
+import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
@@ -15,7 +16,7 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Icon to display for the `DrawerItem`.
    */
-  icon?: IconSource;
+  icon?: any;
   /**
    * Whether to highlight the drawer item as active.
    */
@@ -36,7 +37,6 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
-  theme: Theme;
 };
 
 /**
@@ -68,7 +68,6 @@ const DrawerItem = ({
   icon,
   label,
   active,
-  theme,
   style,
   onPress,
   accessibilityLabel,
@@ -119,7 +118,7 @@ const DrawerItem = ({
         <View style={[styles.wrapper, isV3 && styles.v3Wrapper]}>
           <View style={styles.content}>
             {icon ? (
-              <Icon source={icon} size={24} color={contentColor} />
+              <FontAwesomeIcon icon={icon} size={24} color={contentColor} />
             ) : null}
             <Text
               variant="labelLarge"
@@ -179,4 +178,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(DrawerItem);
+export default DrawerItem;

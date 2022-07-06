@@ -14,11 +14,11 @@ import {
 import color from 'color';
 import IconButton from './IconButton/IconButton';
 import Surface from './Surface';
-import { withTheme } from '../core/theming';
 import type { IconSource } from './Icon';
-import type { Theme } from '../types';
-import MaterialCommunityIcon from './MaterialCommunityIcon';
+import theme from '../styles/themes/v3/LightTheme';
 
+// @ts-ignore:next-line
+import { faCars } from '@fortawesome/pro-regular-svg-icons';
 type Props = React.ComponentPropsWithRef<typeof TextInput> & {
   /**
    * Accessibility label for the button. This is read by the screen reader when the user taps the button.
@@ -61,7 +61,7 @@ type Props = React.ComponentPropsWithRef<typeof TextInput> & {
   /**
    * @optional
    */
-  theme: Theme;
+
   /**
    * Custom color for icon, default will be derived from theme
    */
@@ -120,7 +120,7 @@ const Searchbar = React.forwardRef<TextInputHandles, Props>(
       searchAccessibilityLabel = 'search',
       elevation = 1,
       style,
-      theme,
+
       value,
       ...rest
     }: Props,
@@ -154,11 +154,6 @@ const Searchbar = React.forwardRef<TextInputHandles, Props>(
       };
     });
 
-    const handleClearPress = () => {
-      root.current?.clear();
-      rest.onChangeText?.('');
-    };
-
     const { colors, roundness, dark, isV3 } = theme;
     const textColor = isV3 ? theme.colors.onSurface : theme.colors.text;
     const iconColor =
@@ -182,17 +177,7 @@ const Searchbar = React.forwardRef<TextInputHandles, Props>(
           rippleColor={rippleColor}
           onPress={onIconPress}
           iconColor={iconColor}
-          icon={
-            icon ||
-            (({ size, color }) => (
-              <MaterialCommunityIcon
-                name="magnify"
-                color={color}
-                size={size}
-                direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
-              />
-            ))
-          }
+          icon={icon}
           accessibilityLabel={searchAccessibilityLabel}
         />
         <TextInput
@@ -218,26 +203,16 @@ const Searchbar = React.forwardRef<TextInputHandles, Props>(
           value={value}
           {...rest}
         />
-        <IconButton
+        {/* <IconButton
           borderless
           disabled={!value}
           accessibilityLabel={clearAccessibilityLabel}
           iconColor={value ? iconColor : 'rgba(255, 255, 255, 0)'}
           rippleColor={rippleColor}
           onPress={handleClearPress}
-          icon={
-            clearIcon ||
-            (({ size, color }) => (
-              <MaterialCommunityIcon
-                name="close"
-                color={color}
-                size={size}
-                direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
-              />
-            ))
-          }
+          icon={icon}
           accessibilityRole="button"
-        />
+        /> */}
       </Surface>
     );
   }
@@ -261,4 +236,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(Searchbar);
+export default Searchbar;

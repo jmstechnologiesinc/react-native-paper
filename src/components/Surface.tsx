@@ -8,9 +8,9 @@ import {
   Platform,
 } from 'react-native';
 import shadow from '../styles/shadow';
-import { useTheme } from '../core/theming';
 import overlay, { isAnimatedValue } from '../styles/overlay';
-import type { MD3Elevation, Theme } from '../types';
+import type { MD3Elevation } from '../types';
+import theme from '../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
@@ -30,16 +30,11 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
-  theme?: Theme;
 };
 
-const MD2Surface = ({
-  style,
-  theme: overrideTheme,
-  ...rest
-}: Omit<Props, 'elevation'>) => {
+const MD2Surface = ({ style, ...rest }: Omit<Props, 'elevation'>) => {
   const { elevation = 4 } = (StyleSheet.flatten(style) || {}) as ViewStyle;
-  const { dark: isDarkTheme, mode, colors } = useTheme(overrideTheme);
+  const { dark: isDarkTheme, mode, colors } = theme;
 
   return (
     <Animated.View
@@ -100,17 +95,10 @@ const MD2Surface = ({
  * });
  * ```
  */
-const Surface = ({
-  elevation = 1,
-  children,
-  theme: overridenTheme,
-  style,
-  ...props
-}: Props) => {
-  const theme = useTheme(overridenTheme);
-
+const Surface = ({ elevation = 1, children, style, ...props }: Props) => {
   if (!theme.isV3)
     return (
+      //  @ts-ignore:next-line
       <MD2Surface {...props} theme={theme} style={style}>
         {children}
       </MD2Surface>

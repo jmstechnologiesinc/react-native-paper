@@ -3,8 +3,8 @@ import * as React from 'react';
 import { View, ViewStyle, StyleSheet, StyleProp } from 'react-native';
 import Text from '../Typography/Text';
 import Divider from '../Divider';
-import { withTheme } from '../../core/theming';
-import type { Theme } from '../../types';
+
+import theme from '../../styles/themes/v3/LightTheme';
 import { MD3Colors } from '../../styles/themes/v3/tokens';
 
 type Props = React.ComponentPropsWithRef<typeof View> & {
@@ -20,7 +20,6 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
-  theme: Theme;
 };
 
 /**
@@ -59,7 +58,7 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
  * export default MyComponent;
  * ```
  */
-const DrawerSection = ({ children, title, theme, style, ...rest }: Props) => {
+const DrawerSection = ({ children, title, style, ...rest }: Props) => {
   const { isV3 } = theme;
   const titleColor = isV3
     ? theme.colors.onSurfaceVariant
@@ -116,4 +115,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(DrawerSection);
+export default DrawerSection;

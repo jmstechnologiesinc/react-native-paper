@@ -12,8 +12,8 @@ import {
 import Button from './Button/Button';
 import Surface from './Surface';
 import Text from './Typography/Text';
-import { withTheme } from '../core/theming';
-import type { Theme } from '../types';
+
+import theme from '../styles/themes/v3/LightTheme';
 
 export type SnackbarProps = React.ComponentProps<typeof Surface> & {
   /**
@@ -54,7 +54,6 @@ export type SnackbarProps = React.ComponentProps<typeof Surface> & {
   /**
    * @optional
    */
-  theme: Theme;
 };
 
 const DURATION_SHORT = 4000;
@@ -118,7 +117,6 @@ const Snackbar = ({
   elevation = 2,
   wrapperStyle,
   style,
-  theme,
   ...rest
 }: SnackbarProps) => {
   const { current: opacity } = React.useRef<Animated.Value>(
@@ -289,4 +287,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(Snackbar);
+export default Snackbar;

@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { View, ViewStyle, StyleSheet, StyleProp } from 'react-native';
-import Icon, { IconSource } from '../Icon';
-import { withTheme } from '../../core/theming';
+// @ts-ignore:next-line
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+
 import { white } from '../../styles/themes/v2/colors';
 import getContrastingColor from '../../utils/getContrastingColor';
-import type { Theme } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
 
 const defaultSize = 64;
 
@@ -12,7 +13,7 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Icon to display for the `Avatar`.
    */
-  icon: IconSource;
+  icon: any;
   /**
    * Size of the avatar.
    */
@@ -25,7 +26,6 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
-  theme: Theme;
 };
 
 /**
@@ -47,7 +47,7 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
  * );
  * ```
  */
-const Avatar = ({ icon, size = defaultSize, style, theme, ...rest }: Props) => {
+const Avatar = ({ icon, size = defaultSize, style, ...rest }: Props) => {
   const { backgroundColor = theme.colors?.primary, ...restStyle } =
     StyleSheet.flatten(style) || {};
   const textColor =
@@ -68,7 +68,7 @@ const Avatar = ({ icon, size = defaultSize, style, theme, ...rest }: Props) => {
       ]}
       {...rest}
     >
-      <Icon source={icon} color={textColor} size={size * 0.6} />
+      <FontAwesomeIcon icon={icon} color={textColor} size={size * 0.6} />
     </View>
   );
 };
@@ -82,4 +82,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(Avatar);
+export default Avatar;

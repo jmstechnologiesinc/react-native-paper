@@ -18,14 +18,13 @@ import {
 } from 'react-native';
 import color from 'color';
 
-import { withTheme } from '../../core/theming';
 import type { $Omit } from '../../types';
 import Portal from '../Portal/Portal';
 import Surface from '../Surface';
 import MenuItem from './MenuItem';
 import { APPROX_STATUSBAR_HEIGHT } from '../../constants';
 import { addEventListener } from '../../utils/addEventListener';
-import type { Theme } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = {
   /**
@@ -63,7 +62,6 @@ type Props = {
   /**
    * @optional
    */
-  theme: Theme;
 };
 
 type Layout = $Omit<$Omit<LayoutRectangle, 'x'>, 'y'>;
@@ -306,7 +304,7 @@ class Menu extends React.Component<Props, State> {
       () => {
         this.attachListeners();
 
-        const { animation } = this.props.theme;
+        const { animation } = theme;
         Animated.parallel([
           Animated.timing(this.state.scaleAnimation, {
             toValue: { x: menuLayout.width, y: menuLayout.height },
@@ -332,7 +330,7 @@ class Menu extends React.Component<Props, State> {
   private hide = () => {
     this.removeListeners();
 
-    const { animation } = this.props.theme;
+    const { animation } = theme;
     Animated.timing(this.state.opacityAnimation, {
       toValue: 0,
       duration: ANIMATION_DURATION * animation.scale,
@@ -354,7 +352,6 @@ class Menu extends React.Component<Props, State> {
       contentStyle,
       style,
       children,
-      theme,
       statusBarHeight,
       onDismiss,
       overlayAccessibilityLabel,
@@ -607,4 +604,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(Menu);
+export default Menu;

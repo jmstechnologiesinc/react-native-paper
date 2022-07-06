@@ -10,10 +10,11 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { withTheme } from '../../../core/theming';
 import { AdornmentSide } from './enums';
-import type { Theme } from '../../../types';
+
 import { getConstants } from '../helpers';
+
+import theme from '../../../styles/themes/v3/LightTheme';
 
 export type Props = {
   /**
@@ -28,7 +29,6 @@ export type Props = {
   /**
    * @optional
    */
-  theme: Theme;
 };
 
 type ContextState = {
@@ -110,7 +110,7 @@ const AffixAdornment: React.FunctionComponent<
  * ```
  */
 
-const TextInputAffix = ({ text, textStyle: labelStyle, theme }: Props) => {
+const TextInputAffix = ({ text, textStyle: labelStyle }: Props) => {
   const { AFFIX_OFFSET } = getConstants(theme.isV3);
 
   const {
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(TextInputAffix);
+export default TextInputAffix;
 
 // @component-docs ignore-next-line
 export { TextInputAffix, AffixAdornment };

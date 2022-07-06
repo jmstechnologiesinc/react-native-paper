@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { View, ViewStyle, StyleSheet, StyleProp } from 'react-native';
-import Icon, { IconSource } from '../Icon';
+
+// @ts-ignore:next-line
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 type Props = {
   /**
    * Icon to show.
    */
-  icon: IconSource;
+  icon: any;
   /**
    * Color for the icon.
    */
@@ -43,7 +45,7 @@ const ICON_SIZE = 24;
  */
 const ListIcon = ({ icon, color: iconColor, style }: Props) => (
   <View style={[styles.item, style]} pointerEvents="box-none">
-    <Icon source={icon} size={ICON_SIZE} color={iconColor} />
+    <FontAwesomeIcon icon={icon} size={ICON_SIZE} color={iconColor} />
   </View>
 );
 

@@ -9,8 +9,10 @@ import {
 } from 'react-native';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import { black, white } from '../../styles/themes/v2/colors';
-import { withTheme } from '../../core/theming';
-import type { $RemoveChildren, Theme } from '../../types';
+
+import type { $RemoveChildren } from '../../types';
+
+import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
@@ -25,7 +27,7 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * @optional
    */
-  theme: Theme;
+
   /**
    * `pointerEvents` passed to the `View` container, which is wrapping children within `TouchableRipple`.
    */
@@ -63,7 +65,6 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
 const DataTableRow = ({
   onPress,
   style,
-  theme,
   children,
   pointerEvents,
   ...rest
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(DataTableRow);
+export default DataTableRow;
 
 // @component-docs ignore-next-line
 export { DataTableRow };

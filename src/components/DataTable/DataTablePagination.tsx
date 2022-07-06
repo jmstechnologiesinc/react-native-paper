@@ -1,19 +1,19 @@
 import * as React from 'react';
-import {
-  StyleSheet,
-  StyleProp,
-  View,
-  ViewStyle,
-  I18nManager,
-} from 'react-native';
+import { StyleSheet, StyleProp, View, ViewStyle } from 'react-native';
 import color from 'color';
 import IconButton from '../IconButton/IconButton';
 import Text from '../Typography/Text';
-import { withTheme, useTheme } from '../../core/theming';
-import MaterialCommunityIcon from '../MaterialCommunityIcon';
+
 import Menu from '../Menu/Menu';
 import Button from '../Button/Button';
-import type { Theme } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
+
+import {
+  faAd,
+  faChevronCircleRight,
+  faChevronCircleLeft,
+  // @ts-ignore:next-line
+} from '@fortawesome/pro-regular-svg-icons';
 
 type Props = React.ComponentPropsWithRef<typeof View> &
   PaginationControlsProps &
@@ -38,7 +38,6 @@ type Props = React.ComponentPropsWithRef<typeof View> &
     /**
      * @optional
      */
-    theme: Theme;
   };
 
 type PaginationDropdownProps = {
@@ -81,22 +80,14 @@ const PaginationControls = ({
   onPageChange,
   showFastPaginationControls,
 }: PaginationControlsProps) => {
-  const theme = useTheme();
-
   const textColor = theme.isV3 ? theme.colors.onSurface : theme.colors.text;
 
   return (
     <>
       {showFastPaginationControls ? (
         <IconButton
-          icon={({ size, color }) => (
-            <MaterialCommunityIcon
-              name="page-first"
-              color={color}
-              size={size}
-              direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
-            />
-          )}
+          // @ts-ignore:next-line
+          icon={faAd}
           iconColor={textColor}
           disabled={page === 0}
           onPress={() => onPageChange(0)}
@@ -104,28 +95,16 @@ const PaginationControls = ({
         />
       ) : null}
       <IconButton
-        icon={({ size, color }) => (
-          <MaterialCommunityIcon
-            name="chevron-left"
-            color={color}
-            size={size}
-            direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
-          />
-        )}
+        // @ts-ignore:next-line
+        icon={faChevronCircleLeft}
         iconColor={textColor}
         disabled={page === 0}
         onPress={() => onPageChange(page - 1)}
         accessibilityLabel="chevron-left"
       />
       <IconButton
-        icon={({ size, color }) => (
-          <MaterialCommunityIcon
-            name="chevron-right"
-            color={color}
-            size={size}
-            direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
-          />
-        )}
+        // @ts-ignore:next-line
+        icon={faChevronCircleRight}
         iconColor={textColor}
         disabled={numberOfPages === 0 || page === numberOfPages - 1}
         onPress={() => onPageChange(page + 1)}
@@ -133,14 +112,7 @@ const PaginationControls = ({
       />
       {showFastPaginationControls ? (
         <IconButton
-          icon={({ size, color }) => (
-            <MaterialCommunityIcon
-              name="page-last"
-              color={color}
-              size={size}
-              direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
-            />
-          )}
+          icon={faChevronCircleRight}
           iconColor={textColor}
           disabled={numberOfPages === 0 || page === numberOfPages - 1}
           onPress={() => onPageChange(numberOfPages - 1)}
@@ -156,7 +128,7 @@ const PaginationDropdown = ({
   numberOfItemsPerPage,
   onItemsPerPageChange,
 }: PaginationDropdownProps) => {
-  const { colors } = useTheme();
+  const { colors } = theme;
   const [showSelect, toggleSelect] = React.useState<boolean>(false);
 
   return (
@@ -263,7 +235,6 @@ const DataTablePagination = ({
   numberOfPages,
   onPageChange,
   style,
-  theme,
   showFastPaginationControls = false,
   numberOfItemsPerPageList,
   numberOfItemsPerPage,
@@ -359,7 +330,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(DataTablePagination);
+export default DataTablePagination;
 
 // @component-docs ignore-next-line
 export { DataTablePagination };

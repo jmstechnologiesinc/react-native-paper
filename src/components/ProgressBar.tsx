@@ -10,8 +10,8 @@ import {
   I18nManager,
 } from 'react-native';
 import setColor from 'color';
-import { withTheme } from '../core/theming';
-import type { Theme } from '../types';
+
+import theme from '../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
@@ -34,7 +34,6 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
-  theme: Theme;
 };
 
 const INDETERMINATE_DURATION = 2000;
@@ -66,7 +65,7 @@ const ProgressBar = ({
   style,
   progress = 0,
   visible = true,
-  theme,
+
   ...rest
 }: Props) => {
   const { current: timer } = React.useRef<Animated.Value>(
@@ -235,4 +234,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(ProgressBar);
+export default ProgressBar;

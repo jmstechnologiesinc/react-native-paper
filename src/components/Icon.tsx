@@ -7,8 +7,8 @@ import {
 } from 'react-native';
 import { Consumer as SettingsConsumer } from '../core/settings';
 import { accessibilityProps } from './MaterialCommunityIcon';
-import { withTheme } from '../core/theming';
-import type { Theme } from '../types';
+
+import theme from '../styles/themes/v3/LightTheme';
 
 type IconSourceBase = string | ImageSourcePropType;
 
@@ -28,7 +28,6 @@ type Props = IconProps & {
   /**
    * @optional
    */
-  theme: Theme;
 };
 
 const isImageSource = (source: any) =>
@@ -66,7 +65,7 @@ export const isValidIcon = (source: any) =>
 export const isEqualIcon = (a: any, b: any) =>
   a === b || getIconId(a) === getIconId(b);
 
-const Icon = ({ source, color, size, theme, ...rest }: Props) => {
+const Icon = ({ source, color, size, ...rest }: Props) => {
   const direction =
     typeof source === 'object' && source.direction && source.source
       ? source.direction === 'auto'
@@ -107,7 +106,7 @@ const Icon = ({ source, color, size, theme, ...rest }: Props) => {
       <SettingsConsumer>
         {({ icon }) => {
           return icon({
-            name: s,
+            icon: s,
             color: iconColor,
             size,
             direction,
@@ -122,4 +121,4 @@ const Icon = ({ source, color, size, theme, ...rest }: Props) => {
   return null;
 };
 
-export default withTheme(Icon);
+export default Icon;

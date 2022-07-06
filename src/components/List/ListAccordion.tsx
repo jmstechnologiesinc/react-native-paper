@@ -10,11 +10,15 @@ import {
   GestureResponderEvent,
 } from 'react-native';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import MaterialCommunityIcon from '../MaterialCommunityIcon';
+// @ts-ignore:next-line
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import Text from '../Typography/Text';
-import { withTheme } from '../../core/theming';
-import type { Theme } from '../../types';
+
+import theme from '../../styles/themes/v3/LightTheme';
 import { ListAccordionGroupContext } from './ListAccordionGroup';
+
+// @ts-ignore:next-line
+import { faArrowUp, faArrowDown } from '@fortawesome/pro-regular-svg-icons';
 
 type Props = {
   /**
@@ -54,7 +58,6 @@ type Props = {
   /**
    * @optional
    */
-  theme: Theme;
   /**
    * Style that is passed to the wrapping TouchableRipple element.
    */
@@ -140,7 +143,6 @@ const ListAccordion = ({
   title,
   description,
   children,
-  theme,
   titleStyle,
   descriptionStyle,
   titleNumberOfLines = 1,
@@ -247,8 +249,8 @@ const ListAccordion = ({
                   isExpanded: isExpanded,
                 })
               ) : (
-                <MaterialCommunityIcon
-                  name={isExpanded ? 'chevron-up' : 'chevron-down'}
+                <FontAwesomeIcon
+                  icon={isExpanded ? faArrowUp : faArrowDown}
                   color={theme.isV3 ? descriptionColor : titleColor}
                   size={24}
                   direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
@@ -312,4 +314,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(ListAccordion);
+export default ListAccordion;

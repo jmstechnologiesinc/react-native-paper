@@ -9,13 +9,14 @@ import {
 } from 'react-native';
 import ActivityIndicator from '../ActivityIndicator';
 import Surface from '../Surface';
-import CrossFadeIcon from '../CrossFadeIcon';
-import Icon, { IconSource } from '../Icon';
+
+// @ts-ignore:next-line
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import Text from '../Typography/Text';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import { withTheme } from '../../core/theming';
 import { getExtendedFabStyle, getFABColors, getFabStyle } from './utils';
-import type { $RemoveChildren, Theme } from '../../types';
+import type { $RemoveChildren } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
 
 type FABSize = 'small' | 'medium' | 'large';
 
@@ -25,7 +26,7 @@ type Props = $RemoveChildren<typeof Surface> & {
   /**
    * Icon to display for the `FAB`.
    */
-  icon: IconSource;
+  icon: any;
   /**
    * Optional label for extended `FAB`.
    */
@@ -110,7 +111,7 @@ type Props = $RemoveChildren<typeof Surface> & {
   /**
    * @optional
    */
-  theme: Theme;
+
   testID?: string;
 };
 
@@ -159,7 +160,6 @@ const FAB = ({
   disabled,
   onPress,
   onLongPress,
-  theme,
   style,
   visible = true,
   uppercase = !theme.isV3,
@@ -193,10 +193,9 @@ const FAB = ({
     }
   }, [visible, scale, visibility]);
 
-  const IconComponent = animated ? CrossFadeIcon : Icon;
+  // const IconComponent = animated ? CrossFadeIcon : FontAwesomeIcon;
 
   const { backgroundColor, foregroundColor, rippleColor } = getFABColors({
-    theme,
     variant,
     disabled,
     customColor,
@@ -208,8 +207,8 @@ const FAB = ({
   const iconSize = isLargeSize ? 36 : 24;
   const loadingIndicatorSize = isLargeSize ? 24 : 18;
 
-  const fabStyle = getFabStyle({ customSize, size, theme });
-  const extendedStyle = getExtendedFabStyle({ customSize, theme });
+  const fabStyle = getFabStyle({ customSize, size });
+  const extendedStyle = getExtendedFabStyle({ customSize });
   const textStyle = {
     color: foregroundColor,
     ...(isV3 ? theme.typescale.labelLarge : theme.fonts.medium),
@@ -261,8 +260,8 @@ const FAB = ({
           pointerEvents="none"
         >
           {icon && loading !== true ? (
-            <IconComponent
-              source={icon}
+            <FontAwesomeIcon
+              icon={icon}
               size={customSize ? customSize / 2 : iconSize}
               color={foregroundColor}
             />
@@ -312,9 +311,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(FAB);
+export default FAB;
 
-// @component-docs ignore-next-line
-const FABWithTheme = withTheme(FAB);
-// @component-docs ignore-next-line
-export { FABWithTheme as FAB };
+export { FAB };

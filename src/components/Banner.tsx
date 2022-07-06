@@ -3,9 +3,11 @@ import { View, ViewStyle, StyleSheet, StyleProp, Animated } from 'react-native';
 import Surface from './Surface';
 import Text from './Typography/Text';
 import Button from './Button/Button';
-import Icon, { IconSource } from './Icon';
-import { withTheme } from '../core/theming';
-import type { $RemoveChildren, Theme } from '../types';
+// @ts-ignore:next-line
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import theme from '../styles/themes/v3/LightTheme';
+
+import type { $RemoveChildren } from '../types';
 
 const DEFAULT_MAX_WIDTH = 960;
 
@@ -21,7 +23,7 @@ type Props = $RemoveChildren<typeof Surface> & {
   /**
    * Icon to display for the `Banner`. Can be an image.
    */
-  icon?: IconSource;
+  icon?: any;
   /**
    * Action items to shown in the banner.
    * An action item should contain the following properties:
@@ -51,7 +53,7 @@ type Props = $RemoveChildren<typeof Surface> & {
   /**
    * @optional
    */
-  theme: Theme;
+
   /**
    * @optional
    * Optional callback that will be called after the opening animation finished running normally
@@ -131,7 +133,6 @@ const Banner = ({
   contentStyle,
   elevation = 1,
   style,
-  theme,
   onShowAnimationFinished = () => {},
   onHideAnimationFinished = () => {},
   ...rest
@@ -189,7 +190,6 @@ const Banner = ({
     <Surface
       {...rest}
       style={[!theme.isV3 && styles.elevation, style]}
-      theme={theme}
       {...(theme.isV3 && { elevation })}
     >
       <View style={[styles.wrapper, contentStyle]}>
@@ -213,7 +213,7 @@ const Banner = ({
           <View style={styles.content}>
             {icon ? (
               <View style={styles.icon}>
-                <Icon source={icon} size={40} />
+                <FontAwesomeIcon icon={icon} size={40} />
               </View>
             ) : null}
             <Text
@@ -290,4 +290,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(Banner);
+export default Banner;

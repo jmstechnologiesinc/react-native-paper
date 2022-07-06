@@ -8,8 +8,9 @@ import {
   LayoutChangeEvent,
 } from 'react-native';
 import AnimatedText from './Typography/AnimatedText';
-import { withTheme } from '../core/theming';
-import type { $Omit, Theme } from '../types';
+import type { $Omit } from '../types';
+
+import theme from '../styles/themes/v3/LightTheme';
 
 type Props = $Omit<
   $Omit<React.ComponentPropsWithRef<typeof AnimatedText>, 'padding'>,
@@ -35,7 +36,7 @@ type Props = $Omit<
   /**
    * @optional
    */
-  theme: Theme;
+
   /**
    * TestID used for testing purposes
    */
@@ -81,7 +82,6 @@ const HelperText = ({
   style,
   type = 'info',
   visible = true,
-  theme,
   onLayout,
   padding = 'normal',
   ...rest
@@ -130,6 +130,7 @@ const HelperText = ({
           .string();
 
   return (
+    // @ts-ignore:next-line
     <AnimatedText
       onLayout={handleTextLayout}
       style={[
@@ -170,4 +171,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(HelperText);
+export default HelperText;

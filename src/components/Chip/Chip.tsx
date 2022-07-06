@@ -11,15 +11,20 @@ import {
   ViewStyle,
 } from 'react-native';
 import type { IconSource } from '../Icon';
-import Icon from '../Icon';
+
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Surface from '../Surface';
 import Text from '../Typography/Text';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import { withTheme } from '../../core/theming';
 import { white } from '../../styles/themes/v2/colors';
-import type { EllipsizeProp, Theme } from '../../types';
+import type { EllipsizeProp } from '../../types';
 import { getChipColors } from './helpers';
+import theme from '../../styles/themes/v3/LightTheme';
+
+// @ts-ignore:next-line
+import { faPlusCircle, faCheck } from '@fortawesome/pro-regular-svg-icons';
+// @ts-ignore:next-line
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 type Props = React.ComponentProps<typeof Surface> & {
   /**
@@ -100,7 +105,7 @@ type Props = React.ComponentProps<typeof Surface> & {
   /**
    * @optional
    */
-  theme: Theme;
+
   /**
    * Pass down testID from chip props to touchable for Detox tests.
    */
@@ -152,7 +157,6 @@ const Chip = ({
   closeIcon,
   textStyle,
   style,
-  theme,
   testID,
   selectedColor,
   showSelectedOverlay = false,
@@ -205,7 +209,6 @@ const Chip = ({
     backgroundColor,
   } = getChipColors({
     isOutlined,
-    theme,
     selectedColor,
     showSelectedOverlay,
     customBackgroundColor,
@@ -298,8 +301,8 @@ const Chip = ({
               ]}
             >
               {icon ? (
-                <Icon
-                  source={icon}
+                <FontAwesomeIcon
+                  icon={icon}
                   color={
                     avatar
                       ? white
@@ -311,7 +314,7 @@ const Chip = ({
                 />
               ) : (
                 <MaterialCommunityIcon
-                  name="check"
+                  icon={faCheck}
                   color={avatar ? white : iconColor}
                   size={18}
                   direction="ltr"
@@ -355,10 +358,14 @@ const Chip = ({
               ]}
             >
               {closeIcon ? (
-                <Icon source={closeIcon} color={iconColor} size={iconSize} />
+                <FontAwesomeIcon
+                  icon={faPlusCircle}
+                  color={iconColor}
+                  size={iconSize}
+                />
               ) : (
-                <MaterialCommunityIcon
-                  name={isV3 ? 'close' : 'close-circle'}
+                <FontAwesomeIcon
+                  icon={isV3 ? faPlusCircle : faPlusCircle}
                   size={iconSize}
                   color={iconColor}
                   direction="ltr"
@@ -448,4 +455,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(Chip);
+export default Chip;

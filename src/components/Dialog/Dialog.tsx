@@ -6,9 +6,8 @@ import DialogActions from './DialogActions';
 import DialogIcon from './DialogIcon';
 import DialogTitle from './DialogTitle';
 import DialogScrollArea from './DialogScrollArea';
-import { withTheme } from '../../core/theming';
 import overlay from '../../styles/overlay';
-import type { Theme } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = {
   /**
@@ -31,7 +30,6 @@ type Props = {
   /**
    * @optional
    */
-  theme: Theme;
 };
 
 const DIALOG_ELEVATION: number = 24;
@@ -87,7 +85,6 @@ const Dialog = ({
   onDismiss,
   visible = false,
   style,
-  theme,
 }: Props) => {
   const { isV3, dark, mode, colors, roundness } = theme;
 
@@ -170,4 +167,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(Dialog);
+export default Dialog;

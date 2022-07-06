@@ -16,10 +16,12 @@ import {
   getBottomSpace,
 } from 'react-native-iphone-x-helper';
 import Surface from './Surface';
-import { useTheme } from '../core/theming';
+
 import useAnimatedValue from '../utils/useAnimatedValue';
 import { addEventListener } from '../utils/addEventListener';
 import { MD3Colors } from '../styles/themes/v3/tokens';
+
+import theme from '../styles/themes/v3/LightTheme';
 
 type Props = {
   /**
@@ -110,8 +112,6 @@ export default function Modal({
   React.useEffect(() => {
     visibleRef.current = visible;
   });
-
-  const theme = useTheme();
 
   const { scale } = theme.animation;
 

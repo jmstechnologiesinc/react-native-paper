@@ -13,7 +13,7 @@ import TextInputAdornment, {
   TextInputAdornmentProps,
 } from './Adornment/TextInputAdornment';
 import type { RenderProps, ChildTextInputProps } from './types';
-import { useTheme } from '../../core/theming';
+import theme from '../../styles/themes/v3/LightTheme';
 
 import {
   MAXIMIZED_LABEL_FONT_SIZE,
@@ -54,7 +54,6 @@ const TextInputFlat = ({
   activeUnderlineColor,
   dense,
   style,
-  theme,
   render = (props: RenderProps) => <NativeTextInput {...props} />,
   multiline = false,
   parentState,
@@ -140,7 +139,6 @@ const TextInputFlat = ({
     activeUnderlineColor,
     disabled,
     error,
-    theme,
   });
 
   const containerStyle = {
@@ -393,7 +391,7 @@ const Underline = ({
   underlineColorCustom,
   hasActiveOutline,
 }: UnderlineProps) => {
-  const { isV3 } = useTheme();
+  const { isV3 } = theme;
 
   let backgroundColor = parentState.focused
     ? activeColor

@@ -9,21 +9,14 @@ import {
   white,
   black,
 } from '../../styles/themes/v2/colors';
-import type { Theme } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
 
 type BaseProps = {
-  theme: Theme;
   disabled?: boolean;
   value?: boolean;
 };
 
-const getCheckedColor = ({
-  theme,
-  color,
-}: {
-  theme: Theme;
-  color?: string;
-}) => {
+const getCheckedColor = ({ color }: { color?: string }) => {
   if (color) {
     return color;
   }
@@ -36,7 +29,6 @@ const getCheckedColor = ({
 };
 
 const getThumbTintColor = ({
-  theme,
   disabled,
   value,
   checkedColor,
@@ -65,7 +57,6 @@ const getThumbTintColor = ({
 };
 
 const getOnTintColor = ({
-  theme,
   disabled,
   value,
   checkedColor,
@@ -97,16 +88,15 @@ const getOnTintColor = ({
 };
 
 export const getSwitchColor = ({
-  theme,
   disabled,
   value,
   color,
 }: BaseProps & { color?: string }) => {
-  const checkedColor = getCheckedColor({ theme, color });
+  const checkedColor = getCheckedColor({ color });
 
   return {
-    onTintColor: getOnTintColor({ theme, disabled, value, checkedColor }),
-    thumbTintColor: getThumbTintColor({ theme, disabled, value, checkedColor }),
+    onTintColor: getOnTintColor({ disabled, value, checkedColor }),
+    thumbTintColor: getThumbTintColor({ disabled, value, checkedColor }),
     checkedColor,
   };
 };

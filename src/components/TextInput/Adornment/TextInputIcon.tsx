@@ -2,9 +2,9 @@ import React from 'react';
 import { View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
 
 import IconButton from '../../IconButton/IconButton';
-import type { $Omit, Theme } from '../../../types';
+import type { $Omit } from '../../../types';
 import type { IconSource } from '../../Icon';
-import { useTheme } from '../../../core/theming';
+import theme from '../../../styles/themes/v3/LightTheme';
 import { getConstants } from '../helpers';
 import { ICON_SIZE } from '../constants';
 
@@ -32,7 +32,6 @@ export type Props = $Omit<
   /**
    * @optional
    */
-  theme?: Theme;
 };
 
 type StyleContextType = {
@@ -55,7 +54,7 @@ const IconAdornment: React.FunctionComponent<
     side: 'left' | 'right';
   } & Omit<StyleContextType, 'style'>
 > = ({ icon, topPosition, side, isTextInputFocused, forceFocus }) => {
-  const { isV3 } = useTheme();
+  const { isV3 } = theme;
   const { ICON_OFFSET } = getConstants(isV3);
 
   const style = {
@@ -115,8 +114,6 @@ const TextInputIcon = ({
     }
     onPress?.();
   }, [forceTextInputFocus, forceFocus, isTextInputFocused, onPress]);
-
-  const theme = useTheme();
 
   let iconColor = color;
 

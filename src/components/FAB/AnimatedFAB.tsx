@@ -15,9 +15,9 @@ import {
 import Surface from '../Surface';
 import Icon from '../Icon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import type { $RemoveChildren, Theme } from '../../types';
+import type { $RemoveChildren } from '../../types';
 import type { IconSource } from '../Icon';
-import { withTheme } from '../../core/theming';
+
 import type {
   AccessibilityState,
   NativeSyntheticEvent,
@@ -25,6 +25,7 @@ import type {
 } from 'react-native';
 import AnimatedText from '../Typography/AnimatedText';
 import { getCombinedStyles, getFABColors } from './utils';
+import theme from '../../styles/themes/v3/LightTheme';
 
 export type AnimatedFABIconMode = 'static' | 'dynamic';
 export type AnimatedFABAnimateFrom = 'left' | 'right';
@@ -93,7 +94,7 @@ type Props = $RemoveChildren<typeof Surface> & {
   /**
    * @optional
    */
-  theme: Theme;
+
   testID?: string;
 };
 
@@ -189,7 +190,6 @@ const AnimatedFAB = ({
   disabled,
   onPress,
   onLongPress,
-  theme,
   style,
   visible = true,
   uppercase = !theme.isV3,
@@ -235,7 +235,6 @@ const AnimatedFAB = ({
   }, [visible, scale, visibility]);
 
   const { backgroundColor, foregroundColor } = getFABColors({
-    theme,
     variant,
     disabled,
     customColor,
@@ -426,6 +425,7 @@ const AnimatedFAB = ({
       </Animated.View>
 
       <View pointerEvents="none">
+        {/* @ts-ignore:next-line */}
         <AnimatedText
           variant="labelLarge"
           numberOfLines={1}
@@ -515,4 +515,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(AnimatedFAB);
+export default AnimatedFAB;
