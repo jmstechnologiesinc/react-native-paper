@@ -2,8 +2,7 @@ import color from 'color';
 import * as React from 'react';
 import { View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
 import Text from '../Typography/Text';
-// @ts-ignore:next-line
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import Icon, { IconSource } from '../Icon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 
 import theme from '../../styles/themes/v3/LightTheme';
@@ -16,7 +15,7 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Icon to display for the `DrawerItem`.
    */
-  icon?: any;
+  icon?: IconSource;
   /**
    * Whether to highlight the drawer item as active.
    */
@@ -118,7 +117,7 @@ const DrawerItem = ({
         <View style={[styles.wrapper, isV3 && styles.v3Wrapper]}>
           <View style={styles.content}>
             {icon ? (
-              <FontAwesomeIcon icon={icon} size={24} color={contentColor} />
+              <Icon source={icon} size={24} color={contentColor} />
             ) : null}
             <Text
               variant="labelLarge"

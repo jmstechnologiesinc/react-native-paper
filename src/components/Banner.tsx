@@ -3,10 +3,8 @@ import { View, ViewStyle, StyleSheet, StyleProp, Animated } from 'react-native';
 import Surface from './Surface';
 import Text from './Typography/Text';
 import Button from './Button/Button';
-// @ts-ignore:next-line
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import Icon, { IconSource } from './Icon';
 import theme from '../styles/themes/v3/LightTheme';
-
 import type { $RemoveChildren } from '../types';
 
 const DEFAULT_MAX_WIDTH = 960;
@@ -23,7 +21,7 @@ type Props = $RemoveChildren<typeof Surface> & {
   /**
    * Icon to display for the `Banner`. Can be an image.
    */
-  icon?: any;
+  icon?: IconSource;
   /**
    * Action items to shown in the banner.
    * An action item should contain the following properties:
@@ -190,6 +188,8 @@ const Banner = ({
     <Surface
       {...rest}
       style={[!theme.isV3 && styles.elevation, style]}
+      //  @ts-ignore:next-line
+      theme={theme}
       {...(theme.isV3 && { elevation })}
     >
       <View style={[styles.wrapper, contentStyle]}>
@@ -213,7 +213,7 @@ const Banner = ({
           <View style={styles.content}>
             {icon ? (
               <View style={styles.icon}>
-                <FontAwesomeIcon icon={icon} size={40} />
+                <Icon source={icon} size={40} />
               </View>
             ) : null}
             <Text

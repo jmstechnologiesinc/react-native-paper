@@ -10,15 +10,11 @@ import {
   GestureResponderEvent,
 } from 'react-native';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-// @ts-ignore:next-line
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Text from '../Typography/Text';
 
 import theme from '../../styles/themes/v3/LightTheme';
 import { ListAccordionGroupContext } from './ListAccordionGroup';
-
-// @ts-ignore:next-line
-import { faArrowUp, faArrowDown } from '@fortawesome/pro-regular-svg-icons';
 
 type Props = {
   /**
@@ -249,8 +245,8 @@ const ListAccordion = ({
                   isExpanded: isExpanded,
                 })
               ) : (
-                <FontAwesomeIcon
-                  icon={isExpanded ? faArrowUp : faArrowDown}
+                <MaterialCommunityIcon
+                  name={isExpanded ? 'chevron-up' : 'chevron-down'}
                   color={theme.isV3 ? descriptionColor : titleColor}
                   size={24}
                   direction={I18nManager.isRTL ? 'rtl' : 'ltr'}

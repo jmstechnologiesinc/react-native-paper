@@ -10,14 +10,10 @@ import {
   TextStyle,
 } from 'react-native';
 import color from 'color';
-
+import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Text from '../Typography/Text';
 
 import theme from '../../styles/themes/v3/LightTheme';
-// @ts-ignore:next-line
-import { faArrowUp } from '@fortawesome/pro-regular-svg-icons';
-// @ts-ignore:next-line
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 type Props = React.ComponentPropsWithRef<typeof TouchableWithoutFeedback> & {
   /**
@@ -116,8 +112,8 @@ const DataTableTitle = ({
 
   const icon = sortDirection ? (
     <Animated.View style={[styles.icon, { transform: [{ rotate: spin }] }]}>
-      <FontAwesomeIcon
-        icon={faArrowUp}
+      <MaterialCommunityIcon
+        name="arrow-up"
         size={16}
         color={textColor}
         direction={I18nManager.isRTL ? 'rtl' : 'ltr'}

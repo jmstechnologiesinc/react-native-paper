@@ -5,8 +5,6 @@ import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import type { $RemoveChildren } from '../../types';
 
 import { getSelectionControlIOSColor } from './utils';
-// @ts-ignore:next-line
-import { faMinus, faCheck } from '@fortawesome/pro-regular-svg-icons';
 
 type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
@@ -60,7 +58,7 @@ const CheckboxIOS = ({ status, disabled, onPress, testID, ...rest }: Props) => {
     customColor: rest.color,
   });
 
-  const icon = indeterminate ? faMinus : faCheck;
+  const icon = indeterminate ? 'minus' : 'check';
 
   return (
     <TouchableRipple
@@ -78,7 +76,7 @@ const CheckboxIOS = ({ status, disabled, onPress, testID, ...rest }: Props) => {
       <View style={{ opacity: indeterminate || checked ? 1 : 0 }}>
         <MaterialCommunityIcon
           allowFontScaling={false}
-          icon={icon}
+          name={icon}
           size={24}
           color={checkedColor}
           direction="ltr"

@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import theme from '../../styles/themes/v3/LightTheme';
-// @ts-ignore:next-line
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import Icon, { IconSource } from '../Icon';
 
 type Props = {
   /**
@@ -12,7 +11,7 @@ type Props = {
   /**
    * Name of the icon to show.
    */
-  icon: any;
+  icon: IconSource;
   /**
    * Optional icon size.
    */
@@ -70,7 +69,7 @@ const DialogIcon = ({ size = 24, color, icon }: Props) => {
 
   return (
     <View style={styles.wrapper}>
-      <FontAwesomeIcon icon={icon} color={iconColor} size={size} />
+      <Icon source={icon} color={iconColor} size={size} />
     </View>
   );
 };
