@@ -2,15 +2,11 @@ import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RadioButtonContext, RadioButtonContextType } from './RadioButtonGroup';
 import { handlePress, isChecked } from './utils';
-// @ts-ignore:next-line
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 
 import type { $RemoveChildren } from '../../types';
 import { getSelectionControlIOSColor } from '../Checkbox/utils';
-
-// @ts-ignore:next-line
-import { faCheck } from '@fortawesome/pro-regular-svg-icons';
 
 type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
@@ -105,9 +101,9 @@ const RadioButtonIOS = ({
             testID={testID}
           >
             <View style={{ opacity: checked ? 1 : 0 }}>
-              <FontAwesomeIcon
+              <MaterialCommunityIcon
                 allowFontScaling={false}
-                icon={faCheck}
+                name="check"
                 size={24}
                 color={checkedColor}
                 direction="ltr"

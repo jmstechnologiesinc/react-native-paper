@@ -11,9 +11,7 @@ import {
   Platform,
 } from 'react-native';
 import Text from '../Typography/Text';
-// @ts-ignore:next-line
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-
+import Icon, { IconSource } from '../Icon';
 import theme from '../../styles/themes/v3/LightTheme';
 import Badge from '../Badge';
 
@@ -25,7 +23,7 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Icon to display for the `DrawerCollapsedItem`.
    */
-  icon?: any;
+  icon?: IconSource;
   /**
    * Whether to highlight the drawer item as active.
    */
@@ -182,7 +180,7 @@ const DrawerCollapsedItem = ({
                 )}
               </View>
             )}
-            <FontAwesomeIcon icon={icon} size={iconSize} color={iconColor} />
+            <Icon source={icon} size={iconSize} color={iconColor} />
           </View>
 
           {label ? (

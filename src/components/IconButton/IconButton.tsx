@@ -8,12 +8,10 @@ import {
 } from 'react-native';
 
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-
-// @ts-ignore:next-line
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-
-import type { $RemoveChildren } from '../../types';
+import Icon, { IconSource } from '../Icon';
+import CrossFadeIcon from '../CrossFadeIcon';
 import theme from '../../styles/themes/v3/LightTheme';
+import type { $RemoveChildren } from '../../types';
 import { getIconButtonColor } from './utils';
 import Surface from '../Surface';
 
@@ -25,7 +23,7 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * Icon to display.
    */
-  icon: any;
+  icon: IconSource;
   /**
    * @supported Available in v5.x
    * Mode of the icon button. By default there is no specified mode - only pressable icon will be rendered.
@@ -125,12 +123,11 @@ const IconButton = ({
   selected = false,
   animated = false,
   mode,
-
   style,
   ...rest
 }: Props) => {
   const { isV3 } = theme;
-  // const IconComponent = animated ? CrossFadeIcon : FontAwesomeIcon;
+  const IconComponent = animated ? CrossFadeIcon : Icon;
 
   const { iconColor, rippleColor, backgroundColor, borderColor } =
     getIconButtonColor({
@@ -187,7 +184,7 @@ const IconButton = ({
         }
         {...rest}
       >
-        <FontAwesomeIcon color={iconColor} icon={icon} size={size} />
+        <IconComponent color={iconColor} source={icon} size={size} />
       </TouchableRipple>
     </Surface>
   );

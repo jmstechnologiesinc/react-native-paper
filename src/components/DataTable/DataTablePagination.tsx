@@ -1,19 +1,18 @@
 import * as React from 'react';
-import { StyleSheet, StyleProp, View, ViewStyle } from 'react-native';
+import {
+  StyleSheet,
+  StyleProp,
+  View,
+  ViewStyle,
+  I18nManager,
+} from 'react-native';
 import color from 'color';
 import IconButton from '../IconButton/IconButton';
 import Text from '../Typography/Text';
-
+import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Menu from '../Menu/Menu';
 import Button from '../Button/Button';
 import theme from '../../styles/themes/v3/LightTheme';
-
-import {
-  faAd,
-  faChevronCircleRight,
-  faChevronCircleLeft,
-  // @ts-ignore:next-line
-} from '@fortawesome/pro-regular-svg-icons';
 
 type Props = React.ComponentPropsWithRef<typeof View> &
   PaginationControlsProps &
@@ -86,8 +85,14 @@ const PaginationControls = ({
     <>
       {showFastPaginationControls ? (
         <IconButton
-          // @ts-ignore:next-line
-          icon={faAd}
+          icon={({ size, color }) => (
+            <MaterialCommunityIcon
+              name="page-first"
+              color={color}
+              size={size}
+              direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
+            />
+          )}
           iconColor={textColor}
           disabled={page === 0}
           onPress={() => onPageChange(0)}
@@ -95,16 +100,28 @@ const PaginationControls = ({
         />
       ) : null}
       <IconButton
-        // @ts-ignore:next-line
-        icon={faChevronCircleLeft}
+        icon={({ size, color }) => (
+          <MaterialCommunityIcon
+            name="chevron-left"
+            color={color}
+            size={size}
+            direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
+          />
+        )}
         iconColor={textColor}
         disabled={page === 0}
         onPress={() => onPageChange(page - 1)}
         accessibilityLabel="chevron-left"
       />
       <IconButton
-        // @ts-ignore:next-line
-        icon={faChevronCircleRight}
+        icon={({ size, color }) => (
+          <MaterialCommunityIcon
+            name="chevron-right"
+            color={color}
+            size={size}
+            direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
+          />
+        )}
         iconColor={textColor}
         disabled={numberOfPages === 0 || page === numberOfPages - 1}
         onPress={() => onPageChange(page + 1)}
@@ -112,7 +129,14 @@ const PaginationControls = ({
       />
       {showFastPaginationControls ? (
         <IconButton
-          icon={faChevronCircleRight}
+          icon={({ size, color }) => (
+            <MaterialCommunityIcon
+              name="page-last"
+              color={color}
+              size={size}
+              direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
+            />
+          )}
           iconColor={textColor}
           disabled={numberOfPages === 0 || page === numberOfPages - 1}
           onPress={() => onPageChange(numberOfPages - 1)}

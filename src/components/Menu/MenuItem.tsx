@@ -6,9 +6,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-
-// @ts-ignore:next-line
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import Icon, { IconSource } from '../Icon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
 
@@ -30,13 +28,13 @@ type Props = {
    *
    * Leading icon to display for the `MenuItem`.
    */
-  leadingIcon?: any;
+  leadingIcon?: IconSource;
   /**
    * @supported Available in v5.x with theme version 3
    *
    * Trailing icon to display for the `MenuItem`.
    */
-  trailingIcon?: any;
+  trailingIcon?: IconSource;
   /**
    * Whether the 'item' is disabled. A disabled 'item' is greyed out and `onPress` is not called on touch.
    */
@@ -152,7 +150,7 @@ const MenuItem = ({
             style={[!isV3 && styles.item, { width: iconWidth }]}
             pointerEvents="box-none"
           >
-            <FontAwesomeIcon source={leadingIcon} size={24} color={iconColor} />
+            <Icon source={leadingIcon} size={24} color={iconColor} />
           </View>
         ) : null}
         <View
@@ -182,11 +180,7 @@ const MenuItem = ({
             style={[!isV3 && styles.item, { width: iconWidth }]}
             pointerEvents="box-none"
           >
-            <FontAwesomeIcon
-              source={trailingIcon}
-              size={24}
-              color={iconColor}
-            />
+            <Icon source={trailingIcon} size={24} color={iconColor} />
           </View>
         ) : null}
       </View>
