@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { Platform } from 'react-native';
-import CheckboxIOS from './CheckboxIOS';
 import CheckboxAndroid from './CheckboxAndroid';
 
 type Props = {
@@ -12,6 +10,12 @@ type Props = {
    * Whether checkbox is disabled.
    */
   disabled?: boolean;
+
+  /**
+   * Type of checkbox.
+   */
+  type: 'checkbox' | 'radio';
+  /**
   /**
    * Function to execute on press.
    */
@@ -77,12 +81,7 @@ type Props = {
  * export default MyComponent;
  * ```
  */
-const Checkbox = (props: Props) =>
-  Platform.OS === 'ios' ? (
-    <CheckboxIOS {...props} />
-  ) : (
-    <CheckboxAndroid {...props} />
-  );
+const Checkbox = (props: Props) => <CheckboxAndroid {...props} />;
 
 export default Checkbox;
 
