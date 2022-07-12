@@ -13,10 +13,6 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
    */
   status: 'checked' | 'unchecked' | 'indeterminate';
   /**
-   * Type of checkbox.
-   */
-  type: 'checkbox' | 'radio';
-  /**
    * Whether checkbox is disabled.
    */
   disabled?: boolean;
@@ -63,7 +59,6 @@ const ANIMATION_DURATION = 100;
  */
 const CheckboxAndroid = ({
   status,
-  type,
   disabled,
   onPress,
   testID,
@@ -119,17 +114,11 @@ const CheckboxAndroid = ({
     outputRange: [7, 0],
   });
 
-  const iconCheck = indeterminate
+  const icon = indeterminate
     ? 'minus-box'
     : checked
     ? 'checkbox-marked'
     : 'checkbox-blank-outline';
-
-  const iconRadio = indeterminate
-    ? 'minus-box'
-    : checked
-    ? 'checkbox-marked-circle'
-    : 'checkbox-blank-circle-outline';
 
   return (
     <TouchableRipple
@@ -145,26 +134,13 @@ const CheckboxAndroid = ({
       testID={testID}
     >
       <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
-        {type === 'checkbox' && (
-          <MaterialCommunityIcon
-            allowFontScaling={false}
-            name={iconCheck}
-            size={24}
-            color={selectionControlColor}
-            direction="ltr"
-          />
-        )}
-
-        {type === 'radio' && (
-          <MaterialCommunityIcon
-            allowFontScaling={false}
-            name={iconRadio}
-            size={24}
-            color={selectionControlColor}
-            direction="ltr"
-          />
-        )}
-
+        <MaterialCommunityIcon
+          allowFontScaling={false}
+          name={icon}
+          size={24}
+          color={selectionControlColor}
+          direction="ltr"
+        />
         <View style={[StyleSheet.absoluteFill, styles.fillContainer]}>
           <Animated.View
             style={[

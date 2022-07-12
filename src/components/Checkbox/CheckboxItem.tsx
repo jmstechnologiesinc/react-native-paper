@@ -24,6 +24,7 @@ type Props = {
   /**
    * Whether checkbox is disabled.
    */
+  type: 'checkbox' | 'radio';
   disabled?: boolean;
   /**
    * Label to be displayed on the item.
