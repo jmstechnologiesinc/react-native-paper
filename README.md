@@ -1,3 +1,10 @@
+# Compile package
+
+1. npm run prepare
+2. It has to compile without errors. If there is an error, it must be corrected.
+3. You have to have a token, the token cannot be stored in the repository
+4. npm publish
+
 <p align="center">
   <img alt="react-native-paper" src="docs/assets/images/paper-logo.svg?sanitize=true" width="300">
 </p>
