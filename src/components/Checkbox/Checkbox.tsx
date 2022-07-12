@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import CheckboxAndroid from './CheckboxAndroid';
 
 type Props = {
