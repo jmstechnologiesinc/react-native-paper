@@ -62,6 +62,8 @@ type Props = React.ComponentProps<typeof Surface> & {
    * Icon to display for the `Button`.
    */
   icon?: IconSource;
+  
+ 
   /**
    * Whether the button is disabled. A disabled button is greyed out and `onPress` is not called on touch.
    */
@@ -91,9 +93,14 @@ type Props = React.ComponentProps<typeof Surface> & {
    */
   onLongPress?: () => void;
   /**
+   * Function to execute remove border radius
+   */
+  touchableStyles?: () => void;
+  /**
    * Style of button's inner content.
    * Use this prop to apply custom height and width and to set the icon on the right with `flexDirection: 'row-reverse'`.
    */
+   
   contentStyle?: StyleProp<ViewStyle>;
   style?: StyleProp<ViewStyle>;
   /**
@@ -157,6 +164,7 @@ const Button = ({
   dark,
   loading,
   icon,
+  touchableStyles,
   buttonColor: customButtonColor,
   textColor: customTextColor,
   children,
@@ -165,7 +173,6 @@ const Button = ({
   onPress,
   onLongPress,
   style,
-
   uppercase = !theme.isV3,
   contentStyle,
   labelStyle,
@@ -291,12 +298,13 @@ const Button = ({
         accessible={accessible}
         disabled={disabled}
         rippleColor={rippleColor}
-        style={touchableStyle}
+        //  @ts-ignore:next-line
+        style={touchableStyles ? touchableStyles : touchableStyle}
         testID={testID}
       >
         <View style={[styles.content, contentStyle]}>
           {icon && loading !== true ? (
-            <View style={iconStyle}>
+            <View >
               <Icon
                 source={icon}
                 size={customLabelSize ?? iconSize}
@@ -338,6 +346,7 @@ const Button = ({
               labelStyle,
             ]}
           >
+          
             {children}
           </Text>
         </View>
@@ -358,6 +367,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+   
   },
   icon: {
     marginLeft: 12,
