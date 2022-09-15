@@ -4,9 +4,9 @@ import { RadioButtonContext, RadioButtonContextType } from './RadioButtonGroup';
 import { handlePress, isChecked } from './utils';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-
 import type { $RemoveChildren } from '../../types';
 import { getSelectionControlIOSColor } from '../Checkbox/utils';
+import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
@@ -32,7 +32,6 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * @optional
    */
-
   /**
    * testID to be used on tests.
    */
@@ -74,6 +73,7 @@ const RadioButtonIOS = ({
           }) === 'checked';
 
         const { checkedColor, rippleColor } = getSelectionControlIOSColor({
+          theme,
           disabled,
           customColor: rest.color,
         });
@@ -127,4 +127,7 @@ const styles = StyleSheet.create({
 
 export default RadioButtonIOS;
 
-export { RadioButtonIOS };
+// @component-docs ignore-next-line
+const RadioButtonIOSWithTheme = RadioButtonIOS;
+// @component-docs ignore-next-line
+export { RadioButtonIOSWithTheme as RadioButtonIOS };

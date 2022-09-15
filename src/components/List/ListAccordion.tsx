@@ -28,7 +28,7 @@ type Props = {
   /**
    * Callback which returns a React element to display on the left side.
    */
-  left?: (props: { color: string }) => React.ReactNode;
+  left?: (props: { isExpanded: boolean, color: string }) => React.ReactNode;
   /**
    * Callback which returns a React element to display on the right side.
    */
@@ -204,6 +204,7 @@ const ListAccordion = ({
           <View style={styles.row} pointerEvents="none">
             {left
               ? left({
+                  isExpanded: isExpanded,
                   color: isExpanded ? theme.colors?.primary : descriptionColor,
                 })
               : null}

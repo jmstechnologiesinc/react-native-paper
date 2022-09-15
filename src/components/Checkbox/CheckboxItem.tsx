@@ -13,8 +13,8 @@ import CheckboxAndroid from './CheckboxAndroid';
 import CheckboxIOS from './CheckboxIOS';
 import Text from '../Typography/Text';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import theme from '../../styles/themes/v3/LightTheme';
 import type { MD3TypescaleKey } from '../../types';
+import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = {
   /**
@@ -73,7 +73,6 @@ type Props = {
   /**
    * @optional
    */
-
   /**
    * testID to be used on tests.
    */
@@ -184,7 +183,10 @@ CheckboxItem.displayName = 'Checkbox.Item';
 
 export default CheckboxItem;
 
-export { CheckboxItem };
+// @component-docs ignore-next-line
+const CheckboxItemWithTheme = CheckboxItem;
+// @component-docs ignore-next-line
+export { CheckboxItemWithTheme as CheckboxItem };
 
 const styles = StyleSheet.create({
   container: {

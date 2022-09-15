@@ -6,7 +6,6 @@ import {
   ViewStyle,
   TextStyle,
 } from 'react-native';
-
 import { RadioButtonContext, RadioButtonContextType } from './RadioButtonGroup';
 import { handlePress, isChecked } from './utils';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
@@ -78,7 +77,6 @@ export type Props = {
   /**
    * @optional
    */
-
   /**
    * testID to be used on tests.
    */
@@ -215,7 +213,10 @@ RadioButtonItem.displayName = 'RadioButton.Item';
 
 export default RadioButtonItem;
 
-export { RadioButtonItem };
+// @component-docs ignore-next-line
+const RadioButtonItemWithTheme = RadioButtonItem;
+// @component-docs ignore-next-line
+export { RadioButtonItemWithTheme as RadioButtonItem };
 
 const styles = StyleSheet.create({
   container: {

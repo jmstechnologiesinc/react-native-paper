@@ -20,7 +20,6 @@ type Title =
       selectable: boolean;
       ellipsizeMode: EllipsizeProp | undefined;
       color: string;
-      fontSize: number;
     }) => React.ReactNode);
 
 type Description =
@@ -29,7 +28,6 @@ type Description =
       selectable: boolean;
       ellipsizeMode: EllipsizeProp | undefined;
       color: string;
-      fontSize: number;
     }) => React.ReactNode);
 
 type Props = $RemoveChildren<typeof TouchableRipple> & {
@@ -78,6 +76,8 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
    * Style that is passed to Title element.
    */
   titleStyle?: StyleProp<TextStyle>;
+
+  itemStyle?: StyleProp<ViewStyle>;
   /**
    * Style that is passed to Description element.
    */
@@ -141,6 +141,7 @@ const ListItem = ({
   onPress,
   style,
   titleStyle,
+  itemStyle,
   titleNumberOfLines = 1,
   descriptionNumberOfLines = 2,
   titleEllipsizeMode,
@@ -157,18 +158,14 @@ const ListItem = ({
         selectable: false,
         ellipsizeMode: descriptionEllipsizeMode,
         color: descriptionColor,
-        fontSize: styles.description.fontSize,
       })
     ) : (
       <Text
         selectable={false}
         numberOfLines={descriptionNumberOfLines}
         ellipsizeMode={descriptionEllipsizeMode}
-        style={[
-          styles.description,
-          { color: descriptionColor },
-          descriptionStyle,
-        ]}
+        style={[{ color: descriptionColor }, descriptionStyle]}
+        variant={'bodyMedium'}
       >
         {description}
       </Text>
@@ -185,14 +182,14 @@ const ListItem = ({
         selectable: false,
         ellipsizeMode: titleEllipsizeMode,
         color: titleColor,
-        fontSize: styles.title.fontSize,
       })
     ) : (
       <Text
         selectable={false}
         ellipsizeMode={titleEllipsizeMode}
         numberOfLines={titleNumberOfLines}
-        style={[styles.title, { color: titleColor }, titleStyle]}
+        style={[{ color: titleColor }, titleStyle]}
+        variant={'bodyLarge'}
       >
         {title}
       </Text>
@@ -221,7 +218,7 @@ const ListItem = ({
                   },
             })
           : null}
-        <View style={[styles.item, styles.content]}>
+        <View style={[styles.item, styles.content, itemStyle]}>
           {renderTitle()}
 
           {description
@@ -252,12 +249,6 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-  },
-  title: {
-    fontSize: 16,
-  },
-  description: {
-    fontSize: 14,
   },
   marginVerticalNone: { marginVertical: 0 },
   iconMarginLeft: { marginLeft: 0, marginRight: 16 },

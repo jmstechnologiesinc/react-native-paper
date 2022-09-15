@@ -1,5 +1,8 @@
 import * as React from 'react';
+import { Platform } from 'react-native';
+import CheckboxIOS from './CheckboxIOS';
 import CheckboxAndroid from './CheckboxAndroid';
+import type { Theme } from '../../types';
 
 type Props = {
   /**
@@ -10,12 +13,6 @@ type Props = {
    * Whether checkbox is disabled.
    */
   disabled?: boolean;
-
-  /**
-   * Type of checkbox.
-   */
-  type: 'checkbox' | 'radio';
-  /**
   /**
    * Function to execute on press.
    */
@@ -31,7 +28,7 @@ type Props = {
   /**
    * @optional
    */
-
+  theme: Theme;
   /**
    * testID to be used on tests.
    */
@@ -81,8 +78,16 @@ type Props = {
  * export default MyComponent;
  * ```
  */
-const Checkbox = (props: Props) => <CheckboxAndroid {...props} />;
+const Checkbox = (props: Props) =>
+  Platform.OS === 'ios' ? (
+    <CheckboxIOS {...props} />
+  ) : (
+    <CheckboxAndroid {...props} />
+  );
 
 export default Checkbox;
 
-export { Checkbox };
+// @component-docs ignore-next-line
+const CheckboxWithTheme = Checkbox;
+// @component-docs ignore-next-line
+export { CheckboxWithTheme as Checkbox };

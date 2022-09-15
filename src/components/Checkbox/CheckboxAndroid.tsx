@@ -2,9 +2,8 @@ import * as React from 'react';
 import { Animated, View, StyleSheet } from 'react-native';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import type { $RemoveChildren } from '../../types';
+import type { $RemoveChildren, Theme } from '../../types';
 import { getAndroidSelectionControlColor } from './utils';
-
 import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = $RemoveChildren<typeof TouchableRipple> & {
@@ -12,10 +11,6 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
    * Status of checkbox.
    */
   status: 'checked' | 'unchecked' | 'indeterminate';
-  /**
-   * Type of checkbox.
-   */
-  type: 'checkbox' | 'radio';
   /**
    * Whether checkbox is disabled.
    */
@@ -35,7 +30,7 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * @optional
    */
-
+  theme: Theme;
   /**
    * testID to be used on tests.
    */
@@ -63,7 +58,6 @@ const ANIMATION_DURATION = 100;
  */
 const CheckboxAndroid = ({
   status,
-  type,
   disabled,
   onPress,
   testID,
@@ -108,6 +102,7 @@ const CheckboxAndroid = ({
 
   const { rippleColor, selectionControlColor } =
     getAndroidSelectionControlColor({
+      theme,
       disabled,
       checked,
       customColor: rest.color,
@@ -119,17 +114,11 @@ const CheckboxAndroid = ({
     outputRange: [7, 0],
   });
 
-  const iconCheck = indeterminate
+  const icon = indeterminate
     ? 'minus-box'
     : checked
     ? 'checkbox-marked'
     : 'checkbox-blank-outline';
-
-  const iconRadio = indeterminate
-    ? 'minus-box'
-    : checked
-    ? 'checkbox-marked-circle'
-    : 'checkbox-blank-circle-outline';
 
   return (
     <TouchableRipple
@@ -145,26 +134,13 @@ const CheckboxAndroid = ({
       testID={testID}
     >
       <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
-        {type === 'checkbox' && (
-          <MaterialCommunityIcon
-            allowFontScaling={false}
-            name={iconCheck}
-            size={24}
-            color={selectionControlColor}
-            direction="ltr"
-          />
-        )}
-
-        {type === 'radio' && (
-          <MaterialCommunityIcon
-            allowFontScaling={false}
-            name={iconRadio}
-            size={24}
-            color={selectionControlColor}
-            direction="ltr"
-          />
-        )}
-
+        <MaterialCommunityIcon
+          allowFontScaling={false}
+          name={icon}
+          size={24}
+          color={selectionControlColor}
+          direction="ltr"
+        />
         <View style={[StyleSheet.absoluteFill, styles.fillContainer]}>
           <Animated.View
             style={[
@@ -200,4 +176,7 @@ const styles = StyleSheet.create({
 
 export default CheckboxAndroid;
 
-export { CheckboxAndroid };
+// @component-docs ignore-next-line
+const CheckboxAndroidWithTheme = CheckboxAndroid;
+// @component-docs ignore-next-line
+export { CheckboxAndroidWithTheme as CheckboxAndroid };

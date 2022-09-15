@@ -5,7 +5,6 @@ import { handlePress, isChecked } from './utils';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import type { $RemoveChildren } from '../../types';
 import { getAndroidSelectionControlColor } from '../Checkbox/utils';
-
 import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = $RemoveChildren<typeof TouchableRipple> & {
@@ -36,7 +35,6 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * @optional
    */
-
   /**
    * testID to be used on tests.
    */
@@ -64,7 +62,6 @@ const BORDER_WIDTH = 2;
 const RadioButtonAndroid = ({
   disabled,
   onPress,
-
   value,
   status,
   testID,
@@ -120,6 +117,7 @@ const RadioButtonAndroid = ({
 
         const { rippleColor, selectionControlColor } =
           getAndroidSelectionControlColor({
+            theme,
             disabled,
             checked,
             customColor: rest.color,
@@ -203,5 +201,7 @@ const styles = StyleSheet.create({
 
 export default RadioButtonAndroid;
 
-//
-export { RadioButtonAndroid };
+// @component-docs ignore-next-line
+const RadioButtonAndroidWithTheme = RadioButtonAndroid;
+// @component-docs ignore-next-line
+export { RadioButtonAndroidWithTheme as RadioButtonAndroid };

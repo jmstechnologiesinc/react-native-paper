@@ -82,6 +82,7 @@ type Props = React.ComponentProps<typeof Surface> & {
    * Accessibility hint for the button. This is read by the screen reader when the user taps the button.
    */
   accessibilityHint?: string;
+  subTitle?: string;
   /**
    * Function to execute on press.
    */
@@ -165,7 +166,7 @@ const Button = ({
   onPress,
   onLongPress,
   style,
-
+  subTitle,
   uppercase = !theme.isV3,
   contentStyle,
   labelStyle,
@@ -249,7 +250,13 @@ const Button = ({
   const textStyle = {
     color: textColor,
     ...(isV3 ? theme.typescale.labelLarge : theme.fonts.medium),
-  };
+  }; 
+
+  const descStyle = {
+    color: textColor,
+    ...(isV3 ? theme.typescale.labelMedium : theme.fonts.medium),
+  }; 
+
   const iconStyle =
     StyleSheet.flatten(contentStyle)?.flexDirection === 'row-reverse'
       ? [
@@ -319,27 +326,41 @@ const Button = ({
               style={iconStyle}
             />
           ) : null}
-          <Text
-            variant="labelLarge"
-            selectable={false}
-            numberOfLines={1}
-            style={[
-              styles.label,
-              !isV3 && styles.md2Label,
+          <View style={[
+            styles.label,
+            compact && styles.compactLabel,
               isV3 &&
                 (isMode('text')
                   ? icon || loading
                     ? styles.md3LabelTextAddons
                     : styles.md3LabelText
-                  : styles.md3Label),
-              compact && styles.compactLabel,
-              uppercase && styles.uppercaseLabel,
-              textStyle,
-              labelStyle,
-            ]}
-          >
-            {children}
-          </Text>
+                  : styles.md3Label)
+            ]}>
+            <Text
+              variant="labelLarge"
+              selectable={false}
+              numberOfLines={1}
+              style={[
+                {textAlign: "center"},
+                !isV3 && styles.md2Label,  
+                uppercase && styles.uppercaseLabel,
+                textStyle,
+                labelStyle
+              ]}
+            >
+              {children}
+            </Text>
+            <Text
+              variant="labelSmall"
+              selectable={false}
+              numberOfLines={1}
+              style={[
+                descStyle,
+                {textAlign: "center"}
+              ]}>
+              {subTitle}
+            </Text>
+          </View>
         </View>
       </TouchableRipple>
     </Surface>
@@ -384,9 +405,8 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   label: {
-    textAlign: 'center',
-    marginVertical: 9,
-    marginHorizontal: 16,
+    paddingVertical: 9,
+    paddingHorizontal: 16,
   },
   md2Label: {
     letterSpacing: 1,
@@ -398,14 +418,14 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   md3Label: {
-    marginVertical: 10,
-    marginHorizontal: 24,
+    paddingVertical: 10,
+    paddingHorizontal: 24,
   },
   md3LabelText: {
-    marginHorizontal: 12,
+    paddingHorizontal: 12,
   },
   md3LabelTextAddons: {
-    marginHorizontal: 16,
+    paddingHorizontal: 16,
   },
 });
 

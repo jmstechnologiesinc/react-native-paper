@@ -31,7 +31,6 @@ export type Props = {
   /**
    * @optional
    */
-
   /**
    * testID to be used on tests.
    */
@@ -99,4 +98,7 @@ const RadioButton = (props: Props) => {
 
 export default RadioButton;
 
-export { RadioButton };
+// @component-docs ignore-next-line
+const RadioButtonWithTheme = RadioButton;
+// @component-docs ignore-next-line
+export { RadioButtonWithTheme as RadioButton };
