@@ -153,7 +153,7 @@ const SegmentedButtonItem = ({
           fontWeight: '500',
         }
         //  @ts-ignore:next-line
-      : theme.fonts.labelLarge),
+      : theme.typescale.labelLarge),
     color: textColor,
   };
 
