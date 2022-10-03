@@ -18,7 +18,6 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * Function to execute on press.
    */
-  type: 'checkbox' | 'radio';
   onPress?: () => void;
   /**
    * Custom color for checkbox.
