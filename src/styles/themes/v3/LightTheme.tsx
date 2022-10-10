@@ -7,6 +7,7 @@ const { palette, opacity } = tokens.md.ref;
 const LightTheme: ThemeBase = {
   dark: false,
   roundness: 4,
+  margin: 16,
   version: 3,
   isV3: true,
   colors: {

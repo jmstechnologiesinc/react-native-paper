@@ -58,6 +58,7 @@ type Props = {
    * Style that is passed to the wrapping TouchableRipple element.
    */
   style?: StyleProp<ViewStyle>;
+  rightStyle?: StyleProp<ViewStyle>;
   /**
    * Style that is passed to Title element.
    */
@@ -144,6 +145,7 @@ const ListAccordion = ({
   titleNumberOfLines = 1,
   descriptionNumberOfLines = 2,
   style,
+  rightStyle,
   id,
   testID,
   onPress,
@@ -239,7 +241,7 @@ const ListAccordion = ({
               ) : null}
             </View>
             <View
-              style={[styles.item, description ? styles.multiline : undefined]}
+              style={[styles.item, description ? styles.multiline : undefined, rightStyle]}
             >
               {right ? (
                 right({

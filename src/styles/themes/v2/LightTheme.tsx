@@ -6,6 +6,7 @@ import type { ThemeBase } from '../../../types';
 const LightTheme: ThemeBase = {
   dark: false,
   roundness: 4,
+  margin: 16,
   version: 2,
   isV3: false,
   colors: {

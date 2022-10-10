@@ -80,6 +80,7 @@ export type ThemeBase = {
   dark: boolean;
   mode?: Mode;
   roundness: number;
+  margin: number;
   animation: {
     scale: number;
   };
