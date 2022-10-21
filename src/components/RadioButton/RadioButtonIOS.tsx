@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import { RadioButtonContext, RadioButtonContextType } from './RadioButtonGroup';
 import { handlePress, isChecked } from './utils';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
@@ -120,8 +121,8 @@ RadioButtonIOS.displayName = 'RadioButton.IOS';
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 18,
-    padding: 6,
+    borderRadius: moderateScale(18),
+    padding: moderateScale(6),
   },
 });
 
