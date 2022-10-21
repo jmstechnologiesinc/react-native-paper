@@ -8,6 +8,8 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+
 import FAB from './FAB';
 import Text from '../Typography/Text';
 import Card from '../Card/Card';
@@ -303,8 +305,8 @@ const FABGroup = ({
                 {
                   marginHorizontal:
                     typeof it.size === 'undefined' || it.size === 'small'
-                      ? 24
-                      : 16,
+                      ? moderateScale(24)
+                      : moderateScale(16),
                 },
               ]}
               pointerEvents={open ? 'box-none' : 'none'}
@@ -414,23 +416,23 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   fab: {
-    marginHorizontal: 16,
-    marginBottom: 16,
+    marginHorizontal: moderateScale(16),
+    marginBottom: moderateScale(16),
     marginTop: 0,
   },
   backdrop: {
     ...StyleSheet.absoluteFillObject,
   },
   label: {
-    borderRadius: 5,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    marginVertical: 8,
-    marginHorizontal: 16,
+    borderRadius: moderateScale(5),
+    paddingHorizontal: moderateScale(12),
+    paddingVertical: moderateScale(6),
+    marginVertical: moderateScale(8),
+    marginHorizontal: moderateScale(16),
     elevation: 2,
   },
   item: {
-    marginBottom: 16,
+    marginBottom: moderateScale(16),
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',

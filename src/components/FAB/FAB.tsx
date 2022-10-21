@@ -7,6 +7,8 @@ import {
   StyleProp,
   AccessibilityState,
 } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+
 import ActivityIndicator from '../ActivityIndicator';
 import Surface from '../Surface';
 import CrossFadeIcon from '../CrossFadeIcon';
@@ -205,8 +207,8 @@ const FAB = ({
 
   const isLargeSize = size === 'large';
   const isFlatMode = mode === 'flat';
-  const iconSize = isLargeSize ? 36 : 24;
-  const loadingIndicatorSize = isLargeSize ? 24 : 18;
+  const iconSize = isLargeSize ? moderateScale(36) : moderateScale(24);
+  const loadingIndicatorSize = isLargeSize ? moderateScale(24) : moderateScale(18);
 
   const fabStyle = getFabStyle({ customSize, size });
   const extendedStyle = getExtendedFabStyle({ customSize });
@@ -263,13 +265,13 @@ const FAB = ({
           {icon && loading !== true ? (
             <IconComponent
               source={icon}
-              size={customSize ? customSize / 2 : iconSize}
+              size={customSize ? customSize / moderateScale(2) : iconSize}
               color={foregroundColor}
             />
           ) : null}
           {loading ? (
             <ActivityIndicator
-              size={customSize ? customSize / 2 : loadingIndicatorSize}
+              size={customSize ? customSize /  moderateScale(2) : loadingIndicatorSize}
               color={foregroundColor}
             />
           ) : null}
@@ -302,7 +304,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   label: {
-    marginHorizontal: 8,
+    marginHorizontal: moderateScale(8),
   },
   uppercaseLabel: {
     textTransform: 'uppercase',
