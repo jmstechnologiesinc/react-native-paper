@@ -50,6 +50,11 @@ export type Props = {
    * Label text of the button.
    */
   label?: string;
+
+    /**
+   * subLabel text of the button.
+   */
+  subLabel?: string;
   /**
    * Button segment.
    */
@@ -78,6 +83,7 @@ const SegmentedButtonItem = ({
   icon,
   testID,
   label,
+  subLabel,
   onPress,
   segment,
   density = 'regular',
@@ -157,6 +163,10 @@ const SegmentedButtonItem = ({
     color: textColor,
   };
 
+    const descriptionColor = theme.isV3
+    ? theme.colors.onSurfaceVariant
+    : color(theme.colors.text).alpha(0.54).rgb().string();
+    
   return (
     <View style={[buttonStyle, styles.button, style]}>
       <TouchableRipple
@@ -171,7 +181,7 @@ const SegmentedButtonItem = ({
         testID={testID}
         style={rippleStyle}
       >
-        <View style={[styles.content, { paddingVertical }]}>
+        <View style={ subLabel ? [styles.subLabelContent, ] : [styles.content, { paddingVertical }] }>
           {checked && showSelectedCheck ? (
             <Animated.View
               testID={`${testID}-check-icon`}
@@ -197,6 +207,14 @@ const SegmentedButtonItem = ({
           >
             {label}
           </Text>
+          {subLabel ? <Text
+            variant={'bodyMedium'}
+            style={[styles.label, {color: descriptionColor}]}
+            selectable={false}
+            numberOfLines={1}
+          >
+            {subLabel}
+          </Text> : null}
         </View>
       </TouchableRipple>
     </View>
@@ -217,6 +235,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 9,
     paddingHorizontal: 16,
+  },
+  subLabelContent: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 9,   
   },
 });
 
