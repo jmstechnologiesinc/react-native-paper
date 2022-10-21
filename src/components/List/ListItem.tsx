@@ -8,6 +8,9 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { moderateScale } from 'react-native-size-matters';
+
+
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
 
@@ -20,6 +23,7 @@ type Title =
       selectable: boolean;
       ellipsizeMode: EllipsizeProp | undefined;
       color: string;
+      fontSize: number;
     }) => React.ReactNode);
 
 type Description =
@@ -28,6 +32,7 @@ type Description =
       selectable: boolean;
       ellipsizeMode: EllipsizeProp | undefined;
       color: string;
+      fontSize: number;
     }) => React.ReactNode);
 
 type Props = $RemoveChildren<typeof TouchableRipple> & {
@@ -76,8 +81,6 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
    * Style that is passed to Title element.
    */
   titleStyle?: StyleProp<TextStyle>;
-
-  itemStyle?: StyleProp<ViewStyle>;
   /**
    * Style that is passed to Description element.
    */
@@ -141,7 +144,6 @@ const ListItem = ({
   onPress,
   style,
   titleStyle,
-  itemStyle,
   titleNumberOfLines = 1,
   descriptionNumberOfLines = 2,
   titleEllipsizeMode,
@@ -158,14 +160,18 @@ const ListItem = ({
         selectable: false,
         ellipsizeMode: descriptionEllipsizeMode,
         color: descriptionColor,
+        fontSize: styles.description.fontSize,
       })
     ) : (
       <Text
         selectable={false}
         numberOfLines={descriptionNumberOfLines}
         ellipsizeMode={descriptionEllipsizeMode}
-        style={[{ color: descriptionColor }, descriptionStyle]}
-        variant={'bodyMedium'}
+        style={[
+          styles.description,
+          { color: descriptionColor },
+          descriptionStyle,
+        ]}
       >
         {description}
       </Text>
@@ -182,14 +188,14 @@ const ListItem = ({
         selectable: false,
         ellipsizeMode: titleEllipsizeMode,
         color: titleColor,
+        fontSize: styles.title.fontSize,
       })
     ) : (
       <Text
         selectable={false}
         ellipsizeMode={titleEllipsizeMode}
         numberOfLines={titleNumberOfLines}
-        style={[{ color: titleColor }, titleStyle]}
-        variant={'bodyLarge'}
+        style={[styles.title, { color: titleColor }, titleStyle]}
       >
         {title}
       </Text>
@@ -218,7 +224,7 @@ const ListItem = ({
                   },
             })
           : null}
-        <View style={[styles.item, styles.content, itemStyle]}>
+        <View style={[styles.item, styles.content]}>
           {renderTitle()}
 
           {description
@@ -245,17 +251,23 @@ ListItem.displayName = 'List.Item';
 
 const styles = StyleSheet.create({
   container: {
-    padding: 8,
+    padding: moderateScale(8),
   },
   row: {
     flexDirection: 'row',
   },
+  title: {
+    fontSize:  moderateScale(16),
+  },
+  description: {
+    fontSize:  moderateScale(14),
+  },
   marginVerticalNone: { marginVertical: 0 },
-  iconMarginLeft: { marginLeft: 0, marginRight: 16 },
+  iconMarginLeft: { marginLeft: 0, marginRight: moderateScale(16) },
   iconMarginRight: { marginRight: 0 },
   item: {
-    marginVertical: 6,
-    paddingLeft: 8,
+    marginVertical: moderateScale(6),
+    paddingLeft: moderateScale(8),
   },
   content: {
     flex: 1,

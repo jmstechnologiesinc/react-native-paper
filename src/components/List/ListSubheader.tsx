@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { StyleSheet, StyleProp, TextStyle } from 'react-native';
 import color from 'color';
-import Text from '../Typography/Text';
 
+import { moderateScale } from 'react-native-size-matters';
+
+
+import Text from '../Typography/Text';
 import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentProps<typeof Text> & {
@@ -54,8 +57,8 @@ ListSubheader.displayName = 'List.Subheader';
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 16,
-    paddingVertical: 13,
+    paddingHorizontal: moderateScale(16),
+    paddingVertical: moderateScale(13),
   },
 });
 
