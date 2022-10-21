@@ -5,6 +5,8 @@ import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import type { $RemoveChildren, Theme } from '../../types';
 import { getAndroidSelectionControlColor } from './utils';
 import theme from '../../styles/themes/v3/LightTheme';
+import { moderateScale } from 'react-native-size-matters';
+
 
 type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
@@ -137,7 +139,7 @@ const CheckboxAndroid = ({
         <MaterialCommunityIcon
           allowFontScaling={false}
           name={icon}
-          size={24}
+          size={moderateScale(24)}
           color={selectionControlColor}
           direction="ltr"
         />
@@ -159,18 +161,18 @@ CheckboxAndroid.displayName = 'Checkbox.Android';
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 18,
-    width: 36,
-    height: 36,
-    padding: 6,
+    borderRadius: moderateScale(18),
+    width: moderateScale(36),
+    height: moderateScale(36),
+    padding: moderateScale(6),
   },
   fillContainer: {
     alignItems: 'center',
     justifyContent: 'center',
   },
   fill: {
-    height: 14,
-    width: 14,
+    height: moderateScale(14),
+    width: moderateScale(14),
   },
 });
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import type { $RemoveChildren } from '../../types';
@@ -85,7 +86,7 @@ const CheckboxIOS = ({
         <MaterialCommunityIcon
           allowFontScaling={false}
           name={icon}
-          size={24}
+          size={moderateScale(24)}
           color={checkedColor}
           direction="ltr"
         />
@@ -98,8 +99,8 @@ CheckboxIOS.displayName = 'Checkbox.IOS';
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 18,
-    padding: 6,
+    borderRadius: moderateScale(18),
+    padding: moderateScale(6),
   },
 });
 
