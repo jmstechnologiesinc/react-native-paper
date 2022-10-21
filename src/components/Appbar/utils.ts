@@ -2,6 +2,9 @@ import React from 'react';
 import color from 'color';
 import { StyleSheet } from 'react-native';
 import type { ColorValue, StyleProp, ViewStyle } from 'react-native';
+
+import { moderateScale } from 'react-native-size-matters';
+
 import AppbarContent from './AppbarContent';
 import AppbarAction from './AppbarAction';
 import AppbarBackAction from './AppbarBackAction';
@@ -50,13 +53,13 @@ type RenderAppbarContentProps = {
   mode?: AppbarModes;
 };
 
-export const DEFAULT_APPBAR_HEIGHT = 56;
-const MD3_DEFAULT_APPBAR_HEIGHT = 64;
+export const DEFAULT_APPBAR_HEIGHT = moderateScale(56);
+const MD3_DEFAULT_APPBAR_HEIGHT = moderateScale(64);
 
 export const modeAppbarHeight = {
   small: MD3_DEFAULT_APPBAR_HEIGHT,
-  medium: 112,
-  large: 152,
+  medium: moderateScale(112),
+  large: moderateScale(152),
   'center-aligned': MD3_DEFAULT_APPBAR_HEIGHT,
 };
 
@@ -128,13 +131,13 @@ export const renderAppbarContent = ({
 
 const styles = StyleSheet.create({
   v2Spacing: {
-    marginLeft: 8,
+    marginLeft: moderateScale(8),
   },
   v2CenterAlignedContent: {
     alignItems: 'center',
   },
   v3Spacing: {
-    marginLeft: 12,
+    marginLeft: moderateScale(12),
   },
   v3CenterAlignedContent: {
     ...StyleSheet.absoluteFillObject,

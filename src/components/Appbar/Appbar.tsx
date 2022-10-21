@@ -17,6 +17,9 @@ import {
 } from './utils';
 import AppbarHeader from './AppbarHeader';
 
+import { moderateScale } from 'react-native-size-matters';
+
+
 type Props = Partial<React.ComponentPropsWithRef<typeof View>> & {
   /**
    * Whether the background color is a dark color. A dark appbar will render light text and vice-versa.
@@ -251,10 +254,10 @@ const styles = StyleSheet.create({
   appbar: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 4,
+    paddingHorizontal: moderateScale(4),
   },
   spacing: {
-    width: 48,
+    width: moderateScale(48),
   },
   controlsRow: {
     flex: 1,
@@ -270,7 +273,7 @@ const styles = StyleSheet.create({
   columnContainer: {
     flexDirection: 'column',
     flex: 1,
-    paddingTop: 8,
+    paddingTop: moderateScale(8),
   },
   centerAlignedContainer: {
     paddingTop: 0,
