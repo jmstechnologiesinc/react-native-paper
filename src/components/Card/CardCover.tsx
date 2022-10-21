@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, View, ViewStyle, Image, StyleProp } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+
 
 import { grey200 } from '../../styles/themes/v2/colors';
 
@@ -58,7 +60,7 @@ const CardCover = ({ index, total, style, ...rest }: Props) => {
 CardCover.displayName = 'Card.Cover';
 const styles = StyleSheet.create({
   container: {
-    height: 195,
+    height: moderateScale(195),
     backgroundColor: grey200,
     overflow: 'hidden',
   },
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: undefined,
     width: undefined,
-    padding: 16,
+    padding: moderateScale(16),
     justifyContent: 'flex-end',
   },
 });

@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { StyleSheet, StyleProp, View, ViewStyle } from 'react-native';
 
+import { moderateScale } from 'react-native-size-matters';
+
+
 type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Items inside the `Card.Content`.
@@ -90,16 +93,16 @@ CardContent.displayName = 'Card.Content';
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 16,
+    paddingHorizontal: moderateScale(16),
   },
   first: {
-    paddingTop: 16,
+    paddingTop: moderateScale(16),
   },
   last: {
-    paddingBottom: 16,
+    paddingBottom: moderateScale(16),
   },
   only: {
-    paddingVertical: 16,
+    paddingVertical: moderateScale(16),
   },
 });
 

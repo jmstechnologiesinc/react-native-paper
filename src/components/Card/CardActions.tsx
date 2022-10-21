@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, StyleProp, View, ViewStyle } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+
 import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentPropsWithRef<typeof View> & {
@@ -64,10 +66,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 8,
+    padding: moderateScale(8),
   },
   button: {
-    marginLeft: 8,
+    marginLeft: moderateScale(8),
   },
 });
 

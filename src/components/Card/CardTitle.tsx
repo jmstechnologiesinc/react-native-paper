@@ -6,6 +6,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 
 import type { MD3TypescaleKey } from '../../types';
 import Caption from '../Typography/v2/Caption';
@@ -101,7 +102,7 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
    */
 };
 
-const LEFT_SIZE = 40;
+const LEFT_SIZE = moderateScale(40);
 
 /**
  * A component to show a title, subtitle and an avatar inside a Card.
@@ -155,7 +156,7 @@ const CardTitle = ({
     <View
       style={[
         styles.container,
-        { minHeight: subtitle || left || right ? 72 : 50 },
+        { minHeight: subtitle || left || right ? moderateScale(72) : moderateScale(50) },
         style,
       ]}
     >
@@ -193,7 +194,7 @@ const CardTitle = ({
           </TextComponent>
         )}
       </View>
-      <View style={rightStyle}>{right ? right({ size: 24 }) : null}</View>
+      <View style={rightStyle}>{right ? right({ size: moderateScale(24) }) : null}</View>
     </View>
   );
 };
@@ -205,12 +206,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingLeft: 16,
+    paddingLeft: moderateScale(16),
   },
 
   left: {
     justifyContent: 'center',
-    marginRight: 16,
+    marginRight: moderateScale(16),
     height: LEFT_SIZE,
     width: LEFT_SIZE,
   },
@@ -222,14 +223,14 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    minHeight: 30,
-    paddingRight: 16,
+    minHeight: moderateScale(30),
+    paddingRight: moderateScale(16),
   },
 
   subtitle: {
-    minHeight: 20,
+    minHeight: moderateScale(20),
     marginVertical: 0,
-    paddingRight: 16,
+    paddingRight: moderateScale(16),
   },
 });
 
