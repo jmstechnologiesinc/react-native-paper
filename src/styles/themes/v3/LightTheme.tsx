@@ -2,12 +2,15 @@ import type { ThemeBase } from '../../../types';
 import { tokens, typescale } from './tokens';
 import color from 'color';
 
+import { moderateScale } from 'react-native-size-matters';
+
+
 const { palette, opacity } = tokens.md.ref;
 
 const LightTheme: ThemeBase = {
   dark: false,
-  roundness: 4,
-  margin: 16,
+  roundness:  moderateScale(4),
+  margin:  moderateScale(16),
   version: 3,
   isV3: true,
   colors: {
