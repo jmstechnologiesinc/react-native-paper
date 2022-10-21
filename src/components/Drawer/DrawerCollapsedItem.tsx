@@ -10,10 +10,14 @@ import {
   TextLayoutEventData,
   Platform,
 } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+
 import Text from '../Typography/Text';
 import Icon, { IconSource } from '../Icon';
 import theme from '../../styles/themes/v3/LightTheme';
 import Badge from '../Badge';
+
+
 
 type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
@@ -47,10 +51,10 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   badge?: string | number | boolean;
 };
 
-const badgeSize = 8;
-const iconSize = 24;
-const itemSize = 56;
-const outlineHeight = 32;
+const badgeSize = moderateScale(8);
+const iconSize = moderateScale(24);
+const itemSize = moderateScale(56);
+const outlineHeight = moderateScale(32);
 
 /**
  * @supported Available in v5.x with theme version 3
@@ -174,7 +178,7 @@ const DrawerCollapsedItem = ({
                 {typeof badge === 'boolean' ? (
                   <Badge visible={badge} size={badgeSize} />
                 ) : (
-                  <Badge visible={badge != null} size={2 * badgeSize}>
+                  <Badge visible={badge != null} size={moderateScale(2) * badgeSize}>
                     {badge}
                   </Badge>
                 )}
@@ -210,15 +214,15 @@ DrawerCollapsedItem.displayName = 'Drawer.CollapsedItem';
 
 const styles = StyleSheet.create({
   wrapper: {
-    width: 80,
-    marginBottom: 12,
+    width: moderateScale(80),
+    marginBottom: moderateScale(12),
     minHeight: itemSize,
     alignItems: 'center',
   },
   outline: {
     width: itemSize,
     height: outlineHeight,
-    borderRadius: itemSize / 2,
+    borderRadius: itemSize / moderateScale(2),
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -229,19 +233,19 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   letterSpacing: {
-    letterSpacing: 0.3,
+    letterSpacing: moderateScale(0.3),
     alignSelf: 'stretch',
   },
   label: {
-    marginHorizontal: 12,
-    marginTop: 4,
+    marginHorizontal: moderateScale(12),
+    marginTop: moderateScale(4),
     textAlign: 'center',
   },
   badgeContainer: {
     position: 'absolute',
-    left: 20,
-    bottom: 20,
-    zIndex: 2,
+    left: moderateScale(20),
+    bottom: moderateScale(20),
+    zIndex: moderateScale(2),
   },
 });
 

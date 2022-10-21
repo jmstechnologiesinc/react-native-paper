@@ -1,6 +1,8 @@
 import color from 'color';
 import * as React from 'react';
 import { View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+
 import Text from '../Typography/Text';
 import Icon, { IconSource } from '../Icon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
@@ -88,8 +90,8 @@ const DrawerItem = ({
     ? theme.colors.onSurfaceVariant
     : color(theme.colors.text).alpha(0.68).rgb().string();
 
-  const labelMargin = icon ? (isV3 ? 12 : 32) : 0;
-  const borderRadius = (isV3 ? 7 : 1) * roundness;
+  const labelMargin = icon ? (isV3 ? moderateScale(12) : moderateScale(32)) : 0;
+  const borderRadius = (isV3 ? moderateScale(7) : moderateScale(1)) * roundness;
   const underlayColor = isV3
     ? color(backgroundColor)
         .mix(color(theme.colors.onSecondaryContainer), 0.16)
@@ -117,7 +119,7 @@ const DrawerItem = ({
         <View style={[styles.wrapper, isV3 && styles.v3Wrapper]}>
           <View style={styles.content}>
             {icon ? (
-              <Icon source={icon} size={24} color={contentColor} />
+              <Icon source={icon} size={moderateScale(24)} color={contentColor} />
             ) : null}
             <Text
               variant="labelLarge"
@@ -147,24 +149,24 @@ DrawerItem.displayName = 'Drawer.Item';
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 10,
-    marginVertical: 4,
+    marginHorizontal: moderateScale(10),
+    marginVertical: moderateScale(4),
   },
   v3Container: {
     justifyContent: 'center',
-    height: 56,
-    marginLeft: 12,
-    marginRight: 12,
+    height: moderateScale(56),
+    marginLeft: moderateScale(12),
+    marginRight: moderateScale(12),
     marginVertical: 0,
   },
   wrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 8,
+    padding: moderateScale(8),
   },
   v3Wrapper: {
-    marginLeft: 16,
-    marginRight: 24,
+    marginLeft: moderateScale(16),
+    marginRight: moderateScale(24),
     padding: 0,
   },
   content: {
@@ -173,7 +175,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   label: {
-    marginRight: 32,
+    marginRight: moderateScale(32),
   },
 });
 
