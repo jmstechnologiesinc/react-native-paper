@@ -1,5 +1,6 @@
-import { Platform } from 'react-native';
+import {Platform } from 'react-native';
 import type { Font } from '../../../types';
+import { moderateScale } from 'react-native-size-matters';
 
 import {
   MdRefPalettePrimary0,
@@ -117,7 +118,7 @@ import {
   MdSysTypescaleBodySmallTracking,
   MdSysTypescaleBodySmallLineHeight,
   MdSysTypescaleBodySmallSize,
-        //  @ts-ignore:next-line
+  //  @ts-ignore:next-line
 } from '@jmsstudiosinc/material-tokens';
 
 const ref = {
@@ -239,108 +240,116 @@ const regularType = {
 
 const mediumType = {
   fontFamily: ref.typeface.plainMedium,
-  letterSpacing: 0.15,
+  letterSpacing: moderateScale(0.15),
   fontWeight: ref.typeface.weightMedium,
 };
 
 export const typescale = {
   displayLarge: {
     ...regularType,
-    lineHeight: parseFloat(MdSysTypescaleDisplayLargeLineHeight),
-    fontSize: parseFloat(MdSysTypescaleDisplayLargeSize),
+    lineHeight: moderateScale(parseFloat(MdSysTypescaleDisplayLargeLineHeight)),
+    fontSize: moderateScale(parseFloat(MdSysTypescaleDisplayLargeSize)),
   },
   displayMedium: {
     ...regularType,
-    lineHeight: parseFloat(MdSysTypescaleDisplayMediumLineHeight),
-    fontSize: parseFloat(MdSysTypescaleDisplayMediumSize),
+    lineHeight: moderateScale(
+      parseFloat(MdSysTypescaleDisplayMediumLineHeight)
+    ),
+    fontSize: moderateScale(parseFloat(MdSysTypescaleDisplayMediumSize)),
   },
   displaySmall: {
     ...regularType,
-    lineHeight: parseFloat(MdSysTypescaleDisplaySmallLineHeight),
-    fontSize: parseFloat(MdSysTypescaleDisplaySmallSize),
+    lineHeight: moderateScale(parseFloat(MdSysTypescaleDisplaySmallLineHeight)),
+    fontSize: moderateScale(parseFloat(MdSysTypescaleDisplaySmallSize)),
   },
 
   headlineLarge: {
     ...regularType,
-    lineHeight: parseFloat(MdSysTypescaleHeadlineLargeLineHeight),
-    fontSize: parseFloat(MdSysTypescaleHeadlineLargeSize),
+    lineHeight: moderateScale(
+      parseFloat(MdSysTypescaleHeadlineLargeLineHeight)
+    ),
+    fontSize: moderateScale(parseFloat(MdSysTypescaleHeadlineLargeSize)),
   },
   headlineMedium: {
     ...regularType,
-    lineHeight: parseFloat(MdSysTypescaleHeadlineMediumLineHeight),
-    fontSize: parseFloat(MdSysTypescaleHeadlineMediumSize),
+    lineHeight: moderateScale(
+      parseFloat(MdSysTypescaleHeadlineMediumLineHeight)
+    ),
+    fontSize: moderateScale(parseFloat(MdSysTypescaleHeadlineMediumSize)),
   },
   headlineSmall: {
     ...regularType,
-    lineHeight: parseFloat(MdSysTypescaleHeadlineSmallLineHeight),
-    fontSize: parseFloat(MdSysTypescaleHeadlineSmallSize),
+    lineHeight: moderateScale(
+      parseFloat(MdSysTypescaleHeadlineSmallLineHeight)
+    ),
+    fontSize: moderateScale(parseFloat(MdSysTypescaleHeadlineSmallSize)),
   },
 
   titleLarge: {
     ...regularType,
-    lineHeight: parseFloat(MdSysTypescaleTitleLargeLineHeight),
-    fontSize: parseFloat(MdSysTypescaleTitleLargeSize),
+    lineHeight: moderateScale(parseFloat(MdSysTypescaleTitleLargeLineHeight)),
+    fontSize: moderateScale(parseFloat(MdSysTypescaleTitleLargeSize)),
   },
   titleMedium: {
     ...mediumType,
-    lineHeight: MdSysTypescaleTitleMediumLineHeight,
-    fontSize: parseFloat(MdSysTypescaleTitleMediumSize),
+    lineHeight: moderateScale(parseInt(MdSysTypescaleTitleMediumLineHeight)),
+    fontSize: moderateScale(parseFloat(MdSysTypescaleTitleMediumSize)),
   },
   titleSmall: {
     ...mediumType,
-    letterSpacing: parseFloat(MdSysTypescaleTitleSmallTracking),
-    lineHeight: parseFloat(MdSysTypescaleTitleSmallLineHeight),
-    fontSize: parseFloat(MdSysTypescaleTitleSmallSize),
+    letterSpacing: moderateScale(parseFloat(MdSysTypescaleTitleSmallTracking)),
+    lineHeight: moderateScale(parseFloat(MdSysTypescaleTitleSmallLineHeight)),
+    fontSize: moderateScale(parseFloat(MdSysTypescaleTitleSmallSize)),
   },
 
   labelLarge: {
     ...mediumType,
-    letterSpacing: parseFloat(MdSysTypescaleLabelLargeTracking),
-    lineHeight: parseFloat(MdSysTypescaleLabelLargeLineHeight),
-    fontSize: parseFloat(MdSysTypescaleLabelLargeSize),
+    letterSpacing: moderateScale(parseFloat(MdSysTypescaleLabelLargeTracking)),
+    lineHeight: moderateScale(parseFloat(MdSysTypescaleLabelLargeLineHeight)),
+    fontSize: moderateScale(parseFloat(MdSysTypescaleLabelLargeSize)),
   },
   labelMedium: {
     ...mediumType,
-    letterSpacing: parseFloat(MdSysTypescaleLabelMediumTracking),
-    lineHeight: parseFloat(MdSysTypescaleLabelMediumLineHeight),
-    fontSize: parseInt(MdSysTypescaleLabelMediumSize),
+    letterSpacing:  moderateScale (parseFloat(MdSysTypescaleLabelMediumTracking)),
+    lineHeight: moderateScale(parseFloat(MdSysTypescaleLabelMediumLineHeight)),
+    fontSize: moderateScale(parseInt(MdSysTypescaleLabelMediumSize)),
   },
   labelSmall: {
     ...mediumType,
-    letterSpacing: parseFloat(MdSysTypescaleLabelSmallTracking),
-    lineHeight: parseFloat(MdSysTypescaleLabelSmallLineHeight),
-    fontSize: parseFloat(MdSysTypescaleLabelSmallSize),
+    letterSpacing: moderateScale(parseFloat(MdSysTypescaleLabelSmallTracking)),
+    lineHeight: moderateScale(parseFloat(MdSysTypescaleLabelSmallLineHeight)),
+    fontSize: moderateScale(parseFloat(MdSysTypescaleLabelSmallSize)),
   },
 
   bodyLarge: {
     ...mediumType,
     fontWeight: ref.typeface.weightRegular,
     fontFamily: ref.typeface.brandRegular,
-    lineHeight: parseFloat(MdSysTypescaleBodyLargeLineHeight),
-    fontSize: parseFloat(MdSysTypescaleBodyLargeSize),
+    lineHeight: moderateScale(parseFloat(MdSysTypescaleBodyLargeLineHeight)),
+    fontSize: moderateScale(parseFloat(MdSysTypescaleBodyLargeSize)),
   },
 
   bodyMedium: {
     ...mediumType,
     fontWeight: ref.typeface.weightRegular,
     fontFamily: ref.typeface.brandRegular,
-    letterSpacing: parseFloat(MdSysTypescaleBodyMediumTracking),
-    lineHeight: parseFloat(MdSysTypescaleBodyMediumLineHeight),
-    fontSize: parseFloat(MdSysTypescaleBodyMediumSize),
+    letterSpacing: moderateScale(parseFloat(MdSysTypescaleBodyMediumTracking)),
+    lineHeight: moderateScale(parseFloat(MdSysTypescaleBodyMediumLineHeight)),
+    fontSize: moderateScale(parseFloat(MdSysTypescaleBodyMediumSize)),
   },
   bodySmall: {
     ...mediumType,
     fontWeight: ref.typeface.weightRegular,
     fontFamily: ref.typeface.brandRegular,
-    letterSpacing: parseFloat(MdSysTypescaleBodySmallTracking),
-    lineHeight: parseFloat(MdSysTypescaleBodySmallLineHeight),
-    fontSize: parseFloat(MdSysTypescaleBodySmallSize),
+    letterSpacing: moderateScale(parseFloat(MdSysTypescaleBodySmallTracking)),
+    lineHeight: moderateScale(parseFloat(MdSysTypescaleBodySmallLineHeight)),
+    fontSize: moderateScale(parseFloat(MdSysTypescaleBodySmallSize)),
   },
 };
 
 export const tokens = {
   md: {
-    ref,
+    ref,  
     sys: {
       typescale,
     },
