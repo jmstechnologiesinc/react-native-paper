@@ -11,8 +11,9 @@ import Text from '../Typography/Text';
 import { white } from '../../styles/themes/v2/colors';
 import getContrastingColor from '../../utils/getContrastingColor';
 import theme from '../../styles/themes/v3/LightTheme';
+import { moderateScale } from 'react-native-size-matters';
 
-const defaultSize = 64;
+const defaultSize = moderateScale(64);
 
 type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
@@ -79,7 +80,7 @@ const AvatarText = ({
         {
           width: size,
           height: size,
-          borderRadius: size / 2,
+          borderRadius: size / moderateScale(2),
           backgroundColor,
         },
         styles.container,
@@ -92,7 +93,7 @@ const AvatarText = ({
           styles.text,
           {
             color: textColor,
-            fontSize: size / 2,
+            fontSize: size / moderateScale(2),
             lineHeight: size,
           },
           labelStyle,
