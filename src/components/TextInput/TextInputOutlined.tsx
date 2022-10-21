@@ -8,6 +8,8 @@ import {
   TextStyle,
   ColorValue,
 } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+
 import TextInputAdornment, {
   getAdornmentConfig,
   getAdornmentStyleAdjustmentForNativeInput,
@@ -382,7 +384,7 @@ const Outline = ({
       {
         backgroundColor,
         borderRadius: roundness,
-        borderWidth: (isV3 ? hasActiveOutline : focused) ? 2 : 1,
+        borderWidth: (isV3 ? hasActiveOutline : focused) ? moderateScale(2) : moderateScale(1),
         borderColor: hasActiveOutline ? activeColor : outlineColor,
       },
     ]}
@@ -394,7 +396,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     right: 0,
-    top: 6,
+    top: moderateScale(6),
     bottom: 0,
   },
   labelContainer: {
@@ -406,11 +408,11 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   inputOutlined: {
-    paddingTop: 8,
-    paddingBottom: 8,
+    paddingTop: moderateScale(8),
+    paddingBottom: moderateScale(8),
   },
   inputOutlinedDense: {
-    paddingTop: 4,
-    paddingBottom: 4,
+    paddingTop: moderateScale(4),
+    paddingBottom: moderateScale(4),
   },
 });

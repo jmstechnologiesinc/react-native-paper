@@ -8,6 +8,8 @@ import {
   Platform,
   TextStyle,
 } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+
 import InputLabel from './Label/InputLabel';
 import TextInputAdornment, {
   TextInputAdornmentProps,
@@ -432,11 +434,11 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    height: 2,
+    height: moderateScale(2),
     zIndex: 1,
   },
   md3Underline: {
-    height: 1,
+    height: moderateScale(1),
   },
   labelContainer: {
     paddingTop: 0,
@@ -447,19 +449,19 @@ const styles = StyleSheet.create({
     margin: 0,
   },
   inputFlat: {
-    paddingTop: 24,
-    paddingBottom: 4,
+    paddingTop: moderateScale(24),
+    paddingBottom: moderateScale(4),
   },
   inputFlatDense: {
-    paddingTop: 22,
-    paddingBottom: 2,
+    paddingTop: moderateScale(22),
+    paddingBottom: moderateScale(2),
   },
   patchContainer: {
-    height: 24,
+    height: moderateScale(24),
     zIndex: 2,
   },
   densePatchContainer: {
-    height: 22,
+    height: moderateScale(22),
     zIndex: 2,
   },
 });
