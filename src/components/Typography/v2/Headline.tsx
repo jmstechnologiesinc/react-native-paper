@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Text, TextStyle, StyleSheet, StyleProp } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+
 
 import StyledText from './StyledText';
 
@@ -44,9 +46,9 @@ export default Headline;
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 24,
-    lineHeight: 32,
-    marginVertical: 2,
+    fontSize: moderateScale(24),
+    lineHeight: moderateScale(32),
+    marginVertical: moderateScale(2),
     letterSpacing: 0,
   },
 });
