@@ -8,6 +8,8 @@ import {
   TextStyle,
   Animated,
 } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+
 import theme from '../../styles/themes/v3/LightTheme';
 
 import Text from '../Typography/Text';
@@ -117,16 +119,16 @@ const SegmentedButtonItem = ({
       disabled,
     });
 
-  const borderRadius = (isV3 ? 5 : 1) * roundness;
+  const borderRadius = (isV3 ? moderateScale(5) : moderateScale(1)) * roundness;
   const segmentBorderRadius = getSegmentedButtonBorderRadius({
     theme,
     segment,
   });
   const rippleColor = color(textColor).alpha(0.12).rgb().string();
 
-  const iconSize = isV3 ? 18 : 16;
+  const iconSize = isV3 ? moderateScale(18) : moderateScale(16);
   const iconStyle = {
-    marginRight: label ? 5 : checked && showSelectedCheck ? 3 : 0,
+    marginRight: label ? moderateScale(5) : checked && showSelectedCheck ? moderateScale(3) : 0,
     ...(label && {
       transform: [
         {
@@ -223,7 +225,7 @@ const SegmentedButtonItem = ({
 
 const styles = StyleSheet.create({
   button: {
-    minWidth: 76,
+    minWidth: moderateScale(76),
     borderStyle: 'solid',
   },
   label: {
@@ -233,13 +235,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 9,
-    paddingHorizontal: 16,
+    paddingVertical: moderateScale(9),
+    paddingHorizontal: moderateScale(16),
   },
   subLabelContent: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 9,   
+    paddingVertical: moderateScale(9),   
   },
 });
 
