@@ -4,7 +4,7 @@ import { StyleSheet, View, ViewStyle, StyleProp } from 'react-native';
 
 import { black, white } from '../styles/themes/v2/colors';
 import type { $RemoveChildren } from '../types';
-
+import { moderateScale } from 'react-native-size-matters';
 import theme from '../styles/themes/v3/LightTheme';
 
 type Props = $RemoveChildren<typeof View> & {
@@ -89,14 +89,14 @@ const Divider = ({
 
 const styles = StyleSheet.create({
   leftInset: {
-    marginLeft: 72,
+    marginLeft: moderateScale(72),
   },
   horizontalInset: {
-    marginLeft: 28,
-    marginRight: 28,
+    marginLeft: moderateScale(28),
+    marginRight: moderateScale(28),
   },
   bold: {
-    height: 1,
+    height: moderateScale(1),
   },
 });
 

@@ -8,7 +8,7 @@ import {
   View,
   Easing,
 } from 'react-native';
-
+import { moderateScale } from 'react-native-size-matters';
 import Button from './Button/Button';
 import Surface from './Surface';
 import Text from './Typography/Text';
@@ -183,7 +183,7 @@ const Snackbar = ({
     ...actionProps
   } = action || {};
 
-  const marginRight = action ? 0 : 16;
+  const marginRight = action ? 0 : moderateScale(16);
   const textColor = theme.isV3
     ? theme.colors.inversePrimary
     : theme.colors.accent;
@@ -269,17 +269,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    margin: 8,
-    borderRadius: 4,
+    margin: moderateScale(8),
+    borderRadius: moderateScale(4),
   },
   content: {
-    marginLeft: 16,
-    marginVertical: 14,
+    marginLeft: moderateScale(16),
+    marginVertical: moderateScale(14),
     flexWrap: 'wrap',
     flex: 1,
   },
   button: {
-    marginHorizontal: 8,
+    marginHorizontal: (8),
     marginVertical: 6,
   },
   elevation: {

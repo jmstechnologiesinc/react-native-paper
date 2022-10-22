@@ -9,6 +9,9 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { moderateScale } from 'react-native-size-matters';
+
+
 import theme from '../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentPropsWithRef<typeof View> & {
@@ -134,17 +137,17 @@ const ActivityIndicator = ({
   const size =
     typeof indicatorSize === 'string'
       ? indicatorSize === 'small'
-        ? 24
-        : 48
+        ? moderateScale(24)
+        : moderateScale(48)
       : indicatorSize
       ? indicatorSize
-      : 24;
+      : moderateScale(24);
 
   const frames = (60 * DURATION) / 1000;
   const easing = Easing.bezier(0.4, 0.0, 0.7, 1.0);
   const containerStyle = {
     width: size,
-    height: size / 2,
+    height: size / moderateScale(2),
     overflow: 'hidden' as const,
   };
 
@@ -197,7 +200,7 @@ const ActivityIndicator = ({
             height: size,
             transform: [
               {
-                translateY: index ? -size / 2 : 0,
+                translateY: index ? -size / moderateScale(2) : 0,
               },
               {
                 rotate: timer.interpolate({ inputRange, outputRange }),
@@ -205,14 +208,14 @@ const ActivityIndicator = ({
             ],
           };
 
-          const offsetStyle = index ? { top: size / 2 } : null;
+          const offsetStyle = index ? { top: size / moderateScale(2) } : null;
 
           const lineStyle = {
             width: size,
             height: size,
             borderColor: color,
-            borderWidth: size / 10,
-            borderRadius: size / 2,
+            borderWidth: size / moderateScale(10),
+            borderRadius: size / moderateScale(2),
           };
 
           return (

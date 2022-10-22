@@ -10,7 +10,7 @@ import {
   I18nManager,
 } from 'react-native';
 import setColor from 'color';
-
+import { moderateScale } from 'react-native-size-matters';
 import theme from '../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentPropsWithRef<typeof View> & {
@@ -225,7 +225,7 @@ const ProgressBar = ({
 
 const styles = StyleSheet.create({
   container: {
-    height: 4,
+    height: moderateScale(4),
     overflow: 'hidden',
   },
 
