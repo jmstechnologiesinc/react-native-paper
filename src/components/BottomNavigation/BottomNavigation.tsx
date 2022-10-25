@@ -11,6 +11,8 @@ import {
 } from 'react-native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import color from 'color';
+import { moderateScale } from 'react-native-size-matters';
+
 import overlay from '../../styles/overlay';
 import Icon, { IconSource } from '../Icon';
 import Surface from '../Surface';
@@ -25,6 +27,8 @@ import useLayout from '../../utils/useLayout';
 import useIsKeyboardShown from '../../utils/useIsKeyboardShown';
 import BottomNavigationRouteScreen from './BottomNavigationRouteScreen';
 import theme from '../../styles/themes/v3/LightTheme';
+
+
 
 type Route = {
   key: string;
@@ -245,12 +249,12 @@ type Props = {
 };
 
 const MIN_RIPPLE_SCALE = 0.001; // Minimum scale is not 0 due to bug with animation
-const MIN_TAB_WIDTH = 96;
-const MAX_TAB_WIDTH = 168;
-const BAR_HEIGHT = 56;
+const MIN_TAB_WIDTH = moderateScale(96);
+const MAX_TAB_WIDTH = moderateScale(168);
+const BAR_HEIGHT = moderateScale(56);
 const BOTTOM_INSET = getBottomSpace();
 const FAR_FAR_AWAY = Platform.OS === 'web' ? 0 : 9999;
-const OUTLINE_WIDTH = 64;
+const OUTLINE_WIDTH = moderateScale(64);
 
 const Touchable = ({
   route: _0,
@@ -810,7 +814,7 @@ const BottomNavigation = ({
                 : theme.colors.onSurfaceVariant;
 
               const badgeStyle = {
-                top: !isV3 ? -2 : typeof badge === 'boolean' ? 4 : 2,
+                top: !isV3 ? -2 : typeof badge === 'boolean' ? moderateScale(4) : moderateScale(2),
                 right:
                   (badge != null && typeof badge !== 'boolean'
                     ? String(badge).length * -2
@@ -882,7 +886,7 @@ const BottomNavigation = ({
                           <Icon
                             source={route.focusedIcon as IconSource}
                             color={activeTintColor}
-                            size={24}
+                            size={moderateScale(24)}
                           />
                         )}
                       </Animated.View>
@@ -909,15 +913,15 @@ const BottomNavigation = ({
                                 : (route.focusedIcon as IconSource)
                             }
                             color={inactiveTintColor}
-                            size={24}
+                            size={moderateScale(24)}
                           />
                         )}
                       </Animated.View>
                       <View style={[styles.badgeContainer, badgeStyle]}>
                         {typeof badge === 'boolean' ? (
-                          <Badge visible={badge} size={isV3 ? 6 : 8} />
+                          <Badge visible={badge} size={isV3 ? moderateScale(6) :  moderateScale(8)} />
                         ) : (
-                          <Badge visible={badge != null} size={16}>
+                          <Badge visible={badge != null} size={ moderateScale(16)}>
                             {badge}
                           </Badge>
                         )}
@@ -1064,7 +1068,7 @@ const styles = StyleSheet.create({
     flex: 1,
     // Top padding is 6 and bottom padding is 10
     // The extra 4dp bottom padding is offset by label's height
-    paddingVertical: 6,
+    paddingVertical: moderateScale(6),
   },
   v3Item: {
     paddingVertical: 0,
@@ -1073,16 +1077,16 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   iconContainer: {
-    height: 24,
-    width: 24,
-    marginTop: 2,
-    marginHorizontal: 12,
+    height: moderateScale(24),
+    width: moderateScale(24),
+    marginTop: moderateScale(2),
+    marginHorizontal: moderateScale(12),
     alignSelf: 'center',
   },
   v3IconContainer: {
-    height: 32,
-    width: 32,
-    marginBottom: 4,
+    height: moderateScale(32),
+    width: moderateScale(32),
+    marginBottom: moderateScale(4),
     marginTop: 0,
     justifyContent: 'center',
   },
@@ -1091,18 +1095,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   v3IconWrapper: {
-    top: 4,
+    top: moderateScale(4),
   },
   labelContainer: {
-    height: 16,
-    paddingBottom: 2,
+    height: moderateScale(16),
+    paddingBottom: moderateScale(2),
   },
   labelWrapper: {
     ...StyleSheet.absoluteFillObject,
   },
   // eslint-disable-next-line react-native/no-color-literals
   label: {
-    fontSize: 12,
+    fontSize: moderateScale(12),
     height: BAR_HEIGHT,
     textAlign: 'center',
     backgroundColor: 'transparent',
@@ -1118,11 +1122,11 @@ const styles = StyleSheet.create({
     left: 0,
   },
   v3TouchableContainer: {
-    paddingTop: 12,
-    paddingBottom: 16,
+    paddingTop: moderateScale(12),
+    paddingBottom: moderateScale(16),
   },
   v3NoLabelContainer: {
-    height: 80,
+    height: moderateScale(80),
     justifyContent: 'center',
     alignItems: 'center',
   },
