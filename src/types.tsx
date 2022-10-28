@@ -72,6 +72,24 @@ export type MD3Colors = {
   elevation: MD3ElevationColors;
 };
 
+export type Spacing = {
+  xxxxSmall: number;
+  xxxSmall: number;
+  xxSmall: number;
+  xSmall: number;
+  medium: number;
+  large: number;
+  xLarge: number;
+  xMedium: number;
+  xxxLarge: number;
+  small: number;
+  xxLarge: number;
+  xlarge: number;
+  xXlarge: number;
+  xxXlarge: number;
+  xxxXlarge: number;
+};
+
 export type MD3Palette = {};
 
 export type ThemeProp = {};
@@ -81,6 +99,7 @@ export type ThemeBase = {
   mode?: Mode;
   roundness: number;
   margin: number;
+  spacing: Spacing;
   animation: {
     scale: number;
   };
@@ -91,6 +110,7 @@ export type ThemeBase = {
       colors: MD3Colors;
       isV3: true;
       typescale: MD3Typescale;
+      spacing: Spacing;
     }
 );
 
@@ -136,6 +156,7 @@ export type MD3Tokens = {
     sys: {
       color: MD3Colors;
       typescale: MD3Typescale;
+      spacing: Spacing;
     };
     ref: {
       palette: MD3Palette;
