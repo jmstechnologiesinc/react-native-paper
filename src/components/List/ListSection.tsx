@@ -9,6 +9,8 @@ import {
 
 import { moderateScale } from 'react-native-size-matters';
 
+import theme from '../../styles/themes/v3/LightTheme';
+
 import ListSubheader from './ListSubheader';
 
 type Props = React.ComponentPropsWithRef<typeof View> & {
@@ -74,7 +76,7 @@ ListSection.displayName = 'List.Section';
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: moderateScale(8),
+    marginVertical: theme.spacing.xxxSmall,
   },
 });
 

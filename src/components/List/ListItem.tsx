@@ -10,7 +10,6 @@ import {
 
 import { moderateScale } from 'react-native-size-matters';
 
-
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
 
@@ -251,23 +250,23 @@ ListItem.displayName = 'List.Item';
 
 const styles = StyleSheet.create({
   container: {
-    padding: moderateScale(8),
+    padding: theme.spacing.xxxSmall,
   },
   row: {
     flexDirection: 'row',
   },
   title: {
-    fontSize:  moderateScale(16),
+    fontSize: theme.spacing.xSmall,
   },
   description: {
-    fontSize:  moderateScale(14),
+    fontSize: moderateScale(14),
   },
   marginVerticalNone: { marginVertical: 0 },
-  iconMarginLeft: { marginLeft: 0, marginRight: moderateScale(16) },
+  iconMarginLeft: { marginLeft: 0, marginRight: theme.spacing.xSmall },
   iconMarginRight: { marginRight: 0 },
   item: {
     marginVertical: moderateScale(6),
-    paddingLeft: moderateScale(8),
+    paddingLeft: theme.spacing.xxxSmall,
   },
   content: {
     flex: 1,

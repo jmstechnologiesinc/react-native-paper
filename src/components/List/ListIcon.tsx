@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { View, ViewStyle, StyleSheet, StyleProp } from 'react-native';
-import Icon, { IconSource } from '../Icon';
+import theme from '../../styles/themes/v3/LightTheme';
 
-import { moderateScale } from 'react-native-size-matters';
+import Icon, { IconSource } from '../Icon';
 
 type Props = {
   /**
@@ -16,7 +16,7 @@ type Props = {
   style?: StyleProp<ViewStyle>;
 };
 
-const ICON_SIZE = moderateScale(24);
+const ICON_SIZE = theme.spacing.medium;
 
 /**
  * A component to show an icon in a list item.
@@ -51,9 +51,9 @@ const ListIcon = ({ icon, color: iconColor, style }: Props) => (
 
 const styles = StyleSheet.create({
   item: {
-    margin: moderateScale(8),
-    height: moderateScale(40),
-    width: moderateScale(40),
+    margin: theme.spacing.xxxSmall,
+    height: theme.spacing.xxLarge,
+    width: theme.spacing.xxLarge,
     alignItems: 'center',
     justifyContent: 'center',
   },
