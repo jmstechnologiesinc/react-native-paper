@@ -3,6 +3,7 @@ import { View, ViewStyle, StyleSheet, StyleProp } from 'react-native';
 import Icon, { IconSource } from '../Icon';
 
 import { moderateScale } from 'react-native-size-matters';
+import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = {
   /**
@@ -51,9 +52,9 @@ const ListIcon = ({ icon, color: iconColor, style }: Props) => (
 
 const styles = StyleSheet.create({
   item: {
-    margin: moderateScale(8),
-    height: moderateScale(40),
-    width: moderateScale(40),
+    margin: theme.spacing.xxxSmall,
+    height: theme.spacing.xxxxMedium,
+    width: theme.spacing.xxxxMedium,
     alignItems: 'center',
     justifyContent: 'center',
   },
