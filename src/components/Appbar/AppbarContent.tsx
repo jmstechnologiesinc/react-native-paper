@@ -11,7 +11,6 @@ import {
 import color from 'color';
 import { moderateScale } from 'react-native-size-matters';
 
-
 import Text from '../Typography/Text';
 
 import theme from '../../styles/themes/v3/LightTheme';
@@ -161,7 +160,7 @@ AppbarContent.displayName = 'Appbar.Content';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: moderateScale(12),
+    paddingHorizontal: theme.spacing.xxSmall,
   },
   v3DefaultContainer: {
     paddingHorizontal: 0,
@@ -169,16 +168,16 @@ const styles = StyleSheet.create({
   v3MediumContainer: {
     paddingHorizontal: 0,
     justifyContent: 'flex-end',
-    paddingBottom: moderateScale(24),
+    paddingBottom: theme.spacing.medium,
   },
   v3LargeContainer: {
     paddingHorizontal: 0,
-    paddingTop: moderateScale(36),
+    paddingTop: theme.spacing.xxxMedium,
     justifyContent: 'flex-end',
-    paddingBottom: moderateScale(28),
+    paddingBottom: theme.spacing.xMedium,
   },
   title: {
-    fontSize: Platform.OS === 'ios' ? moderateScale(17) : moderateScale(20),
+    fontSize: Platform.OS === 'ios' ? moderateScale(17) : theme.spacing.small,
   },
   subtitle: {
     fontSize: Platform.OS === 'ios' ? moderateScale(11) : moderateScale(14),
