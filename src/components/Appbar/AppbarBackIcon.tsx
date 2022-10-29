@@ -2,19 +2,18 @@ import * as React from 'react';
 import { Platform, I18nManager, View, Image, StyleSheet } from 'react-native';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 
-import { moderateScale } from 'react-native-size-matters';
-
-
 const AppbarBackIcon = ({ size, color }: { size: number; color: string }) => {
-  const iosIconSize = moderateScale(size - 3);
+ 
+  const iosIconSize = size - 3;
+  
 
   return Platform.OS === 'ios' ? (
     <View
       style={[
         styles.wrapper,
         {
-          width: moderateScale(size),
-          height: moderateScale(size),
+          width: size,
+          height: size ,
           transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
         },
       ]}
