@@ -1,7 +1,6 @@
 import color from 'color';
 import * as React from 'react';
 import { View, ViewStyle, StyleSheet, StyleProp } from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
 
 import Text from '../Typography/Text';
 import Divider from '../Divider';
@@ -65,7 +64,7 @@ const DrawerSection = ({ children, title, style, ...rest }: Props) => {
   const titleColor = isV3
     ? theme.colors.onSurfaceVariant
     : color(theme.colors.text).alpha(0.54).rgb().string();
-  const titleMargin = isV3 ? moderateScale(28) : moderateScale(16);
+  const titleMargin = isV3 ? theme.spacing.xMedium : theme.spacing.xSmall;
   return (
     <View style={[styles.container, style]} {...rest}>
       {title && (
@@ -100,17 +99,17 @@ DrawerSection.displayName = 'Drawer.Section';
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: moderateScale(4),
+    marginBottom: theme.spacing.xxxxSmall,
   },
   titleContainer: {
-    height: moderateScale(40),
+    height: theme.spacing.xxxxMedium,
     justifyContent: 'center',
   },
   v3TitleContainer: {
-    height: moderateScale(56),
+    height: theme.spacing.xxxLarge,
   },
   divider: {
-    marginTop: moderateScale(4),
+    marginTop: theme.spacing.xxxxSmall,
   },
   v3Divider: {
     backgroundColor: MD3Colors.neutralVariant50,
