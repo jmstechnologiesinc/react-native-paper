@@ -251,7 +251,7 @@ const ListAccordion = ({
                 <MaterialCommunityIcon
                   name={isExpanded ? 'chevron-up' : 'chevron-down'}
                   color={theme.isV3 ? descriptionColor : titleColor}
-                  size={ moderateScale(24)}
+                  size={theme.spacing.medium}
                   direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
                 />
               )}
@@ -284,28 +284,28 @@ ListAccordion.displayName = 'List.Accordion';
 
 const styles = StyleSheet.create({
   container: {
-    padding: moderateScale(8),
+    padding: theme.spacing.xxxSmall,
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   multiline: {
-    height:  moderateScale(40),
+    height: theme.spacing.xxxxMedium,
     alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
-    fontSize:  moderateScale(16),
+    fontSize: theme.spacing.xSmall,
   },
   description: {
-    fontSize:  moderateScale(14),
+    fontSize: moderateScale(14),
   },
   item: {
-    margin: moderateScale(8),
+    margin: theme.spacing.xxxSmall,
   },
   child: {
-    paddingLeft: moderateScale(64),
+    paddingLeft: theme.spacing.xxxxLarge,
   },
   content: {
     flex: 1,

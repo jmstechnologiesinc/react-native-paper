@@ -1,4 +1,4 @@
-import {Platform } from 'react-native';
+import { Platform } from 'react-native';
 import type { Font } from '../../../types';
 import { moderateScale } from 'react-native-size-matters';
 
@@ -118,6 +118,21 @@ import {
   MdSysTypescaleBodySmallTracking,
   MdSysTypescaleBodySmallLineHeight,
   MdSysTypescaleBodySmallSize,
+  MdSysSpacingXxxxSmall,
+  MdSysSpacingXxxSmall,
+  MdSysSpacingXxSmall,
+  MdSysSpacingXSmall,
+  MdSysSpacingSmall,
+  MdSysSpacingMedium,
+  MdSysSpacingXMedium,
+  MdSysSpacingXxMedium,
+  MdSysSpacingXxxMedium,
+  MdSysSpacingXxxxMedium,
+  MdSysSpacingLarge,
+  MdSysSpacingXLarge,
+  MdSysSpacingXxLarge,
+  MdSysSpacingXxxLarge,
+  MdSysSpacingXxxxLarge,
   //  @ts-ignore:next-line
 } from '@jmsstudiosinc/material-tokens';
 
@@ -310,7 +325,7 @@ export const typescale = {
   },
   labelMedium: {
     ...mediumType,
-    letterSpacing:  moderateScale (parseFloat(MdSysTypescaleLabelMediumTracking)),
+    letterSpacing: moderateScale(parseFloat(MdSysTypescaleLabelMediumTracking)),
     lineHeight: moderateScale(parseFloat(MdSysTypescaleLabelMediumLineHeight)),
     fontSize: moderateScale(parseInt(MdSysTypescaleLabelMediumSize)),
   },
@@ -347,11 +362,30 @@ export const typescale = {
   },
 };
 
+export const spacing = {
+  xxxxSmall: moderateScale(parseFloat(MdSysSpacingXxxxSmall)),
+  xxxSmall: moderateScale(parseFloat(MdSysSpacingXxxSmall)),
+  xxSmall: moderateScale(parseFloat(MdSysSpacingXxSmall)),
+  xSmall: moderateScale(parseFloat(MdSysSpacingXSmall)),
+  small: moderateScale(parseFloat(MdSysSpacingSmall)),
+  medium: moderateScale(parseFloat(MdSysSpacingMedium)),
+  xMedium: moderateScale(parseFloat(MdSysSpacingXMedium)),
+  xxMedium: moderateScale(parseFloat(MdSysSpacingXxMedium)),
+  xxxMedium: moderateScale(parseFloat(MdSysSpacingXxxMedium)),
+  xxxxMedium: moderateScale(parseFloat(MdSysSpacingXxxxMedium)),
+  large: moderateScale(parseFloat(MdSysSpacingLarge)),
+  xLarge: moderateScale(parseFloat(MdSysSpacingXLarge)),
+  xxLarge: moderateScale(parseFloat(MdSysSpacingXxLarge)),
+  xxxLarge: moderateScale(parseFloat(MdSysSpacingXxxLarge)),
+  xxxxLarge: moderateScale(parseFloat(MdSysSpacingXxxxLarge)),
+};
+
 export const tokens = {
   md: {
-    ref,  
+    ref,
     sys: {
       typescale,
+      spacing,
     },
   },
 };
