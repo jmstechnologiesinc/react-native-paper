@@ -291,7 +291,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   multiline: {
-    height: theme.spacing.xxLarge,
+    height: theme.spacing.xxxxMedium,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -305,7 +305,7 @@ const styles = StyleSheet.create({
     margin: theme.spacing.xxxSmall,
   },
   child: {
-    paddingLeft: theme.spacing.xxxXlarge,
+    paddingLeft: theme.spacing.xxxxLarge,
   },
   content: {
     flex: 1,

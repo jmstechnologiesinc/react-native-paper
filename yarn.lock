@@ -1930,10 +1930,10 @@
     "@babel/runtime" "^7.7.2"
     "regenerator-runtime" "^0.13.3"
 
-"@jmsstudiosinc/material-tokens@^0.0.13":
-  "integrity" "sha512-wad/aXued/laC4Vz3KSGsBNYtv3QsbteFccV6uBqxRQDmPsIk+Ts+V4t7Baek6lAC7D8IJlXzITRW7KLNCOa5w=="
-  "resolved" "https://npm.pkg.github.com/download/@jmsstudiosinc/material-tokens/0.0.13/94d8958d576f2b6bdbc8c7222a54f1924d4f599b"
-  "version" "0.0.13"
+"@jmsstudiosinc/material-tokens@^0.0.14":
+  "integrity" "sha512-95PIEVd7KRI1Yb4IowbqlWYzO35FNCYURnytbPbT7ajC/hBJhlOhPvXlm3Sdgjbob8KGccDpZQNnp/9D+rxlFg=="
+  "resolved" "https://npm.pkg.github.com/download/@jmsstudiosinc/material-tokens/0.0.14/dcd94715b9ab53aeeac82b8dbfe1166cfa230481"
+  "version" "0.0.14"
 
 "@jridgewell/resolve-uri@^3.0.3":
   "integrity" "sha512-cz8HFjOFfUBtvN+NXYSFMHYRdxZMaEl0XypVrhzxBgadKIXhIkRd8aMeHhmF56Sl7SuS8OnUpQ73/k9LE4VnLg=="
