@@ -189,8 +189,10 @@ const Chip = ({
   };
 
   const opacity = isV3 ? 0.38 : 0.26;
-  const defaultBorderRadius = isV3 ? moderateScale(8) : moderateScale(16);
-  const iconSize = isV3 ? moderateScale(18) : moderateScale(16);
+  const defaultBorderRadius = isV3
+    ? theme.spacing.xxxSmall
+    : theme.spacing.xSmall;
+  const iconSize = isV3 ? moderateScale(18) : theme.spacing.xSmall;
 
   const {
     backgroundColor: customBackgroundColor,
@@ -218,13 +220,22 @@ const Chip = ({
   };
 
   const elevationStyle = isV3 || Platform.OS === 'android' ? elevation : 0;
-  const multiplier = isV3 ? (compact ? moderateScale(1.5) : moderateScale(2)) : moderateScale(1);
+  const multiplier = isV3 ? (compact ? 1.5 : 2) : 1;
   const labelSpacings = {
-    marginRight: onClose ? 0 : moderateScale(8) * multiplier,
-    marginLeft: avatar || icon || selected ? moderateScale(4)* multiplier : moderateScale(8) * multiplier,
+    marginRight: onClose ? 0 : theme.spacing.xxxSmall * multiplier,
+    marginLeft:
+      avatar || icon || selected
+        ? theme.spacing.xxxxSmall * multiplier
+        : theme.spacing.xxxSmall * multiplier,
   };
   const contentSpacings = {
-    paddingRight: isV3 ? (onClose ? moderateScale(34) : 0) : onClose ? moderateScale(32) : moderateScale(4),
+    paddingRight: isV3
+      ? onClose
+        ? moderateScale(34)
+        : 0
+      : onClose
+      ? theme.spacing.xxMedium
+      : theme.spacing.xxxxSmall,
   };
 
   return (
@@ -387,7 +398,7 @@ const styles = StyleSheet.create({
   content: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: moderateScale(4),
+    paddingLeft: theme.spacing.xxxxSmall,
     position: 'relative',
     flexGrow: 1,
   },
@@ -395,45 +406,45 @@ const styles = StyleSheet.create({
     paddingLeft: 0,
   },
   icon: {
-    padding: moderateScale(4),
+    padding: theme.spacing.xxxxSmall,
     alignSelf: 'center',
   },
   md3Icon: {
-    paddingLeft: moderateScale(8),
+    paddingLeft: theme.spacing.xxxSmall,
     paddingRight: 0,
   },
   closeIcon: {
-    marginRight: moderateScale(4),
+    marginRight: theme.spacing.xxxxSmall,
   },
   md3CloseIcon: {
-    marginRight: moderateScale(8),
+    marginRight: theme.spacing.xxxSmall,
     padding: 0,
   },
   text: {
-    minHeight: moderateScale(24),
-    lineHeight: moderateScale(24),
+    minHeight: theme.spacing.medium,
+    lineHeight: theme.spacing.medium,
     textAlignVertical: 'center',
-    marginVertical: moderateScale(4),
+    marginVertical: theme.spacing.xxxxSmall,
   },
   avatar: {
-    width: moderateScale(24),
-    height: moderateScale(24),
-    borderRadius: moderateScale(12),
+    width: theme.spacing.medium,
+    height: theme.spacing.medium,
+    borderRadius: theme.spacing.xxSmall,
   },
   avatarWrapper: {
-    marginRight: moderateScale(4),
+    marginRight: theme.spacing.xxxxSmall,
   },
   md3AvatarWrapper: {
-    marginLeft: moderateScale(4),
+    marginLeft: theme.spacing.xxxxSmall,
     marginRight: 0,
   },
   md3SelectedIcon: {
-    paddingLeft: moderateScale(4),
+    paddingLeft: theme.spacing.xxxxSmall,
   },
   avatarSelected: {
     position: 'absolute',
-    top: moderateScale(4),
-    left: moderateScale(4),
+    top: theme.spacing.xxxxSmall,
+    left: theme.spacing.xxxxSmall,
     backgroundColor: 'rgba(0, 0, 0, .29)',
   },
   closeButtonStyle: {

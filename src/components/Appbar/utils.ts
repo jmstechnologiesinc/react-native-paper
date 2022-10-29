@@ -53,8 +53,8 @@ type RenderAppbarContentProps = {
   mode?: AppbarModes;
 };
 
-export const DEFAULT_APPBAR_HEIGHT = moderateScale(56);
-const MD3_DEFAULT_APPBAR_HEIGHT = moderateScale(64);
+export const DEFAULT_APPBAR_HEIGHT = theme.spacing.xxxLarge;
+const MD3_DEFAULT_APPBAR_HEIGHT = theme.spacing.xxxxLarge;
 
 export const modeAppbarHeight = {
   small: MD3_DEFAULT_APPBAR_HEIGHT,
@@ -131,13 +131,13 @@ export const renderAppbarContent = ({
 
 const styles = StyleSheet.create({
   v2Spacing: {
-    marginLeft: moderateScale(8),
+    marginLeft: theme.spacing.xxxSmall,
   },
   v2CenterAlignedContent: {
     alignItems: 'center',
   },
   v3Spacing: {
-    marginLeft: moderateScale(12),
+    marginLeft: theme.spacing.xxSmall,
   },
   v3CenterAlignedContent: {
     ...StyleSheet.absoluteFillObject,

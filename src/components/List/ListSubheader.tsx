@@ -4,7 +4,6 @@ import color from 'color';
 
 import { moderateScale } from 'react-native-size-matters';
 
-
 import Text from '../Typography/Text';
 import theme from '../../styles/themes/v3/LightTheme';
 
@@ -57,7 +56,7 @@ ListSubheader.displayName = 'List.Subheader';
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: moderateScale(16),
+    paddingHorizontal: theme.spacing.xSmall,
     paddingVertical: moderateScale(13),
   },
 });
