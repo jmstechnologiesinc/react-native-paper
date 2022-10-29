@@ -10,9 +10,6 @@ import IconButton from '../IconButton/IconButton';
 import type { IconSource } from '../Icon';
 import theme from '../../styles/themes/v3/LightTheme';
 
-import { moderateScale } from 'react-native-size-matters';
-
-
 type Props = React.ComponentPropsWithoutRef<typeof IconButton> & {
   /**
    *  Custom color for action icon.
@@ -74,7 +71,7 @@ type Props = React.ComponentPropsWithoutRef<typeof IconButton> & {
  * ```
  */
 const AppbarAction = ({
-  size = moderateScale(24),
+  size = theme.spacing.medium,
   color: iconColor,
   icon,
   disabled,
