@@ -7,8 +7,6 @@ import {
   TextStyle,
 } from 'react-native';
 
-import { moderateScale } from 'react-native-size-matters';
-
 import theme from '../../styles/themes/v3/LightTheme';
 
 import ListSubheader from './ListSubheader';

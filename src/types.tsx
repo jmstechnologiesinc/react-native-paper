@@ -104,7 +104,13 @@ export type ThemeBase = {
     scale: number;
   };
 } & (
-  | { version: 2; colors: MD2Colors; isV3: false; fonts: Fonts }
+  | {
+      version: 2;
+      colors: MD2Colors;
+      isV3: false;
+      fonts: Fonts;
+      spacing: Spacing;
+    }
   | {
       version: 3;
       colors: MD3Colors;
