@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyleSheet, View, ViewStyle, Image, StyleProp } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
 
+import theme from '../../styles/themes/v3/LightTheme';
 
 import { grey200 } from '../../styles/themes/v2/colors';
 
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: undefined,
     width: undefined,
-    padding: moderateScale(16),
+    padding: theme.spacing.xSmall,
     justifyContent: 'flex-end',
   },
 });
