@@ -77,17 +77,17 @@ export type Spacing = {
   xxxSmall: number;
   xxSmall: number;
   xSmall: number;
+  small: number;
   medium: number;
+  xMedium: number;
+  xxMedium: number;
+  xxxMedium: number;
+  xxxxMedium: number;
   large: number;
   xLarge: number;
-  xMedium: number;
-  xxxLarge: number;
-  small: number;
   xxLarge: number;
-  xlarge: number;
-  xXlarge: number;
-  xxXlarge: number;
-  xxxXlarge: number;
+  xxxLarge: number;
+  xxxxLarge: number;
 };
 
 export type MD3Palette = {};
