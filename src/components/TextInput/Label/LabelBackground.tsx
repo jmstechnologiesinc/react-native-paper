@@ -8,7 +8,6 @@ import type { LabelBackgroundProps } from '../types';
 
 import { moderateScale } from 'react-native-size-matters';
 
-
 const LabelBackground = ({
   parentState,
   labelProps: {
@@ -108,7 +107,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: moderateScale(6),
     left: moderateScale(10),
-    width: moderateScale(12),
+    width: theme.spacing.xxSmall,
   },
   outlinedLabel: {
     position: 'absolute',
@@ -117,6 +116,6 @@ const styles = StyleSheet.create({
     color: 'transparent',
   },
   md3OutlinedLabel: {
-    left: moderateScale(8),
+    left: theme.spacing.xxxSmall,
   },
 });

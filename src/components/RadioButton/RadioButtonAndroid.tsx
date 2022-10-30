@@ -188,10 +188,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   radio: {
-    height: moderateScale(20),
-    width: moderateScale(20),
+    height: theme.spacing.small,
+    width: theme.spacing.small,
     borderRadius: moderateScale(10),
-    margin: moderateScale(8),
+    margin: theme.spacing.xxxSmall,
   },
   dot: {
     height: moderateScale(10),
