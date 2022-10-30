@@ -11,10 +11,7 @@ import {
 
 import theme from '../../styles/themes/v3/LightTheme';
 
-import { moderateScale } from 'react-native-size-matters';
-
-
-const defaultSize = moderateScale(64);
+const defaultSize = theme.spacing.xxxxLarge;
 
 export type AvatarImageSource =
   | ImageSourcePropType
@@ -103,7 +100,7 @@ const AvatarImage = ({
         {
           width: size,
           height: size,
-          borderRadius: size / moderateScale(2),
+          borderRadius: size / 2,
           backgroundColor,
         },
         style,
@@ -114,7 +111,7 @@ const AvatarImage = ({
       {typeof source !== 'function' && (
         <Image
           source={source}
-          style={{ width: size, height: size, borderRadius: size / moderateScale(2) }}
+          style={{ width: size, height: size, borderRadius: size / 2 }}
           onError={onError}
           onLayout={onLayout}
           onLoad={onLoad}

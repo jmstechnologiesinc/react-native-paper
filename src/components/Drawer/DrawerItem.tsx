@@ -90,7 +90,11 @@ const DrawerItem = ({
     ? theme.colors.onSurfaceVariant
     : color(theme.colors.text).alpha(0.68).rgb().string();
 
-  const labelMargin = icon ? (isV3 ? moderateScale(12) : moderateScale(32)) : 0;
+  const labelMargin = icon
+    ? isV3
+      ? theme.spacing.xxSmall
+      : theme.spacing.xxMedium
+    : 0;
   const borderRadius = (isV3 ? moderateScale(7) : moderateScale(1)) * roundness;
   const underlayColor = isV3
     ? color(backgroundColor)
@@ -119,7 +123,11 @@ const DrawerItem = ({
         <View style={[styles.wrapper, isV3 && styles.v3Wrapper]}>
           <View style={styles.content}>
             {icon ? (
-              <Icon source={icon} size={moderateScale(24)} color={contentColor} />
+              <Icon
+                source={icon}
+                size={theme.spacing.medium}
+                color={contentColor}
+              />
             ) : null}
             <Text
               variant="labelLarge"
@@ -150,23 +158,23 @@ DrawerItem.displayName = 'Drawer.Item';
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: moderateScale(10),
-    marginVertical: moderateScale(4),
+    marginVertical: theme.spacing.xxxxSmall,
   },
   v3Container: {
     justifyContent: 'center',
-    height: moderateScale(56),
-    marginLeft: moderateScale(12),
-    marginRight: moderateScale(12),
+    height: theme.spacing.xxxLarge,
+    marginLeft: theme.spacing.xxSmall,
+    marginRight: theme.spacing.xxSmall,
     marginVertical: 0,
   },
   wrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: moderateScale(8),
+    padding: theme.spacing.xxxSmall,
   },
   v3Wrapper: {
-    marginLeft: moderateScale(16),
-    marginRight: moderateScale(24),
+    marginLeft: theme.spacing.xSmall,
+    marginRight: theme.spacing.medium,
     padding: 0,
   },
   content: {
@@ -175,7 +183,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   label: {
-    marginRight: moderateScale(32),
+    marginRight: theme.spacing.xxMedium,
   },
 });
 
