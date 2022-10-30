@@ -53,7 +53,7 @@ export type Props = {
    */
   label?: string;
 
-    /**
+  /**
    * subLabel text of the button.
    */
   subLabel?: string;
@@ -90,8 +90,6 @@ const SegmentedButtonItem = ({
   segment,
   density = 'regular',
 }: Props) => {
-  
-
   const checkScale = React.useRef(new Animated.Value(0)).current;
 
   React.useEffect(() => {
@@ -126,9 +124,13 @@ const SegmentedButtonItem = ({
   });
   const rippleColor = color(textColor).alpha(0.12).rgb().string();
 
-  const iconSize = isV3 ? moderateScale(18) : moderateScale(16);
+  const iconSize = isV3 ? moderateScale(18) : theme.spacing.xSmall;
   const iconStyle = {
-    marginRight: label ? moderateScale(5) : checked && showSelectedCheck ? moderateScale(3) : 0,
+    marginRight: label
+      ? moderateScale(5)
+      : checked && showSelectedCheck
+      ? moderateScale(3)
+      : 0,
     ...(label && {
       transform: [
         {
@@ -160,15 +162,15 @@ const SegmentedButtonItem = ({
           textTransform: 'uppercase',
           fontWeight: '500',
         }
-        //  @ts-ignore:next-line
-      : theme.typescale.labelLarge),
+      : //  @ts-ignore:next-line
+        theme.typescale.labelLarge),
     color: textColor,
   };
 
-    const descriptionColor = theme.isV3
+  const descriptionColor = theme.isV3
     ? theme.colors.onSurfaceVariant
     : color(theme.colors.text).alpha(0.54).rgb().string();
-    
+
   return (
     <View style={[buttonStyle, styles.button, style]}>
       <TouchableRipple
@@ -183,7 +185,13 @@ const SegmentedButtonItem = ({
         testID={testID}
         style={rippleStyle}
       >
-        <View style={ subLabel ? [styles.subLabelContent, ] : [styles.content, { paddingVertical }] }>
+        <View
+          style={
+            subLabel
+              ? [styles.subLabelContent]
+              : [styles.content, { paddingVertical }]
+          }
+        >
           {checked && showSelectedCheck ? (
             <Animated.View
               testID={`${testID}-check-icon`}
@@ -209,14 +217,16 @@ const SegmentedButtonItem = ({
           >
             {label}
           </Text>
-          {subLabel ? <Text
-            variant={'bodyMedium'}
-            style={[styles.label, {color: descriptionColor}]}
-            selectable={false}
-            numberOfLines={1}
-          >
-            {subLabel}
-          </Text> : null}
+          {subLabel ? (
+            <Text
+              variant={'bodyMedium'}
+              style={[styles.label, { color: descriptionColor }]}
+              selectable={false}
+              numberOfLines={1}
+            >
+              {subLabel}
+            </Text>
+          ) : null}
         </View>
       </TouchableRipple>
     </View>
@@ -236,15 +246,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: moderateScale(9),
-    paddingHorizontal: moderateScale(16),
+    paddingHorizontal: theme.spacing.xSmall,
   },
   subLabelContent: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: moderateScale(9),   
+    paddingVertical: moderateScale(9),
   },
 });
 
 export default SegmentedButtonItem;
-
-

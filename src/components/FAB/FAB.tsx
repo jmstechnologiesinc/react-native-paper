@@ -207,8 +207,10 @@ const FAB = ({
 
   const isLargeSize = size === 'large';
   const isFlatMode = mode === 'flat';
-  const iconSize = isLargeSize ? moderateScale(36) : moderateScale(24);
-  const loadingIndicatorSize = isLargeSize ? moderateScale(24) : moderateScale(18);
+  const iconSize = isLargeSize ? theme.spacing.xxxMedium : theme.spacing.medium;
+  const loadingIndicatorSize = isLargeSize
+    ? theme.spacing.medium
+    : moderateScale(18);
 
   const fabStyle = getFabStyle({ customSize, size });
   const extendedStyle = getExtendedFabStyle({ customSize });
@@ -265,13 +267,13 @@ const FAB = ({
           {icon && loading !== true ? (
             <IconComponent
               source={icon}
-              size={customSize ? customSize / moderateScale(2) : iconSize}
+              size={customSize ? customSize / 2 : iconSize}
               color={foregroundColor}
             />
           ) : null}
           {loading ? (
             <ActivityIndicator
-              size={customSize ? customSize /  moderateScale(2) : loadingIndicatorSize}
+              size={customSize ? customSize / 2 : loadingIndicatorSize}
               color={foregroundColor}
             />
           ) : null}
@@ -304,7 +306,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   label: {
-    marginHorizontal: moderateScale(8),
+    marginHorizontal: theme.spacing.xxxSmall,
   },
   uppercaseLabel: {
     textTransform: 'uppercase',

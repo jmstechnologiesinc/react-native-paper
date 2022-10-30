@@ -7,7 +7,6 @@ import {
   TextStyle,
   LayoutChangeEvent,
 } from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
 import AnimatedText from './Typography/AnimatedText';
 import type { $Omit } from '../types';
 
@@ -164,11 +163,11 @@ const HelperText = ({
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: moderateScale(12),
-    paddingVertical: moderateScale(4),
+    fontSize: theme.spacing.xxSmall,
+    paddingVertical: theme.spacing.xxxxSmall,
   },
   padding: {
-    paddingHorizontal: moderateScale(12),
+    paddingHorizontal: theme.spacing.xxSmall,
   },
 });
 

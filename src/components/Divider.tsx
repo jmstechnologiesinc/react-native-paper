@@ -92,8 +92,8 @@ const styles = StyleSheet.create({
     marginLeft: moderateScale(72),
   },
   horizontalInset: {
-    marginLeft: moderateScale(28),
-    marginRight: moderateScale(28),
+    marginLeft: theme.spacing.xMedium,
+    marginRight: theme.spacing.xMedium,
   },
   bold: {
     height: moderateScale(1),

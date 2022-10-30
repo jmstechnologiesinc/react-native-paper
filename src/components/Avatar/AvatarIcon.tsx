@@ -5,10 +5,8 @@ import Icon, { IconSource } from '../Icon';
 import { white } from '../../styles/themes/v2/colors';
 import getContrastingColor from '../../utils/getContrastingColor';
 import theme from '../../styles/themes/v3/LightTheme';
-import { moderateScale } from 'react-native-size-matters';
 
-
-const defaultSize = moderateScale(64);
+const defaultSize = theme.spacing.xxxxLarge;
 
 type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
@@ -61,7 +59,7 @@ const Avatar = ({ icon, size = defaultSize, style, ...rest }: Props) => {
         {
           width: size,
           height: size,
-          borderRadius: size / moderateScale(2),
+          borderRadius: size / 2,
           backgroundColor,
         },
         styles.container,
@@ -69,7 +67,7 @@ const Avatar = ({ icon, size = defaultSize, style, ...rest }: Props) => {
       ]}
       {...rest}
     >
-      <Icon source={icon} color={textColor} size={size * moderateScale(0.6)} />
+      <Icon source={icon} color={textColor} size={size * 0.6} />
     </View>
   );
 };

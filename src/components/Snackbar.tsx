@@ -183,7 +183,7 @@ const Snackbar = ({
     ...actionProps
   } = action || {};
 
-  const marginRight = action ? 0 : moderateScale(16);
+  const marginRight = action ? 0 : theme.spacing.xSmall;
   const textColor = theme.isV3
     ? theme.colors.inversePrimary
     : theme.colors.accent;
@@ -269,21 +269,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    margin: moderateScale(8),
-    borderRadius: moderateScale(4),
+    margin: theme.spacing.xxxSmall,
+    borderRadius: theme.spacing.xxxxSmall,
   },
   content: {
-    marginLeft: moderateScale(16),
+    marginLeft: theme.spacing.xSmall,
     marginVertical: moderateScale(14),
     flexWrap: 'wrap',
     flex: 1,
   },
   button: {
-    marginHorizontal: (8),
-    marginVertical: 6,
+    marginHorizontal: theme.spacing.xxxSmall,
+    marginVertical: moderateScale(6),
   },
   elevation: {
-    elevation: 6,
+    elevation: moderateScale(6),
   },
 });
 

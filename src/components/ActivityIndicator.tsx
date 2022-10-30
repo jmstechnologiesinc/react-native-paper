@@ -8,7 +8,6 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
 
 import theme from '../styles/themes/v3/LightTheme';
 
@@ -135,11 +134,11 @@ const ActivityIndicator = ({
   const size =
     typeof indicatorSize === 'string'
       ? indicatorSize === 'small'
-        ? moderateScale(24)
-        : moderateScale(48)
+        ? theme.spacing.medium
+        : theme.spacing.xLarge
       : indicatorSize
       ? indicatorSize
-      : moderateScale(24);
+      : theme.spacing.medium;
 
   const frames = (60 * DURATION) / 1000;
   const easing = Easing.bezier(0.4, 0.0, 0.7, 1.0);
