@@ -28,8 +28,6 @@ import useIsKeyboardShown from '../../utils/useIsKeyboardShown';
 import BottomNavigationRouteScreen from './BottomNavigationRouteScreen';
 import theme from '../../styles/themes/v3/LightTheme';
 
-
-
 type Route = {
   key: string;
   title?: string;
@@ -251,10 +249,10 @@ type Props = {
 const MIN_RIPPLE_SCALE = 0.001; // Minimum scale is not 0 due to bug with animation
 const MIN_TAB_WIDTH = moderateScale(96);
 const MAX_TAB_WIDTH = moderateScale(168);
-const BAR_HEIGHT = moderateScale(56);
+const BAR_HEIGHT = theme.spacing.xxxLarge;
 const BOTTOM_INSET = getBottomSpace();
 const FAR_FAR_AWAY = Platform.OS === 'web' ? 0 : 9999;
-const OUTLINE_WIDTH = moderateScale(64);
+const OUTLINE_WIDTH = theme.spacing.xxxxLarge;
 
 const Touchable = ({
   route: _0,
@@ -814,7 +812,11 @@ const BottomNavigation = ({
                 : theme.colors.onSurfaceVariant;
 
               const badgeStyle = {
-                top: !isV3 ? -2 : typeof badge === 'boolean' ? moderateScale(4) : moderateScale(2),
+                top: !isV3
+                  ? -2
+                  : typeof badge === 'boolean'
+                  ? theme.spacing.xxxxSmall
+                  : moderateScale(2),
                 right:
                   (badge != null && typeof badge !== 'boolean'
                     ? String(badge).length * -2
@@ -886,7 +888,7 @@ const BottomNavigation = ({
                           <Icon
                             source={route.focusedIcon as IconSource}
                             color={activeTintColor}
-                            size={moderateScale(24)}
+                            size={theme.spacing.medium}
                           />
                         )}
                       </Animated.View>
@@ -919,9 +921,17 @@ const BottomNavigation = ({
                       </Animated.View>
                       <View style={[styles.badgeContainer, badgeStyle]}>
                         {typeof badge === 'boolean' ? (
-                          <Badge visible={badge} size={isV3 ? moderateScale(6) :  moderateScale(8)} />
+                          <Badge
+                            visible={badge}
+                            size={
+                              isV3 ? moderateScale(6) : theme.spacing.xxxSmall
+                            }
+                          />
                         ) : (
-                          <Badge visible={badge != null} size={ moderateScale(16)}>
+                          <Badge
+                            visible={badge != null}
+                            size={theme.spacing.xSmall}
+                          >
                             {badge}
                           </Badge>
                         )}
@@ -1077,16 +1087,16 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   iconContainer: {
-    height: moderateScale(24),
-    width: moderateScale(24),
+    height: theme.spacing.medium,
+    width: theme.spacing.medium,
     marginTop: moderateScale(2),
-    marginHorizontal: moderateScale(12),
+    marginHorizontal: theme.spacing.xxSmall,
     alignSelf: 'center',
   },
   v3IconContainer: {
-    height: moderateScale(32),
-    width: moderateScale(32),
-    marginBottom: moderateScale(4),
+    height: theme.spacing.xxMedium,
+    width: theme.spacing.xxMedium,
+    marginBottom: theme.spacing.xxxxSmall,
     marginTop: 0,
     justifyContent: 'center',
   },
@@ -1095,10 +1105,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   v3IconWrapper: {
-    top: moderateScale(4),
+    top: theme.spacing.xxxxSmall,
   },
   labelContainer: {
-    height: moderateScale(16),
+    height: theme.spacing.xSmall,
     paddingBottom: moderateScale(2),
   },
   labelWrapper: {
@@ -1106,7 +1116,7 @@ const styles = StyleSheet.create({
   },
   // eslint-disable-next-line react-native/no-color-literals
   label: {
-    fontSize: moderateScale(12),
+    fontSize: theme.spacing.xxSmall,
     height: BAR_HEIGHT,
     textAlign: 'center',
     backgroundColor: 'transparent',
@@ -1122,8 +1132,8 @@ const styles = StyleSheet.create({
     left: 0,
   },
   v3TouchableContainer: {
-    paddingTop: moderateScale(12),
-    paddingBottom: moderateScale(16),
+    paddingTop: theme.spacing.xxSmall,
+    paddingBottom: theme.spacing.xxSmall,
   },
   v3NoLabelContainer: {
     height: moderateScale(80),
