@@ -3,6 +3,8 @@ import color from 'color';
 import { moderateScale } from 'react-native-size-matters';
 import type { Theme } from '../../types';
 import { black, white } from '../../styles/themes/v2/colors';
+import theme from '../../styles/themes/v3/LightTheme';
+
 
 type BaseProps = {
   theme: Theme;
@@ -23,9 +25,9 @@ export const getSegmentedButtonDensityPadding = ({
     case 'small':
       return padding - moderateScale(2);
     case 'medium':
-      return padding - moderateScale(4);
+      return padding -theme.spacing.xxxxSmall;
     case 'high':
-      return padding - moderateScale(8);
+      return padding - theme.spacing.xxxSmall;
     default:
       return padding;
   }
