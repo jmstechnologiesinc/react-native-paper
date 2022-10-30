@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     fontSize: moderateScale(18),
-    paddingLeft: moderateScale(8),
+    paddingLeft: theme.spacing.xxxSmall,
     alignSelf: 'stretch',
     textAlign: I18nManager.isRTL ? 'right' : 'left',
     minWidth: 0,

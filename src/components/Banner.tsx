@@ -214,7 +214,7 @@ const Banner = ({
           <View style={styles.content}>
             {icon ? (
               <View style={styles.icon}>
-                <Icon source={icon} size={moderateScale(40)} />
+                <Icon source={icon} size={theme.spacing.xxxxMedium} />
               </View>
             ) : null}
             <Text
@@ -267,24 +267,24 @@ const styles = StyleSheet.create({
   content: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    marginHorizontal: moderateScale(8),
-    marginTop: moderateScale(16),
+    marginHorizontal: theme.spacing.xxxSmall,
+    marginTop: theme.spacing.xSmall,
     marginBottom: 0,
   },
   icon: {
-    margin: moderateScale(8),
+    margin: theme.spacing.xxxSmall,
   },
   message: {
     flex: 1,
-    margin: moderateScale(8),
+    margin: theme.spacing.xxxSmall,
   },
   actions: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    margin: moderateScale(4),
+    margin: theme.spacing.xxxxSmall,
   },
   button: {
-    margin: moderateScale(4),
+    margin: theme.spacing.xxxxSmall,
   },
   elevation: {
     elevation: 1,
