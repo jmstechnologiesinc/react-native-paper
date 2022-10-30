@@ -4,6 +4,7 @@ import { black, white, pinkA100 } from './colors';
 import configureFonts from '../../fonts';
 import type { ThemeBase } from '../../../types';
 
+//  @ts-ignore:next-line
 const DarkTheme: ThemeBase = {
   ...LightTheme,
   dark: true,

@@ -6,7 +6,7 @@ import {
   ViewStyle,
   TextStyle,
 } from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
+
 import { RadioButtonContext, RadioButtonContextType } from './RadioButtonGroup';
 import { handlePress, isChecked } from './utils';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
@@ -224,14 +224,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: moderateScale(8),
-    paddingHorizontal: moderateScale(16),
+    paddingVertical: theme.spacing.xxxSmall,
+    paddingHorizontal: theme.spacing.xSmall,
   },
   label: {
     flexShrink: 1,
     flexGrow: 1,
   },
   font: {
-    fontSize: moderateScale(16),
+    fontSize: theme.spacing.xSmall,
   },
 });

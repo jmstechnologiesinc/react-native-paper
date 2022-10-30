@@ -2,7 +2,7 @@ import color from 'color';
 import { black, white, pinkA400 } from './colors';
 import configureFonts from '../../fonts';
 import type { ThemeBase } from '../../../types';
-
+//  @ts-ignore:next-line
 const LightTheme: ThemeBase = {
   dark: false,
   roundness: 4,
