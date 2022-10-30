@@ -156,7 +156,10 @@ const CardTitle = ({
     <View
       style={[
         styles.container,
-        { minHeight: subtitle || left || right ? moderateScale(72) : moderateScale(50) },
+        {
+          minHeight:
+            subtitle || left || right ? moderateScale(72) : moderateScale(50),
+        },
         style,
       ]}
     >
@@ -194,7 +197,9 @@ const CardTitle = ({
           </TextComponent>
         )}
       </View>
-      <View style={rightStyle}>{right ? right({ size: moderateScale(24) }) : null}</View>
+      <View style={rightStyle}>
+        {right ? right({ size: theme.spacing.medium }) : null}
+      </View>
     </View>
   );
 };
@@ -206,12 +211,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingLeft: moderateScale(16),
+    paddingLeft: theme.spacing.xSmall,
   },
 
   left: {
     justifyContent: 'center',
-    marginRight: moderateScale(16),
+    marginRight: theme.spacing.xSmall,
     height: LEFT_SIZE,
     width: LEFT_SIZE,
   },
@@ -224,13 +229,13 @@ const styles = StyleSheet.create({
 
   title: {
     minHeight: moderateScale(30),
-    paddingRight: moderateScale(16),
+    paddingRight: theme.spacing.xSmall,
   },
 
   subtitle: {
     minHeight: moderateScale(20),
     marginVertical: 0,
-    paddingRight: moderateScale(16),
+    paddingRight: theme.spacing.xSmall,
   },
 });
 

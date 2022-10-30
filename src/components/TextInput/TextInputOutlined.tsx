@@ -384,7 +384,9 @@ const Outline = ({
       {
         backgroundColor,
         borderRadius: roundness,
-        borderWidth: (isV3 ? hasActiveOutline : focused) ? moderateScale(2) : moderateScale(1),
+        borderWidth: (isV3 ? hasActiveOutline : focused)
+          ? moderateScale(2)
+          : moderateScale(1),
         borderColor: hasActiveOutline ? activeColor : outlineColor,
       },
     ]}
@@ -408,11 +410,11 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   inputOutlined: {
-    paddingTop: moderateScale(8),
-    paddingBottom: moderateScale(8),
+    paddingTop: theme.spacing.xxxSmall,
+    paddingBottom: theme.spacing.xxxSmall,
   },
   inputOutlinedDense: {
-    paddingTop: moderateScale(4),
-    paddingBottom: moderateScale(4),
+    paddingTop: theme.spacing.xxxxSmall,
+    paddingBottom: theme.spacing.xxxxSmall,
   },
 });
