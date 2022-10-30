@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { TextProps, StyleSheet } from 'react-native';
-import StyledText from './StyledText';
 import { moderateScale } from 'react-native-size-matters';
-
+import StyledText from './StyledText';
+import theme from '../../../styles/themes/v3/LightTheme';
 
 type Props = TextProps & {
   children: React.ReactNode;
@@ -43,7 +43,7 @@ export default Paragraph;
 const styles = StyleSheet.create({
   text: {
     fontSize: moderateScale(14),
-    lineHeight: moderateScale(20),
+    lineHeight: theme.spacing.small,
     marginVertical: moderateScale(2),
     letterSpacing: moderateScale(0.25),
   },
