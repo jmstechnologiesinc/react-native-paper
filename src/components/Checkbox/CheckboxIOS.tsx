@@ -49,13 +49,7 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
  *   </figure>
  * </div>
  */
-const CheckboxIOS = ({
-  status,
-  disabled,
-  onPress,
-  testID,
-  ...rest
-}: Props) => {
+const CheckboxIOS = ({ status, disabled, onPress, testID, ...rest }: Props) => {
   const checked = status === 'checked';
   const indeterminate = status === 'indeterminate';
 
@@ -65,9 +59,7 @@ const CheckboxIOS = ({
     customColor: rest.color,
   });
 
-  const icon = indeterminate ? 'checkbox-marked' : "checkbox-blank-outline"
-
-
+  const icon = indeterminate ? 'checkbox-marked' : 'checkbox-blank-outline';
 
   return (
     <TouchableRipple
@@ -86,7 +78,7 @@ const CheckboxIOS = ({
         <MaterialCommunityIcon
           allowFontScaling={false}
           name={icon}
-          size={moderateScale(24)}
+          size={theme.spacing.medium}
           color={checkedColor}
           direction="ltr"
         />

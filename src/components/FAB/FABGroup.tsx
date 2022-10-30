@@ -305,8 +305,8 @@ const FABGroup = ({
                 {
                   marginHorizontal:
                     typeof it.size === 'undefined' || it.size === 'small'
-                      ? moderateScale(24)
-                      : moderateScale(16),
+                      ? theme.spacing.medium
+                      : theme.spacing.xSmall,
                 },
               ]}
               pointerEvents={open ? 'box-none' : 'none'}
@@ -416,8 +416,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   fab: {
-    marginHorizontal: moderateScale(16),
-    marginBottom: moderateScale(16),
+    marginHorizontal: theme.spacing.xSmall,
+    marginBottom: theme.spacing.xSmall,
     marginTop: 0,
   },
   backdrop: {
@@ -425,14 +425,14 @@ const styles = StyleSheet.create({
   },
   label: {
     borderRadius: moderateScale(5),
-    paddingHorizontal: moderateScale(12),
+    paddingHorizontal: theme.spacing.xxSmall,
     paddingVertical: moderateScale(6),
-    marginVertical: moderateScale(8),
-    marginHorizontal: moderateScale(16),
+    marginVertical: theme.spacing.xxxSmall,
+    marginHorizontal: theme.spacing.xSmall,
     elevation: 2,
   },
   item: {
-    marginBottom: moderateScale(16),
+    marginBottom: theme.spacing.xSmall,
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
