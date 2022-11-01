@@ -73,27 +73,27 @@ export type MD3Colors = {
 };
 
 export type Spacing = {
-  base: string;
-  x1: string;
-  x2: string;
-  x3: string;
-  x4: string;
-  x5: string;
-  x6: string;
-  x7: string;
-  x8: string;
-  x9: string;
-  x10: string;
-  x11: string;
-  x12: string;
-  x13: string;
-  x14: string;
-  x15: string;
-  x16: string;
-  x17: string;
-  x18: string;
-  x19: string;
-  x20: string;
+  base: number;
+  x1: number;
+  x2: number;
+  x3: number;
+  x4: number;
+  x5: number;
+  x6: number;
+  x7: number;
+  x8: number;
+  x9: number;
+  x10: number;
+  x11: number;
+  x12: number;
+  x13: number;
+  x14: number;
+  x15: number;
+  x16: number;
+  x17: number;
+  x18: number;
+  x19: number;
+  x20: number;
 };
 
 export type MD3Palette = {};
