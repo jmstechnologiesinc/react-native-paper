@@ -183,7 +183,7 @@ const Snackbar = ({
     ...actionProps
   } = action || {};
 
-  const marginRight = action ? 0 : theme.spacing.xSmall;
+  const marginRight = action ? 0 : theme.spacing.x4;
   const textColor = theme.isV3
     ? theme.colors.inversePrimary
     : theme.colors.accent;
@@ -269,17 +269,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    margin: theme.spacing.xxxSmall,
-    borderRadius: theme.spacing.xxxxSmall,
+    margin: theme.spacing.x2,
+    borderRadius: theme.spacing.x1,
   },
   content: {
-    marginLeft: theme.spacing.xSmall,
+    marginLeft: theme.spacing.x4,
     marginVertical: moderateScale(14),
     flexWrap: 'wrap',
     flex: 1,
   },
   button: {
-    marginHorizontal: theme.spacing.xxxSmall,
+    marginHorizontal: theme.spacing.x2,
     marginVertical: moderateScale(6),
   },
   elevation: {

@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: moderateScale(6),
     left: moderateScale(10),
-    width: theme.spacing.xxSmall,
+    width: theme.spacing.x3,
   },
   outlinedLabel: {
     position: 'absolute',
@@ -116,6 +116,6 @@ const styles = StyleSheet.create({
     color: 'transparent',
   },
   md3OutlinedLabel: {
-    left: theme.spacing.xxxSmall,
+    left: theme.spacing.x2,
   },
 });

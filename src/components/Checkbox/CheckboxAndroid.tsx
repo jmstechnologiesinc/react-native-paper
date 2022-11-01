@@ -138,7 +138,7 @@ const CheckboxAndroid = ({
         <MaterialCommunityIcon
           allowFontScaling={false}
           name={icon}
-          size={theme.spacing.medium}
+          size={theme.spacing.x6}
           color={selectionControlColor}
           direction="ltr"
         />
@@ -161,8 +161,8 @@ CheckboxAndroid.displayName = 'Checkbox.Android';
 const styles = StyleSheet.create({
   container: {
     borderRadius: moderateScale(18),
-    width: theme.spacing.xxxMedium,
-    height: theme.spacing.xxxMedium,
+    width: theme.spacing.x9,
+    height: theme.spacing.x9,
     padding: moderateScale(6),
   },
   fillContainer: {

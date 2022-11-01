@@ -64,7 +64,7 @@ const DrawerSection = ({ children, title, style, ...rest }: Props) => {
   const titleColor = isV3
     ? theme.colors.onSurfaceVariant
     : color(theme.colors.text).alpha(0.54).rgb().string();
-  const titleMargin = isV3 ? theme.spacing.xMedium : theme.spacing.xSmall;
+  const titleMargin = isV3 ? theme.spacing.x7 : theme.spacing.x4;
   return (
     <View style={[styles.container, style]} {...rest}>
       {title && (
@@ -99,17 +99,17 @@ DrawerSection.displayName = 'Drawer.Section';
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: theme.spacing.xxxxSmall,
+    marginBottom: theme.spacing.x1,
   },
   titleContainer: {
-    height: theme.spacing.xxxxMedium,
+    height: theme.spacing.x10,
     justifyContent: 'center',
   },
   v3TitleContainer: {
-    height: theme.spacing.xxxLarge,
+    height: theme.spacing.x14,
   },
   divider: {
-    marginTop: theme.spacing.xxxxSmall,
+    marginTop: theme.spacing.x1,
   },
   v3Divider: {
     backgroundColor: MD3Colors.neutralVariant50,

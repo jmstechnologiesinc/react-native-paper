@@ -78,7 +78,7 @@ const CheckboxIOS = ({ status, disabled, onPress, testID, ...rest }: Props) => {
         <MaterialCommunityIcon
           allowFontScaling={false}
           name={icon}
-          size={theme.spacing.medium}
+          size={theme.spacing.x6}
           color={checkedColor}
           direction="ltr"
         />

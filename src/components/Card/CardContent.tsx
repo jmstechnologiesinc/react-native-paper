@@ -91,16 +91,16 @@ CardContent.displayName = 'Card.Content';
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: theme.spacing.xSmall,
+    paddingHorizontal: theme.spacing.x4,
   },
   first: {
-    paddingTop: theme.spacing.xSmall,
+    paddingTop: theme.spacing.x4,
   },
   last: {
-    paddingBottom: theme.spacing.xSmall,
+    paddingBottom: theme.spacing.x4,
   },
   only: {
-    paddingVertical: theme.spacing.xSmall,
+    paddingVertical: theme.spacing.x4,
   },
 });
 

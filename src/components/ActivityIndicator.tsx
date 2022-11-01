@@ -134,11 +134,11 @@ const ActivityIndicator = ({
   const size =
     typeof indicatorSize === 'string'
       ? indicatorSize === 'small'
-        ? theme.spacing.medium
-        : theme.spacing.xLarge
+        ? theme.spacing.x6
+        : theme.spacing.x12
       : indicatorSize
       ? indicatorSize
-      : theme.spacing.medium;
+      : theme.spacing.x6;
 
   const frames = (60 * DURATION) / 1000;
   const easing = Easing.bezier(0.4, 0.0, 0.7, 1.0);

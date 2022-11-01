@@ -325,22 +325,22 @@ export const getFABGroupColors = () => {
 };
 
 const standardSize = {
-  height: theme.spacing.xxxLarge,
-  width: theme.spacing.xxxLarge,
-  borderRadius: theme.spacing.xMedium,
+  height: theme.spacing.x14,
+  width: theme.spacing.x14,
+  borderRadius: theme.spacing.x7,
 };
 const smallSize = {
-  height: theme.spacing.xxxxMedium,
-  width: theme.spacing.xxxxMedium,
-  borderRadius: theme.spacing.xMedium,
+  height: theme.spacing.x10,
+  width: theme.spacing.x10,
+  borderRadius: theme.spacing.x7,
 };
 const v3SmallSize = {
-  height: theme.spacing.xxxxMedium,
-  width: theme.spacing.xxxxMedium,
+  height: theme.spacing.x10,
+  width: theme.spacing.x10,
 };
 const v3MediumSize = {
-  height: theme.spacing.xxxLarge,
-  width: theme.spacing.xxxLarge,
+  height: theme.spacing.x14,
+  width: theme.spacing.x14,
 };
 const v3LargeSize = {
   height: moderateScale(96),
@@ -369,7 +369,7 @@ export const getFabStyle = ({
       case 'small':
         return { ...v3SmallSize, borderRadius: moderateScale(3) * roundness };
       case 'medium':
-        return { ...v3MediumSize, borderRadius: theme.spacing.xxxxSmall * roundness };
+        return { ...v3MediumSize, borderRadius: theme.spacing.x1 * roundness };
       case 'large':
         return { ...v3LargeSize, borderRadius: moderateScale(7) * roundness };
     }
@@ -383,18 +383,18 @@ export const getFabStyle = ({
 
 const extended = {
   height: moderateScale(18),
-  paddingHorizontal: theme.spacing.xSmall,
+  paddingHorizontal: theme.spacing.x4,
 };
 
 const v3Extended = {
-  height: theme.spacing.xxxLarge,
-  borderRadius: theme.spacing.xSmall,
-  paddingHorizontal: theme.spacing.xSmall,
+  height: theme.spacing.x14,
+  borderRadius: theme.spacing.x4,
+  paddingHorizontal: theme.spacing.x4,
 };
 
 const getExtendedFabDimensions = (customSize: number) => ({
   height: customSize,
-  paddingHorizontal: theme.spacing.xSmall,
+  paddingHorizontal: theme.spacing.x4,
 });
 
 export const getExtendedFabStyle = ({

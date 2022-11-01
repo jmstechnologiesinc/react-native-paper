@@ -100,7 +100,7 @@ type Props = $RemoveChildren<typeof Surface> & {
   testID?: string;
 };
 
-const SIZE = moderateScale(56);
+const SIZE = theme.spacing.x14;
 const SCALE = 0.9;
 
 /**
@@ -423,7 +423,7 @@ const AnimatedFAB = ({
         style={[styles.iconWrapper, combinedStyles.iconWrapper]}
         pointerEvents="none"
       >
-        <Icon source={icon} size={moderateScale(24)} color={foregroundColor} />
+        <Icon source={icon} size={theme.spacing.x6} color={foregroundColor} />
       </Animated.View>
 
       <View pointerEvents="none">

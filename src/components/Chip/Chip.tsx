@@ -189,10 +189,8 @@ const Chip = ({
   };
 
   const opacity = isV3 ? 0.38 : 0.26;
-  const defaultBorderRadius = isV3
-    ? theme.spacing.xxxSmall
-    : theme.spacing.xSmall;
-  const iconSize = isV3 ? moderateScale(18) : theme.spacing.xSmall;
+  const defaultBorderRadius = isV3 ? theme.spacing.x2 : theme.spacing.x4;
+  const iconSize = isV3 ? moderateScale(18) : theme.spacing.x4;
 
   const {
     backgroundColor: customBackgroundColor,
@@ -222,11 +220,11 @@ const Chip = ({
   const elevationStyle = isV3 || Platform.OS === 'android' ? elevation : 0;
   const multiplier = isV3 ? (compact ? 1.5 : 2) : 1;
   const labelSpacings = {
-    marginRight: onClose ? 0 : theme.spacing.xxxSmall * multiplier,
+    marginRight: onClose ? 0 : theme.spacing.x2 * multiplier,
     marginLeft:
       avatar || icon || selected
-        ? theme.spacing.xxxxSmall * multiplier
-        : theme.spacing.xxxSmall * multiplier,
+        ? theme.spacing.x1 * multiplier
+        : theme.spacing.x2 * multiplier,
   };
   const contentSpacings = {
     paddingRight: isV3
@@ -234,8 +232,8 @@ const Chip = ({
         ? moderateScale(34)
         : 0
       : onClose
-      ? theme.spacing.xxMedium
-      : theme.spacing.xxxxSmall,
+      ? theme.spacing.x8
+      : theme.spacing.x1,
   };
 
   return (
@@ -398,7 +396,7 @@ const styles = StyleSheet.create({
   content: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: theme.spacing.xxxxSmall,
+    paddingLeft: theme.spacing.x1,
     position: 'relative',
     flexGrow: 1,
   },
@@ -406,45 +404,45 @@ const styles = StyleSheet.create({
     paddingLeft: 0,
   },
   icon: {
-    padding: theme.spacing.xxxxSmall,
+    padding: theme.spacing.x1,
     alignSelf: 'center',
   },
   md3Icon: {
-    paddingLeft: theme.spacing.xxxSmall,
+    paddingLeft: theme.spacing.x2,
     paddingRight: 0,
   },
   closeIcon: {
-    marginRight: theme.spacing.xxxxSmall,
+    marginRight: theme.spacing.x1,
   },
   md3CloseIcon: {
-    marginRight: theme.spacing.xxxSmall,
+    marginRight: theme.spacing.x2,
     padding: 0,
   },
   text: {
-    minHeight: theme.spacing.medium,
-    lineHeight: theme.spacing.medium,
+    minHeight: theme.spacing.x6,
+    lineHeight: theme.spacing.x6,
     textAlignVertical: 'center',
-    marginVertical: theme.spacing.xxxxSmall,
+    marginVertical: theme.spacing.x1,
   },
   avatar: {
-    width: theme.spacing.medium,
-    height: theme.spacing.medium,
-    borderRadius: theme.spacing.xxSmall,
+    width: theme.spacing.x6,
+    height: theme.spacing.x6,
+    borderRadius: theme.spacing.x3,
   },
   avatarWrapper: {
-    marginRight: theme.spacing.xxxxSmall,
+    marginRight: theme.spacing.x1,
   },
   md3AvatarWrapper: {
-    marginLeft: theme.spacing.xxxxSmall,
+    marginLeft: theme.spacing.x1,
     marginRight: 0,
   },
   md3SelectedIcon: {
-    paddingLeft: theme.spacing.xxxxSmall,
+    paddingLeft: theme.spacing.x1,
   },
   avatarSelected: {
     position: 'absolute',
-    top: theme.spacing.xxxxSmall,
-    left: theme.spacing.xxxxSmall,
+    top: theme.spacing.x1,
+    left: theme.spacing.x1,
     backgroundColor: 'rgba(0, 0, 0, .29)',
   },
   closeButtonStyle: {

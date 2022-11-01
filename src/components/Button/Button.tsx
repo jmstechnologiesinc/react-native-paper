@@ -219,7 +219,7 @@ const Button = ({
   };
 
   const borderRadius = (isV3 ? moderateScale(5) : moderateScale(1)) * roundness;
-  const iconSize = isV3 ? moderateScale(18) : moderateScale(16);
+  const iconSize = isV3 ? moderateScale(18) : theme.spacing.x4;
 
   const { backgroundColor, borderColor, textColor, borderWidth } =
     getButtonColors({
@@ -350,7 +350,7 @@ const Button = ({
 
 const styles = StyleSheet.create({
   button: {
-    minWidth: theme.spacing.xxxxLarge,
+    minWidth: theme.spacing.x16,
     borderStyle: 'solid',
   },
   compact: {
@@ -362,52 +362,52 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   icon: {
-    marginLeft: theme.spacing.xxSmall,
-    marginRight: -theme.spacing.xxxxSmall,
+    marginLeft: theme.spacing.x3,
+    marginRight: -theme.spacing.x1,
   },
   iconReverse: {
-    marginRight: theme.spacing.xxSmall,
-    marginLeft: -theme.spacing.xxxxSmall,
+    marginRight: theme.spacing.x3,
+    marginLeft: -theme.spacing.x1,
   },
   md3Icon: {
-    marginLeft: theme.spacing.xSmall,
-    marginRight: -theme.spacing.xSmall,
+    marginLeft: theme.spacing.x4,
+    marginRight: -theme.spacing.x4,
   },
   md3IconReverse: {
-    marginLeft: -theme.spacing.xSmall,
-    marginRight: theme.spacing.xSmall,
+    marginLeft: -theme.spacing.x4,
+    marginRight: theme.spacing.x4,
   },
   md3IconTextMode: {
-    marginLeft: theme.spacing.xxSmall,
-    marginRight: -theme.spacing.xxxSmall,
+    marginLeft: theme.spacing.x3,
+    marginRight: -theme.spacing.x2,
   },
   md3IconReverseTextMode: {
-    marginLeft: -theme.spacing.xxxSmall,
-    marginRight: theme.spacing.xxSmall,
+    marginLeft: -theme.spacing.x2,
+    marginRight: theme.spacing.x3,
   },
   label: {
     textAlign: 'center',
     marginVertical: moderateScale(9),
-    marginHorizontal: theme.spacing.xSmall,
+    marginHorizontal: theme.spacing.x4,
   },
   md2Label: {
     letterSpacing: moderateScale(1),
   },
   compactLabel: {
-    marginHorizontal: theme.spacing.xxxSmall,
+    marginHorizontal: theme.spacing.x2,
   },
   uppercaseLabel: {
     textTransform: 'uppercase',
   },
   md3Label: {
     marginVertical: moderateScale(10),
-    marginHorizontal: theme.spacing.medium,
+    marginHorizontal: theme.spacing.x6,
   },
   md3LabelText: {
-    marginHorizontal: theme.spacing.xxSmall,
+    marginHorizontal: theme.spacing.x3,
   },
   md3LabelTextAddons: {
-    marginHorizontal: theme.spacing.xSmall,
+    marginHorizontal: theme.spacing.x4,
   },
 });
 

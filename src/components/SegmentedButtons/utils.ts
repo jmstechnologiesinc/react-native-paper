@@ -25,9 +25,9 @@ export const getSegmentedButtonDensityPadding = ({
     case 'small':
       return padding - moderateScale(2);
     case 'medium':
-      return padding -theme.spacing.xxxxSmall;
+      return padding -theme.spacing.x1;
     case 'high':
-      return padding - theme.spacing.xxxSmall;
+      return padding - theme.spacing.x2;
     default:
       return padding;
   }

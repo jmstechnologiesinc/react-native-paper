@@ -410,11 +410,11 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   inputOutlined: {
-    paddingTop: theme.spacing.xxxSmall,
-    paddingBottom: theme.spacing.xxxSmall,
+    paddingTop: theme.spacing.x2,
+    paddingBottom: theme.spacing.x2,
   },
   inputOutlinedDense: {
-    paddingTop: theme.spacing.xxxxSmall,
-    paddingBottom: theme.spacing.xxxxSmall,
+    paddingTop: theme.spacing.x1,
+    paddingBottom: theme.spacing.x1,
   },
 });

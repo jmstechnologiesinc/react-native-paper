@@ -250,23 +250,23 @@ ListItem.displayName = 'List.Item';
 
 const styles = StyleSheet.create({
   container: {
-    padding: theme.spacing.xxxSmall,
+    padding: theme.spacing.x2,
   },
   row: {
     flexDirection: 'row',
   },
   title: {
-    fontSize: theme.spacing.xSmall,
+    fontSize: theme.spacing.x4,
   },
   description: {
     fontSize: moderateScale(14),
   },
   marginVerticalNone: { marginVertical: 0 },
-  iconMarginLeft: { marginLeft: 0, marginRight: theme.spacing.xSmall },
+  iconMarginLeft: { marginLeft: 0, marginRight: theme.spacing.x4 },
   iconMarginRight: { marginRight: 0 },
   item: {
     marginVertical: moderateScale(6),
-    paddingLeft: theme.spacing.xxxSmall,
+    paddingLeft: theme.spacing.x2,
   },
   content: {
     flex: 1,

@@ -124,7 +124,7 @@ const SegmentedButtonItem = ({
   });
   const rippleColor = color(textColor).alpha(0.12).rgb().string();
 
-  const iconSize = isV3 ? moderateScale(18) : theme.spacing.xSmall;
+  const iconSize = isV3 ? moderateScale(18) : theme.spacing.x4;
   const iconStyle = {
     marginRight: label
       ? moderateScale(5)
@@ -235,7 +235,7 @@ const SegmentedButtonItem = ({
 
 const styles = StyleSheet.create({
   button: {
-    minWidth: moderateScale(76),
+    minWidth: theme.spacing.x19,
     borderStyle: 'solid',
   },
   label: {
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: moderateScale(9),
-    paddingHorizontal: theme.spacing.xSmall,
+    paddingHorizontal: theme.spacing.x4,
   },
   subLabelContent: {
     alignItems: 'center',

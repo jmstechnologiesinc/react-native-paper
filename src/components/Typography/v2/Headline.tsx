@@ -47,8 +47,8 @@ export default Headline;
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: theme.spacing.medium,
-    lineHeight: theme.spacing.xxMedium,
+    fontSize: theme.spacing.x6,
+    lineHeight: theme.spacing.x8,
     marginVertical: moderateScale(2),
     letterSpacing: 0,
   },

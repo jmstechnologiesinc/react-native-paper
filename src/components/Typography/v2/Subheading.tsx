@@ -44,8 +44,8 @@ export default Subheading;
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: theme.spacing.xSmall,
-    lineHeight: theme.spacing.medium,
+    fontSize: theme.spacing.x4,
+    lineHeight: theme.spacing.x6,
     marginVertical: moderateScale(2),
     letterSpacing: moderateScale(0.5),
   },

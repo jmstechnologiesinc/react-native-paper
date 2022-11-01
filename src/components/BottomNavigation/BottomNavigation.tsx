@@ -249,10 +249,10 @@ type Props = {
 const MIN_RIPPLE_SCALE = 0.001; // Minimum scale is not 0 due to bug with animation
 const MIN_TAB_WIDTH = moderateScale(96);
 const MAX_TAB_WIDTH = moderateScale(168);
-const BAR_HEIGHT = theme.spacing.xxxLarge;
+const BAR_HEIGHT = theme.spacing.x14;
 const BOTTOM_INSET = getBottomSpace();
 const FAR_FAR_AWAY = Platform.OS === 'web' ? 0 : 9999;
-const OUTLINE_WIDTH = theme.spacing.xxxxLarge;
+const OUTLINE_WIDTH = theme.spacing.x16;
 
 const Touchable = ({
   route: _0,
@@ -815,7 +815,7 @@ const BottomNavigation = ({
                 top: !isV3
                   ? -2
                   : typeof badge === 'boolean'
-                  ? theme.spacing.xxxxSmall
+                  ? theme.spacing.x1
                   : moderateScale(2),
                 right:
                   (badge != null && typeof badge !== 'boolean'
@@ -888,7 +888,7 @@ const BottomNavigation = ({
                           <Icon
                             source={route.focusedIcon as IconSource}
                             color={activeTintColor}
-                            size={theme.spacing.medium}
+                            size={theme.spacing.x6}
                           />
                         )}
                       </Animated.View>
@@ -915,7 +915,7 @@ const BottomNavigation = ({
                                 : (route.focusedIcon as IconSource)
                             }
                             color={inactiveTintColor}
-                            size={moderateScale(24)}
+                            size={theme.spacing.x6}
                           />
                         )}
                       </Animated.View>
@@ -923,14 +923,12 @@ const BottomNavigation = ({
                         {typeof badge === 'boolean' ? (
                           <Badge
                             visible={badge}
-                            size={
-                              isV3 ? moderateScale(6) : theme.spacing.xxxSmall
-                            }
+                            size={isV3 ? moderateScale(6) : theme.spacing.x2}
                           />
                         ) : (
                           <Badge
                             visible={badge != null}
-                            size={theme.spacing.xSmall}
+                            size={theme.spacing.x4}
                           >
                             {badge}
                           </Badge>
@@ -1087,16 +1085,16 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   iconContainer: {
-    height: theme.spacing.medium,
-    width: theme.spacing.medium,
+    height: theme.spacing.x6,
+    width: theme.spacing.x6,
     marginTop: moderateScale(2),
-    marginHorizontal: theme.spacing.xxSmall,
+    marginHorizontal: theme.spacing.x3,
     alignSelf: 'center',
   },
   v3IconContainer: {
-    height: theme.spacing.xxMedium,
-    width: theme.spacing.xxMedium,
-    marginBottom: theme.spacing.xxxxSmall,
+    height: theme.spacing.x8,
+    width: theme.spacing.x8,
+    marginBottom: theme.spacing.x1,
     marginTop: 0,
     justifyContent: 'center',
   },
@@ -1105,10 +1103,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   v3IconWrapper: {
-    top: theme.spacing.xxxxSmall,
+    top: theme.spacing.x1,
   },
   labelContainer: {
-    height: theme.spacing.xSmall,
+    height: theme.spacing.x4,
     paddingBottom: moderateScale(2),
   },
   labelWrapper: {
@@ -1116,7 +1114,7 @@ const styles = StyleSheet.create({
   },
   // eslint-disable-next-line react-native/no-color-literals
   label: {
-    fontSize: theme.spacing.xxSmall,
+    fontSize: theme.spacing.x3,
     height: BAR_HEIGHT,
     textAlign: 'center',
     backgroundColor: 'transparent',
@@ -1132,11 +1130,11 @@ const styles = StyleSheet.create({
     left: 0,
   },
   v3TouchableContainer: {
-    paddingTop: theme.spacing.xxSmall,
-    paddingBottom: theme.spacing.xxSmall,
+    paddingTop: theme.spacing.x3,
+    paddingBottom: theme.spacing.x3,
   },
   v3NoLabelContainer: {
-    height: moderateScale(80),
+    height: theme.spacing.x20,
     justifyContent: 'center',
     alignItems: 'center',
   },

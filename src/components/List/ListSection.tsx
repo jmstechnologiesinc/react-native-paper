@@ -74,7 +74,7 @@ ListSection.displayName = 'List.Section';
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: theme.spacing.xxxSmall,
+    marginVertical: theme.spacing.x2,
   },
 });
 

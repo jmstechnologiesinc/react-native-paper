@@ -49,10 +49,10 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   badge?: string | number | boolean;
 };
 
-const badgeSize = theme.spacing.xxxSmall;
-const iconSize = theme.spacing.medium;
-const itemSize = theme.spacing.xxxLarge;
-const outlineHeight = theme.spacing.xxMedium;
+const badgeSize = theme.spacing.x2;
+const iconSize = theme.spacing.x6;
+const itemSize = theme.spacing.x14;
+const outlineHeight = theme.spacing.x8;
 
 /**
  * @supported Available in v5.x with theme version 3
@@ -215,8 +215,8 @@ DrawerCollapsedItem.displayName = 'Drawer.CollapsedItem';
 
 const styles = StyleSheet.create({
   wrapper: {
-    width: moderateScale(80),
-    marginBottom: theme.spacing.xxSmall,
+    width: theme.spacing.x20,
+    marginBottom: theme.spacing.x3,
     minHeight: itemSize,
     alignItems: 'center',
   },
@@ -238,14 +238,14 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
   },
   label: {
-    marginHorizontal: theme.spacing.xxSmall,
-    marginTop: theme.spacing.xxxxSmall,
+    marginHorizontal: theme.spacing.x3,
+    marginTop: theme.spacing.x1,
     textAlign: 'center',
   },
   badgeContainer: {
     position: 'absolute',
-    left: theme.spacing.small,
-    bottom: theme.spacing.small,
+    left: theme.spacing.x5,
+    bottom: theme.spacing.x5,
     zIndex: 2,
   },
 });

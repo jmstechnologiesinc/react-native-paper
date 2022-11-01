@@ -224,7 +224,7 @@ const ProgressBar = ({
 
 const styles = StyleSheet.create({
   container: {
-    height: theme.spacing.xxxxSmall,
+    height: theme.spacing.x1,
     overflow: 'hidden',
   },
 

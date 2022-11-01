@@ -7,7 +7,7 @@ import theme from '../styles/themes/v3/LightTheme';
 
 import { moderateScale } from 'react-native-size-matters';
 
-const defaultSize = theme.spacing.small;
+const defaultSize = theme.spacing.x5;
 
 type Props = React.ComponentProps<typeof Animated.Text> & {
   /**
@@ -100,9 +100,7 @@ const Badge = ({
 
   const borderRadius = size / 2;
 
-  const paddingHorizontal = theme.isV3
-    ? moderateScale(3)
-    : theme.spacing.xxxxSmall;
+  const paddingHorizontal = theme.isV3 ? moderateScale(3) : theme.spacing.x1;
 
   return (
     <Animated.Text

@@ -89,11 +89,11 @@ const Divider = ({
 
 const styles = StyleSheet.create({
   leftInset: {
-    marginLeft: moderateScale(72),
+    marginLeft: theme.spacing.x18,
   },
   horizontalInset: {
-    marginLeft: theme.spacing.xMedium,
-    marginRight: theme.spacing.xMedium,
+    marginLeft: theme.spacing.x7,
+    marginRight: theme.spacing.x7,
   },
   bold: {
     height: moderateScale(1),

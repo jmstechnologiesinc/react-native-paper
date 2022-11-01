@@ -43,7 +43,7 @@ export default Paragraph;
 const styles = StyleSheet.create({
   text: {
     fontSize: moderateScale(14),
-    lineHeight: theme.spacing.small,
+    lineHeight: theme.spacing.x5,
     marginVertical: moderateScale(2),
     letterSpacing: moderateScale(0.25),
   },

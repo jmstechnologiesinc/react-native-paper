@@ -160,7 +160,7 @@ AppbarContent.displayName = 'Appbar.Content';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: theme.spacing.xxSmall,
+    paddingHorizontal: theme.spacing.x3,
   },
   v3DefaultContainer: {
     paddingHorizontal: 0,
@@ -168,16 +168,16 @@ const styles = StyleSheet.create({
   v3MediumContainer: {
     paddingHorizontal: 0,
     justifyContent: 'flex-end',
-    paddingBottom: theme.spacing.medium,
+    paddingBottom: theme.spacing.x6,
   },
   v3LargeContainer: {
     paddingHorizontal: 0,
-    paddingTop: theme.spacing.xxxMedium,
+    paddingTop: theme.spacing.x9,
     justifyContent: 'flex-end',
-    paddingBottom: theme.spacing.xMedium,
+    paddingBottom: theme.spacing.x7,
   },
   title: {
-    fontSize: Platform.OS === 'ios' ? moderateScale(17) : theme.spacing.small,
+    fontSize: Platform.OS === 'ios' ? moderateScale(17) : theme.spacing.x5,
   },
   subtitle: {
     fontSize: Platform.OS === 'ios' ? moderateScale(11) : moderateScale(14),

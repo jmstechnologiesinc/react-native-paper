@@ -90,11 +90,7 @@ const DrawerItem = ({
     ? theme.colors.onSurfaceVariant
     : color(theme.colors.text).alpha(0.68).rgb().string();
 
-  const labelMargin = icon
-    ? isV3
-      ? theme.spacing.xxSmall
-      : theme.spacing.xxMedium
-    : 0;
+  const labelMargin = icon ? (isV3 ? theme.spacing.x3 : theme.spacing.x8) : 0;
   const borderRadius = (isV3 ? moderateScale(7) : moderateScale(1)) * roundness;
   const underlayColor = isV3
     ? color(backgroundColor)
@@ -125,7 +121,7 @@ const DrawerItem = ({
             {icon ? (
               <Icon
                 source={icon}
-                size={theme.spacing.medium}
+                size={theme.spacing.x6}
                 color={contentColor}
               />
             ) : null}
@@ -158,23 +154,23 @@ DrawerItem.displayName = 'Drawer.Item';
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: moderateScale(10),
-    marginVertical: theme.spacing.xxxxSmall,
+    marginVertical: theme.spacing.x1,
   },
   v3Container: {
     justifyContent: 'center',
-    height: theme.spacing.xxxLarge,
-    marginLeft: theme.spacing.xxSmall,
-    marginRight: theme.spacing.xxSmall,
+    height: theme.spacing.x14,
+    marginLeft: theme.spacing.x3,
+    marginRight: theme.spacing.x3,
     marginVertical: 0,
   },
   wrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: theme.spacing.xxxSmall,
+    padding: theme.spacing.x2,
   },
   v3Wrapper: {
-    marginLeft: theme.spacing.xSmall,
-    marginRight: theme.spacing.medium,
+    marginLeft: theme.spacing.x4,
+    marginRight: theme.spacing.x6,
     padding: 0,
   },
   content: {
@@ -183,7 +179,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   label: {
-    marginRight: theme.spacing.xxMedium,
+    marginRight: theme.spacing.x8,
   },
 });
 

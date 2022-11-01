@@ -12,7 +12,7 @@ import { white } from '../../styles/themes/v2/colors';
 import getContrastingColor from '../../utils/getContrastingColor';
 import theme from '../../styles/themes/v3/LightTheme';
 
-const defaultSize = theme.spacing.xxxxLarge;
+const defaultSize = theme.spacing.x16;
 
 type Props = React.ComponentPropsWithRef<typeof View> & {
   /**

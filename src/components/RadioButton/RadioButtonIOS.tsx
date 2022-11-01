@@ -105,7 +105,7 @@ const RadioButtonIOS = ({
               <MaterialCommunityIcon
                 allowFontScaling={false}
                 name="check"
-                size={24}
+                size={theme.spacing.x6}
                 color={checkedColor}
                 direction="ltr"
               />

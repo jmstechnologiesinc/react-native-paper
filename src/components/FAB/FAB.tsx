@@ -207,9 +207,9 @@ const FAB = ({
 
   const isLargeSize = size === 'large';
   const isFlatMode = mode === 'flat';
-  const iconSize = isLargeSize ? theme.spacing.xxxMedium : theme.spacing.medium;
+  const iconSize = isLargeSize ? theme.spacing.x9 : theme.spacing.x6;
   const loadingIndicatorSize = isLargeSize
-    ? theme.spacing.medium
+    ? theme.spacing.x6
     : moderateScale(18);
 
   const fabStyle = getFabStyle({ customSize, size });
@@ -306,7 +306,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   label: {
-    marginHorizontal: theme.spacing.xxxSmall,
+    marginHorizontal: theme.spacing.x2,
   },
   uppercaseLabel: {
     textTransform: 'uppercase',

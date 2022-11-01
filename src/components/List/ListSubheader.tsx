@@ -56,7 +56,7 @@ ListSubheader.displayName = 'List.Subheader';
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: theme.spacing.xSmall,
+    paddingHorizontal: theme.spacing.x4,
     paddingVertical: moderateScale(13),
   },
 });

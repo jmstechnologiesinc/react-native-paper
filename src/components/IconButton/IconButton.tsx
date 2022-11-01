@@ -17,7 +17,7 @@ import type { $RemoveChildren } from '../../types';
 import { getIconButtonColor } from './utils';
 import Surface from '../Surface';
 
-const PADDING = theme.spacing.xxxSmall;
+const PADDING = theme.spacing.x2;
 
 type IconButtonMode = 'outlined' | 'contained' | 'contained-tonal';
 
@@ -118,7 +118,7 @@ const IconButton = ({
   icon,
   iconColor: customIconColor,
   containerColor: customContainerColor,
-  size = theme.spacing.medium,
+  size = theme.spacing.x6,
   accessibilityLabel,
   disabled,
   onPress,

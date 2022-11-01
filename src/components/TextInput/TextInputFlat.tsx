@@ -449,15 +449,15 @@ const styles = StyleSheet.create({
     margin: 0,
   },
   inputFlat: {
-    paddingTop: theme.spacing.medium,
-    paddingBottom: theme.spacing.xxxxSmall,
+    paddingTop: theme.spacing.x6,
+    paddingBottom: theme.spacing.x1,
   },
   inputFlatDense: {
     paddingTop: moderateScale(22),
     paddingBottom: moderateScale(2),
   },
   patchContainer: {
-    height: theme.spacing.medium,
+    height: theme.spacing.x6,
     zIndex: 2,
   },
   densePatchContainer: {

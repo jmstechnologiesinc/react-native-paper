@@ -102,7 +102,7 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
    */
 };
 
-const LEFT_SIZE = moderateScale(40);
+const LEFT_SIZE = theme.spacing.x10;
 
 /**
  * A component to show a title, subtitle and an avatar inside a Card.
@@ -158,7 +158,7 @@ const CardTitle = ({
         styles.container,
         {
           minHeight:
-            subtitle || left || right ? moderateScale(72) : moderateScale(50),
+            subtitle || left || right ? theme.spacing.x18 : moderateScale(50),
         },
         style,
       ]}
@@ -198,7 +198,7 @@ const CardTitle = ({
         )}
       </View>
       <View style={rightStyle}>
-        {right ? right({ size: theme.spacing.medium }) : null}
+        {right ? right({ size: theme.spacing.x6 }) : null}
       </View>
     </View>
   );
@@ -211,12 +211,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingLeft: theme.spacing.xSmall,
+    paddingLeft: theme.spacing.x4,
   },
 
   left: {
     justifyContent: 'center',
-    marginRight: theme.spacing.xSmall,
+    marginRight: theme.spacing.x4,
     height: LEFT_SIZE,
     width: LEFT_SIZE,
   },
@@ -229,13 +229,13 @@ const styles = StyleSheet.create({
 
   title: {
     minHeight: moderateScale(30),
-    paddingRight: theme.spacing.xSmall,
+    paddingRight: theme.spacing.x4,
   },
 
   subtitle: {
-    minHeight: moderateScale(20),
+    minHeight: theme.spacing.x5,
     marginVertical: 0,
-    paddingRight: theme.spacing.xSmall,
+    paddingRight: theme.spacing.x4,
   },
 });
 

@@ -305,8 +305,8 @@ const FABGroup = ({
                 {
                   marginHorizontal:
                     typeof it.size === 'undefined' || it.size === 'small'
-                      ? theme.spacing.medium
-                      : theme.spacing.xSmall,
+                      ? theme.spacing.x6
+                      : theme.spacing.x4,
                 },
               ]}
               pointerEvents={open ? 'box-none' : 'none'}
@@ -416,8 +416,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   fab: {
-    marginHorizontal: theme.spacing.xSmall,
-    marginBottom: theme.spacing.xSmall,
+    marginHorizontal: theme.spacing.x4,
+    marginBottom: theme.spacing.x4,
     marginTop: 0,
   },
   backdrop: {
@@ -425,14 +425,14 @@ const styles = StyleSheet.create({
   },
   label: {
     borderRadius: moderateScale(5),
-    paddingHorizontal: theme.spacing.xxSmall,
+    paddingHorizontal: theme.spacing.x3,
     paddingVertical: moderateScale(6),
-    marginVertical: theme.spacing.xxxSmall,
-    marginHorizontal: theme.spacing.xSmall,
+    marginVertical: theme.spacing.x2,
+    marginHorizontal: theme.spacing.x4,
     elevation: 2,
   },
   item: {
-    marginBottom: theme.spacing.xSmall,
+    marginBottom: theme.spacing.x4,
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',

@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: undefined,
     width: undefined,
-    padding: theme.spacing.xSmall,
+    padding: theme.spacing.x4,
     justifyContent: 'flex-end',
   },
 });

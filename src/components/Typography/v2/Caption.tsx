@@ -43,8 +43,8 @@ export default Caption;
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: theme.spacing.xxSmall,
-    lineHeight: theme.spacing.small,
+    fontSize: theme.spacing.x3,
+    lineHeight: theme.spacing.x5,
     marginVertical: moderateScale(2),
     letterSpacing: moderateScale(0.4),
   },
