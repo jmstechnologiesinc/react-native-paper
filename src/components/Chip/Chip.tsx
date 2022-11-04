@@ -10,6 +10,8 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+
 import type { IconSource } from '../Icon';
 import Icon from '../Icon';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
@@ -187,8 +189,8 @@ const Chip = ({
   };
 
   const opacity = isV3 ? 0.38 : 0.26;
-  const defaultBorderRadius = isV3 ? 8 : 16;
-  const iconSize = isV3 ? 18 : 16;
+  const defaultBorderRadius = isV3 ? theme.spacing.x2 : theme.spacing.x4;
+  const iconSize = isV3 ? moderateScale(18) : theme.spacing.x4;
 
   const {
     backgroundColor: customBackgroundColor,
@@ -218,11 +220,20 @@ const Chip = ({
   const elevationStyle = isV3 || Platform.OS === 'android' ? elevation : 0;
   const multiplier = isV3 ? (compact ? 1.5 : 2) : 1;
   const labelSpacings = {
-    marginRight: onClose ? 0 : 8 * multiplier,
-    marginLeft: avatar || icon || selected ? 4 * multiplier : 8 * multiplier,
+    marginRight: onClose ? 0 : theme.spacing.x2 * multiplier,
+    marginLeft:
+      avatar || icon || selected
+        ? theme.spacing.x1 * multiplier
+        : theme.spacing.x2 * multiplier,
   };
   const contentSpacings = {
-    paddingRight: isV3 ? (onClose ? 34 : 0) : onClose ? 32 : 4,
+    paddingRight: isV3
+      ? onClose
+        ? moderateScale(34)
+        : 0
+      : onClose
+      ? theme.spacing.x8
+      : theme.spacing.x1,
   };
 
   return (
@@ -305,13 +316,13 @@ const Chip = ({
                       ? theme.colors.primary
                       : iconColor
                   }
-                  size={18}
+                  size={moderateScale(18)}
                 />
               ) : (
                 <MaterialCommunityIcon
                   name="check"
                   color={avatar ? white : iconColor}
-                  size={18}
+                  size={moderateScale(18)}
                   direction="ltr"
                 />
               )}
@@ -377,7 +388,7 @@ const styles = StyleSheet.create({
     flexDirection: Platform.select({ default: 'column', web: 'row' }),
   },
   md3OutlineContainer: {
-    borderWidth: 1,
+    borderWidth: moderateScale(1),
   },
   md3FlatContainer: {
     borderWidth: 0,
@@ -385,7 +396,7 @@ const styles = StyleSheet.create({
   content: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: 4,
+    paddingLeft: theme.spacing.x1,
     position: 'relative',
     flexGrow: 1,
   },
@@ -393,45 +404,45 @@ const styles = StyleSheet.create({
     paddingLeft: 0,
   },
   icon: {
-    padding: 4,
+    padding: theme.spacing.x1,
     alignSelf: 'center',
   },
   md3Icon: {
-    paddingLeft: 8,
+    paddingLeft: theme.spacing.x2,
     paddingRight: 0,
   },
   closeIcon: {
-    marginRight: 4,
+    marginRight: theme.spacing.x1,
   },
   md3CloseIcon: {
-    marginRight: 8,
+    marginRight: theme.spacing.x2,
     padding: 0,
   },
   text: {
-    minHeight: 24,
-    lineHeight: 24,
+    minHeight: theme.spacing.x6,
+    lineHeight: theme.spacing.x6,
     textAlignVertical: 'center',
-    marginVertical: 4,
+    marginVertical: theme.spacing.x1,
   },
   avatar: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
+    width: theme.spacing.x6,
+    height: theme.spacing.x6,
+    borderRadius: theme.spacing.x3,
   },
   avatarWrapper: {
-    marginRight: 4,
+    marginRight: theme.spacing.x1,
   },
   md3AvatarWrapper: {
-    marginLeft: 4,
+    marginLeft: theme.spacing.x1,
     marginRight: 0,
   },
   md3SelectedIcon: {
-    paddingLeft: 4,
+    paddingLeft: theme.spacing.x1,
   },
   avatarSelected: {
     position: 'absolute',
-    top: 4,
-    left: 4,
+    top: theme.spacing.x1,
+    left: theme.spacing.x1,
     backgroundColor: 'rgba(0, 0, 0, .29)',
   },
   closeButtonStyle: {

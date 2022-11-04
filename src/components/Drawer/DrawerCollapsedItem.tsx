@@ -10,6 +10,8 @@ import {
   TextLayoutEventData,
   Platform,
 } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+
 import Text from '../Typography/Text';
 import Icon, { IconSource } from '../Icon';
 import theme from '../../styles/themes/v3/LightTheme';
@@ -47,10 +49,10 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   badge?: string | number | boolean;
 };
 
-const badgeSize = 8;
-const iconSize = 24;
-const itemSize = 56;
-const outlineHeight = 32;
+const badgeSize = theme.spacing.x2;
+const iconSize = theme.spacing.x6;
+const itemSize = theme.spacing.x14;
+const outlineHeight = theme.spacing.x8;
 
 /**
  * @supported Available in v5.x with theme version 3
@@ -174,7 +176,10 @@ const DrawerCollapsedItem = ({
                 {typeof badge === 'boolean' ? (
                   <Badge visible={badge} size={badgeSize} />
                 ) : (
-                  <Badge visible={badge != null} size={2 * badgeSize}>
+                  <Badge
+                    visible={badge != null}
+                    size={moderateScale(2) * badgeSize}
+                  >
                     {badge}
                   </Badge>
                 )}
@@ -210,8 +215,8 @@ DrawerCollapsedItem.displayName = 'Drawer.CollapsedItem';
 
 const styles = StyleSheet.create({
   wrapper: {
-    width: 80,
-    marginBottom: 12,
+    width: theme.spacing.x20,
+    marginBottom: theme.spacing.x3,
     minHeight: itemSize,
     alignItems: 'center',
   },
@@ -229,18 +234,18 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   letterSpacing: {
-    letterSpacing: 0.3,
+    letterSpacing: moderateScale(0.3),
     alignSelf: 'stretch',
   },
   label: {
-    marginHorizontal: 12,
-    marginTop: 4,
+    marginHorizontal: theme.spacing.x3,
+    marginTop: theme.spacing.x1,
     textAlign: 'center',
   },
   badgeContainer: {
     position: 'absolute',
-    left: 20,
-    bottom: 20,
+    left: theme.spacing.x5,
+    bottom: theme.spacing.x5,
     zIndex: 2,
   },
 });

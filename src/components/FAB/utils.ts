@@ -6,6 +6,8 @@ import {
   ViewStyle,
   StyleSheet,
 } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+
 import theme from '../../styles/themes/v3/LightTheme';
 import { white, black } from '../../styles/themes/v2/colors';
 import getContrastingColor from '../../utils/getContrastingColor';
@@ -323,26 +325,26 @@ export const getFABGroupColors = () => {
 };
 
 const standardSize = {
-  height: 56,
-  width: 56,
-  borderRadius: 28,
+  height: theme.spacing.x14,
+  width: theme.spacing.x14,
+  borderRadius: theme.spacing.x7,
 };
 const smallSize = {
-  height: 40,
-  width: 40,
-  borderRadius: 28,
+  height: theme.spacing.x10,
+  width: theme.spacing.x10,
+  borderRadius: theme.spacing.x7,
 };
 const v3SmallSize = {
-  height: 40,
-  width: 40,
+  height: theme.spacing.x10,
+  width: theme.spacing.x10,
 };
 const v3MediumSize = {
-  height: 56,
-  width: 56,
+  height: theme.spacing.x14,
+  width: theme.spacing.x14,
 };
 const v3LargeSize = {
-  height: 96,
-  width: 96,
+  height: moderateScale(96),
+  width: moderateScale(96),
 };
 
 const getCustomFabSize = (customSize: number, roundness: number) => ({
@@ -365,11 +367,11 @@ export const getFabStyle = ({
   if (isV3) {
     switch (size) {
       case 'small':
-        return { ...v3SmallSize, borderRadius: 3 * roundness };
+        return { ...v3SmallSize, borderRadius: moderateScale(3) * roundness };
       case 'medium':
-        return { ...v3MediumSize, borderRadius: 4 * roundness };
+        return { ...v3MediumSize, borderRadius: theme.spacing.x1 * roundness };
       case 'large':
-        return { ...v3LargeSize, borderRadius: 7 * roundness };
+        return { ...v3LargeSize, borderRadius: moderateScale(7) * roundness };
     }
   }
 
@@ -380,19 +382,19 @@ export const getFabStyle = ({
 };
 
 const extended = {
-  height: 48,
-  paddingHorizontal: 16,
+  height: moderateScale(18),
+  paddingHorizontal: theme.spacing.x4,
 };
 
 const v3Extended = {
-  height: 56,
-  borderRadius: 16,
-  paddingHorizontal: 16,
+  height: theme.spacing.x14,
+  borderRadius: theme.spacing.x4,
+  paddingHorizontal: theme.spacing.x4,
 };
 
 const getExtendedFabDimensions = (customSize: number) => ({
   height: customSize,
-  paddingHorizontal: 16,
+  paddingHorizontal: theme.spacing.x4,
 });
 
 export const getExtendedFabStyle = ({

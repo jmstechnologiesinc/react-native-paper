@@ -163,11 +163,11 @@ const HelperText = ({
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 12,
-    paddingVertical: 4,
+    fontSize: theme.spacing.x3,
+    paddingVertical: theme.spacing.x1,
   },
   padding: {
-    paddingHorizontal: 12,
+    paddingHorizontal: theme.spacing.x3,
   },
 });
 

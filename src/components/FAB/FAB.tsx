@@ -7,6 +7,8 @@ import {
   StyleProp,
   AccessibilityState,
 } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+
 import ActivityIndicator from '../ActivityIndicator';
 import Surface from '../Surface';
 import CrossFadeIcon from '../CrossFadeIcon';
@@ -205,8 +207,10 @@ const FAB = ({
 
   const isLargeSize = size === 'large';
   const isFlatMode = mode === 'flat';
-  const iconSize = isLargeSize ? 36 : 24;
-  const loadingIndicatorSize = isLargeSize ? 24 : 18;
+  const iconSize = isLargeSize ? theme.spacing.x9 : theme.spacing.x6;
+  const loadingIndicatorSize = isLargeSize
+    ? theme.spacing.x6
+    : moderateScale(18);
 
   const fabStyle = getFabStyle({ customSize, size });
   const extendedStyle = getExtendedFabStyle({ customSize });
@@ -302,7 +306,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   label: {
-    marginHorizontal: 8,
+    marginHorizontal: theme.spacing.x2,
   },
   uppercaseLabel: {
     textTransform: 'uppercase',

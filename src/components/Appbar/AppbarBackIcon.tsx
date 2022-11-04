@@ -3,7 +3,9 @@ import { Platform, I18nManager, View, Image, StyleSheet } from 'react-native';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 
 const AppbarBackIcon = ({ size, color }: { size: number; color: string }) => {
+ 
   const iosIconSize = size - 3;
+  
 
   return Platform.OS === 'ios' ? (
     <View
@@ -11,7 +13,7 @@ const AppbarBackIcon = ({ size, color }: { size: number; color: string }) => {
         styles.wrapper,
         {
           width: size,
-          height: size,
+          height: size ,
           transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
         },
       ]}

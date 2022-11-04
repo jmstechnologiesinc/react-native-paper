@@ -6,6 +6,8 @@ import AnimatedText from '../../Typography/AnimatedText';
 
 import type { LabelBackgroundProps } from '../types';
 
+import { moderateScale } from 'react-native-size-matters';
+
 const LabelBackground = ({
   parentState,
   labelProps: {
@@ -103,17 +105,17 @@ export default LabelBackground;
 const styles = StyleSheet.create({
   view: {
     position: 'absolute',
-    top: 6,
-    left: 10,
-    width: 12,
+    top: moderateScale(6),
+    left: moderateScale(10),
+    width: theme.spacing.x3,
   },
   outlinedLabel: {
     position: 'absolute',
-    left: 18,
+    left: moderateScale(18),
     paddingHorizontal: 0,
     color: 'transparent',
   },
   md3OutlinedLabel: {
-    left: 8,
+    left: theme.spacing.x2,
   },
 });

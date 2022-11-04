@@ -11,7 +11,7 @@ import {
 
 import theme from '../../styles/themes/v3/LightTheme';
 
-const defaultSize = 64;
+const defaultSize = theme.spacing.x16;
 
 export type AvatarImageSource =
   | ImageSourcePropType

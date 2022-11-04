@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, StyleProp, View, ViewStyle } from 'react-native';
+import theme from '../../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
@@ -90,16 +91,16 @@ CardContent.displayName = 'Card.Content';
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 16,
+    paddingHorizontal: theme.spacing.x4,
   },
   first: {
-    paddingTop: 16,
+    paddingTop: theme.spacing.x4,
   },
   last: {
-    paddingBottom: 16,
+    paddingBottom: theme.spacing.x4,
   },
   only: {
-    paddingVertical: 16,
+    paddingVertical: theme.spacing.x4,
   },
 });
 

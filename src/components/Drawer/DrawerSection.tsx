@@ -1,6 +1,7 @@
 import color from 'color';
 import * as React from 'react';
 import { View, ViewStyle, StyleSheet, StyleProp } from 'react-native';
+
 import Text from '../Typography/Text';
 import Divider from '../Divider';
 
@@ -63,7 +64,7 @@ const DrawerSection = ({ children, title, style, ...rest }: Props) => {
   const titleColor = isV3
     ? theme.colors.onSurfaceVariant
     : color(theme.colors.text).alpha(0.54).rgb().string();
-  const titleMargin = isV3 ? 28 : 16;
+  const titleMargin = isV3 ? theme.spacing.x7 : theme.spacing.x4;
   return (
     <View style={[styles.container, style]} {...rest}>
       {title && (
@@ -98,17 +99,17 @@ DrawerSection.displayName = 'Drawer.Section';
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 4,
+    marginBottom: theme.spacing.x1,
   },
   titleContainer: {
-    height: 40,
+    height: theme.spacing.x10,
     justifyContent: 'center',
   },
   v3TitleContainer: {
-    height: 56,
+    height: theme.spacing.x14,
   },
   divider: {
-    marginTop: 4,
+    marginTop: theme.spacing.x1,
   },
   v3Divider: {
     backgroundColor: MD3Colors.neutralVariant50,

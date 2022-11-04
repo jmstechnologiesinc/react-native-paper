@@ -7,6 +7,8 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 
+import { moderateScale } from 'react-native-size-matters';
+
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Icon, { IconSource } from '../Icon';
 import CrossFadeIcon from '../CrossFadeIcon';
@@ -15,7 +17,7 @@ import type { $RemoveChildren } from '../../types';
 import { getIconButtonColor } from './utils';
 import Surface from '../Surface';
 
-const PADDING = 8;
+const PADDING = theme.spacing.x2;
 
 type IconButtonMode = 'outlined' | 'contained' | 'contained-tonal';
 
@@ -116,7 +118,7 @@ const IconButton = ({
   icon,
   iconColor: customIconColor,
   containerColor: customContainerColor,
-  size = 24,
+  size = theme.spacing.x6,
   accessibilityLabel,
   disabled,
   onPress,
@@ -193,7 +195,7 @@ const IconButton = ({
 const styles = StyleSheet.create({
   container: {
     overflow: 'hidden',
-    margin: 6,
+    margin: moderateScale(6),
     elevation: 0,
   },
   touchable: {

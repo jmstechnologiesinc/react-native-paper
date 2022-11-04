@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Text, TextStyle, StyleSheet, StyleProp } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import StyledText from './StyledText';
+import theme from '../../../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentProps<typeof Text> & {
   style?: StyleProp<TextStyle>;
@@ -41,9 +43,9 @@ export default Caption;
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 12,
-    lineHeight: 20,
-    marginVertical: 2,
-    letterSpacing: 0.4,
+    fontSize: theme.spacing.x3,
+    lineHeight: theme.spacing.x5,
+    marginVertical: moderateScale(2),
+    letterSpacing: moderateScale(0.4),
   },
 });

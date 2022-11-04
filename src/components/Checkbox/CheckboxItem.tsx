@@ -194,14 +194,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: 8,
-    paddingHorizontal: 16,
+    paddingVertical: theme.spacing.x2,
+    paddingHorizontal: theme.spacing.x4,
   },
   label: {
     flexShrink: 1,
     flexGrow: 1,
   },
   font: {
-    fontSize: 16,
+    fontSize: theme.spacing.x4,
   },
 });

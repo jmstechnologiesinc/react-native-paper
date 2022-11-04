@@ -251,10 +251,10 @@ const styles = StyleSheet.create({
   appbar: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 4,
+    paddingHorizontal: theme.spacing.x1,
   },
   spacing: {
-    width: 48,
+    width: theme.spacing.x12,
   },
   controlsRow: {
     flex: 1,
@@ -270,7 +270,7 @@ const styles = StyleSheet.create({
   columnContainer: {
     flexDirection: 'column',
     flex: 1,
-    paddingTop: 8,
+    paddingTop: theme.spacing.x2,
   },
   centerAlignedContainer: {
     paddingTop: 0,
