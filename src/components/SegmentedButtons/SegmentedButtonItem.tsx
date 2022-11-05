@@ -181,7 +181,7 @@ const SegmentedButtonItem = ({
         testID={testID}
         style={rippleStyle}
       >
-        <View style={ subLabel ? [styles.subLabelContent, ] : [styles.content, { paddingVertical }] }>
+        <View style={ subLabel ? [styles.subLabelContent, { paddingVertical } ] : [styles.content, { paddingVertical }] }>
           {checked && showSelectedCheck ? (
             <Animated.View
               testID={`${testID}-check-icon`}
