@@ -9,6 +9,9 @@ import {
   I18nManager,
   GestureResponderEvent,
 } from 'react-native';
+
+import { moderateScale } from 'react-native-size-matters';
+
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Text from '../Typography/Text';
@@ -28,7 +31,7 @@ type Props = {
   /**
    * Callback which returns a React element to display on the left side.
    */
-  left?: (props: { isExpanded: boolean, color: string }) => React.ReactNode;
+  left?: (props: { color: string }) => React.ReactNode;
   /**
    * Callback which returns a React element to display on the right side.
    */
@@ -58,7 +61,6 @@ type Props = {
    * Style that is passed to the wrapping TouchableRipple element.
    */
   style?: StyleProp<ViewStyle>;
-  rightStyle?: StyleProp<ViewStyle>;
   /**
    * Style that is passed to Title element.
    */
@@ -145,7 +147,6 @@ const ListAccordion = ({
   titleNumberOfLines = 1,
   descriptionNumberOfLines = 2,
   style,
-  rightStyle,
   id,
   testID,
   onPress,
@@ -206,7 +207,6 @@ const ListAccordion = ({
           <View style={styles.row} pointerEvents="none">
             {left
               ? left({
-                  isExpanded: isExpanded,
                   color: isExpanded ? theme.colors?.primary : descriptionColor,
                 })
               : null}
@@ -241,7 +241,7 @@ const ListAccordion = ({
               ) : null}
             </View>
             <View
-              style={[styles.item, description ? styles.multiline : undefined, rightStyle]}
+              style={[styles.item, description ? styles.multiline : undefined]}
             >
               {right ? (
                 right({
@@ -251,7 +251,7 @@ const ListAccordion = ({
                 <MaterialCommunityIcon
                   name={isExpanded ? 'chevron-up' : 'chevron-down'}
                   color={theme.isV3 ? descriptionColor : titleColor}
-                  size={24}
+                  size={theme.spacing.x6}
                   direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
                 />
               )}
@@ -284,28 +284,28 @@ ListAccordion.displayName = 'List.Accordion';
 
 const styles = StyleSheet.create({
   container: {
-    padding: 8,
+    padding: theme.spacing.x2,
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   multiline: {
-    height: 40,
+    height: theme.spacing.x10,
     alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
-    fontSize: 16,
+    fontSize: theme.spacing.x4,
   },
   description: {
-    fontSize: 14,
+    fontSize: moderateScale(14),
   },
   item: {
-    margin: 8,
+    margin: theme.spacing.x2,
   },
   child: {
-    paddingLeft: 64,
+    paddingLeft: theme.spacing.x16,
   },
   content: {
     flex: 1,

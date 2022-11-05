@@ -12,6 +12,8 @@ import {
   Platform,
   I18nManager,
 } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+
 import Surface from '../Surface';
 import Icon from '../Icon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
@@ -98,7 +100,7 @@ type Props = $RemoveChildren<typeof Surface> & {
   testID?: string;
 };
 
-const SIZE = 56;
+const SIZE = theme.spacing.x14;
 const SCALE = 0.9;
 
 /**
@@ -216,7 +218,7 @@ const AnimatedFAB = ({
   const [textWidth, setTextWidth] = React.useState<number>(0);
   const [textHeight, setTextHeight] = React.useState<number>(0);
 
-  const borderRadius = SIZE / (isV3 ? 3.5 : 2);
+  const borderRadius = SIZE / (isV3 ? moderateScale(3.5) : moderateScale(2));
 
   React.useEffect(() => {
     if (visible) {
@@ -421,7 +423,7 @@ const AnimatedFAB = ({
         style={[styles.iconWrapper, combinedStyles.iconWrapper]}
         pointerEvents="none"
       >
-        <Icon source={icon} size={24} color={foregroundColor} />
+        <Icon source={icon} size={theme.spacing.x6} color={foregroundColor} />
       </Animated.View>
 
       <View pointerEvents="none">

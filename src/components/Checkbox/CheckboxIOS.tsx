@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import type { $RemoveChildren } from '../../types';
@@ -48,13 +49,7 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
  *   </figure>
  * </div>
  */
-const CheckboxIOS = ({
-  status,
-  disabled,
-  onPress,
-  testID,
-  ...rest
-}: Props) => {
+const CheckboxIOS = ({ status, disabled, onPress, testID, ...rest }: Props) => {
   const checked = status === 'checked';
   const indeterminate = status === 'indeterminate';
 
@@ -64,9 +59,7 @@ const CheckboxIOS = ({
     customColor: rest.color,
   });
 
-  const icon = indeterminate ? 'checkbox-marked' : "checkbox-blank-outline"
-
-
+  const icon = indeterminate ? 'checkbox-marked' : 'checkbox-blank-outline';
 
   return (
     <TouchableRipple
@@ -85,7 +78,7 @@ const CheckboxIOS = ({
         <MaterialCommunityIcon
           allowFontScaling={false}
           name={icon}
-          size={24}
+          size={theme.spacing.x6}
           color={checkedColor}
           direction="ltr"
         />
@@ -98,8 +91,8 @@ CheckboxIOS.displayName = 'Checkbox.IOS';
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 18,
-    padding: 6,
+    borderRadius: moderateScale(18),
+    padding: moderateScale(6),
   },
 });
 

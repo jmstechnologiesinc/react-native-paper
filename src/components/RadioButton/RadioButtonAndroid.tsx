@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Animated, View, StyleSheet } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import { RadioButtonContext, RadioButtonContextType } from './RadioButtonGroup';
 import { handlePress, isChecked } from './utils';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
@@ -41,7 +42,7 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
   testID?: string;
 };
 
-const BORDER_WIDTH = 2;
+const BORDER_WIDTH = moderateScale(2);
 
 /**
  * Radio buttons allow the selection a single option from a set.
@@ -180,22 +181,22 @@ RadioButtonAndroid.displayName = 'RadioButton.Android';
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 18,
+    borderRadius: moderateScale(18),
   },
   radioContainer: {
     alignItems: 'center',
     justifyContent: 'center',
   },
   radio: {
-    height: 20,
-    width: 20,
-    borderRadius: 10,
-    margin: 8,
+    height: theme.spacing.x5,
+    width: theme.spacing.x5,
+    borderRadius: moderateScale(10),
+    margin: theme.spacing.x2,
   },
   dot: {
-    height: 10,
-    width: 10,
-    borderRadius: 5,
+    height: moderateScale(10),
+    width: moderateScale(10),
+    borderRadius: moderateScale(5),
   },
 });
 

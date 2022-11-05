@@ -5,6 +5,7 @@ import {
   ViewStyle,
   GestureResponderEvent,
 } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 
 import color from 'color';
 import IconButton from '../IconButton/IconButton';
@@ -150,8 +151,8 @@ const ToggleButton = ({
 
 const styles = StyleSheet.create({
   content: {
-    width: 42,
-    height: 42,
+    width: moderateScale(42),
+    height: moderateScale(42),
     margin: 0,
   },
 });

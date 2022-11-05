@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { View, ViewStyle, StyleSheet, StyleProp, Animated } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import Surface from './Surface';
 import Text from './Typography/Text';
 import Button from './Button/Button';
@@ -7,7 +8,7 @@ import Icon, { IconSource } from './Icon';
 import theme from '../styles/themes/v3/LightTheme';
 import type { $RemoveChildren } from '../types';
 
-const DEFAULT_MAX_WIDTH = 960;
+const DEFAULT_MAX_WIDTH = moderateScale(960);
 
 type Props = $RemoveChildren<typeof Surface> & {
   /**
@@ -213,7 +214,7 @@ const Banner = ({
           <View style={styles.content}>
             {icon ? (
               <View style={styles.icon}>
-                <Icon source={icon} size={40} />
+                <Icon source={icon} size={theme.spacing.x10} />
               </View>
             ) : null}
             <Text
@@ -266,24 +267,24 @@ const styles = StyleSheet.create({
   content: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    marginHorizontal: 8,
-    marginTop: 16,
+    marginHorizontal: theme.spacing.x2,
+    marginTop: theme.spacing.x4,
     marginBottom: 0,
   },
   icon: {
-    margin: 8,
+    margin: theme.spacing.x2,
   },
   message: {
     flex: 1,
-    margin: 8,
+    margin: theme.spacing.x2,
   },
   actions: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    margin: 4,
+    margin: theme.spacing.x1,
   },
   button: {
-    margin: 4,
+    margin: theme.spacing.x1,
   },
   elevation: {
     elevation: 1,

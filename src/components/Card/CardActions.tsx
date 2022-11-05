@@ -64,10 +64,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 8,
+    padding: theme.spacing.x2,
   },
   button: {
-    marginLeft: 8,
+    marginLeft: theme.spacing.x2,
   },
 });
 

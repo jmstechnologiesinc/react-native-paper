@@ -11,6 +11,8 @@ import {
   Animated,
 } from 'react-native';
 
+import { moderateScale } from 'react-native-size-matters';
+
 import color from 'color';
 import IconButton from './IconButton/IconButton';
 import Surface from './Surface';
@@ -249,8 +251,8 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontSize: 18,
-    paddingLeft: 8,
+    fontSize: moderateScale(18),
+    paddingLeft: theme.spacing.x2,
     alignSelf: 'stretch',
     textAlign: I18nManager.isRTL ? 'right' : 'left',
     minWidth: 0,

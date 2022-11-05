@@ -9,6 +9,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import color from 'color';
+import { moderateScale } from 'react-native-size-matters';
 
 import Text from '../Typography/Text';
 
@@ -159,7 +160,7 @@ AppbarContent.displayName = 'Appbar.Content';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 12,
+    paddingHorizontal: theme.spacing.x3,
   },
   v3DefaultContainer: {
     paddingHorizontal: 0,
@@ -167,19 +168,19 @@ const styles = StyleSheet.create({
   v3MediumContainer: {
     paddingHorizontal: 0,
     justifyContent: 'flex-end',
-    paddingBottom: 24,
+    paddingBottom: theme.spacing.x6,
   },
   v3LargeContainer: {
     paddingHorizontal: 0,
-    paddingTop: 36,
+    paddingTop: theme.spacing.x9,
     justifyContent: 'flex-end',
-    paddingBottom: 28,
+    paddingBottom: theme.spacing.x7,
   },
   title: {
-    fontSize: Platform.OS === 'ios' ? 17 : 20,
+    fontSize: Platform.OS === 'ios' ? moderateScale(17) : theme.spacing.x5,
   },
   subtitle: {
-    fontSize: Platform.OS === 'ios' ? 11 : 14,
+    fontSize: Platform.OS === 'ios' ? moderateScale(11) : moderateScale(14),
   },
 });
 

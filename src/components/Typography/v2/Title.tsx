@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Text, StyleSheet } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import StyledText from './StyledText';
+
+import theme from '../../../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentProps<typeof Text> & {
   children: React.ReactNode;
@@ -40,9 +43,9 @@ export default Title;
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 20,
-    lineHeight: 30,
-    marginVertical: 2,
-    letterSpacing: 0.15,
+    fontSize: theme.spacing.x5,
+    lineHeight: moderateScale(30),
+    marginVertical: moderateScale(2),
+    letterSpacing: moderateScale(0.15),
   },
 });

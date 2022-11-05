@@ -71,7 +71,7 @@ type Props = React.ComponentPropsWithoutRef<typeof IconButton> & {
  * ```
  */
 const AppbarAction = ({
-  size = 24,
+  size = theme.spacing.x6,
   color: iconColor,
   icon,
   disabled,

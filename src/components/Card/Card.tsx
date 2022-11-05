@@ -17,6 +17,9 @@ import Surface from '../Surface';
 import theme from '../../styles/themes/v3/LightTheme';
 import { getCardColors } from './utils';
 
+import { moderateScale } from 'react-native-size-matters';
+
+
 type OutlinedCardProps = {
   mode: 'outlined';
   elevation?: never;
@@ -287,7 +290,7 @@ const styles = StyleSheet.create({
     flexShrink: 1,
   },
   outline: {
-    borderWidth: 1,
+    borderWidth: moderateScale(1),
     position: 'absolute',
     width: '100%',
     height: '100%',

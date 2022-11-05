@@ -1,6 +1,6 @@
 {
   "name": "@jmsstudiosinc/react-native-paper",
-  "version": "5.0.0-rc.8",
+  "version": "5.0.0-rc.16",
   "description": "Material design for React Native",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -47,9 +47,11 @@
   },
   "dependencies": {
     "@callstack/react-theme-provider": "^3.0.7",
-    "@jmsstudiosinc/material-tokens": "^0.0.1",
     "color": "^3.1.2",
-    "react-native-iphone-x-helper": "^1.3.1"
+    "react-native-iphone-x-helper": "^1.3.1",
+    "react-native-size-matters": "^0.4.0",
+    "@jmsstudiosinc/material-tokens": "^0.0.16"
+
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",

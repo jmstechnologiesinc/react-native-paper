@@ -5,7 +5,9 @@ import { white, black } from '../styles/themes/v2/colors';
 import getContrastingColor from '../utils/getContrastingColor';
 import theme from '../styles/themes/v3/LightTheme';
 
-const defaultSize = 20;
+import { moderateScale } from 'react-native-size-matters';
+
+const defaultSize = theme.spacing.x5;
 
 type Props = React.ComponentProps<typeof Animated.Text> & {
   /**
@@ -98,7 +100,7 @@ const Badge = ({
 
   const borderRadius = size / 2;
 
-  const paddingHorizontal = theme.isV3 ? 3 : 4;
+  const paddingHorizontal = theme.isV3 ? moderateScale(3) : theme.spacing.x1;
 
   return (
     <Animated.Text
