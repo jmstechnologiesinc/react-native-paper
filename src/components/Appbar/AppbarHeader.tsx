@@ -110,6 +110,7 @@ const AppbarHeader = ({
   dark,
   mode = Platform.OS === 'ios' ? 'center-aligned' : 'small',
   elevated = false,
+  transparentBackgroundColorByPass,
   ...rest
 }: Props) => {
   const { isV3 } = theme;
@@ -122,13 +123,18 @@ const AppbarHeader = ({
     ...restStyle
   }: ViewStyle = StyleSheet.flatten(style) || {};
 
-  const backgroundColor = getAppbarColor(
-    theme,
-    elevation,
-    customBackground,
-    //  @ts-ignore:next-line
-    elevated
-  );
+  let backgroundColor;
+  if(transparentBackgroundColorByPass === true) {
+    backgroundColor = theme.colors.surface
+  } else {
+    backgroundColor = getAppbarColor(
+      theme,
+      elevation,
+      customBackground,
+      //  @ts-ignore:next-line
+      elevated
+    );
+  }
 
   // Let the user override the behaviour
   const Wrapper = typeof statusBarHeight === 'number' ? View : SafeAreaView;
@@ -148,6 +154,7 @@ const AppbarHeader = ({
     >
       <Appbar
         style={[{ height, backgroundColor }, styles.appbar, restStyle]}
+        transparentBackgroundColorByPass={transparentBackgroundColorByPass}
         dark={dark}
         {...(isV3 && {
           mode,

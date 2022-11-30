@@ -99,6 +99,7 @@ const Appbar = ({
 
   mode = 'small',
   elevated,
+  transparentBackgroundColorByPass,
   ...rest
 }: Props) => {
   const { isV3 } = theme;
@@ -110,13 +111,18 @@ const Appbar = ({
 
   let isDark: boolean;
 
-  const backgroundColor = getAppbarColor(
-    theme,
-    elevation,
-    customBackground,
-    //  @ts-ignore:next-line
-    elevated
-  );
+  let backgroundColor;
+  if(transparentBackgroundColorByPass === true) {
+    backgroundColor = theme.colors.surface
+  } else {
+    backgroundColor = getAppbarColor(
+      theme,
+      elevation,
+      customBackground,
+      //  @ts-ignore:next-line
+      elevated
+    );
+  }
 
   if (typeof dark === 'boolean') {
     isDark = dark;
