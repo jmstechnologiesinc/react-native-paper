@@ -3,27 +3,26 @@ import {
   Animated,
   BackHandler,
   Easing,
+  NativeEventSubscription,
   StyleProp,
   StyleSheet,
   TouchableWithoutFeedback,
-  ViewStyle,
   View,
-  NativeEventSubscription,
+  ViewStyle,
 } from 'react-native';
-import color from 'color';
+
 import {
-  getStatusBarHeight,
   getBottomSpace,
+  getStatusBarHeight,
 } from 'react-native-iphone-x-helper';
+import type { InternalTheme } from 'src/types';
+
+import { withInternalTheme } from '../core/theming';
+import { addEventListener } from '../utils/addEventListener';
+import useAnimatedValue from '../utils/useAnimatedValue';
 import Surface from './Surface';
 
-import useAnimatedValue from '../utils/useAnimatedValue';
-import { addEventListener } from '../utils/addEventListener';
-import { MD3Colors } from '../styles/themes/v3/tokens';
-
-import theme from '../styles/themes/v3/LightTheme';
-
-type Props = {
+export type Props = {
   /**
    * Determines whether clicking outside the modal dismiss it.
    */
@@ -53,6 +52,14 @@ type Props = {
    * Use this prop to change the default wrapper style or to override safe area insets with marginTop and marginBottom.
    */
   style?: StyleProp<ViewStyle>;
+  /**
+   * @optional
+   */
+  theme: InternalTheme;
+  /**
+   * testID to be used on tests.
+   */
+  testID?: string;
 };
 
 const DEFAULT_DURATION = 220;
@@ -98,7 +105,7 @@ const BOTTOM_INSET = getBottomSpace();
  * export default MyComponent;
  * ```
  */
-export default function Modal({
+function Modal({
   dismissable = true,
   visible = false,
   overlayAccessibilityLabel = 'Close modal',
@@ -106,6 +113,8 @@ export default function Modal({
   children,
   contentContainerStyle,
   style,
+  theme,
+  testID = 'modal',
 }: Props) {
   const visibleRef = React.useRef(visible);
 
@@ -209,6 +218,7 @@ export default function Modal({
       accessibilityLiveRegion="polite"
       style={StyleSheet.absoluteFill}
       onAccessibilityEscape={hideModal}
+      testID={testID}
     >
       <TouchableWithoutFeedback
         accessibilityLabel={overlayAccessibilityLabel}
@@ -218,12 +228,11 @@ export default function Modal({
         importantForAccessibility="no"
       >
         <Animated.View
+          testID={`${testID}-backdrop`}
           style={[
             styles.backdrop,
             {
-              backgroundColor: theme.isV3
-                ? color(MD3Colors.neutralVariant20).alpha(0.4).rgb().string()
-                : theme.colors?.backdrop,
+              backgroundColor: theme.colors?.backdrop,
               opacity,
             },
           ]}
@@ -252,6 +261,8 @@ export default function Modal({
     </Animated.View>
   );
 }
+
+export default withInternalTheme(Modal);
 
 const styles = StyleSheet.create({
   backdrop: {

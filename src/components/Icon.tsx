@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {
-  Image,
   I18nManager,
-  Platform,
+  Image,
   ImageSourcePropType,
+  Platform,
 } from 'react-native';
-import { Consumer as SettingsConsumer } from '../core/settings';
-import { accessibilityProps } from './MaterialCommunityIcon';
 
+import { Consumer as SettingsConsumer } from '../core/settings';
 import theme from '../styles/themes/v3/LightTheme';
+import { accessibilityProps } from './MaterialCommunityIcon';
 
 type IconSourceBase = string | ImageSourcePropType;
 
@@ -69,7 +69,7 @@ const Icon = ({ source, color, size, ...rest }: Props) => {
   const direction =
     typeof source === 'object' && source.direction && source.source
       ? source.direction === 'auto'
-        ? I18nManager.isRTL
+        ? I18nManager.getConstants().isRTL
           ? 'rtl'
           : 'ltr'
         : source.direction
@@ -90,7 +90,6 @@ const Icon = ({ source, color, size, ...rest }: Props) => {
           {
             transform: [{ scaleX: direction === 'rtl' ? -1 : 1 }],
           },
-          // eslint-disable-next-line react-native/no-inline-styles
           {
             width: size,
             height: size,
@@ -99,6 +98,7 @@ const Icon = ({ source, color, size, ...rest }: Props) => {
           },
         ]}
         {...accessibilityProps}
+        accessibilityIgnoresInvertColors
       />
     );
   } else if (typeof s === 'string') {

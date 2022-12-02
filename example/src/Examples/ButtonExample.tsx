@@ -1,10 +1,13 @@
 import * as React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
-import { Button, List, useTheme } from 'react-native-paper';
+import { Image, StyleSheet, View } from 'react-native';
+
+import { Button, List } from 'react-native-paper';
+
+import { useExampleTheme } from '..';
 import ScreenWrapper from '../ScreenWrapper';
 
 const ButtonExample = () => {
-  const theme = useTheme();
+  const theme = useExampleTheme();
 
   const color = theme.isV3 ? theme.colors.inversePrimary : theme.colors.accent;
 
@@ -263,6 +266,7 @@ const ButtonExample = () => {
               <Image
                 source={require('../../assets/images/chameleon.jpg')}
                 style={{ width: size, height: size, borderRadius: size / 2 }}
+                accessibilityIgnoresInvertColors
               />
             )}
             onPress={() => {}}

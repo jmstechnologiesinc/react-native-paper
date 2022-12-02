@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { StyleSheet, StyleProp, View, ViewStyle } from 'react-native';
+
 import theme from '../../styles/themes/v3/LightTheme';
 
-type Props = React.ComponentPropsWithRef<typeof View> & {
+export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Items inside the `Card.Content`.
    */
@@ -50,8 +51,8 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
  * ```
  */
 const CardContent = ({ index, total, siblings, style, ...rest }: Props) => {
-  const cover = 'withTheme(CardCover)';
-  const title = 'withTheme(CardTitle)';
+  const cover = 'withInternalTheme(CardCover)';
+  const title = 'withInternalTheme(CardTitle)';
 
   let contentStyle, prev, next;
 

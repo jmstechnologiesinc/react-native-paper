@@ -5,6 +5,11 @@ exports[`renders disabled toggle button 1`] = `
   collapsable={false}
   style={
     Object {
+      "alignSelf": undefined,
+      "bottom": undefined,
+      "left": undefined,
+      "position": undefined,
+      "right": undefined,
       "shadowColor": "#000",
       "shadowOffset": Object {
         "height": 0,
@@ -12,6 +17,7 @@ exports[`renders disabled toggle button 1`] = `
       },
       "shadowOpacity": 0,
       "shadowRadius": 0,
+      "top": undefined,
     }
   }
 >
@@ -46,6 +52,7 @@ exports[`renders disabled toggle button 1`] = `
       }
     >
       <View
+        accessibilityComponentType="button"
         accessibilityRole="button"
         accessibilityState={
           Object {
@@ -53,7 +60,15 @@ exports[`renders disabled toggle button 1`] = `
             "selected": true,
           }
         }
+        accessibilityTraits={
+          Array [
+            "button",
+            "disabled",
+          ]
+        }
         accessible={true}
+        centered={true}
+        collapsable={false}
         focusable={true}
         hitSlop={
           Object {
@@ -63,15 +78,19 @@ exports[`renders disabled toggle button 1`] = `
             "top": 6,
           }
         }
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
         onResponderTerminate={[Function]}
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
+        onValueChange={[Function]}
         style={
           Array [
+            false,
             false,
             Object {
               "alignItems": "center",
@@ -83,22 +102,39 @@ exports[`renders disabled toggle button 1`] = `
       >
         <Text
           accessibilityElementsHidden={true}
+          allowFontScaling={false}
           importantForAccessibility="no-hide-descendants"
           pointerEvents="none"
           selectable={false}
           style={
             Array [
               Object {
-                "backgroundColor": "transparent",
-              },
-              Object {
                 "color": "rgba(28, 27, 31, 0.38)",
                 "fontSize": 24,
               },
+              Array [
+                Object {
+                  "lineHeight": 24,
+                  "transform": Array [
+                    Object {
+                      "scaleX": 1,
+                    },
+                  ],
+                },
+                Object {
+                  "backgroundColor": "transparent",
+                },
+              ],
+              Object {
+                "fontFamily": "Material Design Icons",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
             ]
           }
         >
-          □
+          󰋑
         </Text>
       </View>
     </View>
@@ -111,6 +147,11 @@ exports[`renders toggle button 1`] = `
   collapsable={false}
   style={
     Object {
+      "alignSelf": undefined,
+      "bottom": undefined,
+      "left": undefined,
+      "position": undefined,
+      "right": undefined,
       "shadowColor": "#000",
       "shadowOffset": Object {
         "height": 0,
@@ -118,6 +159,7 @@ exports[`renders toggle button 1`] = `
       },
       "shadowOpacity": 0,
       "shadowRadius": 0,
+      "top": undefined,
     }
   }
 >
@@ -152,6 +194,7 @@ exports[`renders toggle button 1`] = `
       }
     >
       <View
+        accessibilityComponentType="button"
         accessibilityRole="button"
         accessibilityState={
           Object {
@@ -159,7 +202,10 @@ exports[`renders toggle button 1`] = `
             "selected": true,
           }
         }
+        accessibilityTraits="button"
         accessible={true}
+        centered={true}
+        collapsable={false}
         focusable={true}
         hitSlop={
           Object {
@@ -169,7 +215,9 @@ exports[`renders toggle button 1`] = `
             "top": 6,
           }
         }
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -178,6 +226,7 @@ exports[`renders toggle button 1`] = `
         onStartShouldSetResponder={[Function]}
         style={
           Array [
+            false,
             false,
             Object {
               "alignItems": "center",
@@ -189,22 +238,39 @@ exports[`renders toggle button 1`] = `
       >
         <Text
           accessibilityElementsHidden={true}
+          allowFontScaling={false}
           importantForAccessibility="no-hide-descendants"
           pointerEvents="none"
           selectable={false}
           style={
             Array [
               Object {
-                "backgroundColor": "transparent",
-              },
-              Object {
                 "color": "rgba(73, 69, 79, 1)",
                 "fontSize": 24,
               },
+              Array [
+                Object {
+                  "lineHeight": 24,
+                  "transform": Array [
+                    Object {
+                      "scaleX": 1,
+                    },
+                  ],
+                },
+                Object {
+                  "backgroundColor": "transparent",
+                },
+              ],
+              Object {
+                "fontFamily": "Material Design Icons",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
             ]
           }
         >
-          □
+          󰋑
         </Text>
       </View>
     </View>
@@ -217,6 +283,11 @@ exports[`renders unchecked toggle button 1`] = `
   collapsable={false}
   style={
     Object {
+      "alignSelf": undefined,
+      "bottom": undefined,
+      "left": undefined,
+      "position": undefined,
+      "right": undefined,
       "shadowColor": "#000",
       "shadowOffset": Object {
         "height": 0,
@@ -224,6 +295,7 @@ exports[`renders unchecked toggle button 1`] = `
       },
       "shadowOpacity": 0,
       "shadowRadius": 0,
+      "top": undefined,
     }
   }
 >
@@ -258,6 +330,7 @@ exports[`renders unchecked toggle button 1`] = `
       }
     >
       <View
+        accessibilityComponentType="button"
         accessibilityRole="button"
         accessibilityState={
           Object {
@@ -265,7 +338,15 @@ exports[`renders unchecked toggle button 1`] = `
             "selected": false,
           }
         }
+        accessibilityTraits={
+          Array [
+            "button",
+            "disabled",
+          ]
+        }
         accessible={true}
+        centered={true}
+        collapsable={false}
         focusable={true}
         hitSlop={
           Object {
@@ -275,15 +356,19 @@ exports[`renders unchecked toggle button 1`] = `
             "top": 6,
           }
         }
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
         onResponderTerminate={[Function]}
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
+        onValueChange={[Function]}
         style={
           Array [
+            false,
             false,
             Object {
               "alignItems": "center",
@@ -295,22 +380,39 @@ exports[`renders unchecked toggle button 1`] = `
       >
         <Text
           accessibilityElementsHidden={true}
+          allowFontScaling={false}
           importantForAccessibility="no-hide-descendants"
           pointerEvents="none"
           selectable={false}
           style={
             Array [
               Object {
-                "backgroundColor": "transparent",
-              },
-              Object {
                 "color": "rgba(28, 27, 31, 0.38)",
                 "fontSize": 24,
               },
+              Array [
+                Object {
+                  "lineHeight": 24,
+                  "transform": Array [
+                    Object {
+                      "scaleX": 1,
+                    },
+                  ],
+                },
+                Object {
+                  "backgroundColor": "transparent",
+                },
+              ],
+              Object {
+                "fontFamily": "Material Design Icons",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
             ]
           }
         >
-          □
+          󰋑
         </Text>
       </View>
     </View>

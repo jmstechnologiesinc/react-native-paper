@@ -1,10 +1,11 @@
 import * as React from 'react';
+import type { StyleProp, ViewStyle, View } from 'react-native';
+
 import type { $Omit } from './../../types';
 import AppbarAction from './AppbarAction';
 import AppbarBackIcon from './AppbarBackIcon';
-import type { StyleProp, ViewStyle } from 'react-native';
 
-type Props = $Omit<
+export type Props = $Omit<
   React.ComponentPropsWithoutRef<typeof AppbarAction>,
   'icon'
 > & {
@@ -29,6 +30,7 @@ type Props = $Omit<
    */
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
+  ref?: React.RefObject<View>;
 };
 
 /**
@@ -53,13 +55,16 @@ type Props = $Omit<
  * export default MyComponent;
  * ```
  */
-const AppbarBackAction = ({ accessibilityLabel = 'Back', ...rest }: Props) => (
-  <AppbarAction
-    accessibilityLabel={accessibilityLabel}
-    {...rest}
-    icon={AppbarBackIcon}
-    isLeading
-  />
+const AppbarBackAction = React.forwardRef<View, Props>(
+  ({ accessibilityLabel = 'Back', ...rest }: Props, ref) => (
+    <AppbarAction
+      accessibilityLabel={accessibilityLabel}
+      {...rest}
+      icon={AppbarBackIcon}
+      isLeading
+      ref={ref}
+    />
+  )
 );
 
 AppbarBackAction.displayName = 'Appbar.BackAction';

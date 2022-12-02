@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Platform } from 'react-native';
-import CheckboxIOS from './CheckboxIOS';
-import CheckboxAndroid from './CheckboxAndroid';
-import type { Theme } from '../../types';
 
-type Props = {
+import CheckboxAndroid from './CheckboxAndroid';
+import CheckboxIOS from './CheckboxIOS';
+
+export type Props = {
   /**
    * Status of checkbox.
    */
@@ -28,7 +28,6 @@ type Props = {
   /**
    * @optional
    */
-  theme: Theme;
   /**
    * testID to be used on tests.
    */

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Animated, StyleSheet, View } from 'react-native';
-import Icon, { isValidIcon, IconSource, isEqualIcon } from './Icon';
 
 import theme from '../styles/themes/v3/LightTheme';
+import Icon, { IconSource, isEqualIcon, isValidIcon } from './Icon';
 
 type Props = {
   /**

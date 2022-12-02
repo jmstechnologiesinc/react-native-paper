@@ -5,6 +5,11 @@ exports[`Appbar does not pass any additional props to Searchbar 1`] = `
   collapsable={false}
   style={
     Object {
+      "alignSelf": undefined,
+      "bottom": undefined,
+      "left": undefined,
+      "position": undefined,
+      "right": undefined,
       "shadowColor": "#000",
       "shadowOffset": Object {
         "height": 0,
@@ -12,6 +17,7 @@ exports[`Appbar does not pass any additional props to Searchbar 1`] = `
       },
       "shadowOpacity": 0,
       "shadowRadius": 0,
+      "top": undefined,
     }
   }
 >
@@ -37,7 +43,11 @@ exports[`Appbar does not pass any additional props to Searchbar 1`] = `
           "backgroundColor": "rgba(255, 251, 254, 1)",
           "flexDirection": "row",
           "height": 64,
+          "paddingBottom": undefined,
           "paddingHorizontal": 4,
+          "paddingLeft": undefined,
+          "paddingRight": undefined,
+          "paddingTop": undefined,
         }
       }
     >
@@ -45,6 +55,11 @@ exports[`Appbar does not pass any additional props to Searchbar 1`] = `
         collapsable={false}
         style={
           Object {
+            "alignSelf": undefined,
+            "bottom": undefined,
+            "left": undefined,
+            "position": undefined,
+            "right": undefined,
             "shadowColor": "#000",
             "shadowOffset": Object {
               "height": 1,
@@ -52,6 +67,7 @@ exports[`Appbar does not pass any additional props to Searchbar 1`] = `
             },
             "shadowOpacity": 0.15,
             "shadowRadius": 3,
+            "top": undefined,
           }
         }
       >
@@ -84,6 +100,11 @@ exports[`Appbar does not pass any additional props to Searchbar 1`] = `
               collapsable={false}
               style={
                 Object {
+                  "alignSelf": undefined,
+                  "bottom": undefined,
+                  "left": undefined,
+                  "position": undefined,
+                  "right": undefined,
                   "shadowColor": "#000",
                   "shadowOffset": Object {
                     "height": 0,
@@ -91,6 +112,7 @@ exports[`Appbar does not pass any additional props to Searchbar 1`] = `
                   },
                   "shadowOpacity": 0,
                   "shadowRadius": 0,
+                  "top": undefined,
                 }
               }
             >
@@ -125,6 +147,7 @@ exports[`Appbar does not pass any additional props to Searchbar 1`] = `
                   }
                 >
                   <View
+                    accessibilityComponentType="button"
                     accessibilityLabel="search"
                     accessibilityRole="button"
                     accessibilityState={
@@ -132,8 +155,11 @@ exports[`Appbar does not pass any additional props to Searchbar 1`] = `
                         "disabled": true,
                       }
                     }
+                    accessibilityTraits="button"
                     accessible={true}
-                    focusable={false}
+                    centered={true}
+                    collapsable={false}
+                    focusable={true}
                     hitSlop={
                       Object {
                         "bottom": 6,
@@ -142,7 +168,9 @@ exports[`Appbar does not pass any additional props to Searchbar 1`] = `
                         "top": 6,
                       }
                     }
+                    onBlur={[Function]}
                     onClick={[Function]}
+                    onFocus={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
                     onResponderRelease={[Function]}
@@ -154,6 +182,7 @@ exports[`Appbar does not pass any additional props to Searchbar 1`] = `
                         Object {
                           "overflow": "hidden",
                         },
+                        false,
                         Object {
                           "alignItems": "center",
                           "flexGrow": 1,
@@ -164,22 +193,39 @@ exports[`Appbar does not pass any additional props to Searchbar 1`] = `
                   >
                     <Text
                       accessibilityElementsHidden={true}
+                      allowFontScaling={false}
                       importantForAccessibility="no-hide-descendants"
                       pointerEvents="none"
                       selectable={false}
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "transparent",
-                          },
-                          Object {
                             "color": "rgba(28, 27, 31, 0.54)",
                             "fontSize": 24,
                           },
+                          Array [
+                            Object {
+                              "lineHeight": 24,
+                              "transform": Array [
+                                Object {
+                                  "scaleX": 1,
+                                },
+                              ],
+                            },
+                            Object {
+                              "backgroundColor": "transparent",
+                            },
+                          ],
+                          Object {
+                            "fontFamily": "Material Design Icons",
+                            "fontStyle": "normal",
+                            "fontWeight": "normal",
+                          },
+                          Object {},
                         ]
                       }
                     >
-                      □
+                      󰍉
                     </Text>
                   </View>
                 </View>
@@ -204,30 +250,29 @@ exports[`Appbar does not pass any additional props to Searchbar 1`] = `
                   },
                   Object {
                     "color": "rgba(28, 27, 31, 1)",
+                    "fontFamily": "System",
+                    "fontWeight": "400",
+                    "letterSpacing": 0,
                   },
                   undefined,
                 ]
               }
+              testID="search-bar"
               underlineColorAndroid="transparent"
             />
             <View
-              collapsable={false}
-              style={
-                Object {
-                  "shadowColor": "#000",
-                  "shadowOffset": Object {
-                    "height": 0,
-                    "width": 0,
-                  },
-                  "shadowOpacity": 0,
-                  "shadowRadius": 0,
-                }
-              }
+              pointerEvents="none"
+              testID="search-bar-icon-wrapper"
             >
               <View
                 collapsable={false}
                 style={
                   Object {
+                    "alignSelf": undefined,
+                    "bottom": undefined,
+                    "left": undefined,
+                    "position": undefined,
+                    "right": undefined,
                     "shadowColor": "#000",
                     "shadowOffset": Object {
                       "height": 0,
@@ -235,6 +280,7 @@ exports[`Appbar does not pass any additional props to Searchbar 1`] = `
                     },
                     "shadowOpacity": 0,
                     "shadowRadius": 0,
+                    "top": undefined,
                   }
                 }
               >
@@ -242,75 +288,114 @@ exports[`Appbar does not pass any additional props to Searchbar 1`] = `
                   collapsable={false}
                   style={
                     Object {
-                      "backgroundColor": undefined,
-                      "borderColor": "rgba(28, 27, 31, 0.12)",
-                      "borderRadius": 20,
-                      "borderWidth": 0,
-                      "elevation": 0,
-                      "height": 40,
-                      "margin": 6,
-                      "overflow": "hidden",
-                      "width": 40,
+                      "shadowColor": "#000",
+                      "shadowOffset": Object {
+                        "height": 0,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0,
+                      "shadowRadius": 0,
                     }
                   }
                 >
                   <View
-                    accessibilityLabel="clear"
-                    accessibilityRole="button"
-                    accessibilityState={
-                      Object {
-                        "disabled": true,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    hitSlop={
-                      Object {
-                        "bottom": 6,
-                        "left": 6,
-                        "right": 6,
-                        "top": 6,
-                      }
-                    }
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
+                    collapsable={false}
                     style={
-                      Array [
-                        Object {
-                          "overflow": "hidden",
-                        },
-                        Object {
-                          "alignItems": "center",
-                          "flexGrow": 1,
-                          "justifyContent": "center",
-                        },
-                      ]
+                      Object {
+                        "backgroundColor": undefined,
+                        "borderColor": "rgba(121, 116, 126, 1)",
+                        "borderRadius": 20,
+                        "borderWidth": 0,
+                        "elevation": 0,
+                        "height": 40,
+                        "margin": 6,
+                        "overflow": "hidden",
+                        "width": 40,
+                      }
                     }
                   >
-                    <Text
-                      accessibilityElementsHidden={true}
-                      importantForAccessibility="no-hide-descendants"
-                      pointerEvents="none"
-                      selectable={false}
+                    <View
+                      accessibilityComponentType="button"
+                      accessibilityLabel="clear"
+                      accessibilityRole="button"
+                      accessibilityState={
+                        Object {
+                          "disabled": false,
+                        }
+                      }
+                      accessibilityTraits="button"
+                      accessible={true}
+                      centered={true}
+                      collapsable={false}
+                      focusable={true}
+                      hitSlop={
+                        Object {
+                          "bottom": 6,
+                          "left": 6,
+                          "right": 6,
+                          "top": 6,
+                        }
+                      }
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "transparent",
+                            "overflow": "hidden",
                           },
+                          false,
                           Object {
-                            "color": "rgba(28, 27, 31, 0.38)",
-                            "fontSize": 24,
+                            "alignItems": "center",
+                            "flexGrow": 1,
+                            "justifyContent": "center",
                           },
                         ]
                       }
                     >
-                      □
-                    </Text>
+                      <Text
+                        accessibilityElementsHidden={true}
+                        allowFontScaling={false}
+                        importantForAccessibility="no-hide-descendants"
+                        pointerEvents="none"
+                        selectable={false}
+                        style={
+                          Array [
+                            Object {
+                              "color": "rgba(255, 255, 255, 0)",
+                              "fontSize": 24,
+                            },
+                            Array [
+                              Object {
+                                "lineHeight": 24,
+                                "transform": Array [
+                                  Object {
+                                    "scaleX": 1,
+                                  },
+                                ],
+                              },
+                              Object {
+                                "backgroundColor": "transparent",
+                              },
+                            ],
+                            Object {
+                              "fontFamily": "Material Design Icons",
+                              "fontStyle": "normal",
+                              "fontWeight": "normal",
+                            },
+                            Object {},
+                          ]
+                        }
+                      >
+                        󰅖
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -328,6 +413,11 @@ exports[`Appbar passes additional props to AppbarBackAction, AppbarContent and A
   collapsable={false}
   style={
     Object {
+      "alignSelf": undefined,
+      "bottom": undefined,
+      "left": undefined,
+      "position": undefined,
+      "right": undefined,
       "shadowColor": "#000",
       "shadowOffset": Object {
         "height": 0,
@@ -335,6 +425,7 @@ exports[`Appbar passes additional props to AppbarBackAction, AppbarContent and A
       },
       "shadowOpacity": 0,
       "shadowRadius": 0,
+      "top": undefined,
     }
   }
 >
@@ -360,7 +451,11 @@ exports[`Appbar passes additional props to AppbarBackAction, AppbarContent and A
           "backgroundColor": "rgba(255, 251, 254, 1)",
           "flexDirection": "row",
           "height": 64,
+          "paddingBottom": undefined,
           "paddingHorizontal": 4,
+          "paddingLeft": undefined,
+          "paddingRight": undefined,
+          "paddingTop": undefined,
         }
       }
     >
@@ -368,6 +463,11 @@ exports[`Appbar passes additional props to AppbarBackAction, AppbarContent and A
         collapsable={false}
         style={
           Object {
+            "alignSelf": undefined,
+            "bottom": undefined,
+            "left": undefined,
+            "position": undefined,
+            "right": undefined,
             "shadowColor": "#000",
             "shadowOffset": Object {
               "height": 0,
@@ -375,6 +475,7 @@ exports[`Appbar passes additional props to AppbarBackAction, AppbarContent and A
             },
             "shadowOpacity": 0,
             "shadowRadius": 0,
+            "top": undefined,
           }
         }
       >
@@ -409,6 +510,7 @@ exports[`Appbar passes additional props to AppbarBackAction, AppbarContent and A
             }
           >
             <View
+              accessibilityComponentType="button"
               accessibilityLabel="Back"
               accessibilityRole="button"
               accessibilityState={
@@ -416,7 +518,10 @@ exports[`Appbar passes additional props to AppbarBackAction, AppbarContent and A
                   "disabled": false,
                 }
               }
+              accessibilityTraits="button"
               accessible={true}
+              centered={true}
+              collapsable={false}
               focusable={true}
               hitSlop={
                 Object {
@@ -426,7 +531,9 @@ exports[`Appbar passes additional props to AppbarBackAction, AppbarContent and A
                   "top": 6,
                 }
               }
+              onBlur={[Function]}
               onClick={[Function]}
+              onFocus={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -438,6 +545,7 @@ exports[`Appbar passes additional props to AppbarBackAction, AppbarContent and A
                   Object {
                     "overflow": "hidden",
                   },
+                  false,
                   Object {
                     "alignItems": "center",
                     "flexGrow": 1,
@@ -498,6 +606,7 @@ exports[`Appbar passes additional props to AppbarBackAction, AppbarContent and A
                     }
                   >
                     <Image
+                      accessibilityIgnoresInvertColors={true}
                       source={
                         Object {
                           "testUri": "../../../src/assets/back-chevron.png",
@@ -524,6 +633,7 @@ exports[`Appbar passes additional props to AppbarBackAction, AppbarContent and A
         </View>
       </View>
       <View
+        accessibilityRole="button"
         accessibilityState={
           Object {
             "disabled": true,
@@ -564,6 +674,7 @@ exports[`Appbar passes additional props to AppbarBackAction, AppbarContent and A
             Array [
               Object {
                 "color": "rgba(28, 27, 31, 1)",
+                "fontFamily": "System",
                 "fontSize": 22,
                 "fontWeight": "400",
                 "letterSpacing": 0,
@@ -597,6 +708,11 @@ exports[`Appbar passes additional props to AppbarBackAction, AppbarContent and A
         collapsable={false}
         style={
           Object {
+            "alignSelf": undefined,
+            "bottom": undefined,
+            "left": undefined,
+            "position": undefined,
+            "right": undefined,
             "shadowColor": "#000",
             "shadowOffset": Object {
               "height": 0,
@@ -604,6 +720,7 @@ exports[`Appbar passes additional props to AppbarBackAction, AppbarContent and A
             },
             "shadowOpacity": 0,
             "shadowRadius": 0,
+            "top": undefined,
           }
         }
       >
@@ -638,13 +755,17 @@ exports[`Appbar passes additional props to AppbarBackAction, AppbarContent and A
             }
           >
             <View
+              accessibilityComponentType="button"
               accessibilityRole="button"
               accessibilityState={
                 Object {
                   "disabled": false,
                 }
               }
+              accessibilityTraits="button"
               accessible={true}
+              centered={true}
+              collapsable={false}
               focusable={true}
               hitSlop={
                 Object {
@@ -654,7 +775,9 @@ exports[`Appbar passes additional props to AppbarBackAction, AppbarContent and A
                   "top": 6,
                 }
               }
+              onBlur={[Function]}
               onClick={[Function]}
+              onFocus={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -666,6 +789,7 @@ exports[`Appbar passes additional props to AppbarBackAction, AppbarContent and A
                   Object {
                     "overflow": "hidden",
                   },
+                  false,
                   Object {
                     "alignItems": "center",
                     "flexGrow": 1,
@@ -708,22 +832,39 @@ exports[`Appbar passes additional props to AppbarBackAction, AppbarContent and A
                 >
                   <Text
                     accessibilityElementsHidden={true}
+                    allowFontScaling={false}
                     importantForAccessibility="no-hide-descendants"
                     pointerEvents="none"
                     selectable={false}
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "transparent",
-                        },
-                        Object {
                           "color": "rgba(73, 69, 79, 1)",
                           "fontSize": 24,
                         },
+                        Array [
+                          Object {
+                            "lineHeight": 24,
+                            "transform": Array [
+                              Object {
+                                "scaleX": 1,
+                              },
+                            ],
+                          },
+                          Object {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                        Object {
+                          "fontFamily": "Material Design Icons",
+                          "fontStyle": "normal",
+                          "fontWeight": "normal",
+                        },
+                        Object {},
                       ]
                     }
                   >
-                    □
+                    󰍜
                   </Text>
                 </View>
               </View>

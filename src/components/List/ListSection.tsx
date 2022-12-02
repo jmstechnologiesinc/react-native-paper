@@ -1,17 +1,16 @@
 import * as React from 'react';
 import {
+  StyleProp,
+  StyleSheet,
+  TextStyle,
   View,
   ViewStyle,
-  StyleSheet,
-  StyleProp,
-  TextStyle,
 } from 'react-native';
 
 import theme from '../../styles/themes/v3/LightTheme';
-
 import ListSubheader from './ListSubheader';
 
-type Props = React.ComponentPropsWithRef<typeof View> & {
+export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Title text for the section.
    */
@@ -23,7 +22,6 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
-
   /**
    * Style that is passed to Title element.
    */

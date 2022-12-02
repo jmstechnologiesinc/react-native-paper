@@ -1,12 +1,14 @@
-import type { ThemeBase } from '../../../types';
-import { tokens, typescale, spacing } from './tokens';
 import color from 'color';
-
 import { moderateScale } from 'react-native-size-matters';
 
-const { palette, opacity } = tokens.md.ref;
+import type { MD3Theme } from '../../../types';
+import configureFonts from '../../fonts';
+import { MD3Colors, tokens } from './tokens';
 
-const LightTheme: ThemeBase = {
+const { palette, opacity } = tokens.md.ref;
+const spacing = tokens.md.sys.spacing;
+
+export const MD3LightTheme: MD3Theme = {
   dark: false,
   roundness: moderateScale(4),
   margin: moderateScale(16),
@@ -44,10 +46,13 @@ const LightTheme: ThemeBase = {
     onErrorContainer: palette.error10,
     onBackground: palette.neutral10,
     outline: palette.neutralVariant50,
-    shadow: palette.neutral0,
+    outlineVariant: palette.neutralVariant80,
     inverseSurface: palette.neutral20,
     inverseOnSurface: palette.neutral95,
     inversePrimary: palette.primary80,
+    shadow: palette.neutral0,
+    scrim: palette.neutral0,
+    backdrop: color(MD3Colors.neutralVariant20).alpha(0.4).rgb().string(),
     elevation: {
       level0: 'transparent',
       // Note: Color values with transparency cause RN to transfer shadows to children nodes
@@ -60,11 +65,11 @@ const LightTheme: ThemeBase = {
       level5: 'rgb(233, 227, 241)', // palette.primary40, alpha 0.14
     },
   },
-  typescale,
-  spacing,
+  fonts: configureFonts(),
   animation: {
     scale: 1.0,
   },
+  spacing,
 };
 
-export default LightTheme;
+export default MD3LightTheme;

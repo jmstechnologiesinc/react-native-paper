@@ -7,13 +7,14 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import theme from '../../styles/themes/v3/LightTheme';
 import { getSwitchColor } from './utils';
 
 const version = NativeModules.PlatformConstants
   ? NativeModules.PlatformConstants.reactNativeVersion
   : undefined;
 
-type Props = React.ComponentPropsWithRef<typeof NativeSwitch> & {
+export type Props = React.ComponentPropsWithRef<typeof NativeSwitch> & {
   /**
    * Disable toggling the switch.
    */

@@ -1,23 +1,24 @@
 import * as React from 'react';
-import { View, ViewStyle, Platform, StyleSheet, StyleProp } from 'react-native';
+import { Platform, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+
 import color from 'color';
 
-import AppbarContent from './AppbarContent';
+import theme from '../../styles/themes/v3/LightTheme';
+import type { MD3Elevation } from '../../types';
+import Surface from '../Surface';
 import AppbarAction from './AppbarAction';
 import AppbarBackAction from './AppbarBackAction';
-import Surface from '../Surface';
-import type { MD3Elevation } from '../../types';
-import theme from '../../styles/themes/v3/LightTheme';
-import {
-  getAppbarColor,
-  renderAppbarContent,
-  DEFAULT_APPBAR_HEIGHT,
-  modeAppbarHeight,
-  AppbarModes,
-} from './utils';
+import AppbarContent from './AppbarContent';
 import AppbarHeader from './AppbarHeader';
+import {
+  AppbarModes,
+  DEFAULT_APPBAR_HEIGHT,
+  getAppbarColor,
+  modeAppbarHeight,
+  renderAppbarContent,
+} from './utils';
 
-type Props = Partial<React.ComponentPropsWithRef<typeof View>> & {
+export type Props = Partial<React.ComponentPropsWithRef<typeof View>> & {
   /**
    * Whether the background color is a dark color. A dark appbar will render light text and vice-versa.
    */
@@ -42,6 +43,16 @@ type Props = Partial<React.ComponentPropsWithRef<typeof View>> & {
    */
   elevated?: boolean;
   /**
+   * @supported Available in v5.x
+   * Safe area insets for the Appbar. This can be used to avoid elements like the navigation bar on Android and bottom safe area on iOS.
+   */
+  safeAreaInsets?: {
+    bottom?: number;
+    top?: number;
+    left?: number;
+    right?: number;
+  };
+  /**
    * @optional
    */
   style?: StyleProp<ViewStyle>;
@@ -60,36 +71,81 @@ type Props = Partial<React.ComponentPropsWithRef<typeof View>> & {
  * </div>
  *
  * ## Usage
+ * ### Top bar
  * ```js
  * import * as React from 'react';
  * import { Appbar } from 'react-native-paper';
- * import { StyleSheet } from 'react-native';
  *
  * const MyComponent = () => (
- *  <Appbar style={styles.bottom}>
- *    <Appbar.Action
- *      icon="archive"
- *      onPress={() => console.log('Pressed archive')}
- *     />
- *     <Appbar.Action icon="mail" onPress={() => console.log('Pressed mail')} />
- *     <Appbar.Action icon="label" onPress={() => console.log('Pressed label')} />
- *     <Appbar.Action
- *       icon="delete"
- *       onPress={() => console.log('Pressed delete')}
- *     />
- *   </Appbar>
- *  );
+ *   <Appbar.Header>
+ *     <Appbar.BackAction onPress={() => {}} />
+ *     <Appbar.Content title="Title" />
+ *     <Appbar.Action icon="calendar" onPress={() => {}} />
+ *     <Appbar.Action icon="magnify" onPress={() => {}} />
+ *   </Appbar.Header>
+ * );
  *
- * export default MyComponent
+ * export default MyComponent;
+ * ```
+ *
+ * ### Bottom bar
+ * ```js
+ * import * as React from 'react';
+ * import { StyleSheet } from 'react-native';
+ * import { Appbar, FAB, useTheme } from 'react-native-paper';
+ * import { useSafeAreaInsets } from 'react-native-safe-area-context';
+ *
+ * const BOTTOM_APPBAR_HEIGHT = 80;
+ * const MEDIUM_FAB_HEIGHT = 56;
+ *
+ * const MyComponent = () => {
+ *   const { bottom } = useSafeAreaInsets();
+ *   const theme = useTheme();
+ *
+ *   return (
+ *     <Appbar
+ *       style={[
+ *         styles.bottom,
+ *         {
+ *           height: BOTTOM_APPBAR_HEIGHT + bottom,
+ *           backgroundColor: theme.colors.elevation.level2,
+ *         },
+ *       ]}
+ *       safeAreaInsets={{ bottom }}
+ *     >
+ *       <Appbar.Action icon="archive" onPress={() => {}} />
+ *       <Appbar.Action icon="email" onPress={() => {}} />
+ *       <Appbar.Action icon="label" onPress={() => {}} />
+ *       <Appbar.Action icon="delete" onPress={() => {}} />
+ *       <FAB
+ *         mode="flat"
+ *         size="medium"
+ *         icon="plus"
+ *         onPress={() => {}}
+ *         style={[
+ *           styles.fab,
+ *           { top: (BOTTOM_APPBAR_HEIGHT - MEDIUM_FAB_HEIGHT) / 2 },
+ *         ]}
+ *       />
+ *     </Appbar>
+ *   );
+ * };
  *
  * const styles = StyleSheet.create({
  *   bottom: {
+ *     backgroundColor: 'aquamarine',
  *     position: 'absolute',
  *     left: 0,
  *     right: 0,
  *     bottom: 0,
  *   },
+ *   fab: {
+ *     position: 'absolute',
+ *     right: 16,
+ *   },
  * });
+ *
+ * export default MyComponent;
  * ```
  */
 const Appbar = ({
@@ -99,7 +155,7 @@ const Appbar = ({
 
   mode = 'small',
   elevated,
-  transparentBackgroundColorByPass,
+  safeAreaInsets,
   ...rest
 }: Props) => {
   const { isV3 } = theme;
@@ -111,18 +167,16 @@ const Appbar = ({
 
   let isDark: boolean;
 
-  let backgroundColor;
-  if(transparentBackgroundColorByPass === true) {
-    backgroundColor = theme.colors.surface
-  } else {
-    backgroundColor = getAppbarColor(
-      theme,
-      elevation,
-      customBackground,
-      //  @ts-ignore:next-line
-      elevated
-    );
-  }
+  const backgroundColor = getAppbarColor(
+    elevation,
+    customBackground,
+    //  @ts-ignore:next-line
+    elevated
+  );
+
+  const isMode = (modeToCompare: AppbarModes) => {
+    return isV3 && mode === modeToCompare;
+  };
 
   if (typeof dark === 'boolean') {
     isDark = dark;
@@ -135,10 +189,12 @@ const Appbar = ({
         : true;
   }
 
+  const isV3CenterAlignedMode = isV3 && isMode('center-aligned');
+
   let shouldCenterContent = false;
   let shouldAddLeftSpacing = false;
   let shouldAddRightSpacing = false;
-  if (Platform.OS === 'ios') {
+  if ((!isV3 && Platform.OS === 'ios') || isV3CenterAlignedMode) {
     let hasAppbarContent = false;
     let leftItemsCount = 0;
     let rightItemsCount = 0;
@@ -156,15 +212,12 @@ const Appbar = ({
     });
 
     shouldCenterContent =
-      !isV3 && hasAppbarContent && leftItemsCount < 2 && rightItemsCount < 2;
-    shouldAddLeftSpacing = !isV3 && shouldCenterContent && leftItemsCount === 0;
-    shouldAddRightSpacing =
-      !isV3 && shouldCenterContent && rightItemsCount === 0;
+      hasAppbarContent &&
+      leftItemsCount < 2 &&
+      rightItemsCount < (isV3 ? 3 : 2);
+    shouldAddLeftSpacing = shouldCenterContent && leftItemsCount === 0;
+    shouldAddRightSpacing = shouldCenterContent && rightItemsCount === 0;
   }
-
-  const isMode = (modeToCompare: AppbarModes) => {
-    return isV3 && mode === modeToCompare;
-  };
 
   const filterAppbarActions = React.useCallback(
     (isLeading = false) =>
@@ -175,6 +228,15 @@ const Appbar = ({
     [children]
   );
 
+  const spacingStyle = isV3 ? styles.v3Spacing : styles.spacing;
+
+  const insets = {
+    paddingBottom: safeAreaInsets?.bottom,
+    paddingTop: safeAreaInsets?.top,
+    paddingLeft: safeAreaInsets?.left,
+    paddingRight: safeAreaInsets?.right,
+  };
+
   return (
     <Surface
       style={[
@@ -183,21 +245,22 @@ const Appbar = ({
         {
           height: isV3 ? modeAppbarHeight[mode] : DEFAULT_APPBAR_HEIGHT,
         },
+        insets,
         restStyle,
         !theme.isV3 && { elevation },
       ]}
       elevation={elevation as MD3Elevation}
       {...rest}
     >
-      {shouldAddLeftSpacing ? <View style={styles.spacing} /> : null}
-      {(!isV3 || isMode('small')) &&
+      {shouldAddLeftSpacing ? <View style={spacingStyle} /> : null}
+      {(!isV3 || isMode('small') || isMode('center-aligned')) &&
         renderAppbarContent({
           children,
           isDark,
           isV3,
-          shouldCenterContent,
+          shouldCenterContent: isV3CenterAlignedMode || shouldCenterContent,
         })}
-      {(isMode('medium') || isMode('large') || isMode('center-aligned')) && (
+      {(isMode('medium') || isMode('large')) && (
         <View
           style={[
             styles.columnContainer,
@@ -242,13 +305,12 @@ const Appbar = ({
             children,
             isDark,
             isV3,
-            shouldCenterContent: isMode('center-aligned'),
             renderOnly: [AppbarContent],
             mode,
           })}
         </View>
       )}
-      {shouldAddRightSpacing ? <View style={styles.spacing} /> : null}
+      {shouldAddRightSpacing ? <View style={spacingStyle} /> : null}
     </Surface>
   );
 };
@@ -261,6 +323,9 @@ const styles = StyleSheet.create({
   },
   spacing: {
     width: theme.spacing.x12,
+  },
+  v3Spacing: {
+    width: 52,
   },
   controlsRow: {
     flex: 1,

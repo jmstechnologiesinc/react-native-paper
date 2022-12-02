@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { StyleSheet, Platform, StyleProp, ViewStyle } from 'react-native';
-import Modal from '../Modal';
-import DialogContent from './DialogContent';
-import DialogActions from './DialogActions';
-import DialogIcon from './DialogIcon';
-import DialogTitle from './DialogTitle';
-import DialogScrollArea from './DialogScrollArea';
-import overlay from '../../styles/overlay';
-import theme from '../../styles/themes/v3/LightTheme';
+import { Platform, StyleProp, StyleSheet, ViewStyle } from 'react-native';
 
-type Props = {
+import overlay from '../../styles/overlay';
+import Modal from '../Modal';
+import DialogActions from './DialogActions';
+import DialogContent from './DialogContent';
+import DialogIcon from './DialogIcon';
+import DialogScrollArea from './DialogScrollArea';
+import DialogTitle from './DialogTitle';
+
+export type Props = {
   /**
    * Determines whether clicking outside the dialog dismiss it.
    */
@@ -111,13 +111,14 @@ const Dialog = ({
         styles.container,
         style,
       ]}
+      theme={theme}
     >
       {React.Children.toArray(children)
         .filter((child) => child != null && typeof child !== 'boolean')
         .map((child, i) => {
           if (isV3) {
             if (i === 0 && React.isValidElement(child)) {
-              return React.cloneElement(child, {
+              return React.cloneElement(child as React.ReactElement<any>, {
                 style: [{ marginTop: 24 }, child.props.style],
               });
             }
@@ -129,7 +130,7 @@ const Dialog = ({
             child.type === DialogContent
           ) {
             // Dialog content is the first item, so we add a top padding
-            return React.cloneElement(child, {
+            return React.cloneElement(child as React.ReactElement<any>, {
               style: [{ paddingTop: 24 }, child.props.style],
             });
           }

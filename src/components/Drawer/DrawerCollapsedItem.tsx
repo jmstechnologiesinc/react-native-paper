@@ -1,23 +1,24 @@
 import * as React from 'react';
 import {
-  View,
-  StyleSheet,
-  StyleProp,
-  ViewStyle,
   Animated,
-  TouchableWithoutFeedback,
   NativeSyntheticEvent,
-  TextLayoutEventData,
   Platform,
+  StyleProp,
+  StyleSheet,
+  TextLayoutEventData,
+  TouchableWithoutFeedback,
+  View,
+  ViewStyle,
 } from 'react-native';
+
 import { moderateScale } from 'react-native-size-matters';
 
-import Text from '../Typography/Text';
-import Icon, { IconSource } from '../Icon';
 import theme from '../../styles/themes/v3/LightTheme';
 import Badge from '../Badge';
+import Icon, { IconSource } from '../Icon';
+import Text from '../Typography/Text';
 
-type Props = React.ComponentPropsWithRef<typeof View> & {
+export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * The label text of the item.
    */
@@ -42,7 +43,6 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
-
   /**
    * Badge to show on the icon, can be `true` to show a dot, `string` or `number` to show text.
    */
@@ -139,8 +139,14 @@ const DrawerCollapsedItem = ({
   const androidLetterSpacingStyle =
     Platform.OS === 'android' && numOfLines > 4 && styles.letterSpacing;
 
+  const labelTextStyle = {
+    color: labelColor,
+    ...(isV3 ? theme.fonts.labelMedium : {}),
+  };
+
   return (
     <View {...rest}>
+      {/* eslint-disable-next-line react-native-a11y/has-accessibility-props */}
       <TouchableWithoutFeedback
         onPress={onPress}
         onPressOut={onPress ? handlePressOut : undefined}
@@ -194,13 +200,7 @@ const DrawerCollapsedItem = ({
               selectable={false}
               numberOfLines={2}
               onTextLayout={onTextLayout}
-              style={[
-                styles.label,
-                androidLetterSpacingStyle,
-                {
-                  color: labelColor,
-                },
-              ]}
+              style={[styles.label, androidLetterSpacingStyle, labelTextStyle]}
             >
               {label}
             </Text>

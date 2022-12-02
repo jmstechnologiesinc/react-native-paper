@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { Animated, View, StyleSheet } from 'react-native';
-import MaterialCommunityIcon from '../MaterialCommunityIcon';
-import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import type { $RemoveChildren, Theme } from '../../types';
-import { getAndroidSelectionControlColor } from './utils';
-import theme from '../../styles/themes/v3/LightTheme';
+import { Animated, StyleSheet, View } from 'react-native';
+
 import { moderateScale } from 'react-native-size-matters';
 
-type Props = $RemoveChildren<typeof TouchableRipple> & {
+import theme from '../../styles/themes/v3/LightTheme';
+import type { $RemoveChildren } from '../../types';
+import MaterialCommunityIcon from '../MaterialCommunityIcon';
+import TouchableRipple from '../TouchableRipple/TouchableRipple';
+import { getAndroidSelectionControlColor } from './utils';
+
+export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * Status of checkbox.
    */
@@ -31,7 +33,6 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * @optional
    */
-  theme: Theme;
   /**
    * testID to be used on tests.
    */

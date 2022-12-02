@@ -1,4 +1,5 @@
 import { Platform } from 'react-native';
+
 import setColor from 'color';
 
 import {
@@ -10,8 +11,10 @@ import {
   black,
 } from '../../styles/themes/v2/colors';
 import theme from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 
 type BaseProps = {
+  theme: InternalTheme;
   disabled?: boolean;
   value?: boolean;
 };

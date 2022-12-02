@@ -1,20 +1,20 @@
 import * as React from 'react';
-import color from 'color';
 import {
-  StyleSheet,
   StyleProp,
+  StyleSheet,
   View,
-  ViewStyle,
   ViewProps,
+  ViewStyle,
 } from 'react-native';
-import TouchableRipple from '../TouchableRipple/TouchableRipple';
+
+import color from 'color';
+
 import { black, white } from '../../styles/themes/v2/colors';
-
-import type { $RemoveChildren } from '../../types';
-
 import theme from '../../styles/themes/v3/LightTheme';
+import type { $RemoveChildren } from '../../types';
+import TouchableRipple from '../TouchableRipple/TouchableRipple';
 
-type Props = $RemoveChildren<typeof TouchableRipple> & {
+export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * Content of the `DataTableRow`.
    */
@@ -27,7 +27,6 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * @optional
    */
-
   /**
    * `pointerEvents` passed to the `View` container, which is wrapping children within `TouchableRipple`.
    */

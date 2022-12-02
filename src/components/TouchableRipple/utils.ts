@@ -1,4 +1,5 @@
 import color from 'color';
+
 import theme from '../../styles/themes/v3/LightTheme';
 
 const getUnderlayColor = ({

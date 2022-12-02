@@ -1,23 +1,20 @@
 import * as React from 'react';
-import type { StyleProp, TextStyle } from 'react-native';
+
 import {
   Paragraph,
-  Text,
-  Text as NativeText,
-  useTheme,
   Subheading,
+  Text as NativeText,
+  Text,
 } from 'react-native-paper';
-import type { MD3TypescaleKey } from '../../../../src/types';
+
+import { useExampleTheme } from '../..';
 
 type Props = React.ComponentProps<typeof NativeText> & {
   isSubheading?: boolean;
-  children: React.ReactNode;
-  style?: StyleProp<TextStyle>;
-  variant?: keyof typeof MD3TypescaleKey;
 };
 
 export const TextComponent = ({ isSubheading = false, ...props }: Props) => {
-  const theme = useTheme();
+  const theme = useExampleTheme();
 
   if (theme.isV3) {
     return (

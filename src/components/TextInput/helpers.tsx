@@ -1,31 +1,33 @@
 import type { Animated } from 'react-native';
+
 import color from 'color';
+
+import MD3LightTheme from '../../styles/themes/v3/LightTheme';
+import theme from '../../styles/themes/v3/LightTheme';
+import { AdornmentSide, AdornmentType } from './Adornment/enums';
 import type { AdornmentConfig } from './Adornment/types';
 import {
   ADORNMENT_SIZE,
-  MD3_LABEL_PADDING_HORIZONTAL,
-  MD2_LABEL_PADDING_HORIZONTAL,
-  MD3_ADORNMENT_OFFSET,
   MD2_ADORNMENT_OFFSET,
-  MD3_FLAT_INPUT_OFFSET,
-  MD2_FLAT_INPUT_OFFSET,
-  MD3_AFFIX_OFFSET,
   MD2_AFFIX_OFFSET,
-  MD3_ICON_OFFSET,
+  MD2_FLAT_INPUT_OFFSET,
   MD2_ICON_OFFSET,
-  MD3_LABEL_PADDING_TOP,
-  MD2_LABEL_PADDING_TOP,
-  MD3_MIN_HEIGHT,
-  MD2_MIN_HEIGHT,
-  MD3_INPUT_PADDING_HORIZONTAL,
   MD2_INPUT_PADDING_HORIZONTAL,
-  MD3_OUTLINED_INPUT_OFFSET,
+  MD2_LABEL_PADDING_HORIZONTAL,
+  MD2_LABEL_PADDING_TOP,
+  MD2_MIN_HEIGHT,
   MD2_OUTLINED_INPUT_OFFSET,
+  MD3_ADORNMENT_OFFSET,
+  MD3_AFFIX_OFFSET,
+  MD3_FLAT_INPUT_OFFSET,
+  MD3_ICON_OFFSET,
+  MD3_INPUT_PADDING_HORIZONTAL,
+  MD3_LABEL_PADDING_HORIZONTAL,
+  MD3_LABEL_PADDING_TOP,
+  MD3_MIN_HEIGHT,
+  MD3_OUTLINED_INPUT_OFFSET,
 } from './constants';
-import { AdornmentType, AdornmentSide } from './Adornment/enums';
 import type { TextInputLabelProp } from './types';
-import MD3LightTheme from '../../styles/themes/v3/LightTheme';
-import theme from '../../styles/themes/v3/LightTheme';
 
 type PaddingProps = {
   height: number | null;
@@ -317,8 +319,16 @@ type BaseProps = {
 
 type Mode = 'flat' | 'outlined';
 
-const getInputTextColor = ({ disabled, mode }: BaseProps & { mode: Mode }) => {
+const getInputTextColor = ({
+  textColor,
+  disabled,
+  mode,
+}: BaseProps & { mode: Mode; textColor?: string }) => {
   const isFlat = mode === 'flat';
+  if (textColor) {
+    return textColor;
+  }
+
   if (theme.isV3) {
     if (disabled) {
       return theme.colors.onSurfaceDisabled;
@@ -466,17 +476,23 @@ const getOutlinedOutlineInputColor = ({
 export const getFlatInputColors = ({
   underlineColor,
   activeUnderlineColor,
+  textColor,
   disabled,
   error,
 }: {
   underlineColor?: string;
   activeUnderlineColor?: string;
+  textColor?: string;
   disabled?: boolean;
   error?: boolean;
 }) => {
   const baseFlatColorProps = { theme, disabled };
   return {
-    inputTextColor: getInputTextColor({ ...baseFlatColorProps, mode: 'flat' }),
+    inputTextColor: getInputTextColor({
+      ...baseFlatColorProps,
+      textColor,
+      mode: 'flat',
+    }),
     activeColor: getActiveColor({
       ...baseFlatColorProps,
       error,
@@ -496,11 +512,13 @@ export const getFlatInputColors = ({
 export const getOutlinedInputColors = ({
   activeOutlineColor,
   customOutlineColor,
+  textColor,
   disabled,
   error,
 }: {
   activeOutlineColor?: string;
   customOutlineColor?: string;
+  textColor?: string;
   disabled?: boolean;
   error?: boolean;
 }) => {
@@ -509,6 +527,7 @@ export const getOutlinedInputColors = ({
   return {
     inputTextColor: getInputTextColor({
       ...baseOutlinedColorProps,
+      textColor,
       mode: 'outlined',
     }),
     activeColor: getActiveColor({

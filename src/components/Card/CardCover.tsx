@@ -1,14 +1,13 @@
 import * as React from 'react';
-import { StyleSheet, View, ViewStyle, Image, StyleProp } from 'react-native';
+import { Image, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../../styles/themes/v3/LightTheme';
-
 import { grey200 } from '../../styles/themes/v2/colors';
-
+import theme from '../../styles/themes/v3/LightTheme';
 import { getCardCoverStyle } from './utils';
 
-type Props = React.ComponentPropsWithRef<typeof Image> & {
+export type Props = React.ComponentPropsWithRef<typeof Image> & {
   /**
    * @internal
    */
@@ -53,7 +52,11 @@ const CardCover = ({ index, total, style, ...rest }: Props) => {
 
   return (
     <View style={[styles.container, coverStyle, style]}>
-      <Image {...rest} style={[styles.image, coverStyle]} />
+      <Image
+        {...rest}
+        style={[styles.image, coverStyle]}
+        accessibilityIgnoresInvertColors
+      />
     </View>
   );
 };

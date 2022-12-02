@@ -6,14 +6,16 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+
 import { moderateScale } from 'react-native-size-matters';
 
+import theme from '../../styles/themes/v3/LightTheme';
 import type { MD3TypescaleKey } from '../../types';
+import Text from '../Typography/Text';
 import Caption from '../Typography/v2/Caption';
 import Title from '../Typography/v2/Title';
-import Text from '../Typography/Text';
-import theme from '../../styles/themes/v3/LightTheme';
-type Props = React.ComponentPropsWithRef<typeof View> & {
+
+export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Text for the title. Note that this will only accept a string or `<Text>`-based node.
    */

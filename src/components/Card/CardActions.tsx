@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { StyleSheet, StyleProp, View, ViewStyle } from 'react-native';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+
 import theme from '../../styles/themes/v3/LightTheme';
 
-type Props = React.ComponentPropsWithRef<typeof View> & {
+export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Items inside the `CardActions`.
    */
@@ -47,9 +48,11 @@ const CardActions = (props: Props) => {
     >
       {React.Children.map(props.children, (child, i) => {
         return React.isValidElement(child)
-          ? React.cloneElement(child, {
+          ? React.cloneElement(child as React.ReactElement<any>, {
               compact: !isV3 && child.props.compact !== false,
-              mode: isV3 && (i === 0 ? 'outlined' : 'contained'),
+              mode:
+                child.props.mode ||
+                (isV3 && (i === 0 ? 'outlined' : 'contained')),
               style: isV3 && styles.button,
             })
           : child;

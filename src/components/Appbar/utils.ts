@@ -1,16 +1,17 @@
 import React from 'react';
-import color from 'color';
-import { StyleSheet } from 'react-native';
 import type { ColorValue, StyleProp, ViewStyle } from 'react-native';
+import { StyleSheet } from 'react-native';
 
+import color from 'color';
 import { moderateScale } from 'react-native-size-matters';
 
-import AppbarContent from './AppbarContent';
+import overlay from '../../styles/overlay';
+import { black, white } from '../../styles/themes/v2/colors';
+import theme from '../../styles/themes/v3/LightTheme';
+import Tooltip from '../Tooltip/Tooltip';
 import AppbarAction from './AppbarAction';
 import AppbarBackAction from './AppbarBackAction';
-import overlay from '../../styles/overlay';
-import theme from '../../styles/themes/v3/LightTheme';
-import { black, white } from '../../styles/themes/v2/colors';
+import AppbarContent from './AppbarContent';
 
 export type AppbarModes = 'small' | 'medium' | 'large' | 'center-aligned';
 
@@ -48,8 +49,8 @@ type RenderAppbarContentProps = {
   isDark: boolean;
   shouldCenterContent?: boolean;
   isV3: boolean;
-  renderOnly?: React.ReactNode[];
-  renderExcept?: React.ReactNode[];
+  renderOnly?: React.ComponentType<any>[];
+  renderExcept?: React.ComponentType<any>[];
   mode?: AppbarModes;
 };
 
@@ -80,7 +81,7 @@ export const renderAppbarContent = ({
   mode = 'small',
 }: RenderAppbarContentProps) => {
   return (
-    React.Children.toArray(children)
+    React.Children.toArray(children as React.ReactNode | React.ReactNode[])
       .filter((child) => child != null && typeof child !== 'boolean')
       .filter((child) =>
         // @ts-expect-error: TypeScript complains about the type of type but it doesn't matter
@@ -91,7 +92,7 @@ export const renderAppbarContent = ({
       .map((child, i) => {
         if (
           !React.isValidElement(child) ||
-          ![AppbarContent, AppbarAction, AppbarBackAction].includes(
+          ![AppbarContent, AppbarAction, AppbarBackAction, Tooltip].includes(
             // @ts-expect-error: TypeScript complains about the type of type but it doesn't matter
             child.type
           )
@@ -104,23 +105,23 @@ export const renderAppbarContent = ({
           style?: StyleProp<ViewStyle>;
           mode?: AppbarModes;
         } = {
-          color: isV3
-            ? undefined
-            : typeof child.props.color !== 'undefined'
-            ? child.props.color
-            : isDark
-            ? white
-            : black,
+          color:
+            typeof child.props.color !== 'undefined'
+              ? child.props.color
+              : isV3
+              ? undefined
+              : isDark
+              ? white
+              : black,
         };
 
         if (child.type === AppbarContent) {
           props.mode = mode;
           props.style = [
-            isV3 ? i === 0 && styles.v3Spacing : i !== 0 && styles.v2Spacing,
-            shouldCenterContent &&
-              (isV3
-                ? styles.v3CenterAlignedContent
-                : styles.v2CenterAlignedContent),
+            isV3
+              ? i === 0 && !shouldCenterContent && styles.v3Spacing
+              : i !== 0 && styles.v2Spacing,
+            shouldCenterContent && styles.centerAlignedContent,
             child.props.style,
           ];
         }
@@ -130,18 +131,13 @@ export const renderAppbarContent = ({
 };
 
 const styles = StyleSheet.create({
+  centerAlignedContent: {
+    alignItems: 'center',
+  },
   v2Spacing: {
     marginLeft: theme.spacing.x2,
   },
-  v2CenterAlignedContent: {
-    alignItems: 'center',
-  },
   v3Spacing: {
     marginLeft: theme.spacing.x3,
-  },
-  v3CenterAlignedContent: {
-    ...StyleSheet.absoluteFillObject,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });

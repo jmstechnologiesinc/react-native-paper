@@ -1,20 +1,22 @@
 import * as React from 'react';
 import {
-  StyleSheet,
+  I18nManager,
   StyleProp,
+  StyleSheet,
   View,
   ViewStyle,
-  I18nManager,
 } from 'react-native';
+
 import color from 'color';
+
+import theme from '../../styles/themes/v3/LightTheme';
+import Button from '../Button/Button';
 import IconButton from '../IconButton/IconButton';
-import Text from '../Typography/Text';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Menu from '../Menu/Menu';
-import Button from '../Button/Button';
-import theme from '../../styles/themes/v3/LightTheme';
+import Text from '../Typography/Text';
 
-type Props = React.ComponentPropsWithRef<typeof View> &
+export type Props = React.ComponentPropsWithRef<typeof View> &
   PaginationControlsProps &
   PaginationDropdownProps & {
     /**
@@ -90,7 +92,7 @@ const PaginationControls = ({
               name="page-first"
               color={color}
               size={size}
-              direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
+              direction={I18nManager.getConstants().isRTL ? 'rtl' : 'ltr'}
             />
           )}
           iconColor={textColor}
@@ -105,7 +107,7 @@ const PaginationControls = ({
             name="chevron-left"
             color={color}
             size={size}
-            direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
+            direction={I18nManager.getConstants().isRTL ? 'rtl' : 'ltr'}
           />
         )}
         iconColor={textColor}
@@ -119,7 +121,7 @@ const PaginationControls = ({
             name="chevron-right"
             color={color}
             size={size}
-            direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
+            direction={I18nManager.getConstants().isRTL ? 'rtl' : 'ltr'}
           />
         )}
         iconColor={textColor}
@@ -134,7 +136,7 @@ const PaginationControls = ({
               name="page-last"
               color={color}
               size={size}
-              direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
+              direction={I18nManager.getConstants().isRTL ? 'rtl' : 'ltr'}
             />
           )}
           iconColor={textColor}

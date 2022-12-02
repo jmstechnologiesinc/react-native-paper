@@ -1,16 +1,14 @@
 import * as React from 'react';
 import {
   Animated,
-  TextStyle,
   I18nManager,
   StyleProp,
   StyleSheet,
-  Platform,
+  TextStyle,
 } from 'react-native';
 
-import { Font, MD3TypescaleKey } from '../../types';
-
 import theme from '../../styles/themes/v3/LightTheme';
+import { Font, MD3TypescaleKey } from '../../types';
 
 type Props = React.ComponentPropsWithRef<typeof Animated.Text> & {
   /**
@@ -40,19 +38,18 @@ type Props = React.ComponentPropsWithRef<typeof Animated.Text> & {
  * @extends Text props https://reactnative.dev/docs/text#props
  */
 function AnimatedText({ style, variant, ...rest }: Props) {
-  const writingDirection = I18nManager.isRTL ? 'rtl' : 'ltr';
+  const writingDirection = I18nManager.getConstants().isRTL ? 'rtl' : 'ltr';
 
   if (theme.isV3 && variant) {
     const stylesByVariant = Object.keys(MD3TypescaleKey).reduce(
       (acc, key) => {
         const { fontSize, fontWeight, lineHeight, letterSpacing, fontFamily } =
-          // @ts-ignore:next-line
-          theme.typescale[key as keyof typeof MD3TypescaleKey];
+          theme.fonts[key as keyof typeof MD3TypescaleKey];
 
         return {
           ...acc,
           [key]: {
-            ...(Platform.OS === 'android' && { fontFamily }),
+            fontFamily,
             fontSize,
             fontWeight,
             lineHeight: lineHeight,
@@ -80,14 +77,18 @@ function AnimatedText({ style, variant, ...rest }: Props) {
       />
     );
   } else {
+    const font = !theme.isV3 ? theme.fonts.regular : theme.fonts.bodyMedium;
+    const textStyle = {
+      ...font,
+      color: theme.isV3 ? theme.colors.onSurface : theme.colors.text,
+    };
     return (
       <Animated.Text
         {...rest}
         style={[
           styles.text,
+          textStyle,
           {
-            ...(!theme.isV3 && theme.fonts.regular),
-            color: theme.isV3 ? theme.colors.onSurface : theme.colors.text,
             writingDirection,
           },
           style,

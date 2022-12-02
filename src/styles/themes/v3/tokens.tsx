@@ -1,6 +1,4 @@
 import { Platform } from 'react-native';
-import type { Font } from '../../../types';
-import { moderateScale } from 'react-native-size-matters';
 
 import {
   MdRefPalettePrimary0,
@@ -141,6 +139,9 @@ import {
   MdSysSpacing20X,
   //  @ts-ignore:next-line
 } from '@jmsstudiosinc/material-tokens';
+import { moderateScale } from 'react-native-size-matters';
+
+import type { Font } from '../../../types';
 
 const ref = {
   palette: {
@@ -365,6 +366,10 @@ export const typescale = {
     letterSpacing: moderateScale(parseFloat(MdSysTypescaleBodySmallTracking)),
     lineHeight: moderateScale(parseFloat(MdSysTypescaleBodySmallLineHeight)),
     fontSize: moderateScale(parseFloat(MdSysTypescaleBodySmallSize)),
+  },
+
+  default: {
+    ...regularType,
   },
 };
 

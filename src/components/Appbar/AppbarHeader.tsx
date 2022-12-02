@@ -1,23 +1,24 @@
 import * as React from 'react';
 import {
-  StyleSheet,
-  StyleProp,
-  View,
-  SafeAreaView,
-  ViewStyle,
   Platform,
+  SafeAreaView,
+  StyleProp,
+  StyleSheet,
+  View,
+  ViewStyle,
 } from 'react-native';
-import { Appbar } from './Appbar';
-import shadow from '../../styles/shadow';
+
 import { APPROX_STATUSBAR_HEIGHT } from '../../constants';
+import shadow from '../../styles/shadow';
 import theme from '../../styles/themes/v3/LightTheme';
+import { Appbar } from './Appbar';
 import {
   DEFAULT_APPBAR_HEIGHT,
   getAppbarColor,
   modeAppbarHeight,
 } from './utils';
 
-type Props = React.ComponentProps<typeof Appbar> & {
+export type Props = React.ComponentProps<typeof Appbar> & {
   /**
    * Whether the background color is a dark color. A dark header will render light text and vice-versa.
    */
@@ -51,7 +52,6 @@ type Props = React.ComponentProps<typeof Appbar> & {
   /**
    * @optional
    */
-
   style?: StyleProp<ViewStyle>;
 };
 
@@ -119,13 +119,13 @@ const AppbarHeader = ({
     height = isV3 ? modeAppbarHeight[mode] : DEFAULT_APPBAR_HEIGHT,
     elevation = isV3 ? (elevated ? 2 : 0) : 4,
     backgroundColor: customBackground,
-    zIndex = 0,
+    zIndex = isV3 && elevated ? 1 : 0,
     ...restStyle
   }: ViewStyle = StyleSheet.flatten(style) || {};
 
   let backgroundColor;
-  if(transparentBackgroundColorByPass === true) {
-    backgroundColor = theme.colors.surface
+  if (transparentBackgroundColorByPass === true) {
+    backgroundColor = theme.colors.surface;
   } else {
     backgroundColor = getAppbarColor(
       theme,
@@ -146,7 +146,7 @@ const AppbarHeader = ({
             backgroundColor,
             zIndex,
             elevation,
-            paddingTop: statusBarHeight || APPROX_STATUSBAR_HEIGHT,
+            paddingTop: statusBarHeight ?? APPROX_STATUSBAR_HEIGHT,
           },
           shadow(elevation),
         ] as StyleProp<ViewStyle>

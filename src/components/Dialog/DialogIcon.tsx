@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
+
 import theme from '../../styles/themes/v3/LightTheme';
 import Icon, { IconSource } from '../Icon';
 
-type Props = {
+export type Props = {
   /**
    *  Custom color for action icon.
    */

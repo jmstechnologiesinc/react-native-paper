@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
   Image,
-  ImageSourcePropType,
   ImageProps,
+  ImageSourcePropType,
+  StyleProp,
   StyleSheet,
   View,
   ViewStyle,
-  StyleProp,
 } from 'react-native';
 
 import theme from '../../styles/themes/v3/LightTheme';
@@ -17,7 +17,7 @@ export type AvatarImageSource =
   | ImageSourcePropType
   | ((props: { size: number }) => React.ReactNode);
 
-type Props = React.ComponentPropsWithRef<typeof View> & {
+export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Image to display for the `Avatar`.
    * It accepts a standard React Native Image `source` prop
@@ -118,6 +118,7 @@ const AvatarImage = ({
           onLoadEnd={onLoadEnd}
           onLoadStart={onLoadStart}
           onProgress={onProgress}
+          accessibilityIgnoresInvertColors
         />
       )}
     </View>

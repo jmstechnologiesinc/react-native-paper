@@ -1,32 +1,37 @@
 import * as React from 'react';
 import {
-  Platform,
-  StyleProp,
-  StyleSheet,
   Animated,
   BackHandler,
   Dimensions,
   Easing,
+  findNodeHandle,
   I18nManager,
   LayoutRectangle,
+  NativeEventSubscription,
+  Platform,
+  ScrollView,
+  ScrollViewProps,
+  StyleProp,
+  StyleSheet,
   TouchableWithoutFeedback,
   View,
   ViewStyle,
-  ScrollView,
-  findNodeHandle,
-  NativeEventSubscription,
+  Keyboard,
+  KeyboardEvent as RNKeyboardEvent,
+  EmitterSubscription,
 } from 'react-native';
+
 import color from 'color';
 
-import type { $Omit } from '../../types';
+import { APPROX_STATUSBAR_HEIGHT } from '../../constants';
+import theme from '../../styles/themes/v3/LightTheme';
+import type { $Omit, InternalTheme } from '../../types';
+import { addEventListener } from '../../utils/addEventListener';
 import Portal from '../Portal/Portal';
 import Surface from '../Surface';
 import MenuItem from './MenuItem';
-import { APPROX_STATUSBAR_HEIGHT } from '../../constants';
-import { addEventListener } from '../../utils/addEventListener';
-import theme from '../../styles/themes/v3/LightTheme';
 
-type Props = {
+export type Props = {
   /**
    * Whether the Menu is currently visible.
    */
@@ -35,6 +40,11 @@ type Props = {
    * The anchor to open the menu from. In most cases, it will be a button that opens the menu.
    */
   anchor: React.ReactNode | { x: number; y: number };
+  /**
+   * Whether the menu should open at the top of the anchor or at its bottom.
+   * Applied only when anchor is a node, not an x/y position.
+   */
+  anchorPosition?: 'top' | 'bottom';
   /**
    * Extra margin to add at the top of the menu to account for translucent status bar on Android.
    * If you are using Expo, we assume translucent status bar and set a height for status bar automatically.
@@ -45,7 +55,7 @@ type Props = {
   /**
    * Callback called when Menu is dismissed. The `visible` prop needs to be updated when this is called.
    */
-  onDismiss: () => void;
+  onDismiss?: () => void;
   /**
    * Accessibility label for the overlay. This is read by the screen reader when the user taps outside the menu.
    */
@@ -62,6 +72,11 @@ type Props = {
   /**
    * @optional
    */
+  theme: InternalTheme;
+  /**
+   * Inner ScrollView prop
+   */
+  keyboardShouldPersistTaps?: ScrollViewProps['keyboardShouldPersistTaps'];
 };
 
 type Layout = $Omit<$Omit<LayoutRectangle, 'x'>, 'y'>;
@@ -82,6 +97,8 @@ const SCREEN_INDENT = 8;
 const ANIMATION_DURATION = 250;
 // From the 'Standard easing' section of https://material.io/design/motion/speed.html#easing
 const EASING = Easing.bezier(0.4, 0, 0.2, 1);
+
+const WINDOW_LAYOUT = Dimensions.get('window');
 
 /**
  * Menus display a list of choices on temporary elevated surfaces. Their placement varies based on the element that opens them.
@@ -156,6 +173,17 @@ class Menu extends React.Component<Props, State> {
     scaleAnimation: new Animated.ValueXY({ x: 0, y: 0 }),
   };
 
+  componentDidMount() {
+    this.keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      this.keyboardDidShow
+    );
+    this.keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      this.keyboardDidHide
+    );
+  }
+
   componentDidUpdate(prevProps: Props) {
     if (prevProps.visible !== this.props.visible) {
       this.updateVisibility();
@@ -164,12 +192,17 @@ class Menu extends React.Component<Props, State> {
 
   componentWillUnmount() {
     this.removeListeners();
+    this.keyboardDidShowListener?.remove();
+    this.keyboardDidHideListener?.remove();
   }
 
   private anchor?: View | null = null;
   private menu?: View | null = null;
   private backHandlerSubscription: NativeEventSubscription | undefined;
   private dimensionsSubscription: NativeEventSubscription | undefined;
+  private keyboardDidShowListener: EmitterSubscription | undefined;
+  private keyboardDidHideListener: EmitterSubscription | undefined;
+  private keyboardHeight = 0;
 
   private isCoordinate = (anchor: any): anchor is { x: number; y: number } =>
     !React.isValidElement(anchor) &&
@@ -231,14 +264,14 @@ class Menu extends React.Component<Props, State> {
 
   private handleDismiss = () => {
     if (this.props.visible) {
-      this.props.onDismiss();
+      this.props.onDismiss?.();
     }
     return true;
   };
 
   private handleKeypress = (e: KeyboardEvent) => {
     if (e.key === 'Escape') {
-      this.props.onDismiss();
+      this.props.onDismiss?.();
     }
   };
 
@@ -345,16 +378,26 @@ class Menu extends React.Component<Props, State> {
     });
   };
 
+  private keyboardDidShow = (e: RNKeyboardEvent) => {
+    this.keyboardHeight = e.endCoordinates.height;
+  };
+
+  private keyboardDidHide = () => {
+    this.keyboardHeight = 0;
+  };
+
   render() {
     const {
       visible,
       anchor,
+      anchorPosition,
       contentStyle,
       style,
       children,
       statusBarHeight,
       onDismiss,
       overlayAccessibilityLabel,
+      keyboardShouldPersistTaps,
     } = this.props;
 
     const {
@@ -366,6 +409,10 @@ class Menu extends React.Component<Props, State> {
     } = this.state;
 
     let { left, top } = this.state;
+
+    if (!this.isCoordinate(this.anchor) && anchorPosition === 'bottom') {
+      top += anchorLayout.height;
+    }
 
     // I don't know why but on Android measure function is wrong by 24
     const additionalVerticalValue = Platform.select({
@@ -388,7 +435,8 @@ class Menu extends React.Component<Props, State> {
       },
     ];
 
-    const windowLayout = Dimensions.get('window');
+    const windowLayout = { ...WINDOW_LAYOUT };
+    windowLayout.height = windowLayout.height - this.keyboardHeight;
 
     // We need to translate menu while animating scale to imitate transform origin for scale animation
     const positionTransforms = [];
@@ -534,7 +582,7 @@ class Menu extends React.Component<Props, State> {
 
     const positionStyle = {
       top: this.isCoordinate(anchor) ? top : top + additionalVerticalValue,
-      ...(I18nManager.isRTL ? { right: left } : { left }),
+      ...(I18nManager.getConstants().isRTL ? { right: left } : { left }),
     };
 
     return (
@@ -582,7 +630,11 @@ class Menu extends React.Component<Props, State> {
                   {...(theme.isV3 && { elevation: 2 })}
                 >
                   {(scrollableMenuHeight && (
-                    <ScrollView>{children}</ScrollView>
+                    <ScrollView
+                      keyboardShouldPersistTaps={keyboardShouldPersistTaps}
+                    >
+                      {children}
+                    </ScrollView>
                   )) || <React.Fragment>{children}</React.Fragment>}
                 </Surface>
               </Animated.View>

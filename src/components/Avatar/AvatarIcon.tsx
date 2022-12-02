@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { View, ViewStyle, StyleSheet, StyleProp } from 'react-native';
-import Icon, { IconSource } from '../Icon';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
 import { white } from '../../styles/themes/v2/colors';
-import getContrastingColor from '../../utils/getContrastingColor';
 import theme from '../../styles/themes/v3/LightTheme';
+import getContrastingColor from '../../utils/getContrastingColor';
+import Icon, { IconSource } from '../Icon';
 
 const defaultSize = theme.spacing.x16;
 
-type Props = React.ComponentPropsWithRef<typeof View> & {
+export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Icon to display for the `Avatar`.
    */

@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
+
 import color from 'color';
+
 import { black, white } from '../../styles/themes/v2/colors';
 import theme from '../../styles/themes/v3/LightTheme';
 
@@ -12,7 +14,6 @@ export type ButtonMode =
 
 type BaseProps = {
   isMode: (mode: ButtonMode) => boolean;
-
   disabled?: boolean;
 };
 

@@ -1,4 +1,5 @@
 import color from 'color';
+
 import { black, white } from '../../styles/themes/v2/colors';
 import theme from '../../styles/themes/v3/LightTheme';
 
@@ -13,14 +14,14 @@ export const getCardCoverStyle = ({
 }) => {
   const { isV3, roundness } = theme;
 
+  if (isV3) {
+    return {
+      borderRadius: 3 * roundness,
+    };
+  }
+
   if (index === 0) {
     if (total === 1) {
-      return {
-        borderRadius: roundness,
-      };
-    }
-
-    if (isV3) {
       return {
         borderRadius: roundness,
       };
@@ -61,7 +62,9 @@ const getBackgroundColor = ({
     if (isMode('contained')) {
       return theme.colors.surfaceVariant;
     }
-    return theme.colors.surface;
+    if (isMode('outlined')) {
+      return theme.colors.surface;
+    }
   }
   return undefined;
 };

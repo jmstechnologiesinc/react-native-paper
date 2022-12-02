@@ -1,21 +1,23 @@
 import * as React from 'react';
 import {
-  StyleSheet,
-  StyleProp,
-  ViewStyle,
   GestureResponderEvent,
+  StyleProp,
+  StyleSheet,
+  ViewStyle,
+  View,
 } from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
 
 import color from 'color';
+import { moderateScale } from 'react-native-size-matters';
+
+import { black, white } from '../../styles/themes/v2/colors';
+import theme from '../../styles/themes/v3/LightTheme';
+import type { IconSource } from '../Icon';
 import IconButton from '../IconButton/IconButton';
 import { ToggleButtonGroupContext } from './ToggleButtonGroup';
-import { black, white } from '../../styles/themes/v2/colors';
-import type { IconSource } from '../Icon';
-import theme from '../../styles/themes/v3/LightTheme';
 import { getToggleButtonColor } from './utils';
 
-type Props = {
+export type Props = {
   /**
    * Icon to display for the `ToggleButton`.
    */
@@ -88,66 +90,74 @@ type Props = {
  *
  * ```
  */
-const ToggleButton = ({
-  icon,
-  size,
-  accessibilityLabel,
-  disabled,
-  style,
-  value,
-  status,
-  onPress,
-  ...rest
-}: Props) => {
-  const borderRadius = theme.roundness;
+const ToggleButton = React.forwardRef<View, Props>(
+  (
+    {
+      icon,
+      size,
+      accessibilityLabel,
+      disabled,
+      style,
+      value,
+      status,
+      onPress,
+      ...rest
+    }: Props,
+    ref
+  ) => {
+    const borderRadius = theme.roundness;
 
-  return (
-    <ToggleButtonGroupContext.Consumer>
-      {(context: { value: string | null; onValueChange: Function } | null) => {
-        const checked: boolean | null =
-          (context && context.value === value) || status === 'checked';
+    return (
+      <ToggleButtonGroupContext.Consumer>
+        {(
+          context: { value: string | null; onValueChange: Function } | null
+        ) => {
+          const checked: boolean | null =
+            (context && context.value === value) || status === 'checked';
 
-        const backgroundColor = getToggleButtonColor({ checked });
-        const borderColor = theme.isV3
-          ? theme.colors.outline
-          : color(theme.dark ? white : black)
-              .alpha(0.29)
-              .rgb()
-              .string();
+          const backgroundColor = getToggleButtonColor({ checked });
+          const borderColor = theme.isV3
+            ? theme.colors.outline
+            : color(theme.dark ? white : black)
+                .alpha(0.29)
+                .rgb()
+                .string();
 
-        return (
-          <IconButton
-            borderless={false}
-            icon={icon}
-            onPress={(e?: GestureResponderEvent | string) => {
-              if (onPress) {
-                onPress(e);
-              }
+          return (
+            <IconButton
+              borderless={false}
+              icon={icon}
+              onPress={(e?: GestureResponderEvent | string) => {
+                if (onPress) {
+                  onPress(e);
+                }
 
-              if (context) {
-                context.onValueChange(!checked ? value : null);
-              }
-            }}
-            size={size}
-            accessibilityLabel={accessibilityLabel}
-            accessibilityState={{ disabled, selected: checked }}
-            disabled={disabled}
-            style={[
-              styles.content,
-              {
-                backgroundColor,
-                borderRadius,
-                borderColor,
-              },
-              style,
-            ]}
-            {...rest}
-          />
-        );
-      }}
-    </ToggleButtonGroupContext.Consumer>
-  );
-};
+                if (context) {
+                  context.onValueChange(!checked ? value : null);
+                }
+              }}
+              size={size}
+              accessibilityLabel={accessibilityLabel}
+              accessibilityState={{ disabled, selected: checked }}
+              disabled={disabled}
+              style={[
+                styles.content,
+                {
+                  backgroundColor,
+                  borderRadius,
+                  borderColor,
+                },
+                style,
+              ]}
+              ref={ref}
+              {...rest}
+            />
+          );
+        }}
+      </ToggleButtonGroupContext.Consumer>
+    );
+  }
+);
 
 const styles = StyleSheet.create({
   content: {

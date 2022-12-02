@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
+
 import { moderateScale } from 'react-native-size-matters';
+
+import theme from '../../styles/themes/v3/LightTheme';
+import type { $RemoveChildren } from '../../types';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import type { $RemoveChildren } from '../../types';
 import { getSelectionControlIOSColor } from './utils';
-import theme from '../../styles/themes/v3/LightTheme';
 
-type Props = $RemoveChildren<typeof TouchableRipple> & {
+export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * Status of checkbox.
    */

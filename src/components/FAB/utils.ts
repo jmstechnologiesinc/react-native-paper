@@ -1,15 +1,16 @@
-import color from 'color';
 import {
   Animated,
   I18nManager,
   StyleProp,
-  ViewStyle,
   StyleSheet,
+  ViewStyle,
 } from 'react-native';
+
+import color from 'color';
 import { moderateScale } from 'react-native-size-matters';
 
+import { black, white } from '../../styles/themes/v2/colors';
 import theme from '../../styles/themes/v3/LightTheme';
-import { white, black } from '../../styles/themes/v2/colors';
 import getContrastingColor from '../../utils/getContrastingColor';
 
 type GetCombinedStylesProps = {
@@ -302,7 +303,14 @@ const getLabelColor = () => {
   return color(theme.colors.text).fade(0.54).rgb().string();
 };
 
-const getBackdropColor = () => {
+const getBackdropColor = ({
+  customBackdropColor,
+}: {
+  customBackdropColor?: string;
+}) => {
+  if (customBackdropColor) {
+    return customBackdropColor;
+  }
   if (theme.isV3) {
     return color(theme.colors.background).alpha(0.95).rgb().string();
   }
@@ -316,10 +324,14 @@ const getStackedFABBackgroundColor = () => {
   return theme.colors.surface;
 };
 
-export const getFABGroupColors = () => {
+export const getFABGroupColors = ({
+  customBackdropColor,
+}: {
+  customBackdropColor?: string;
+}) => {
   return {
     labelColor: getLabelColor(),
-    backdropColor: getBackdropColor(),
+    backdropColor: getBackdropColor({ customBackdropColor }),
     stackedFABBackgroundColor: getStackedFABBackgroundColor(),
   };
 };

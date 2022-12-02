@@ -1,20 +1,19 @@
 import React from 'react';
-import color from 'color';
 import {
-  Text,
-  StyleSheet,
-  StyleProp,
-  TextStyle,
-  LayoutChangeEvent,
   Animated,
+  LayoutChangeEvent,
+  StyleProp,
+  StyleSheet,
+  Text,
+  TextStyle,
   ViewStyle,
 } from 'react-native';
 
-import { AdornmentSide } from './enums';
-
-import { getConstants } from '../helpers';
+import color from 'color';
 
 import theme from '../../../styles/themes/v3/LightTheme';
+import { getConstants } from '../helpers';
+import { AdornmentSide } from './enums';
 
 export type Props = {
   /**
@@ -39,6 +38,7 @@ type ContextState = {
   side: AdornmentSide;
   paddingHorizontal?: number | string;
   maxFontSizeMultiplier?: number | undefined | null;
+  testID?: string;
 };
 
 const AffixContext = React.createContext<ContextState>({
@@ -61,6 +61,7 @@ const AffixAdornment: React.FunctionComponent<
   visible,
   paddingHorizontal,
   maxFontSizeMultiplier,
+  testID,
 }) => {
   return (
     <AffixContext.Provider
@@ -72,6 +73,7 @@ const AffixAdornment: React.FunctionComponent<
         visible,
         paddingHorizontal,
         maxFontSizeMultiplier,
+        testID,
       }}
     >
       {affix}
@@ -121,6 +123,7 @@ const TextInputAffix = ({ text, textStyle: labelStyle }: Props) => {
     visible,
     paddingHorizontal,
     maxFontSizeMultiplier,
+    testID,
   } = React.useContext(AffixContext);
 
   const textColor = color(
@@ -152,6 +155,7 @@ const TextInputAffix = ({ text, textStyle: labelStyle }: Props) => {
         },
       ]}
       onLayout={onLayout}
+      testID={testID}
     >
       <Text
         maxFontSizeMultiplier={maxFontSizeMultiplier}

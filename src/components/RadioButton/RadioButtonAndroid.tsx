@@ -1,14 +1,16 @@
 import * as React from 'react';
-import { Animated, View, StyleSheet } from 'react-native';
+import { Animated, StyleSheet, View } from 'react-native';
+
 import { moderateScale } from 'react-native-size-matters';
-import { RadioButtonContext, RadioButtonContextType } from './RadioButtonGroup';
-import { handlePress, isChecked } from './utils';
-import TouchableRipple from '../TouchableRipple/TouchableRipple';
+
+import theme from '../../styles/themes/v3/LightTheme';
 import type { $RemoveChildren } from '../../types';
 import { getAndroidSelectionControlColor } from '../Checkbox/utils';
-import theme from '../../styles/themes/v3/LightTheme';
+import TouchableRipple from '../TouchableRipple/TouchableRipple';
+import { RadioButtonContext, RadioButtonContextType } from './RadioButtonGroup';
+import { handlePress, isChecked } from './utils';
 
-type Props = $RemoveChildren<typeof TouchableRipple> & {
+export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * Value of the radio button
    */

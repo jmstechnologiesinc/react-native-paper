@@ -1,6 +1,7 @@
 import color from 'color';
-import { tokens } from '../../styles/themes/v3/tokens';
+
 import theme from '../../styles/themes/v3/LightTheme';
+import { tokens } from '../../styles/themes/v3/tokens';
 
 export const getToggleButtonColor = ({
   checked,

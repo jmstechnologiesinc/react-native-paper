@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
+
 import { moderateScale } from 'react-native-size-matters';
-import { RadioButtonContext, RadioButtonContextType } from './RadioButtonGroup';
-import { handlePress, isChecked } from './utils';
-import MaterialCommunityIcon from '../MaterialCommunityIcon';
-import TouchableRipple from '../TouchableRipple/TouchableRipple';
+
 import type { $RemoveChildren } from '../../types';
 import { getSelectionControlIOSColor } from '../Checkbox/utils';
-import theme from '../../styles/themes/v3/LightTheme';
+import MaterialCommunityIcon from '../MaterialCommunityIcon';
+import TouchableRipple from '../TouchableRipple/TouchableRipple';
+import { RadioButtonContext, RadioButtonContextType } from './RadioButtonGroup';
+import { handlePress, isChecked } from './utils';
 
-type Props = $RemoveChildren<typeof TouchableRipple> & {
+export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * Value of the radio button
    */

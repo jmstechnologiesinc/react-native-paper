@@ -1,11 +1,12 @@
 import * as React from 'react';
-import color from 'color';
-import { StyleSheet, StyleProp, View, ViewStyle } from 'react-native';
-import { black, white } from '../../styles/themes/v2/colors';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
+import color from 'color';
+
+import { black, white } from '../../styles/themes/v2/colors';
 import theme from '../../styles/themes/v3/LightTheme';
 
-type Props = React.ComponentPropsWithRef<typeof View> & {
+export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Content of the `DataTableHeader`.
    */

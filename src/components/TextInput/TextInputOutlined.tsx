@@ -7,19 +7,19 @@ import {
   Platform,
   TextStyle,
   ColorValue,
+  StyleProp,
+  ViewStyle,
 } from 'react-native';
+
 import { moderateScale } from 'react-native-size-matters';
 
+import theme from '../../styles/themes/v3/LightTheme';
+import { AdornmentType, AdornmentSide } from './Adornment/enums';
 import TextInputAdornment, {
   getAdornmentConfig,
   getAdornmentStyleAdjustmentForNativeInput,
   TextInputAdornmentProps,
 } from './Adornment/TextInputAdornment';
-
-import InputLabel from './Label/InputLabel';
-import LabelBackground from './Label/LabelBackground';
-import type { RenderProps, ChildTextInputProps } from './types';
-
 import {
   MAXIMIZED_LABEL_FONT_SIZE,
   MINIMIZED_LABEL_FONT_SIZE,
@@ -28,8 +28,8 @@ import {
   OUTLINE_MINIMIZED_LABEL_Y_OFFSET,
   LABEL_PADDING_TOP,
   MIN_DENSE_HEIGHT_OUTLINED,
+  LABEL_PADDING_TOP_DENSE,
 } from './constants';
-
 import {
   calculateLabelTopPosition,
   calculateInputHeight,
@@ -41,9 +41,9 @@ import {
   getOutlinedInputColors,
   getConstants,
 } from './helpers';
-import { AdornmentType, AdornmentSide } from './Adornment/enums';
-
-import theme from '../../styles/themes/v3/LightTheme';
+import InputLabel from './Label/InputLabel';
+import LabelBackground from './Label/LabelBackground';
+import type { RenderProps, ChildTextInputProps } from './types';
 
 const TextInputOutlined = ({
   disabled = false,
@@ -54,6 +54,8 @@ const TextInputOutlined = ({
   underlineColor: _underlineColor,
   outlineColor: customOutlineColor,
   activeOutlineColor,
+  outlineStyle,
+  textColor,
   dense,
   style,
 
@@ -71,12 +73,13 @@ const TextInputOutlined = ({
   left,
   right,
   placeholderTextColor,
+  testID = 'text-input-outlined',
   ...rest
 }: ChildTextInputProps) => {
   const adornmentConfig = getAdornmentConfig({ left, right });
 
   const { colors, isV3, roundness } = theme;
-  const font = !isV3 ? theme.fonts.regular : {};
+  const font = isV3 ? theme.fonts.bodyLarge : theme.fonts.regular;
   const hasActiveOutline = parentState.focused || error;
 
   const { INPUT_PADDING_HORIZONTAL, MIN_HEIGHT, ADORNMENT_OFFSET } =
@@ -102,6 +105,7 @@ const TextInputOutlined = ({
   } = getOutlinedInputColors({
     activeOutlineColor,
     customOutlineColor,
+    textColor,
     disabled,
     error,
   });
@@ -115,7 +119,7 @@ const TextInputOutlined = ({
   const labelHalfHeight = labelHeight / 2;
 
   const baseLabelTranslateX =
-    (I18nManager.isRTL ? 1 : -1) *
+    (I18nManager.getConstants().isRTL ? 1 : -1) *
     (labelHalfWidth -
       (labelScale * labelWidth) / 2 -
       (fontSize - MINIMIZED_LABEL_FONT_SIZE) * labelScale);
@@ -127,7 +131,7 @@ const TextInputOutlined = ({
   );
   if (isAdornmentLeftIcon) {
     labelTranslationXOffset =
-      (I18nManager.isRTL ? -1 : 1) *
+      (I18nManager.getConstants().isRTL ? -1 : 1) *
       (ADORNMENT_SIZE + ADORNMENT_OFFSET - (isV3 ? 0 : 8));
   }
 
@@ -193,6 +197,7 @@ const TextInputOutlined = ({
     baseLabelTranslateX,
     font,
     fontSize,
+    lineHeight,
     fontWeight,
     labelScale,
     wiggleOffsetX: LABEL_WIGGLE_X_OFFSET,
@@ -205,26 +210,31 @@ const TextInputOutlined = ({
     labelTranslationXOffset,
     roundness,
     maxFontSizeMultiplier: rest.maxFontSizeMultiplier,
+    testID,
   };
 
   const minHeight = (height ||
     (dense ? MIN_DENSE_HEIGHT_OUTLINED : MIN_HEIGHT)) as number;
 
+  const outlinedHeight =
+    inputHeight +
+    (!height ? (dense ? LABEL_PADDING_TOP_DENSE / 2 : LABEL_PADDING_TOP) : 0);
+
   const { leftLayout, rightLayout } = parentState;
 
   const leftAffixTopPosition = calculateOutlinedIconAndAffixTopPosition({
-    height: minHeight,
+    height: outlinedHeight,
     affixHeight: leftLayout.height || 0,
     labelYOffset: -OUTLINE_MINIMIZED_LABEL_Y_OFFSET,
   });
 
   const rightAffixTopPosition = calculateOutlinedIconAndAffixTopPosition({
-    height: minHeight,
+    height: outlinedHeight,
     affixHeight: rightLayout.height || 0,
     labelYOffset: -OUTLINE_MINIMIZED_LABEL_Y_OFFSET,
   });
   const iconTopPosition = calculateOutlinedIconAndAffixTopPosition({
-    height: minHeight,
+    height: outlinedHeight,
     affixHeight: ADORNMENT_SIZE,
     labelYOffset: -OUTLINE_MINIMIZED_LABEL_Y_OFFSET,
   });
@@ -270,7 +280,7 @@ const TextInputOutlined = ({
       ...adornmentProps,
       left,
       right,
-      textStyle: { ...font, fontSize, fontWeight },
+      textStyle: { ...font, fontSize, lineHeight, fontWeight },
       visible: parentState.labeled,
     };
   }
@@ -284,6 +294,7 @@ const TextInputOutlined = ({
           */}
       <Outline
         isV3={isV3}
+        style={outlineStyle}
         roundness={roundness}
         hasActiveOutline={hasActiveOutline}
         focused={parentState.focused}
@@ -302,14 +313,13 @@ const TextInputOutlined = ({
           ]}
         >
           <InputLabel
-            mode="outlined"
             parentState={parentState}
             labelProps={labelProps}
             labelBackground={LabelBackground}
             maxFontSizeMultiplier={rest.maxFontSizeMultiplier}
           />
           {render?.({
-            testID: 'text-input-outlined',
+            testID,
             ...rest,
             ref: innerRef,
             onChangeText,
@@ -333,12 +343,13 @@ const TextInputOutlined = ({
               {
                 ...font,
                 fontSize,
+                lineHeight,
                 fontWeight,
                 color: inputTextColor,
                 textAlignVertical: multiline ? 'top' : 'center',
                 textAlign: textAlign
                   ? textAlign
-                  : I18nManager.isRTL
+                  : I18nManager.getConstants().isRTL
                   ? 'right'
                   : 'left',
                 paddingHorizontal: INPUT_PADDING_HORIZONTAL,
@@ -364,6 +375,7 @@ type OutlineProps = {
   focused?: boolean;
   outlineColor?: string;
   roundness?: number;
+  style?: StyleProp<ViewStyle>;
 };
 
 const Outline = ({
@@ -374,6 +386,7 @@ const Outline = ({
   focused,
   outlineColor,
   roundness,
+  style,
 }: OutlineProps) => (
   <View
     testID="text-input-outline"
@@ -389,6 +402,7 @@ const Outline = ({
           : moderateScale(1),
         borderColor: hasActiveOutline ? activeColor : outlineColor,
       },
+      style,
     ]}
   />
 );

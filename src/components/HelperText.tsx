@@ -1,18 +1,19 @@
 import * as React from 'react';
-import color from 'color';
 import {
   Animated,
-  StyleSheet,
-  StyleProp,
-  TextStyle,
   LayoutChangeEvent,
+  StyleProp,
+  StyleSheet,
+  TextStyle,
 } from 'react-native';
-import AnimatedText from './Typography/AnimatedText';
-import type { $Omit } from '../types';
+
+import color from 'color';
 
 import theme from '../styles/themes/v3/LightTheme';
+import type { $Omit } from '../types';
+import AnimatedText from './Typography/AnimatedText';
 
-type Props = $Omit<
+export type Props = $Omit<
   $Omit<React.ComponentPropsWithRef<typeof AnimatedText>, 'padding'>,
   'type'
 > & {
@@ -36,7 +37,6 @@ type Props = $Omit<
   /**
    * @optional
    */
-
   /**
    * TestID used for testing purposes
    */

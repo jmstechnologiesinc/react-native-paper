@@ -1,10 +1,11 @@
 import * as React from 'react';
 import {
-  Text as NativeText,
-  TextStyle,
   StyleProp,
   StyleSheet,
+  Text as NativeText,
+  TextStyle,
 } from 'react-native';
+
 import theme from '../../../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentProps<typeof NativeText> & {

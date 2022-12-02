@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import {
   StyleProp,
   StyleSheet,
@@ -8,15 +7,15 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import theme from '../../styles/themes/v3/LightTheme';
+import type { MD3TypescaleKey } from '../../types';
+import TouchableRipple from '../TouchableRipple/TouchableRipple';
+import Text from '../Typography/Text';
 import Checkbox from './Checkbox';
 import CheckboxAndroid from './CheckboxAndroid';
 import CheckboxIOS from './CheckboxIOS';
-import Text from '../Typography/Text';
-import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import type { MD3TypescaleKey } from '../../types';
-import theme from '../../styles/themes/v3/LightTheme';
 
-type Props = {
+export type Props = {
   /**
    * Status of checkbox.
    */
@@ -122,7 +121,7 @@ const CheckboxItem = ({
   labelVariant = 'bodyLarge',
   ...props
 }: Props) => {
-  const checkboxProps = { ...props, status, theme, disabled };
+  const checkboxProps = { ...props, status, disabled };
   const isLeading = position === 'leading';
   let checkbox;
 

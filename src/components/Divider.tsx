@@ -1,13 +1,14 @@
 import * as React from 'react';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+
 import color from 'color';
-import { StyleSheet, View, ViewStyle, StyleProp } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 
 import { black, white } from '../styles/themes/v2/colors';
-import type { $RemoveChildren } from '../types';
-import { moderateScale } from 'react-native-size-matters';
 import theme from '../styles/themes/v3/LightTheme';
+import type { $RemoveChildren } from '../types';
 
-type Props = $RemoveChildren<typeof View> & {
+export type Props = $RemoveChildren<typeof View> & {
   /**
    * @renamed Renamed from 'inset' to 'leftInset` in v5.x
    * Whether divider has a left inset.
@@ -67,7 +68,7 @@ const Divider = ({
   const { dark: isDarkTheme, isV3 } = theme;
 
   const dividerColor = isV3
-    ? theme.colors.surfaceVariant
+    ? theme.colors.outlineVariant
     : color(isDarkTheme ? white : black)
         .alpha(0.12)
         .rgb()
@@ -78,7 +79,7 @@ const Divider = ({
       {...rest}
       style={[
         { height: StyleSheet.hairlineWidth, backgroundColor: dividerColor },
-        leftInset && styles.leftInset,
+        leftInset && (isV3 ? styles.v3LeftInset : styles.leftInset),
         isV3 && horizontalInset && styles.horizontalInset,
         isV3 && bold && styles.bold,
         style,
@@ -91,9 +92,12 @@ const styles = StyleSheet.create({
   leftInset: {
     marginLeft: theme.spacing.x18,
   },
+  v3LeftInset: {
+    marginLeft: theme.spacing.x4,
+  },
   horizontalInset: {
-    marginLeft: theme.spacing.x7,
-    marginRight: theme.spacing.x7,
+    marginLeft: theme.spacing.x4,
+    marginRight: theme.spacing.x4,
   },
   bold: {
     height: moderateScale(1),
