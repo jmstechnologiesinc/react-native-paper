@@ -1,12 +1,12 @@
 import color from 'color';
-import { black, white, pinkA400 } from './colors';
+
+import type { Fonts, MD2Theme } from '../../../types';
 import configureFonts from '../../fonts';
-import type { ThemeBase } from '../../../types';
-//  @ts-ignore:next-line
-const LightTheme: ThemeBase = {
+import { black, pinkA400, white } from './colors';
+
+export const MD2LightTheme: MD2Theme = {
   dark: false,
   roundness: 4,
-  margin: 16,
   version: 2,
   isV3: false,
   colors: {
@@ -21,11 +21,10 @@ const LightTheme: ThemeBase = {
     placeholder: color(black).alpha(0.54).rgb().string(),
     backdrop: color(black).alpha(0.5).rgb().string(),
     notification: pinkA400,
+    tooltip: 'rgba(28, 27, 31, 1)',
   },
-  fonts: configureFonts(),
+  fonts: configureFonts({ isV3: false }) as Fonts,
   animation: {
     scale: 1.0,
   },
 };
-
-export default LightTheme;

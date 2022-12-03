@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
-import theme from '../../styles/themes/v3/LightTheme';
+
+import { useInternalTheme } from '../../core/theming';
 import Icon, { IconSource } from '../Icon';
 
-type Props = {
+export type Props = {
   /**
    *  Custom color for action icon.
    */
@@ -60,6 +61,8 @@ type Props = {
  * ```
  */
 const DialogIcon = ({ size = 24, color, icon }: Props) => {
+  const theme = useInternalTheme();
+
   if (!theme.isV3) {
     return null;
   }

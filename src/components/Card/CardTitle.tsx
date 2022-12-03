@@ -6,14 +6,17 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+
 import { moderateScale } from 'react-native-size-matters';
 
-import type { MD3TypescaleKey } from '../../types';
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme, MD3TypescaleKey } from '../../types';
+import Text from '../Typography/Text';
 import Caption from '../Typography/v2/Caption';
 import Title from '../Typography/v2/Title';
-import Text from '../Typography/Text';
-import theme from '../../styles/themes/v3/LightTheme';
-type Props = React.ComponentPropsWithRef<typeof View> & {
+
+export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Text for the title. Note that this will only accept a string or `<Text>`-based node.
    */
@@ -100,6 +103,7 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 const LEFT_SIZE = theme.spacing.x10;
@@ -142,6 +146,7 @@ const CardTitle = ({
   right,
   rightStyle,
   style,
+  theme,
 }: Props) => {
   const titleComponent = (props: any) =>
     theme.isV3 ? <Text {...props} /> : <Title {...props} />;
@@ -239,7 +244,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CardTitle;
+export default withInternalTheme(CardTitle);
 
 // @component-docs ignore-next-line
 export { CardTitle };

@@ -1,21 +1,24 @@
 import * as React from 'react';
 import {
   Animated,
+  Easing,
   SafeAreaView,
   StyleProp,
   StyleSheet,
-  ViewStyle,
   View,
-  Easing,
+  ViewStyle,
 } from 'react-native';
+
 import { moderateScale } from 'react-native-size-matters';
+
+import { withInternalTheme } from '../core/theming';
+import { MD3LightTheme as theme } from '../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../types';
 import Button from './Button/Button';
 import Surface from './Surface';
 import Text from './Typography/Text';
 
-import theme from '../styles/themes/v3/LightTheme';
-
-export type SnackbarProps = React.ComponentProps<typeof Surface> & {
+export type Props = React.ComponentProps<typeof Surface> & {
   /**
    * Whether the Snackbar is currently visible.
    */
@@ -54,6 +57,7 @@ export type SnackbarProps = React.ComponentProps<typeof Surface> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 const DURATION_SHORT = 4000;
@@ -117,8 +121,9 @@ const Snackbar = ({
   elevation = 2,
   wrapperStyle,
   style,
+  theme,
   ...rest
-}: SnackbarProps) => {
+}: Props) => {
   const { current: opacity } = React.useRef<Animated.Value>(
     new Animated.Value(0.0)
   );
@@ -150,7 +155,7 @@ const Snackbar = ({
             duration === Number.POSITIVE_INFINITY ||
             duration === Number.NEGATIVE_INFINITY;
 
-          if (finished && !isInfinity) {
+          if (!isInfinity) {
             hideTimeout.current = setTimeout(
               onDismiss,
               duration
@@ -160,21 +165,27 @@ const Snackbar = ({
       });
     } else {
       // hide
-      if (hideTimeout.current) clearTimeout(hideTimeout.current);
+      if (hideTimeout.current) {
+        clearTimeout(hideTimeout.current);
+      }
 
       Animated.timing(opacity, {
         toValue: 0,
         duration: 100 * scale,
         useNativeDriver: true,
       }).start(({ finished }) => {
-        if (finished) setHidden(true);
+        if (finished) {
+          setHidden(true);
+        }
       });
     }
   }, [visible, duration, opacity, scale, onDismiss]);
 
   const { colors, roundness, isV3 } = theme;
 
-  if (hidden) return null;
+  if (hidden) {
+    return null;
+  }
 
   const {
     style: actionStyle,
@@ -187,6 +198,24 @@ const Snackbar = ({
   const textColor = theme.isV3
     ? theme.colors.inversePrimary
     : theme.colors.accent;
+
+  const renderChildrenWithWrapper = () => {
+    const viewStyles = [
+      styles.content,
+      { marginRight, color: colors?.surface },
+    ];
+
+    if (typeof children === 'string') {
+      return <Text style={viewStyles}>{children}</Text>;
+    }
+
+    return (
+      <View style={viewStyles}>
+        {/* View is added to allow multiple lines support for Text component as children */}
+        <View>{children}</View>
+      </View>
+    );
+  };
 
   return (
     <SafeAreaView
@@ -221,13 +250,11 @@ const Snackbar = ({
         {...(isV3 && { elevation })}
         {...rest}
       >
-        <Text style={[styles.content, { marginRight, color: colors?.surface }]}>
-          {children}
-        </Text>
+        {renderChildrenWithWrapper()}
         {action ? (
           <Button
-            onPress={() => {
-              onPressAction?.();
+            onPress={(event) => {
+              onPressAction?.(event);
               onDismiss();
             }}
             style={[styles.button, actionStyle]}
@@ -275,7 +302,6 @@ const styles = StyleSheet.create({
   content: {
     marginLeft: theme.spacing.x4,
     marginVertical: moderateScale(14),
-    flexWrap: 'wrap',
     flex: 1,
   },
   button: {
@@ -287,4 +313,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Snackbar;
+export default withInternalTheme(Snackbar);

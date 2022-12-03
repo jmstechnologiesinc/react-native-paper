@@ -1,20 +1,28 @@
-import color from 'color';
 import * as React from 'react';
 import {
+  FlexAlignType,
+  NativeSyntheticEvent,
   StyleProp,
   StyleSheet,
+  TextLayoutEventData,
   TextStyle,
   View,
   ViewStyle,
 } from 'react-native';
 
+import color from 'color';
 import { moderateScale } from 'react-native-size-matters';
 
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type {
+  $RemoveChildren,
+  EllipsizeProp,
+  InternalTheme,
+} from '../../types';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
-
-import type { $RemoveChildren, EllipsizeProp } from '../../types';
-import theme from '../../styles/themes/v3/LightTheme';
+import { getLeftStyles, getRightStyles } from './utils';
 
 type Title =
   | React.ReactNode
@@ -34,7 +42,14 @@ type Description =
       fontSize: number;
     }) => React.ReactNode);
 
-type Props = $RemoveChildren<typeof TouchableRipple> & {
+interface Style {
+  marginLeft?: number;
+  marginRight?: number;
+  marginVertical?: number;
+  alignSelf?: FlexAlignType;
+}
+
+export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * Title text for the list item.
    */
@@ -46,24 +61,11 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * Callback which returns a React element to display on the left side.
    */
-  left?: (props: {
-    color: string;
-    style: {
-      marginLeft: number;
-      marginRight: number;
-      marginVertical?: number;
-    };
-  }) => React.ReactNode;
+  left?: (props: { color: string; style: Style }) => React.ReactNode;
   /**
    * Callback which returns a React element to display on the right side.
    */
-  right?: (props: {
-    color: string;
-    style?: {
-      marginRight: number;
-      marginVertical?: number;
-    };
-  }) => React.ReactNode;
+  right?: (props: { color: string; style?: Style }) => React.ReactNode;
   /**
    * Function to execute on press.
    */
@@ -71,7 +73,7 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * @optional
    */
-
+  theme: InternalTheme;
   /**
    * Style that is passed to the wrapping TouchableRipple element.
    */
@@ -141,6 +143,7 @@ const ListItem = ({
   title,
   description,
   onPress,
+  theme,
   style,
   titleStyle,
   titleNumberOfLines = 1,
@@ -150,6 +153,18 @@ const ListItem = ({
   descriptionStyle,
   ...rest
 }: Props) => {
+  const [alignToTop, setAlignToTop] = React.useState(false);
+
+  const onDescriptionTextLayout = (
+    event: NativeSyntheticEvent<TextLayoutEventData>
+  ) => {
+    if (!theme.isV3) {
+      return;
+    }
+    const { nativeEvent } = event;
+    setAlignToTop(nativeEvent.lines.length >= 2);
+  };
+
   const renderDescription = (
     descriptionColor: string,
     description?: Description | null
@@ -171,6 +186,7 @@ const ListItem = ({
           { color: descriptionColor },
           descriptionStyle,
         ]}
+        onTextLayout={onDescriptionTextLayout}
       >
         {description}
       </Text>
@@ -208,22 +224,19 @@ const ListItem = ({
   return (
     <TouchableRipple
       {...rest}
-      style={[styles.container, style]}
+      style={[theme.isV3 ? styles.containerV3 : styles.container, style]}
       onPress={onPress}
     >
-      <View style={styles.row}>
+      <View style={theme.isV3 ? styles.rowV3 : styles.row}>
         {left
           ? left({
               color: descriptionColor,
-              style: description
-                ? styles.iconMarginLeft
-                : {
-                    ...styles.iconMarginLeft,
-                    ...styles.marginVerticalNone,
-                  },
+              style: getLeftStyles(alignToTop, description, theme.isV3),
             })
           : null}
-        <View style={[styles.item, styles.content]}>
+        <View
+          style={[theme.isV3 ? styles.itemV3 : styles.item, styles.content]}
+        >
           {renderTitle()}
 
           {description
@@ -233,12 +246,7 @@ const ListItem = ({
         {right
           ? right({
               color: descriptionColor,
-              style: description
-                ? styles.iconMarginRight
-                : {
-                    ...styles.iconMarginRight,
-                    ...styles.marginVerticalNone,
-                  },
+              style: getRightStyles(alignToTop, description, theme.isV3),
             })
           : null}
       </View>
@@ -252,8 +260,16 @@ const styles = StyleSheet.create({
   container: {
     padding: theme.spacing.x2,
   },
+  containerV3: {
+    paddingVertical: theme.spacing.x2,
+    paddingRight: theme.spacing.x6,
+  },
   row: {
     flexDirection: 'row',
+  },
+  rowV3: {
+    flexDirection: 'row',
+    marginVertical: moderateScale(6),
   },
   title: {
     fontSize: theme.spacing.x4,
@@ -261,12 +277,12 @@ const styles = StyleSheet.create({
   description: {
     fontSize: moderateScale(14),
   },
-  marginVerticalNone: { marginVertical: 0 },
-  iconMarginLeft: { marginLeft: 0, marginRight: theme.spacing.x4 },
-  iconMarginRight: { marginRight: 0 },
   item: {
     marginVertical: moderateScale(6),
     paddingLeft: theme.spacing.x2,
+  },
+  itemV3: {
+    paddingLeft: theme.spacing.x4,
   },
   content: {
     flex: 1,
@@ -274,4 +290,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ListItem;
+export default withInternalTheme(ListItem);

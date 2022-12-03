@@ -1,16 +1,14 @@
 import * as React from 'react';
-import color from 'color';
-import type {
-  StyleProp,
-  ViewStyle,
-  TouchableWithoutFeedback,
-} from 'react-native';
-import { black } from '../../styles/themes/v2/colors';
-import IconButton from '../IconButton/IconButton';
-import type { IconSource } from '../Icon';
-import theme from '../../styles/themes/v3/LightTheme';
+import type { StyleProp, ViewStyle, View } from 'react-native';
 
-type Props = React.ComponentPropsWithoutRef<typeof IconButton> & {
+import color from 'color';
+
+import { useInternalTheme } from '../../core/theming';
+import { black } from '../../styles/themes/v2/colors';
+import type { IconSource } from '../Icon';
+import IconButton from '../IconButton/IconButton';
+
+export type Props = React.ComponentPropsWithoutRef<typeof IconButton> & {
   /**
    *  Custom color for action icon.
    */
@@ -42,7 +40,7 @@ type Props = React.ComponentPropsWithoutRef<typeof IconButton> & {
    */
   isLeading?: boolean;
   style?: StyleProp<ViewStyle>;
-  ref?: React.RefObject<TouchableWithoutFeedback>;
+  ref?: React.RefObject<View>;
 };
 
 /**
@@ -70,37 +68,45 @@ type Props = React.ComponentPropsWithoutRef<typeof IconButton> & {
  * export default MyComponent;
  * ```
  */
-const AppbarAction = ({
-  size = theme.spacing.x6,
-  color: iconColor,
-  icon,
-  disabled,
-  onPress,
-  accessibilityLabel,
-  isLeading,
-  ...rest
-}: Props) => {
-  const actionIconColor = iconColor
-    ? iconColor
-    : theme.isV3
-    ? isLeading
-      ? theme.colors.onSurface
-      : theme.colors.onSurfaceVariant
-    : color(black).alpha(0.54).rgb().string();
+const AppbarAction = React.forwardRef<View, Props>(
+  (
+    {
+      size = 24,
+      color: iconColor,
+      icon,
+      disabled,
+      onPress,
+      accessibilityLabel,
+      isLeading,
+      ...rest
+    }: Props,
+    ref
+  ) => {
+    const theme = useInternalTheme();
 
-  return (
-    <IconButton
-      size={size}
-      onPress={onPress}
-      iconColor={actionIconColor}
-      icon={icon}
-      disabled={disabled}
-      accessibilityLabel={accessibilityLabel}
-      animated
-      {...rest}
-    />
-  );
-};
+    const actionIconColor = iconColor
+      ? iconColor
+      : theme.isV3
+      ? isLeading
+        ? theme.colors.onSurface
+        : theme.colors.onSurfaceVariant
+      : color(black).alpha(0.54).rgb().string();
+
+    return (
+      <IconButton
+        size={size}
+        onPress={onPress}
+        iconColor={actionIconColor}
+        icon={icon}
+        disabled={disabled}
+        accessibilityLabel={accessibilityLabel}
+        animated
+        ref={ref}
+        {...rest}
+      />
+    );
+  }
+);
 
 AppbarAction.displayName = 'Appbar.Action';
 

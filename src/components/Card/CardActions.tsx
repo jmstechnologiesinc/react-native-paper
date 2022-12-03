@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { StyleSheet, StyleProp, View, ViewStyle } from 'react-native';
-import theme from '../../styles/themes/v3/LightTheme';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
-type Props = React.ComponentPropsWithRef<typeof View> & {
+import { useInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+
+export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Items inside the `CardActions`.
    */
@@ -37,7 +39,7 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
  * ```
  */
 const CardActions = (props: Props) => {
-  const { isV3 } = theme;
+  const { isV3 } = useInternalTheme();
   const justifyContent = isV3 ? 'flex-end' : 'flex-start';
 
   return (
@@ -47,9 +49,11 @@ const CardActions = (props: Props) => {
     >
       {React.Children.map(props.children, (child, i) => {
         return React.isValidElement(child)
-          ? React.cloneElement(child, {
+          ? React.cloneElement(child as React.ReactElement<any>, {
               compact: !isV3 && child.props.compact !== false,
-              mode: isV3 && (i === 0 ? 'outlined' : 'contained'),
+              mode:
+                child.props.mode ||
+                (isV3 && (i === 0 ? 'outlined' : 'contained')),
               style: isV3 && styles.button,
             })
           : child;

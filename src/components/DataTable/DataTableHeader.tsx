@@ -1,11 +1,13 @@
 import * as React from 'react';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+
 import color from 'color';
-import { StyleSheet, StyleProp, View, ViewStyle } from 'react-native';
+
+import { withInternalTheme } from '../../core/theming';
 import { black, white } from '../../styles/themes/v2/colors';
+import type { InternalTheme } from '../../types';
 
-import theme from '../../styles/themes/v3/LightTheme';
-
-type Props = React.ComponentPropsWithRef<typeof View> & {
+export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Content of the `DataTableHeader`.
    */
@@ -14,6 +16,7 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 /**
@@ -49,7 +52,7 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
  * ```
  */
 
-const DataTableHeader = ({ children, style, ...rest }: Props) => {
+const DataTableHeader = ({ children, style, theme, ...rest }: Props) => {
   const borderBottomColor = theme.isV3
     ? theme.colors.surfaceVariant
     : color(theme.dark ? white : black)
@@ -75,7 +78,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DataTableHeader;
+export default withInternalTheme(DataTableHeader);
 
 // @component-docs ignore-next-line
 export { DataTableHeader };

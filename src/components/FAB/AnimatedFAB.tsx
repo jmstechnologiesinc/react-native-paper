@@ -1,38 +1,39 @@
 import * as React from 'react';
-import color from 'color';
-import {
-  Animated,
-  View,
-  ViewStyle,
-  StyleSheet,
-  StyleProp,
-  Easing,
-  ScrollView,
-  Text,
-  Platform,
-  I18nManager,
-} from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
-
-import Surface from '../Surface';
-import Icon from '../Icon';
-import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import type { $RemoveChildren } from '../../types';
-import type { IconSource } from '../Icon';
-
 import type {
   AccessibilityState,
   NativeSyntheticEvent,
   TextLayoutEventData,
 } from 'react-native';
+import {
+  Animated,
+  Easing,
+  I18nManager,
+  Platform,
+  ScrollView,
+  StyleProp,
+  StyleSheet,
+  Text,
+  View,
+  ViewStyle,
+} from 'react-native';
+
+import color from 'color';
+import { moderateScale } from 'react-native-size-matters';
+
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { $RemoveChildren, InternalTheme } from '../../types';
+import type { IconSource } from '../Icon';
+import Icon from '../Icon';
+import Surface from '../Surface';
+import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import AnimatedText from '../Typography/AnimatedText';
 import { getCombinedStyles, getFABColors } from './utils';
-import theme from '../../styles/themes/v3/LightTheme';
 
 export type AnimatedFABIconMode = 'static' | 'dynamic';
 export type AnimatedFABAnimateFrom = 'left' | 'right';
 
-type Props = $RemoveChildren<typeof Surface> & {
+export type Props = $RemoveChildren<typeof Surface> & {
   /**
    * Icon to display for the `FAB`.
    */
@@ -96,7 +97,7 @@ type Props = $RemoveChildren<typeof Surface> & {
   /**
    * @optional
    */
-
+  theme: InternalTheme;
   testID?: string;
 };
 
@@ -192,6 +193,7 @@ const AnimatedFAB = ({
   disabled,
   onPress,
   onLongPress,
+  theme,
   style,
   visible = true,
   uppercase = !theme.isV3,
@@ -237,6 +239,7 @@ const AnimatedFAB = ({
   }, [visible, scale, visibility]);
 
   const { backgroundColor, foregroundColor } = getFABColors({
+    theme,
     variant,
     disabled,
     customColor,
@@ -292,13 +295,17 @@ const AnimatedFAB = ({
     animFAB,
   });
 
+  const font = isV3 ? theme.fonts.labelLarge : theme.fonts.medium;
+
   const textStyle = {
     color: foregroundColor,
-    ...(isV3 ? theme.typescale.labelLarge : theme.fonts.medium),
+    ...font,
   };
 
   const md2Elevation = disabled || !isIOS ? 0 : 6;
   const md3Elevation = disabled || !isIOS ? 0 : 3;
+
+  const newAccessibilityState = { ...accessibilityState, disabled };
 
   return (
     <Surface
@@ -401,7 +408,7 @@ const AnimatedFAB = ({
               disabled={disabled}
               accessibilityLabel={accessibilityLabel}
               accessibilityRole="button"
-              accessibilityState={{ ...accessibilityState, disabled }}
+              accessibilityState={newAccessibilityState}
               testID={testID}
               style={{ borderRadius }}
             >
@@ -427,7 +434,6 @@ const AnimatedFAB = ({
       </Animated.View>
 
       <View pointerEvents="none">
-        {/* @ts-ignore:next-line */}
         <AnimatedText
           variant="labelLarge"
           numberOfLines={1}
@@ -517,4 +523,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AnimatedFAB;
+export default withInternalTheme(AnimatedFAB);

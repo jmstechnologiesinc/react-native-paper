@@ -1,35 +1,42 @@
 import * as React from 'react';
 import {
-  StyleProp,
-  StyleSheet,
   Animated,
   SafeAreaView,
+  StyleProp,
+  StyleSheet,
+  TextStyle,
   TouchableWithoutFeedback,
   View,
   ViewStyle,
 } from 'react-native';
+
 import { moderateScale } from 'react-native-size-matters';
 
-import FAB from './FAB';
-import Text from '../Typography/Text';
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 import Card from '../Card/Card';
 import type { IconSource } from '../Icon';
-import theme from '../../styles/themes/v3/LightTheme';
+import Text from '../Typography/Text';
+import FAB from './FAB';
 import { getFABGroupColors } from './utils';
 
-type Props = {
+export type Props = {
   /**
    * Action items to display in the form of a speed dial.
    * An action item should contain the following properties:
    * - `icon`: icon to display (required)
    * - `label`: optional label text
-   * - `accessibilityLabel`: accessibility label for the action, uses label by default if specified
    * - `color`: custom icon color of the action item
    * - `labelTextColor`: custom label text color of the action item
+   * - `accessibilityLabel`: accessibility label for the action, uses label by default if specified
+   * - `accessibilityHint`: accessibility hint for the action
    * - `style`: pass additional styles for the fab item, for example, `backgroundColor`
-   * - `labelStyle`: pass additional styles for the fab item label, for example, `backgroundColor`
-   * - `size`: size of action item. Defaults to `small`. @supported Available in v5.x
+   * - `containerStyle`: pass additional styles for the fab item label container, for example, `backgroundColor` @supported Available in 5.x
+   * - `labelStyle`: pass additional styles for the fab item label, for example, `fontSize`
    * - `onPress`: callback that is called when `FAB` is pressed (required)
+   * - `size`: size of action item. Defaults to `small`. @supported Available in v5.x
+   * - `testID`: testID to be used on tests
    */
   actions: Array<{
     icon: IconSource;
@@ -37,8 +44,10 @@ type Props = {
     color?: string;
     labelTextColor?: string;
     accessibilityLabel?: string;
+    accessibilityHint?: string;
     style?: StyleProp<ViewStyle>;
-    labelStyle?: StyleProp<ViewStyle>;
+    containerStyle?: StyleProp<ViewStyle>;
+    labelStyle?: StyleProp<TextStyle>;
     onPress: () => void;
     size?: 'small' | 'medium';
     testID?: string;
@@ -56,6 +65,10 @@ type Props = {
    * Custom color for the `FAB`.
    */
   color?: string;
+  /**
+   * Custom backdrop color for opened speed dial background.
+   */
+  backdropColor?: string;
   /**
    * Function to execute on pressing the `FAB`.
    */
@@ -91,7 +104,7 @@ type Props = {
   /**
    * @optional
    */
-
+  theme: InternalTheme;
   /**
    * Pass down testID from Group props to FAB.
    */
@@ -123,6 +136,7 @@ type Props = {
  *       <Portal>
  *         <FAB.Group
  *           open={open}
+ *           visible
  *           icon={open ? 'calendar-today' : 'plus'}
  *           actions={[
  *             { icon: 'plus', onPress: () => console.log('Pressed add') },
@@ -163,6 +177,7 @@ const FABGroup = ({
   open,
   onPress,
   accessibilityLabel,
+  theme,
   style,
   fabStyle,
   visible,
@@ -170,6 +185,7 @@ const FABGroup = ({
   onStateChange,
   color: colorProp,
   variant = 'primary',
+  backdropColor: customBackdropColor,
 }: Props) => {
   const { current: backdrop } = React.useRef<Animated.Value>(
     new Animated.Value(0)
@@ -238,7 +254,7 @@ const FABGroup = ({
   const toggle = () => onStateChange({ open: !open });
 
   const { labelColor, backdropColor, stackedFABBackgroundColor } =
-    getFABGroupColors();
+    getFABGroupColors({ theme, customBackdropColor });
 
   const backdropOpacity = open
     ? backdrop.interpolate({
@@ -283,7 +299,7 @@ const FABGroup = ({
 
   return (
     <View pointerEvents="box-none" style={[styles.container, style]}>
-      <TouchableWithoutFeedback onPress={close}>
+      <TouchableWithoutFeedback accessibilityRole="button" onPress={close}>
         <Animated.View
           pointerEvents={open ? 'auto' : 'none'}
           style={[
@@ -297,89 +313,95 @@ const FABGroup = ({
       </TouchableWithoutFeedback>
       <SafeAreaView pointerEvents="box-none" style={styles.safeArea}>
         <View pointerEvents={open ? 'box-none' : 'none'}>
-          {actions.map((it, i) => (
-            <View
-              key={i} // eslint-disable-line react/no-array-index-key
-              style={[
-                styles.item,
-                {
-                  marginHorizontal:
-                    typeof it.size === 'undefined' || it.size === 'small'
-                      ? theme.spacing.x6
-                      : theme.spacing.x4,
-                },
-              ]}
-              pointerEvents={open ? 'box-none' : 'none'}
-            >
-              {it.label && (
-                <View>
-                  <Card
-                    style={
-                      [
-                        styles.label,
-                        {
-                          transform: [
-                            isV3
-                              ? { translateY: labelTranslations[i] }
-                              : { scale: scales[i] },
-                          ],
-                          opacity: opacities[i],
-                        },
-                        isV3 && styles.v3LabelStyle,
-                        it.labelStyle,
-                      ] as StyleProp<ViewStyle>
-                    }
-                    onPress={() => {
-                      it.onPress();
-                      close();
-                    }}
-                    accessibilityLabel={
-                      it.accessibilityLabel !== 'undefined'
-                        ? it.accessibilityLabel
-                        : it.label
-                    }
-                    accessibilityRole="button"
-                    {...(isV3 && { elevation: 0 })}
-                  >
-                    <Text
-                      variant="titleMedium"
-                      style={{ color: it.labelTextColor ?? labelColor }}
+          {actions.map((it, i) => {
+            const labelTextStyle = {
+              color: it.labelTextColor ?? labelColor,
+              ...(isV3 ? theme.fonts.titleMedium : {}),
+            };
+            const marginHorizontal =
+              typeof it.size === 'undefined' || it.size === 'small'
+                ? theme.spacing.x6
+                : theme.spacing.x4;
+            const accessibilityLabel =
+              typeof it.accessibilityLabel !== 'undefined'
+                ? it.accessibilityLabel
+                : it.label;
+            const size = typeof it.size !== 'undefined' ? it.size : 'small';
+
+            return (
+              <View
+                key={i} // eslint-disable-line react/no-array-index-key
+                style={[
+                  styles.item,
+                  {
+                    marginHorizontal,
+                  },
+                ]}
+                pointerEvents={open ? 'box-none' : 'none'}
+              >
+                {it.label && (
+                  <View>
+                    <Card
+                      accessibilityHint={it.accessibilityHint}
+                      style={
+                        [
+                          styles.containerStyle,
+                          {
+                            transform: [
+                              isV3
+                                ? { translateY: labelTranslations[i] }
+                                : { scale: scales[i] },
+                            ],
+                            opacity: opacities[i],
+                          },
+                          isV3 && styles.v3ContainerStyle,
+                          it.containerStyle,
+                        ] as StyleProp<ViewStyle>
+                      }
+                      onPress={() => {
+                        it.onPress();
+                        close();
+                      }}
+                      accessibilityLabel={accessibilityLabel}
+                      accessibilityRole="button"
+                      {...(isV3 && { elevation: 0 })}
                     >
-                      {it.label}
-                    </Text>
-                  </Card>
-                </View>
-              )}
-              <FAB
-                size={typeof it.size !== 'undefined' ? it.size : 'small'}
-                icon={it.icon}
-                color={it.color}
-                style={
-                  [
-                    {
-                      transform: [{ scale: scales[i] }],
-                      opacity: opacities[i],
-                      backgroundColor: stackedFABBackgroundColor,
-                    },
-                    isV3 && { transform: [{ translateY: translations[i] }] },
-                    it.style,
-                  ] as StyleProp<ViewStyle>
-                }
-                onPress={() => {
-                  it.onPress();
-                  close();
-                }}
-                accessibilityLabel={
-                  typeof it.accessibilityLabel !== 'undefined'
-                    ? it.accessibilityLabel
-                    : it.label
-                }
-                accessibilityRole="button"
-                testID={it.testID}
-                visible={open}
-              />
-            </View>
-          ))}
+                      <Text
+                        variant="titleMedium"
+                        style={[labelTextStyle, it.labelStyle]}
+                      >
+                        {it.label}
+                      </Text>
+                    </Card>
+                  </View>
+                )}
+                <FAB
+                  size={size}
+                  icon={it.icon}
+                  color={it.color}
+                  style={
+                    [
+                      {
+                        transform: [{ scale: scales[i] }],
+                        opacity: opacities[i],
+                        backgroundColor: stackedFABBackgroundColor,
+                      },
+                      isV3 && { transform: [{ translateY: translations[i] }] },
+                      it.style,
+                    ] as StyleProp<ViewStyle>
+                  }
+                  onPress={() => {
+                    it.onPress();
+                    close();
+                  }}
+                  accessibilityLabel={accessibilityLabel}
+                  accessibilityRole="button"
+                  testID={it.testID}
+                  visible={open}
+                />
+              </View>
+            );
+          })}
         </View>
         <FAB
           onPress={() => {
@@ -403,9 +425,12 @@ const FABGroup = ({
 
 FABGroup.displayName = 'FAB.Group';
 
-export default FABGroup;
+export default withInternalTheme(FABGroup);
 
-export { FABGroup };
+// @component-docs ignore-next-line
+const FABGroupWithTheme = withInternalTheme(FABGroup);
+// @component-docs ignore-next-line
+export { FABGroupWithTheme as FABGroup };
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -423,7 +448,7 @@ const styles = StyleSheet.create({
   backdrop: {
     ...StyleSheet.absoluteFillObject,
   },
-  label: {
+  containerStyle: {
     borderRadius: moderateScale(5),
     paddingHorizontal: theme.spacing.x3,
     paddingVertical: moderateScale(6),
@@ -437,7 +462,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
-  v3LabelStyle: {
+  v3ContainerStyle: {
     backgroundColor: 'transparent',
     elevation: 0,
   },

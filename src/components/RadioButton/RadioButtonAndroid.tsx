@@ -1,14 +1,17 @@
 import * as React from 'react';
-import { Animated, View, StyleSheet } from 'react-native';
+import { Animated, StyleSheet, View } from 'react-native';
+
 import { moderateScale } from 'react-native-size-matters';
+
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { $RemoveChildren, InternalTheme } from '../../types';
+import { getAndroidSelectionControlColor } from '../Checkbox/utils';
+import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import { RadioButtonContext, RadioButtonContextType } from './RadioButtonGroup';
 import { handlePress, isChecked } from './utils';
-import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import type { $RemoveChildren } from '../../types';
-import { getAndroidSelectionControlColor } from '../Checkbox/utils';
-import theme from '../../styles/themes/v3/LightTheme';
 
-type Props = $RemoveChildren<typeof TouchableRipple> & {
+export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * Value of the radio button
    */
@@ -36,6 +39,7 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
   /**
    * testID to be used on tests.
    */
@@ -63,6 +67,7 @@ const BORDER_WIDTH = moderateScale(2);
 const RadioButtonAndroid = ({
   disabled,
   onPress,
+  theme,
   value,
   status,
   testID,
@@ -200,9 +205,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RadioButtonAndroid;
+export default withInternalTheme(RadioButtonAndroid);
 
 // @component-docs ignore-next-line
-const RadioButtonAndroidWithTheme = RadioButtonAndroid;
+const RadioButtonAndroidWithTheme = withInternalTheme(RadioButtonAndroid);
 // @component-docs ignore-next-line
 export { RadioButtonAndroidWithTheme as RadioButtonAndroid };

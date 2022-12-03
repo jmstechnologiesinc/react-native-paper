@@ -1,17 +1,22 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { Platform } from 'react-native';
+
+import { render } from '@testing-library/react-native';
 import renderer from 'react-test-renderer';
-import Menu from '../../Menu/Menu';
-import Appbar from '../../Appbar';
-import AppbarAction from '../../Appbar/AppbarAction';
-import AppbarContent from '../../Appbar/AppbarContent';
-import AppbarBackAction from '../../Appbar/AppbarBackAction';
-import AppbarHeader from '../../Appbar/AppbarHeader';
-import { getAppbarColor, renderAppbarContent } from '../../Appbar/utils';
-import Searchbar from '../../Searchbar';
-import { tokens } from '../../../styles/themes/v3/tokens';
+
+import Provider from '../../../core/Provider';
 import { getTheme } from '../../../core/theming';
 import overlay from '../../../styles/overlay';
+import { tokens } from '../../../styles/themes/v3/tokens';
+import Appbar from '../../Appbar';
+import AppbarAction from '../../Appbar/AppbarAction';
+import AppbarBackAction from '../../Appbar/AppbarBackAction';
+import AppbarContent from '../../Appbar/AppbarContent';
+import AppbarHeader from '../../Appbar/AppbarHeader';
+import { getAppbarColor, renderAppbarContent } from '../../Appbar/utils';
+import Menu from '../../Menu/Menu';
+import Searchbar from '../../Searchbar';
+import Tooltip from '../../Tooltip/Tooltip';
 
 describe('Appbar', () => {
   it('does not pass any additional props to Searchbar', () => {
@@ -106,22 +111,58 @@ describe('renderAppbarContent', () => {
         shouldCenterContent: true,
       });
 
-    const v3CenterAlignedStyle = {
-      ...StyleSheet.absoluteFillObject,
-      alignItems: 'center',
-      justifyContent: 'center',
-    };
-
-    const v2CenterAlignedContent = {
+    const centerAlignedContent = {
       alignItems: 'center',
     };
 
     expect(renderResult()[0].props.style).toEqual(
-      expect.arrayContaining([expect.objectContaining(v3CenterAlignedStyle)])
+      expect.arrayContaining([expect.objectContaining(centerAlignedContent)])
     );
 
     expect(renderResult(false)[0].props.style).toEqual(
-      expect.arrayContaining([expect.objectContaining(v2CenterAlignedContent)])
+      expect.arrayContaining([expect.objectContaining(centerAlignedContent)])
+    );
+  });
+
+  it('should not render centered AppbarContent for Android, if not V3', () => {
+    Platform.OS = 'android';
+    const renderResult = (isV3 = true) =>
+      renderAppbarContent({
+        children,
+        isDark: false,
+        isV3,
+        renderOnly: [AppbarContent],
+        mode: 'center-aligned',
+        shouldCenterContent: !isV3 && Platform.OS === 'ios',
+      });
+
+    const centerAlignedContent = {
+      alignItems: 'center',
+    };
+
+    expect(renderResult(false)[0].props.style).not.toEqual(
+      expect.arrayContaining([expect.objectContaining(centerAlignedContent)])
+    );
+  });
+
+  it('should render centered AppbarContent always for iOS, if not V3', () => {
+    Platform.OS = 'ios';
+    const renderResult = (isV3 = true) =>
+      renderAppbarContent({
+        children,
+        isDark: false,
+        isV3,
+        renderOnly: [AppbarContent],
+        mode: 'center-aligned',
+        shouldCenterContent: !isV3 && Platform.OS === 'ios',
+      });
+
+    const centerAlignedContent = {
+      alignItems: 'center',
+    };
+
+    expect(renderResult(false)[0].props.style).toEqual(
+      expect.arrayContaining([expect.objectContaining(centerAlignedContent)])
     );
   });
 
@@ -149,6 +190,82 @@ describe('renderAppbarContent', () => {
     expect(renderResult(false, true)[1].props.style).toEqual(
       expect.arrayContaining([expect.objectContaining(v2Spacing)])
     );
+  });
+});
+
+describe('AppbarAction', () => {
+  it('should be rendered with default theme color', () => {
+    const { getByTestId } = render(
+      <Appbar>
+        <Appbar.Action icon="menu" testID="appbar-action" />
+      </Appbar>
+    );
+    const appbarActionIcon = getByTestId('appbar-action').props.children[0];
+    expect(appbarActionIcon.props.color).toBe(
+      getTheme().colors.onSurfaceVariant
+    );
+  });
+
+  it('should be rendered with specific theme color if is leading', () => {
+    const { getByTestId } = render(
+      <Appbar>
+        <Appbar.Action icon="menu" testID="appbar-action" isLeading />
+      </Appbar>
+    );
+    const appbarActionIcon = getByTestId('appbar-action').props.children[0];
+    expect(appbarActionIcon.props.color).toBe(getTheme().colors.onSurface);
+  });
+
+  it('should be rendered with custom color', () => {
+    const { getByTestId } = render(
+      <Appbar>
+        <Appbar.Action icon="menu" color="purple" testID="appbar-action" />
+      </Appbar>
+    );
+    const appbarActionIcon = getByTestId('appbar-action').props.children[0];
+    expect(appbarActionIcon.props.color).toBe('purple');
+  });
+
+  it('should render AppbarBackAction with custom color', () => {
+    const { getByTestId } = render(
+      <Appbar>
+        <Appbar.BackAction icon="menu" color="purple" testID="appbar-action" />
+      </Appbar>
+    );
+    const appbarBackActionIcon = getByTestId('appbar-action').props.children[0];
+    expect(appbarBackActionIcon.props.color).toBe('purple');
+  });
+
+  describe('When V2', () => {
+    const theme = { isV3: false };
+
+    it('should be rendered with the right color when no color is passed', () => {
+      const { getByTestId } = render(
+        <Appbar theme={theme}>
+          <Appbar.Action icon="menu" testID="appbar-action" />
+        </Appbar>
+      );
+
+      const appbarActionIcon = getByTestId('appbar-action').props.children[0];
+
+      expect(appbarActionIcon.props.color).toBe('#ffffff');
+    });
+
+    it('should be rendered with the right color when no color is passed but is wrapped by a Tooltip', () => {
+      const { getByTestId } = render(
+        <Provider>
+          <Appbar theme={theme}>
+            <Tooltip title="Menu">
+              <Appbar.Action icon="menu" testID="appbar-action" />
+            </Tooltip>
+          </Appbar>
+        </Provider>
+      );
+
+      const appbarActionIcon = getByTestId('appbar-action').props.children[0];
+
+      expect(appbarActionIcon.props.color).toBe('#ffffff');
+    });
   });
 });
 

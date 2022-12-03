@@ -1,29 +1,29 @@
 import * as React from 'react';
 import {
   Animated,
-  TextInput as NativeTextInput,
   LayoutChangeEvent,
   StyleProp,
+  TextInput as NativeTextInput,
   TextStyle,
+  ViewStyle,
 } from 'react-native';
-import TextInputOutlined from './TextInputOutlined';
-import TextInputFlat from './TextInputFlat';
-import TextInputIcon, {
-  Props as TextInputIconProps,
-} from './Adornment/TextInputIcon';
+
+import { withInternalTheme } from '../../core/theming';
+import type { InternalTheme } from '../../types';
 import TextInputAffix, {
   Props as TextInputAffixProps,
 } from './Adornment/TextInputAffix';
-
+import TextInputIcon, {
+  Props as TextInputIconProps,
+} from './Adornment/TextInputIcon';
+import TextInputFlat from './TextInputFlat';
+import TextInputOutlined from './TextInputOutlined';
 import type { RenderProps, TextInputLabelProp } from './types';
-import theme from '../../styles/themes/v3/LightTheme';
 
 const BLUR_ANIMATION_DURATION = 180;
 const FOCUS_ANIMATION_DURATION = 150;
 
-export type TextInputProps = React.ComponentPropsWithRef<
-  typeof NativeTextInput
-> & {
+export type Props = React.ComponentPropsWithRef<typeof NativeTextInput> & {
   /**
    * Mode of the TextInput.
    * - `flat` - flat input with an underline.
@@ -56,7 +56,7 @@ export type TextInputProps = React.ComponentPropsWithRef<
    */
   onChangeText?: Function;
   /**
-   * Selection color of the input
+   * Selection color of the input.
    */
   selectionColor?: string;
   /**
@@ -75,6 +75,11 @@ export type TextInputProps = React.ComponentPropsWithRef<
    * Active outline color of the input.
    */
   activeOutlineColor?: string;
+  /**
+   * @supported Available in v5.x
+   * Color of the text in the input.
+   */
+  textColor?: string;
   /**
    * Sets min height with densed layout. For `TextInput` in `flat` mode
    * height is `64dp` or in dense layout - `52dp` with label or `40dp` without label.
@@ -133,11 +138,30 @@ export type TextInputProps = React.ComponentPropsWithRef<
   /**
    * @optional
    */
+  theme: InternalTheme;
+  /**
+   * testID to be used on tests.
+   */
+  testID?: string;
+  /**
+   * @supported Available in v5.x
+   * Pass style to override the default style of outlined wrapper.
+   * Overrides style when mode is set to `outlined`
+   * Example: `borderRadius`, `borderColor`
+   */
+  outlineStyle?: StyleProp<ViewStyle>;
+  /**
+   * @supported Available in v5.x
+   * Pass style to override the default style of underlined wrapper.
+   * Overrides style when mode is set to `flat`
+   * Example: `borderRadius`, `borderColor`
+   */
+  underlineStyle?: StyleProp<ViewStyle>;
 };
 
 interface CompoundedComponent
   extends React.ForwardRefExoticComponent<
-    TextInputProps & React.RefAttributes<TextInputHandles>
+    Props & React.RefAttributes<TextInputHandles>
   > {
   Icon: React.FunctionComponent<TextInputIconProps>;
   Affix: React.FunctionComponent<Partial<TextInputAffixProps>>;
@@ -193,7 +217,7 @@ type TextInputHandles = Pick<
  * @extends TextInput props https://reactnative.dev/docs/textinput#props
  */
 
-const TextInput = React.forwardRef<TextInputHandles, TextInputProps>(
+const TextInput = React.forwardRef<TextInputHandles, Props>(
   (
     {
       mode = 'flat',
@@ -204,7 +228,7 @@ const TextInput = React.forwardRef<TextInputHandles, TextInputProps>(
       editable = true,
       render = (props: RenderProps) => <NativeTextInput {...props} />,
       ...rest
-    }: TextInputProps,
+    }: Props,
     ref
   ) => {
     const isControlled = rest.value !== undefined;
@@ -218,7 +242,7 @@ const TextInput = React.forwardRef<TextInputHandles, TextInputProps>(
     );
     const [focused, setFocused] = React.useState<boolean>(false);
     const [placeholder, setPlaceholder] = React.useState<string | undefined>(
-      ''
+      ' '
     );
     const [uncontrolledValue, setUncontrolledValue] = React.useState<
       string | undefined
@@ -254,7 +278,7 @@ const TextInput = React.forwardRef<TextInputHandles, TextInputProps>(
 
     const root = React.useRef<NativeTextInput | undefined | null>();
 
-    const { scale } = theme.animation;
+    const { scale } = rest.theme.animation;
 
     React.useImperativeHandle(ref, () => ({
       focus: () => root.current?.focus(),
@@ -293,15 +317,27 @@ const TextInput = React.forwardRef<TextInputHandles, TextInputProps>(
       // We don't show placeholder if there's a label because the label acts as placeholder
       // When focused, the label moves up, so we can show a placeholder
       if (focused || !rest.label) {
-        // Set the placeholder in a delay to offset the label animation
-        // If we show it immediately, they'll overlap and look ugly
-        timer.current = setTimeout(
-          () => setPlaceholder(rest.placeholder),
-          50
-        ) as unknown as NodeJS.Timeout;
+        // If the user wants to use the contextMenu, when changing the placeholder, the contextMenu is closed
+        // This is a workaround to mitigate this behavior in scenarios where the placeholder is not specified.
+        if (rest.placeholder) {
+          // Set the placeholder in a delay to offset the label animation
+          // If we show it immediately, they'll overlap and look ugly
+          timer.current = setTimeout(
+            () => setPlaceholder(rest.placeholder),
+            50
+          ) as unknown as NodeJS.Timeout;
+        }
       } else {
         // hidePlaceholder
-        setPlaceholder('');
+
+        // Issue: https://github.com/callstack/react-native-paper/issues/3138
+        // Description:   Changing the placeholder text value dynamically,
+        //                within multiline input on iOS, doesn't work properly –
+        //                the placeholder is not displayed initially.
+        // Root cause:    Placeholder initial value, which has length 0.
+        // More context:  The issue was also reproduced in react-native, using its own TextInput.
+        // Workaround:    Set an empty space character in the default value.
+        setPlaceholder(' ');
       }
 
       return () => {
@@ -471,4 +507,4 @@ TextInput.Icon = TextInputIcon;
 // @ts-ignore Types of property 'theme' are incompatible.
 TextInput.Affix = TextInputAffix;
 
-export default TextInput;
+export default withInternalTheme(TextInput);

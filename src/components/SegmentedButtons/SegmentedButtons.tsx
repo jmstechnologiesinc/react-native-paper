@@ -6,11 +6,11 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import theme from '../../styles/themes/v3/LightTheme';
 
+import { useTheme } from '../../core/theming';
+import type { IconSource } from '../Icon';
 import SegmentedButtonItem from './SegmentedButtonItem';
 import { getDisabledSegmentedButtonStyle } from './utils';
-import type { IconSource } from '../Icon';
 
 type ConditionalValue =
   | {
@@ -85,29 +85,39 @@ export type Props = {
  * ## Usage
  * ```js
  * import * as React from 'react';
+ * import { SafeAreaView, StyleSheet } from 'react-native';
  * import { SegmentedButtons } from 'react-native-paper';
  *
  * const MyComponent = () => {
  *   const [value, setValue] = React.useState('');
  *
  *   return (
- *     <SegmentedButtons
- *      value={value}
- *      onValueChange={setValue}
- *      buttons={[
- *        {
- *          value: 'walk',
- *          label: 'Walking',
- *        },
- *        {
- *          value: 'train',
- *          label: 'Transit',
- *        },
- *      ]}
- *      style={styles.group}
- *    />
+ *     <SafeAreaView style={styles.container}>
+ *       <SegmentedButtons
+ *         value={value}
+ *         onValueChange={setValue}
+ *         buttons={[
+ *           {
+ *             value: 'walk',
+ *             label: 'Walking',
+ *           },
+ *           {
+ *             value: 'train',
+ *             label: 'Transit',
+ *           },
+ *           { value: 'drive', label: 'Driving' },
+ *         ]}
+ *       />
+ *     </SafeAreaView>
  *   );
  * };
+ *
+ * const styles = StyleSheet.create({
+ *   container: {
+ *     flex: 1,
+ *     alignItems: 'center',
+ *   },
+ * });
  *
  * export default MyComponent;
  *```
@@ -120,7 +130,7 @@ const SegmentedButtons = ({
   density,
   style,
 }: Props) => {
-
+  const theme = useTheme();
   return (
     <View style={[styles.row, style]}>
       {buttons.map((item, i) => {
@@ -129,9 +139,14 @@ const SegmentedButtons = ({
           buttons,
           index: i,
         });
-        const segment = buttons.length === 1 ? "single" : (
-          i === 0 ? 'first' : i === buttons.length - 1 ? 'last' : undefined
-        )
+        const segment =
+          buttons.length === 1
+            ? 'single'
+            : i === 0
+            ? 'first'
+            : i === buttons.length - 1
+            ? 'last'
+            : undefined;
 
         const checked =
           multiSelect && Array.isArray(value)
@@ -176,3 +191,5 @@ const styles = StyleSheet.create({
 
 export default SegmentedButtons;
 
+// @component-docs ignore-next-line
+export { SegmentedButtons as SegmentedButtons };

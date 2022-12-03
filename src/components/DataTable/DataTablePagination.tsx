@@ -1,20 +1,23 @@
 import * as React from 'react';
 import {
-  StyleSheet,
+  I18nManager,
   StyleProp,
+  StyleSheet,
   View,
   ViewStyle,
-  I18nManager,
 } from 'react-native';
+
 import color from 'color';
+import type { InternalTheme } from 'src/types';
+
+import { useInternalTheme, withInternalTheme } from '../../core/theming';
+import Button from '../Button/Button';
 import IconButton from '../IconButton/IconButton';
-import Text from '../Typography/Text';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Menu from '../Menu/Menu';
-import Button from '../Button/Button';
-import theme from '../../styles/themes/v3/LightTheme';
+import Text from '../Typography/Text';
 
-type Props = React.ComponentPropsWithRef<typeof View> &
+export type Props = React.ComponentPropsWithRef<typeof View> &
   PaginationControlsProps &
   PaginationDropdownProps & {
     /**
@@ -37,6 +40,7 @@ type Props = React.ComponentPropsWithRef<typeof View> &
     /**
      * @optional
      */
+    theme: InternalTheme;
   };
 
 type PaginationDropdownProps = {
@@ -79,6 +83,8 @@ const PaginationControls = ({
   onPageChange,
   showFastPaginationControls,
 }: PaginationControlsProps) => {
+  const theme = useInternalTheme();
+
   const textColor = theme.isV3 ? theme.colors.onSurface : theme.colors.text;
 
   return (
@@ -90,7 +96,7 @@ const PaginationControls = ({
               name="page-first"
               color={color}
               size={size}
-              direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
+              direction={I18nManager.getConstants().isRTL ? 'rtl' : 'ltr'}
             />
           )}
           iconColor={textColor}
@@ -105,7 +111,7 @@ const PaginationControls = ({
             name="chevron-left"
             color={color}
             size={size}
-            direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
+            direction={I18nManager.getConstants().isRTL ? 'rtl' : 'ltr'}
           />
         )}
         iconColor={textColor}
@@ -119,7 +125,7 @@ const PaginationControls = ({
             name="chevron-right"
             color={color}
             size={size}
-            direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
+            direction={I18nManager.getConstants().isRTL ? 'rtl' : 'ltr'}
           />
         )}
         iconColor={textColor}
@@ -134,7 +140,7 @@ const PaginationControls = ({
               name="page-last"
               color={color}
               size={size}
-              direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
+              direction={I18nManager.getConstants().isRTL ? 'rtl' : 'ltr'}
             />
           )}
           iconColor={textColor}
@@ -152,7 +158,7 @@ const PaginationDropdown = ({
   numberOfItemsPerPage,
   onItemsPerPageChange,
 }: PaginationDropdownProps) => {
-  const { colors } = theme;
+  const { colors } = useInternalTheme();
   const [showSelect, toggleSelect] = React.useState<boolean>(false);
 
   return (
@@ -259,6 +265,7 @@ const DataTablePagination = ({
   numberOfPages,
   onPageChange,
   style,
+  theme,
   showFastPaginationControls = false,
   numberOfItemsPerPageList,
   numberOfItemsPerPage,
@@ -354,7 +361,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DataTablePagination;
+export default withInternalTheme(DataTablePagination);
 
 // @component-docs ignore-next-line
 export { DataTablePagination };

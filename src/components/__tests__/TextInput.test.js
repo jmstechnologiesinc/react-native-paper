@@ -1,15 +1,17 @@
 import * as React from 'react';
+import { StyleSheet, Text, Platform, I18nManager } from 'react-native';
+
+import { fireEvent, render } from '@testing-library/react-native';
 import color from 'color';
-import { StyleSheet, Text, Platform } from 'react-native';
-import { fireEvent, render } from 'react-native-testing-library';
-import TextInput from '../TextInput/TextInput';
+
+import { getTheme } from '../../core/theming';
+import { MD3LightTheme } from '../../styles/themes';
 import { red500 } from '../../styles/themes/v2/colors';
 import {
   getFlatInputColors,
   getOutlinedInputColors,
 } from '../TextInput/helpers';
-import { getTheme } from '../../core/theming';
-import MD3LightTheme from '../../styles/themes/v3/LightTheme';
+import TextInput from '../TextInput/TextInput';
 
 const style = StyleSheet.create({
   inputStyle: {
@@ -20,6 +22,9 @@ const style = StyleSheet.create({
   },
   height: {
     height: 100,
+  },
+  lineHeight: {
+    lineHeight: 22,
   },
 });
 
@@ -33,7 +38,7 @@ it('correctly renders left-side icon adornment, and right-side affix adornment',
       onChangeText={(text) => this.setState({ text })}
       left={
         <TextInput.Icon
-          name="heart"
+          icon="heart"
           onPress={() => {
             console.log('!@# press left');
           }}
@@ -44,13 +49,13 @@ it('correctly renders left-side icon adornment, and right-side affix adornment',
       }
     />
   );
-  expect(() => getByText(affixTextValue)).not.toThrow();
-  expect(() => getByTestId('left-icon-adornment')).not.toThrow();
-  expect(() => getByTestId('right-affix-adornment')).not.toThrow();
+  expect(getByText(affixTextValue)).toBeTruthy();
+  expect(getByTestId('left-icon-adornment')).toBeTruthy();
+  expect(getByTestId('right-affix-adornment')).toBeTruthy();
   expect(toJSON()).toMatchSnapshot();
 });
 
-it('correctly renders left-side icon adornment, and right-side affix adornment ', () => {
+it('correctly renders left-side affix adornment, and right-side icon adornment', () => {
   const { getByText, getByTestId, toJSON } = render(
     <TextInput
       label="Flat input"
@@ -62,7 +67,7 @@ it('correctly renders left-side icon adornment, and right-side affix adornment '
       }
       right={
         <TextInput.Icon
-          name="heart"
+          icon="heart"
           onPress={() => {
             console.log('!@# press left');
           }}
@@ -70,9 +75,9 @@ it('correctly renders left-side icon adornment, and right-side affix adornment '
       }
     />
   );
-  expect(() => getByText(affixTextValue)).not.toThrow();
-  expect(() => getByTestId('right-icon-adornment')).not.toThrow();
-  expect(() => getByTestId('left-affix-adornment')).not.toThrow();
+  expect(getByText(affixTextValue)).toBeTruthy();
+  expect(getByTestId('right-icon-adornment')).toBeTruthy();
+  expect(getByTestId('left-affix-adornment')).toBeTruthy();
   expect(toJSON()).toMatchSnapshot();
 });
 
@@ -128,9 +133,7 @@ it('correctly applies error state Outline TextInput', () => {
   );
 
   const outline = getByTestId('text-input-outline');
-  expect(outline.props.style).toEqual(
-    expect.arrayContaining([expect.objectContaining({ borderWidth: 2 })])
-  );
+  expect(outline).toHaveStyle({ borderWidth: 2 });
 });
 
 it('correctly applies focused state Outline TextInput', () => {
@@ -145,15 +148,11 @@ it('correctly applies focused state Outline TextInput', () => {
   );
 
   const outline = getByTestId('text-input-outline');
-  expect(outline.props.style).toEqual(
-    expect.arrayContaining([expect.objectContaining({ borderWidth: 2 })])
-  );
+  expect(outline).toHaveStyle({ borderWidth: 2 });
 
   fireEvent(getByTestId('text-input-outlined'), 'focus');
 
-  expect(outline.props.style).toEqual(
-    expect.arrayContaining([expect.objectContaining({ borderWidth: 2 })])
-  );
+  expect(outline).toHaveStyle({ borderWidth: 2 });
 });
 
 it('contains patch spacing for flat input when ios and multiline', () => {
@@ -167,7 +166,7 @@ it('contains patch spacing for flat input when ios and multiline', () => {
       onChangeText={(text) => this.setState({ text })}
     />
   );
-  expect(() => getByTestId('patch-container')).not.toThrow();
+  expect(getByTestId('patch-container')).toBeTruthy();
 });
 
 it('correctly applies a component as the text label', () => {
@@ -181,6 +180,134 @@ it('correctly applies a component as the text label', () => {
 
   expect(toJSON()).toMatchSnapshot();
 });
+
+it('renders label with correct color when active', () => {
+  const { getByTestId } = render(
+    <TextInput
+      label="Flat input"
+      placeholder="Type something"
+      value={'Some test value'}
+      onChangeText={(text) => this.setState({ text })}
+      testID={'text-input-flat'}
+    />
+  );
+
+  fireEvent(getByTestId('text-input-flat'), 'focus');
+
+  expect(getByTestId('text-input-flat-label-active')).toHaveStyle({
+    color: getTheme().colors.primary,
+  });
+});
+
+it('renders label with correct color when inactive', () => {
+  const { getByTestId } = render(
+    <TextInput
+      label="Flat input"
+      placeholder="Type something"
+      value={'Some test value'}
+      onChangeText={(text) => this.setState({ text })}
+      testID={'text-input'}
+    />
+  );
+
+  expect(getByTestId('text-input-label-inactive')).toHaveStyle({
+    color: getTheme().colors.onSurfaceVariant,
+  });
+});
+
+it('renders input placeholder initially with an empty space character', () => {
+  const { getByTestId } = render(
+    <TextInput multiline label="Multiline input" testID={'text-input'} />
+  );
+
+  expect(getByTestId('text-input').props.placeholder).toBe(' ');
+});
+
+it('correctly applies padding offset to input label on Android when RTL', () => {
+  Platform.OS = 'android';
+  I18nManager.isRTL = true;
+
+  const { getByTestId } = render(
+    <TextInput
+      label="Flat input"
+      mode="flat"
+      testID="text-input-flat"
+      left={
+        <TextInput.Affix text={affixTextValue} textStyle={style.inputStyle} />
+      }
+      right={
+        <TextInput.Affix text={affixTextValue} textStyle={style.inputStyle} />
+      }
+    />
+  );
+
+  expect(getByTestId('text-input-flat-label-active')).toHaveStyle({
+    paddingLeft: 56,
+    paddingRight: 16,
+  });
+
+  I18nManager.isRTL = false;
+});
+
+it('correctly applies padding offset to input label on Android when LTR', () => {
+  Platform.OS = 'android';
+
+  const { getByTestId } = render(
+    <TextInput
+      label="Flat input"
+      mode="flat"
+      testID="text-input-flat"
+      left={
+        <TextInput.Affix text={affixTextValue} textStyle={style.inputStyle} />
+      }
+      right={
+        <TextInput.Affix text={affixTextValue} textStyle={style.inputStyle} />
+      }
+    />
+  );
+
+  expect(getByTestId('text-input-flat-label-active')).toHaveStyle({
+    paddingLeft: 16,
+    paddingRight: 56,
+  });
+});
+
+['outlined', 'flat'].forEach((mode) =>
+  it(`renders ${mode} input with correct line height`, () => {
+    const input = render(
+      <TextInput
+        mode={mode}
+        multiline
+        label="Flat input"
+        testID={`text-input-${mode}`}
+        style={style.lineHeight}
+      />
+    );
+
+    expect(input.getByTestId(`text-input-${mode}`)).toHaveStyle({
+      lineHeight: 22,
+    });
+  })
+);
+
+['outlined', 'flat'].forEach((mode) =>
+  it(`renders ${mode} input with passed textColor`, () => {
+    const input = render(
+      <TextInput
+        mode={mode}
+        multiline
+        label="Flat input"
+        testID={`text-input-${mode}`}
+        style={style.lineHeight}
+        textColor={'purple'}
+      />
+    );
+
+    expect(input.getByTestId(`text-input-${mode}`)).toHaveStyle({
+      color: 'purple',
+    });
+  })
+);
 
 describe('maxFontSizeMultiplier', () => {
   const createInput = (type, maxFontSizeMultiplier) => {
@@ -301,6 +428,26 @@ describe('getFlatInputColor - underline color', () => {
 });
 
 describe('getFlatInputColor - input text color', () => {
+  it('should return custom color, if not disabled, no matter what the theme is', () => {
+    expect(
+      getOutlinedInputColors({
+        textColor: 'beige',
+        theme: getTheme(),
+      })
+    ).toMatchObject({
+      inputTextColor: 'beige',
+    });
+
+    expect(
+      getOutlinedInputColors({
+        textColor: 'beige',
+        theme: getTheme(false, false),
+      })
+    ).toMatchObject({
+      inputTextColor: 'beige',
+    });
+  });
+
   it('should return correct disabled color, for theme version 3', () => {
     expect(
       getFlatInputColors({
@@ -546,7 +693,7 @@ describe('getFlatInputColor - active color', () => {
     expect(
       getFlatInputColors({
         activeUnderlineColor: 'beige',
-        theme: getTheme(false, true),
+        theme: getTheme(false, false),
       })
     ).toMatchObject({
       activeColor: 'beige',
@@ -633,7 +780,7 @@ describe('getOutlinedInputColors - outline color', () => {
     expect(
       getOutlinedInputColors({
         customOutlineColor: 'beige',
-        theme: getTheme(),
+        theme: getTheme(false, false),
       })
     ).toMatchObject({
       outlineColor: 'beige',
@@ -833,7 +980,7 @@ describe('getOutlinedInputColors - active color', () => {
     expect(
       getOutlinedInputColors({
         activeOutlineColor: 'beige',
-        theme: getTheme(false, true),
+        theme: getTheme(false, false),
       })
     ).toMatchObject({
       activeColor: 'beige',
@@ -857,6 +1004,36 @@ describe('getOutlinedInputColors - active color', () => {
       })
     ).toMatchObject({
       activeColor: getTheme(false, true).colors.primary,
+    });
+  });
+});
+
+describe('outlineStyle - underlineStyle', () => {
+  it('correctly applies outline style', () => {
+    const { getByTestId } = render(
+      <TextInput
+        mode="outlined"
+        outlineStyle={{ borderRadius: 16, borderWidth: 6 }}
+      />
+    );
+
+    expect(getByTestId('text-input-outline')).toHaveStyle({
+      borderRadius: 16,
+      borderWidth: 6,
+    });
+  });
+
+  it('correctly applies underline style', () => {
+    const { getByTestId } = render(
+      <TextInput
+        mode="flat"
+        underlineStyle={{ borderRadius: 16, borderWidth: 6 }}
+      />
+    );
+
+    expect(getByTestId('text-input-underline')).toHaveStyle({
+      borderRadius: 16,
+      borderWidth: 6,
     });
   });
 });

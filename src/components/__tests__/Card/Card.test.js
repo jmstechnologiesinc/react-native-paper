@@ -1,11 +1,14 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { render } from 'react-native-testing-library';
+
+import { render } from '@testing-library/react-native';
 import color from 'color';
-import Card from '../../Card/Card';
-import { black, white } from '../../../styles/themes/v2/colors';
-import { getCardColors } from '../../Card/utils';
+import renderer from 'react-test-renderer';
+
 import { getTheme } from '../../../core/theming';
+import { black, white } from '../../../styles/themes/v2/colors';
+import Button from '../../Button/Button';
+import Card from '../../Card/Card';
+import { getCardColors, getCardCoverStyle } from '../../Card/utils';
 
 describe('Card', () => {
   it('renders an outlined card', () => {
@@ -15,7 +18,7 @@ describe('Card', () => {
   });
 
   it('renders with a custom theme', () => {
-    const { getByA11yLabel } = render(
+    const { getByLabelText } = render(
       <Card
         mode="outlined"
         accessibilityLabel="card"
@@ -23,8 +26,24 @@ describe('Card', () => {
       />
     );
 
-    expect(getByA11yLabel('card').props.style.backgroundColor).toEqual(
-      '#0000FF'
+    expect(getByLabelText('card')).toHaveStyle({
+      backgroundColor: '#0000FF',
+    });
+  });
+});
+
+describe('CardActions', () => {
+  it('renders button with passed mode', () => {
+    const { getByTestId } = render(
+      <Card>
+        <Card.Actions testID="card-actions">
+          <Button mode="contained">Agree</Button>
+        </Card.Actions>
+      </Card>
+    );
+
+    expect(getByTestId('card-actions').props.children[0].props.mode).toBe(
+      'contained'
     );
   });
 });
@@ -39,16 +58,23 @@ describe('getCardColors - background color', () => {
     ).toMatchObject({ backgroundColor: getTheme().colors.surfaceVariant });
   });
 
-  ['elevated', 'outlined'].forEach((mode) =>
-    it(`should return correct theme color, for theme version 3, ${mode} mode`, () => {
-      expect(
-        getCardColors({
-          theme: getTheme(),
-          mode,
-        })
-      ).toMatchObject({ backgroundColor: getTheme().colors.surface });
-    })
-  );
+  it('should return correct theme color, for theme version 3, outlined mode', () => {
+    expect(
+      getCardColors({
+        theme: getTheme(),
+        mode: 'outlined',
+      })
+    ).toMatchObject({ backgroundColor: getTheme().colors.surface });
+  });
+
+  it('should return undefined, for theme version 3, elevated mode', () => {
+    expect(
+      getCardColors({
+        theme: getTheme(),
+        mode: 'elevated',
+      })
+    ).toMatchObject({ backgroundColor: undefined });
+  });
 
   it('should return undefined, for theme version 2', () => {
     expect(
@@ -85,6 +111,51 @@ describe('getCardColors - border color', () => {
       })
     ).toMatchObject({
       borderColor: color(black).alpha(0.12).rgb().string(),
+    });
+  });
+});
+
+describe('getCardCoverStyle - border radius', () => {
+  it('should return correct border radius based on roundness, for theme version 3', () => {
+    expect(
+      getCardCoverStyle({
+        theme: getTheme(),
+      })
+    ).toMatchObject({ borderRadius: 3 * getTheme().roundness });
+  });
+
+  it('should return correct border radius based on roundness, for theme version 2, when index is 0 and total is 1', () => {
+    expect(
+      getCardCoverStyle({
+        theme: getTheme(false, false),
+        index: 0,
+        total: 1,
+      })
+    ).toMatchObject({ borderRadius: getTheme(false, false).roundness });
+  });
+
+  it('should return correct border radius based on roundness, for theme version 2, when index is 0 and total is other than 1', () => {
+    expect(
+      getCardCoverStyle({
+        theme: getTheme(false, false),
+        index: 0,
+        total: 2,
+      })
+    ).toMatchObject({
+      borderTopLeftRadius: getTheme(false, false).roundness,
+      borderTopRightRadius: getTheme(false, false).roundness,
+    });
+  });
+
+  it('should return correct border radius based on roundness, for theme version 2, when index is equal to total - 1', () => {
+    expect(
+      getCardCoverStyle({
+        theme: getTheme(false, false),
+        index: 1,
+        total: 2,
+      })
+    ).toMatchObject({
+      borderBottomLeftRadius: getTheme(false, false).roundness,
     });
   });
 });

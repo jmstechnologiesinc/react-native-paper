@@ -1,15 +1,17 @@
-import color from 'color';
 import * as React from 'react';
-import { View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+
+import color from 'color';
 import { moderateScale } from 'react-native-size-matters';
 
-import Text from '../Typography/Text';
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 import Icon, { IconSource } from '../Icon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
+import Text from '../Typography/Text';
 
-import theme from '../../styles/themes/v3/LightTheme';
-
-type Props = React.ComponentPropsWithRef<typeof View> & {
+export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * The label text of the item.
    */
@@ -38,6 +40,7 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 /**
@@ -69,6 +72,7 @@ const DrawerItem = ({
   icon,
   label,
   active,
+  theme,
   style,
   onPress,
   accessibilityLabel,
@@ -98,12 +102,12 @@ const DrawerItem = ({
         .rgb()
         .toString()
     : undefined;
+  const font = isV3 ? theme.fonts.labelLarge : theme.fonts.medium;
 
   return (
     <View {...rest}>
       <TouchableRipple
         borderless
-        delayPressIn={0}
         onPress={onPress}
         style={[
           styles.container,
@@ -134,7 +138,7 @@ const DrawerItem = ({
                 {
                   color: contentColor,
                   marginLeft: labelMargin,
-                  ...(isV3 ? theme.typescale.labelLarge : theme.fonts.medium),
+                  ...font,
                 },
               ]}
             >
@@ -183,4 +187,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DrawerItem;
+export default withInternalTheme(DrawerItem);

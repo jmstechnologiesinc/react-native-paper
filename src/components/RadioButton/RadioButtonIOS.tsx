@@ -1,15 +1,17 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
+
 import { moderateScale } from 'react-native-size-matters';
-import { RadioButtonContext, RadioButtonContextType } from './RadioButtonGroup';
-import { handlePress, isChecked } from './utils';
+
+import { withInternalTheme } from '../../core/theming';
+import type { $RemoveChildren, InternalTheme } from '../../types';
+import { getSelectionControlIOSColor } from '../Checkbox/utils';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import type { $RemoveChildren } from '../../types';
-import { getSelectionControlIOSColor } from '../Checkbox/utils';
-import theme from '../../styles/themes/v3/LightTheme';
+import { RadioButtonContext, RadioButtonContextType } from './RadioButtonGroup';
+import { handlePress, isChecked } from './utils';
 
-type Props = $RemoveChildren<typeof TouchableRipple> & {
+export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * Value of the radio button
    */
@@ -33,6 +35,7 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
   /**
    * testID to be used on tests.
    */
@@ -58,6 +61,7 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
 const RadioButtonIOS = ({
   disabled,
   onPress,
+  theme,
   status,
   value,
   testID,
@@ -126,9 +130,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RadioButtonIOS;
+export default withInternalTheme(RadioButtonIOS);
 
 // @component-docs ignore-next-line
-const RadioButtonIOSWithTheme = RadioButtonIOS;
+const RadioButtonIOSWithTheme = withInternalTheme(RadioButtonIOS);
 // @component-docs ignore-next-line
 export { RadioButtonIOSWithTheme as RadioButtonIOS };

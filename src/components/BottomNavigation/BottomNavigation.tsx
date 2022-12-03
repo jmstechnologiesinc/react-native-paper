@@ -1,42 +1,46 @@
 import * as React from 'react';
 import {
-  View,
   Animated,
+  EasingFunction,
+  Platform,
+  StyleProp,
+  StyleSheet,
   TouchableWithoutFeedback,
   TouchableWithoutFeedbackProps,
-  StyleSheet,
-  StyleProp,
-  Platform,
+  View,
   ViewStyle,
 } from 'react-native';
-import { getBottomSpace } from 'react-native-iphone-x-helper';
+
 import color from 'color';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { moderateScale } from 'react-native-size-matters';
 
+import { withInternalTheme } from '../../core/theming';
 import overlay from '../../styles/overlay';
-import Icon, { IconSource } from '../Icon';
-import Surface from '../Surface';
-import Badge from '../Badge';
-import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import Text from '../Typography/Text';
 import { black, white } from '../../styles/themes/v2/colors';
-
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 import useAnimatedValue from '../../utils/useAnimatedValue';
 import useAnimatedValueArray from '../../utils/useAnimatedValueArray';
-import useLayout from '../../utils/useLayout';
 import useIsKeyboardShown from '../../utils/useIsKeyboardShown';
+import useLayout from '../../utils/useLayout';
+import Badge from '../Badge';
+import Icon, { IconSource } from '../Icon';
+import Surface from '../Surface';
+import TouchableRipple from '../TouchableRipple/TouchableRipple';
+import Text from '../Typography/Text';
 import BottomNavigationRouteScreen from './BottomNavigationRouteScreen';
-import theme from '../../styles/themes/v3/LightTheme';
 
 type Route = {
   key: string;
   title?: string;
-  focusedIcon: IconSource;
+  focusedIcon?: IconSource;
   unfocusedIcon?: IconSource;
   badge?: string | number | boolean;
   color?: string;
   accessibilityLabel?: string;
   testID?: string;
+  lazy?: boolean;
 };
 
 type NavigationState = {
@@ -58,12 +62,13 @@ type TouchableProps = TouchableWithoutFeedbackProps & {
   rippleColor?: string;
 };
 
-type Props = {
+export type Props = {
   /**
    * Whether the shifting style is used, the active tab icon shifts up to show the label and the inactive tabs won't have a label.
    *
    * By default, this is `false` with theme version 3 and `true` when you have more than 3 tabs.
    * Pass `shifting={false}` to explicitly disable this animation, or `shifting={true}` to always use this animation.
+   * Note that you need at least 2 tabs be able to run this animation.
    */
   shifting?: boolean;
   /**
@@ -175,18 +180,10 @@ type Props = {
    */
   renderTouchable?: (props: TouchableProps) => React.ReactNode;
   /**
-   * Get label text for the tab, uses `route.title` by default. Use `renderLabel` to replace label component.
-   */
-  getLabelText?: (props: { route: Route }) => string | undefined;
-  /**
    * Get accessibility label for the tab button. This is read by the screen reader when the user taps the tab.
    * Uses `route.accessibilityLabel` by default.
    */
   getAccessibilityLabel?: (props: { route: Route }) => string | undefined;
-  /**
-   * Get the id to locate this tab button in tests, uses `route.testID` by default.
-   */
-  getTestID?: (props: { route: Route }) => string | undefined;
   /**
    * Get badge for the tab, uses `route.badge` by default.
    */
@@ -195,6 +192,19 @@ type Props = {
    * Get color for the tab, uses `route.color` by default.
    */
   getColor?: (props: { route: Route }) => string | undefined;
+  /**
+   * Get label text for the tab, uses `route.title` by default. Use `renderLabel` to replace label component.
+   */
+  getLabelText?: (props: { route: Route }) => string | undefined;
+  /**
+   * @supported Available in v5.x
+   * Get lazy for the current screen. Uses true by default.
+   */
+  getLazy?: (props: { route: Route }) => boolean | undefined;
+  /**
+   * Get the id to locate this tab button in tests, uses `route.testID` by default.
+   */
+  getTestID?: (props: { route: Route }) => string | undefined;
   /**
    * Function to execute on tab press. It receives the route for the pressed tab, useful for things like scroll to top.
    */
@@ -213,6 +223,17 @@ type Props = {
    * Specify `sceneAnimationEnabled` as `false` to disable the animation.
    */
   sceneAnimationEnabled?: boolean;
+  /**
+   * @supported Available in v5.x
+   * The scene animation effect. Specify `'shifting'` for a different effect.
+   * By default, 'opacity' will be used.
+   */
+  sceneAnimationType?: 'opacity' | 'shifting';
+  /**
+   * @supported Available in v5.x
+   * The scene animation Easing.
+   */
+  sceneAnimationEasing?: EasingFunction | undefined;
   /**
    * Whether the bottom navigation bar is hidden when keyboard is shown.
    * On Android, this works best when [`windowSoftInputMode`](https://developer.android.com/guide/topics/manifest/activity-element#wsoft) is set to `adjustResize`.
@@ -244,6 +265,11 @@ type Props = {
   /**
    * @optional
    */
+  theme: InternalTheme;
+  /**
+   * TestID used for testing purposes
+   */
+  testID?: string;
 };
 
 const MIN_RIPPLE_SCALE = 0.001; // Minimum scale is not 0 due to bug with animation
@@ -291,7 +317,7 @@ const SceneComponent = React.memo(({ component, ...rest }: any) =>
  * For integration with React Navigation, you can use [react-navigation-material-bottom-tabs](https://github.com/react-navigation/react-navigation/tree/main/packages/material-bottom-tabs) and consult [createMaterialBottomTabNavigator](https://reactnavigation.org/docs/material-bottom-tab-navigator/) documentation.
  *
  * By default Bottom navigation uses primary color as a background, in dark theme with `adaptive` mode it will use surface colour instead.
- * See [Dark Theme](https://callstack.github.io/react-native-paper/theming.html#dark-theme) for more information.
+ * See [Dark InternalTheme](https://callstack.github.io/react-native-paper/theming.html#dark-theme) for more information.
  *
  * <div class="screenshots">
  *   <img class="small" src="screenshots/bottom-navigation.gif" />
@@ -308,6 +334,8 @@ const SceneComponent = React.memo(({ component, ...rest }: any) =>
  *
  * const RecentsRoute = () => <Text>Recents</Text>;
  *
+ * const NotificationsRoute = () => <Text>Notifications</Text>;
+ *
  * const MyComponent = () => {
  *   const [index, setIndex] = React.useState(0);
  *   const [routes] = React.useState([
@@ -321,6 +349,7 @@ const SceneComponent = React.memo(({ component, ...rest }: any) =>
  *     music: MusicRoute,
  *     albums: AlbumsRoute,
  *     recents: RecentsRoute,
+ *     notifications: NotificationsRoute,
  *   });
  *
  *   return (
@@ -349,19 +378,32 @@ const BottomNavigation = ({
   getTestID = ({ route }: { route: Route }) => route.testID,
   activeColor,
   inactiveColor,
-  keyboardHidesNavigationBar = true,
+  keyboardHidesNavigationBar = Platform.OS === 'android',
   barStyle,
   labeled = true,
   style,
+  theme,
   sceneAnimationEnabled = false,
+  sceneAnimationType = 'opacity',
+  sceneAnimationEasing,
   onTabPress,
   onIndexChange,
   shifting = theme.isV3 ? false : navigationState.routes.length > 3,
   safeAreaInsets,
   labelMaxFontSizeMultiplier = 1,
   compact = !theme.isV3,
+  testID = 'bottom-navigation',
+  getLazy = ({ route }: { route: Route }) => route.lazy,
 }: Props) => {
   const { scale } = theme.animation;
+
+  if (shifting && navigationState.routes.length < 2) {
+    shifting = false;
+
+    console.warn(
+      'BottomNavigation needs at least 2 tabs to run shifting animation'
+    );
+  }
 
   const focusedKey = navigationState.routes[navigationState.index].key;
 
@@ -377,6 +419,16 @@ const BottomNavigation = ({
     navigationState.routes.map(
       // focused === 1, unfocused === 0
       (_, i) => (i === navigationState.index ? 1 : 0)
+    )
+  );
+
+  /**
+   * Active state of individual tab item positions:
+   * -1 if they're before the active tab, 0 if they're active, 1 if they're after the active tab
+   */
+  const tabsPositionAnims = useAnimatedValueArray(
+    navigationState.routes.map((_, i) =>
+      i === navigationState.index ? 0 : i >= navigationState.index ? 1 : -1
     )
   );
 
@@ -458,6 +510,15 @@ const BottomNavigation = ({
             toValue: i === index ? 1 : 0,
             duration: theme.isV3 || shifting ? 150 * scale : 0,
             useNativeDriver: true,
+            easing: sceneAnimationEasing,
+          })
+        ),
+        ...navigationState.routes.map((_, i) =>
+          Animated.timing(tabsPositionAnims[i], {
+            toValue: i === index ? 0 : i >= index ? 1 : -1,
+            duration: theme.isV3 || shifting ? 150 * scale : 0,
+            useNativeDriver: true,
+            easing: sceneAnimationEasing,
           })
         ),
       ]).start(({ finished }) => {
@@ -489,6 +550,8 @@ const BottomNavigation = ({
       rippleAnim,
       scale,
       tabsAnims,
+      tabsPositionAnims,
+      sceneAnimationEasing,
       theme,
     ]
   );
@@ -564,9 +627,7 @@ const BottomNavigation = ({
     ? overlay(elevation, colors?.surface)
     : colors?.primary;
 
-  const backgroundColor = isV3
-    ? theme.colors.surface
-    : shifting
+  const v2BackgroundColorInterpolation = shifting
     ? indexAnim.interpolate({
         inputRange: routes.map((_, i) => i),
         // FIXME: does outputRange support ColorValue or just strings?
@@ -575,6 +636,12 @@ const BottomNavigation = ({
           (route) => getColor({ route }) || approxBackgroundColor
         ),
       })
+    : approxBackgroundColor;
+
+  const backgroundColor = isV3
+    ? customBackground || theme.colors.elevation.level2
+    : shifting
+    ? v2BackgroundColorInterpolation
     : approxBackgroundColor;
 
   const isDark =
@@ -618,10 +685,10 @@ const BottomNavigation = ({
   };
 
   return (
-    <View style={[styles.container, style]}>
+    <View style={[styles.container, style]} testID={testID}>
       <View style={[styles.content, { backgroundColor: colors?.background }]}>
         {routes.map((route, index) => {
-          if (!loaded.includes(route.key)) {
+          if (getLazy({ route }) !== false && !loaded.includes(route.key)) {
             // Don't render a screen if we've never navigated to it
             return null;
           }
@@ -629,7 +696,10 @@ const BottomNavigation = ({
           const focused = navigationState.index === index;
 
           const opacity = sceneAnimationEnabled
-            ? tabsAnims[index]
+            ? tabsPositionAnims[index].interpolate({
+                inputRange: [-1, 0, 1],
+                outputRange: [0, 1, 0],
+              })
             : focused
             ? 1
             : 0;
@@ -643,6 +713,16 @@ const BottomNavigation = ({
             ? 0
             : FAR_FAR_AWAY;
 
+          const left =
+            sceneAnimationType === 'shifting'
+              ? tabsPositionAnims[index].interpolate({
+                  inputRange: [-1, 0, 1],
+                  outputRange: [-50, 0, 50],
+                })
+              : 0;
+
+          const zIndex = focused ? 1 : 0;
+
           return (
             <BottomNavigationRouteScreen
               key={route.key}
@@ -653,7 +733,7 @@ const BottomNavigation = ({
               }
               index={index}
               visibility={opacity}
-              style={[StyleSheet.absoluteFill, { opacity }]}
+              style={[StyleSheet.absoluteFill, { zIndex }]}
               collapsable={false}
               removeClippedSubviews={
                 // On iOS, set removeClippedSubviews to true only when not focused
@@ -661,7 +741,19 @@ const BottomNavigation = ({
                 Platform.OS === 'ios' ? navigationState.index !== index : true
               }
             >
-              <Animated.View style={[styles.content, { top }]}>
+              <Animated.View
+                {...(Platform.OS === 'android' && {
+                  needsOffscreenAlphaCompositing: sceneAnimationEnabled,
+                })}
+                renderToHardwareTextureAndroid={sceneAnimationEnabled}
+                style={[
+                  styles.content,
+                  {
+                    opacity: opacity,
+                    transform: [{ translateX: left }, { translateY: top }],
+                  },
+                ]}
+              >
                 {renderScene({ route, jumpTo })}
               </Animated.View>
             </BottomNavigationRouteScreen>
@@ -702,7 +794,10 @@ const BottomNavigation = ({
         }
         onLayout={onLayout}
       >
-        <Animated.View style={[styles.barContent, { backgroundColor }]}>
+        <Animated.View
+          style={[styles.barContent, { backgroundColor }]}
+          testID={`${testID}-bar-content`}
+        >
           <View
             style={[
               styles.items,
@@ -813,7 +908,7 @@ const BottomNavigation = ({
 
               const badgeStyle = {
                 top: !isV3
-                  ? -2
+                  ? -moderateScale(2)
                   : typeof badge === 'boolean'
                   ? theme.spacing.x1
                   : moderateScale(2),
@@ -824,6 +919,8 @@ const BottomNavigation = ({
               };
 
               const isV3Shifting = isV3 && shifting && labeled;
+
+              const font = isV3 ? theme.fonts.labelMedium : {};
 
               return renderTouchable({
                 key: route.key,
@@ -856,7 +953,7 @@ const BottomNavigation = ({
                         },
                       ]}
                     >
-                      {isV3 && (
+                      {isV3 && focused && (
                         <Animated.View
                           style={[
                             styles.outline,
@@ -964,6 +1061,7 @@ const BottomNavigation = ({
                                 styles.label,
                                 {
                                   color: activeLabelColor,
+                                  ...font,
                                 },
                               ]}
                             >
@@ -995,6 +1093,7 @@ const BottomNavigation = ({
                                   styles.label,
                                   {
                                     color: inactiveLabelColor,
+                                    ...font,
                                   },
                                 ]}
                               >
@@ -1045,7 +1144,7 @@ BottomNavigation.SceneMap = (scenes: {
   );
 };
 
-export default BottomNavigation;
+export default withInternalTheme(BottomNavigation);
 
 const styles = StyleSheet.create({
   container: {

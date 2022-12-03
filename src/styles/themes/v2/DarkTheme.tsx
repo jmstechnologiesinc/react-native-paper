@@ -1,18 +1,18 @@
 import color from 'color';
-import LightTheme from './LightTheme';
-import { black, white, pinkA100 } from './colors';
-import configureFonts from '../../fonts';
-import type { ThemeBase } from '../../../types';
 
-//  @ts-ignore:next-line
-const DarkTheme: ThemeBase = {
-  ...LightTheme,
+import type { Fonts, MD2Theme } from '../../../types';
+import configureFonts from '../../fonts';
+import { black, pinkA100, white } from './colors';
+import { MD2LightTheme } from './LightTheme';
+
+export const MD2DarkTheme: MD2Theme = {
+  ...MD2LightTheme,
   dark: true,
   mode: 'adaptive',
   version: 2,
   isV3: false,
   colors: {
-    ...LightTheme.colors,
+    ...MD2LightTheme.colors,
     primary: '#BB86FC',
     accent: '#03dac6',
     background: '#121212',
@@ -24,8 +24,7 @@ const DarkTheme: ThemeBase = {
     placeholder: color(white).alpha(0.54).rgb().string(),
     backdrop: color(black).alpha(0.5).rgb().string(),
     notification: pinkA100,
+    tooltip: 'rgba(230, 225, 229, 1)',
   },
-  fonts: configureFonts(),
+  fonts: configureFonts({ isV3: false }) as Fonts,
 };
-
-export default DarkTheme;

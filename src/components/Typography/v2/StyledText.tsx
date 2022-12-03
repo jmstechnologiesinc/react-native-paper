@@ -1,24 +1,36 @@
-import color from 'color';
 import * as React from 'react';
-import { I18nManager, StyleProp, TextStyle, StyleSheet } from 'react-native';
+import { I18nManager, StyleProp, StyleSheet, TextStyle } from 'react-native';
 
+import color from 'color';
+import type { ThemeProp } from 'src/types';
+
+import { useInternalTheme } from '../../../core/theming';
+import { MD3LightTheme as theme } from '../../../styles/themes/v3/LightTheme';
 import Text from './Text';
-import theme from '../../../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentProps<typeof Text> & {
   alpha?: number;
   family: 'regular' | 'medium' | 'light' | 'thin';
   style?: StyleProp<TextStyle>;
+  theme?: ThemeProp;
 };
 
-const StyledText = ({ alpha = 1, family, style, ...rest }: Props) => {
+const StyledText = ({
+  alpha = 1,
+  family,
+  style,
+  theme: themeOverrides,
+  ...rest
+}: Props) => {
+  const theme = useInternalTheme(themeOverrides);
+
   const textColor = color(
     theme.isV3 ? theme.colors.onSurface : theme.colors?.text
   )
     .alpha(alpha)
     .rgb()
     .string();
-  const writingDirection = I18nManager.isRTL ? 'rtl' : 'ltr';
+  const writingDirection = I18nManager.getConstants().isRTL ? 'rtl' : 'ltr';
 
   return (
     <Text

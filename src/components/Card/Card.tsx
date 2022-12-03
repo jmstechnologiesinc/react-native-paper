@@ -1,24 +1,25 @@
 import * as React from 'react';
 import {
+  Animated,
   StyleProp,
   StyleSheet,
-  Animated,
   TouchableWithoutFeedback,
   View,
   ViewStyle,
 } from 'react-native';
-import CardContent from './CardContent';
-import CardActions from './CardActions';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import CardCover, { CardCover as _CardCover } from './CardCover';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import CardTitle, { CardTitle as _CardTitle } from './CardTitle';
-import Surface from '../Surface';
-import theme from '../../styles/themes/v3/LightTheme';
-import { getCardColors } from './utils';
 
 import { moderateScale } from 'react-native-size-matters';
 
+import { withInternalTheme } from '../../core/theming';
+import type { InternalTheme } from '../../types';
+import Surface from '../Surface';
+import CardActions from './CardActions';
+import CardContent from './CardContent';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import CardCover from './CardCover';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import CardTitle from './CardTitle';
+import { getCardColors } from './utils';
 
 type OutlinedCardProps = {
   mode: 'outlined';
@@ -39,7 +40,7 @@ type HandlePressType = 'in' | 'out';
 
 type Mode = 'elevated' | 'outlined' | 'contained';
 
-type Props = React.ComponentProps<typeof Surface> & {
+export type Props = React.ComponentProps<typeof Surface> & {
   /**
    * Changes Card shadow and background on iOS and Android.
    */
@@ -67,7 +68,7 @@ type Props = React.ComponentProps<typeof Surface> & {
   /**
    * @optional
    */
-
+  theme: InternalTheme;
   /**
    * Pass down testID from card props to touchable
    */
@@ -128,6 +129,7 @@ const Card = ({
   mode: cardMode = 'elevated',
   children,
   style,
+  theme,
   testID,
   accessible,
   ...rest
@@ -214,23 +216,26 @@ const Card = ({
     dark && isAdaptiveMode ? elevationDarkAdaptive : elevation;
 
   const { backgroundColor, borderColor } = getCardColors({
+    theme,
     mode: cardMode,
   });
+
+  const borderRadius = (isV3 ? 3 : 1) * roundness;
 
   return (
     <Surface
       style={[
         {
-          borderRadius: roundness,
+          borderRadius,
         },
-        isV3 && { backgroundColor },
+        isV3 && !isMode('elevated') && { backgroundColor },
         !isV3 && isMode('outlined')
           ? styles.resetElevation
           : {
               elevation: computedElevation as unknown as number,
             },
         style,
-      ]} //  @ts-ignore:next-line
+      ]}
       theme={theme}
       {...(isV3 && {
         elevation: isMode('elevated') ? computedElevation : 0,
@@ -242,7 +247,7 @@ const Card = ({
           pointerEvents="none"
           style={[
             {
-              borderRadius: roundness,
+              borderRadius,
               borderColor,
             },
             styles.outline,
@@ -262,7 +267,7 @@ const Card = ({
         <View style={styles.innerContainer}>
           {React.Children.map(children, (child, index) =>
             React.isValidElement(child)
-              ? React.cloneElement(child, {
+              ? React.cloneElement(child as React.ReactElement<any>, {
                   index,
                   total,
                   siblings,
@@ -286,7 +291,6 @@ Card.Title = CardTitle;
 
 const styles = StyleSheet.create({
   innerContainer: {
-    flexGrow: 1,
     flexShrink: 1,
   },
   outline: {
@@ -301,4 +305,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Card;
+export default withInternalTheme(Card);

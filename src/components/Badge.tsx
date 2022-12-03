@@ -1,15 +1,23 @@
 import * as React from 'react';
-import { Animated, StyleSheet, StyleProp, TextStyle } from 'react-native';
-import { white, black } from '../styles/themes/v2/colors';
-
-import getContrastingColor from '../utils/getContrastingColor';
-import theme from '../styles/themes/v3/LightTheme';
+import {
+  Animated,
+  StyleProp,
+  StyleSheet,
+  TextStyle,
+  useWindowDimensions,
+} from 'react-native';
 
 import { moderateScale } from 'react-native-size-matters';
 
+import { withInternalTheme } from '../core/theming';
+import { black, white } from '../styles/themes/v2/colors';
+import { MD3LightTheme as theme } from '../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../types';
+import getContrastingColor from '../utils/getContrastingColor';
+
 const defaultSize = theme.spacing.x5;
 
-type Props = React.ComponentProps<typeof Animated.Text> & {
+export type Props = React.ComponentProps<typeof Animated.Text> & {
   /**
    * Whether the badge is visible
    */
@@ -27,6 +35,7 @@ type Props = React.ComponentProps<typeof Animated.Text> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 /**
@@ -60,13 +69,15 @@ const Badge = ({
   children,
   size = defaultSize,
   style,
-
+  theme,
   visible = true,
   ...rest
 }: Props) => {
   const { current: opacity } = React.useRef<Animated.Value>(
     new Animated.Value(visible ? 1 : 0)
   );
+  const { fontScale } = useWindowDimensions();
+
   const isFirstRendering = React.useRef<boolean>(true);
 
   const {
@@ -112,7 +123,7 @@ const Badge = ({
           color: textColor,
           fontSize: size * 0.5,
           ...(!theme.isV3 && theme.fonts.regular),
-          lineHeight: size,
+          lineHeight: size / fontScale,
           height: size,
           minWidth: size,
           borderRadius,
@@ -128,7 +139,7 @@ const Badge = ({
   );
 };
 
-export default Badge;
+export default withInternalTheme(Badge);
 
 const styles = StyleSheet.create({
   container: {

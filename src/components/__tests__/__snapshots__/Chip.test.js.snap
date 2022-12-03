@@ -5,6 +5,11 @@ exports[`renders chip with close button 1`] = `
   collapsable={false}
   style={
     Object {
+      "alignSelf": undefined,
+      "bottom": undefined,
+      "left": undefined,
+      "position": undefined,
+      "right": undefined,
       "shadowColor": "#000",
       "shadowOffset": Object {
         "height": 0,
@@ -12,6 +17,7 @@ exports[`renders chip with close button 1`] = `
       },
       "shadowOpacity": 0,
       "shadowRadius": 0,
+      "top": undefined,
     }
   }
 >
@@ -51,8 +57,11 @@ exports[`renders chip with close button 1`] = `
           }
         }
         accessible={true}
-        focusable={false}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -64,6 +73,7 @@ exports[`renders chip with close button 1`] = `
             Object {
               "overflow": "hidden",
             },
+            false,
             Array [
               Object {
                 "borderRadius": 8,
@@ -111,22 +121,39 @@ exports[`renders chip with close button 1`] = `
           >
             <Text
               accessibilityElementsHidden={true}
+              allowFontScaling={false}
               importantForAccessibility="no-hide-descendants"
               pointerEvents="none"
               selectable={false}
               style={
                 Array [
                   Object {
-                    "backgroundColor": "transparent",
-                  },
-                  Object {
                     "color": "rgba(103, 80, 164, 1)",
                     "fontSize": 18,
                   },
+                  Array [
+                    Object {
+                      "lineHeight": 18,
+                      "transform": Array [
+                        Object {
+                          "scaleX": 1,
+                        },
+                      ],
+                    },
+                    Object {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  Object {
+                    "fontFamily": "Material Design Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
                 ]
               }
             >
-              □
+              󰋼
             </Text>
           </View>
           <Text
@@ -136,6 +163,7 @@ exports[`renders chip with close button 1`] = `
               Array [
                 Object {
                   "color": "rgba(28, 27, 31, 1)",
+                  "fontFamily": "System",
                   "fontSize": 14,
                   "fontWeight": "500",
                   "letterSpacing": 0.1,
@@ -149,13 +177,16 @@ exports[`renders chip with close button 1`] = `
                 },
                 Array [
                   Object {
-                    "lineHeight": 24,
-                    "marginVertical": 4,
-                    "minHeight": 24,
+                    "marginVertical": 6,
                     "textAlignVertical": "center",
                   },
                   Object {
                     "color": "rgba(29, 25, 43, 1)",
+                    "fontFamily": "System",
+                    "fontSize": 14,
+                    "fontWeight": "500",
+                    "letterSpacing": 0.1,
+                    "lineHeight": 20,
                   },
                   Object {
                     "marginLeft": 8,
@@ -211,22 +242,39 @@ exports[`renders chip with close button 1`] = `
         >
           <Text
             accessibilityElementsHidden={true}
+            allowFontScaling={false}
             importantForAccessibility="no-hide-descendants"
             pointerEvents="none"
             selectable={false}
             style={
               Array [
                 Object {
-                  "backgroundColor": "transparent",
-                },
-                Object {
                   "color": "rgba(29, 25, 43, 1)",
                   "fontSize": 18,
                 },
+                Array [
+                  Object {
+                    "lineHeight": 18,
+                    "transform": Array [
+                      Object {
+                        "scaleX": 1,
+                      },
+                    ],
+                  },
+                  Object {
+                    "backgroundColor": "transparent",
+                  },
+                ],
+                Object {
+                  "fontFamily": "Material Design Icons",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
               ]
             }
           >
-            □
+            󰅖
           </Text>
         </View>
       </View>
@@ -240,6 +288,11 @@ exports[`renders chip with custom close button 1`] = `
   collapsable={false}
   style={
     Object {
+      "alignSelf": undefined,
+      "bottom": undefined,
+      "left": undefined,
+      "position": undefined,
+      "right": undefined,
       "shadowColor": "#000",
       "shadowOffset": Object {
         "height": 0,
@@ -247,6 +300,7 @@ exports[`renders chip with custom close button 1`] = `
       },
       "shadowOpacity": 0,
       "shadowRadius": 0,
+      "top": undefined,
     }
   }
 >
@@ -286,8 +340,11 @@ exports[`renders chip with custom close button 1`] = `
           }
         }
         accessible={true}
-        focusable={false}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -299,6 +356,7 @@ exports[`renders chip with custom close button 1`] = `
             Object {
               "overflow": "hidden",
             },
+            false,
             Array [
               Object {
                 "borderRadius": 8,
@@ -346,22 +404,39 @@ exports[`renders chip with custom close button 1`] = `
           >
             <Text
               accessibilityElementsHidden={true}
+              allowFontScaling={false}
               importantForAccessibility="no-hide-descendants"
               pointerEvents="none"
               selectable={false}
               style={
                 Array [
                   Object {
-                    "backgroundColor": "transparent",
-                  },
-                  Object {
                     "color": "rgba(103, 80, 164, 1)",
                     "fontSize": 18,
                   },
+                  Array [
+                    Object {
+                      "lineHeight": 18,
+                      "transform": Array [
+                        Object {
+                          "scaleX": 1,
+                        },
+                      ],
+                    },
+                    Object {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  Object {
+                    "fontFamily": "Material Design Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
                 ]
               }
             >
-              □
+              󰋼
             </Text>
           </View>
           <Text
@@ -371,6 +446,7 @@ exports[`renders chip with custom close button 1`] = `
               Array [
                 Object {
                   "color": "rgba(28, 27, 31, 1)",
+                  "fontFamily": "System",
                   "fontSize": 14,
                   "fontWeight": "500",
                   "letterSpacing": 0.1,
@@ -384,13 +460,16 @@ exports[`renders chip with custom close button 1`] = `
                 },
                 Array [
                   Object {
-                    "lineHeight": 24,
-                    "marginVertical": 4,
-                    "minHeight": 24,
+                    "marginVertical": 6,
                     "textAlignVertical": "center",
                   },
                   Object {
                     "color": "rgba(29, 25, 43, 1)",
+                    "fontFamily": "System",
+                    "fontSize": 14,
+                    "fontWeight": "500",
+                    "letterSpacing": 0.1,
+                    "lineHeight": 20,
                   },
                   Object {
                     "marginLeft": 8,
@@ -446,22 +525,39 @@ exports[`renders chip with custom close button 1`] = `
         >
           <Text
             accessibilityElementsHidden={true}
+            allowFontScaling={false}
             importantForAccessibility="no-hide-descendants"
             pointerEvents="none"
             selectable={false}
             style={
               Array [
                 Object {
-                  "backgroundColor": "transparent",
-                },
-                Object {
                   "color": "rgba(29, 25, 43, 1)",
                   "fontSize": 18,
                 },
+                Array [
+                  Object {
+                    "lineHeight": 18,
+                    "transform": Array [
+                      Object {
+                        "scaleX": 1,
+                      },
+                    ],
+                  },
+                  Object {
+                    "backgroundColor": "transparent",
+                  },
+                ],
+                Object {
+                  "fontFamily": "Material Design Icons",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
               ]
             }
           >
-            □
+            󰁅
           </Text>
         </View>
       </View>
@@ -475,6 +571,11 @@ exports[`renders chip with icon 1`] = `
   collapsable={false}
   style={
     Object {
+      "alignSelf": undefined,
+      "bottom": undefined,
+      "left": undefined,
+      "position": undefined,
+      "right": undefined,
       "shadowColor": "#000",
       "shadowOffset": Object {
         "height": 0,
@@ -482,6 +583,7 @@ exports[`renders chip with icon 1`] = `
       },
       "shadowOpacity": 0,
       "shadowRadius": 0,
+      "top": undefined,
     }
   }
 >
@@ -521,8 +623,11 @@ exports[`renders chip with icon 1`] = `
           }
         }
         accessible={true}
-        focusable={false}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -534,6 +639,7 @@ exports[`renders chip with icon 1`] = `
             Object {
               "overflow": "hidden",
             },
+            false,
             Array [
               Object {
                 "borderRadius": 8,
@@ -581,22 +687,39 @@ exports[`renders chip with icon 1`] = `
           >
             <Text
               accessibilityElementsHidden={true}
+              allowFontScaling={false}
               importantForAccessibility="no-hide-descendants"
               pointerEvents="none"
               selectable={false}
               style={
                 Array [
                   Object {
-                    "backgroundColor": "transparent",
-                  },
-                  Object {
                     "color": "rgba(103, 80, 164, 1)",
                     "fontSize": 18,
                   },
+                  Array [
+                    Object {
+                      "lineHeight": 18,
+                      "transform": Array [
+                        Object {
+                          "scaleX": 1,
+                        },
+                      ],
+                    },
+                    Object {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  Object {
+                    "fontFamily": "Material Design Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
                 ]
               }
             >
-              □
+              󰋼
             </Text>
           </View>
           <Text
@@ -606,6 +729,7 @@ exports[`renders chip with icon 1`] = `
               Array [
                 Object {
                   "color": "rgba(28, 27, 31, 1)",
+                  "fontFamily": "System",
                   "fontSize": 14,
                   "fontWeight": "500",
                   "letterSpacing": 0.1,
@@ -619,13 +743,16 @@ exports[`renders chip with icon 1`] = `
                 },
                 Array [
                   Object {
-                    "lineHeight": 24,
-                    "marginVertical": 4,
-                    "minHeight": 24,
+                    "marginVertical": 6,
                     "textAlignVertical": "center",
                   },
                   Object {
                     "color": "rgba(29, 25, 43, 1)",
+                    "fontFamily": "System",
+                    "fontSize": 14,
+                    "fontWeight": "500",
+                    "letterSpacing": 0.1,
+                    "lineHeight": 20,
                   },
                   Object {
                     "marginLeft": 8,
@@ -650,6 +777,11 @@ exports[`renders chip with onPress 1`] = `
   collapsable={false}
   style={
     Object {
+      "alignSelf": undefined,
+      "bottom": undefined,
+      "left": undefined,
+      "position": undefined,
+      "right": undefined,
       "shadowColor": "#000",
       "shadowOffset": Object {
         "height": 0,
@@ -657,6 +789,7 @@ exports[`renders chip with onPress 1`] = `
       },
       "shadowOpacity": 0,
       "shadowRadius": 0,
+      "top": undefined,
     }
   }
 >
@@ -696,8 +829,11 @@ exports[`renders chip with onPress 1`] = `
           }
         }
         accessible={true}
+        collapsable={false}
         focusable={true}
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -709,6 +845,7 @@ exports[`renders chip with onPress 1`] = `
             Object {
               "overflow": "hidden",
             },
+            false,
             Array [
               Object {
                 "borderRadius": 8,
@@ -746,6 +883,7 @@ exports[`renders chip with onPress 1`] = `
               Array [
                 Object {
                   "color": "rgba(28, 27, 31, 1)",
+                  "fontFamily": "System",
                   "fontSize": 14,
                   "fontWeight": "500",
                   "letterSpacing": 0.1,
@@ -759,13 +897,16 @@ exports[`renders chip with onPress 1`] = `
                 },
                 Array [
                   Object {
-                    "lineHeight": 24,
-                    "marginVertical": 4,
-                    "minHeight": 24,
+                    "marginVertical": 6,
                     "textAlignVertical": "center",
                   },
                   Object {
                     "color": "rgba(29, 25, 43, 1)",
+                    "fontFamily": "System",
+                    "fontSize": 14,
+                    "fontWeight": "500",
+                    "letterSpacing": 0.1,
+                    "lineHeight": 20,
                   },
                   Object {
                     "marginLeft": 16,
@@ -790,6 +931,11 @@ exports[`renders outlined disabled chip 1`] = `
   collapsable={false}
   style={
     Object {
+      "alignSelf": undefined,
+      "bottom": undefined,
+      "left": undefined,
+      "position": undefined,
+      "right": undefined,
       "shadowColor": "#000",
       "shadowOffset": Object {
         "height": 0,
@@ -797,6 +943,7 @@ exports[`renders outlined disabled chip 1`] = `
       },
       "shadowOpacity": 0,
       "shadowRadius": 0,
+      "top": undefined,
     }
   }
 >
@@ -836,8 +983,11 @@ exports[`renders outlined disabled chip 1`] = `
           }
         }
         accessible={true}
-        focusable={false}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -849,6 +999,7 @@ exports[`renders outlined disabled chip 1`] = `
             Object {
               "overflow": "hidden",
             },
+            false,
             Array [
               Object {
                 "borderRadius": 8,
@@ -886,6 +1037,7 @@ exports[`renders outlined disabled chip 1`] = `
               Array [
                 Object {
                   "color": "rgba(28, 27, 31, 1)",
+                  "fontFamily": "System",
                   "fontSize": 14,
                   "fontWeight": "500",
                   "letterSpacing": 0.1,
@@ -899,13 +1051,16 @@ exports[`renders outlined disabled chip 1`] = `
                 },
                 Array [
                   Object {
-                    "lineHeight": 24,
-                    "marginVertical": 4,
-                    "minHeight": 24,
+                    "marginVertical": 6,
                     "textAlignVertical": "center",
                   },
                   Object {
                     "color": "rgba(28, 27, 31, 0.38)",
+                    "fontFamily": "System",
+                    "fontSize": 14,
+                    "fontWeight": "500",
+                    "letterSpacing": 0.1,
+                    "lineHeight": 20,
                   },
                   Object {
                     "marginLeft": 16,
@@ -930,6 +1085,11 @@ exports[`renders selected chip 1`] = `
   collapsable={false}
   style={
     Object {
+      "alignSelf": undefined,
+      "bottom": undefined,
+      "left": undefined,
+      "position": undefined,
+      "right": undefined,
       "shadowColor": "#000",
       "shadowOffset": Object {
         "height": 0,
@@ -937,6 +1097,7 @@ exports[`renders selected chip 1`] = `
       },
       "shadowOpacity": 0,
       "shadowRadius": 0,
+      "top": undefined,
     }
   }
 >
@@ -976,8 +1137,11 @@ exports[`renders selected chip 1`] = `
           }
         }
         accessible={true}
-        focusable={false}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -989,6 +1153,7 @@ exports[`renders selected chip 1`] = `
             Object {
               "overflow": "hidden",
             },
+            false,
             Array [
               Object {
                 "borderRadius": 8,
@@ -1036,22 +1201,39 @@ exports[`renders selected chip 1`] = `
           >
             <Text
               accessibilityElementsHidden={true}
+              allowFontScaling={false}
               importantForAccessibility="no-hide-descendants"
               pointerEvents="none"
               selectable={false}
               style={
                 Array [
                   Object {
-                    "backgroundColor": "transparent",
-                  },
-                  Object {
                     "color": "rgba(29, 25, 43, 1)",
                     "fontSize": 18,
                   },
+                  Array [
+                    Object {
+                      "lineHeight": 18,
+                      "transform": Array [
+                        Object {
+                          "scaleX": 1,
+                        },
+                      ],
+                    },
+                    Object {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  Object {
+                    "fontFamily": "Material Design Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
                 ]
               }
             >
-              □
+              󰄬
             </Text>
           </View>
           <Text
@@ -1061,6 +1243,7 @@ exports[`renders selected chip 1`] = `
               Array [
                 Object {
                   "color": "rgba(28, 27, 31, 1)",
+                  "fontFamily": "System",
                   "fontSize": 14,
                   "fontWeight": "500",
                   "letterSpacing": 0.1,
@@ -1074,13 +1257,16 @@ exports[`renders selected chip 1`] = `
                 },
                 Array [
                   Object {
-                    "lineHeight": 24,
-                    "marginVertical": 4,
-                    "minHeight": 24,
+                    "marginVertical": 6,
                     "textAlignVertical": "center",
                   },
                   Object {
                     "color": "rgba(29, 25, 43, 1)",
+                    "fontFamily": "System",
+                    "fontSize": 14,
+                    "fontWeight": "500",
+                    "letterSpacing": 0.1,
+                    "lineHeight": 20,
                   },
                   Object {
                     "marginLeft": 8,

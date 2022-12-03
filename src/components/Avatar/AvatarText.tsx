@@ -1,20 +1,22 @@
 import * as React from 'react';
 import {
+  StyleProp,
+  StyleSheet,
+  TextStyle,
+  useWindowDimensions,
   View,
   ViewStyle,
-  StyleSheet,
-  StyleProp,
-  TextStyle,
 } from 'react-native';
+
+import { withInternalTheme } from '../../core/theming';
+import { white } from '../../styles/themes/v2/colors';
+import type { InternalTheme } from '../../types';
+import getContrastingColor from '../../utils/getContrastingColor';
 import Text from '../Typography/Text';
 
-import { white } from '../../styles/themes/v2/colors';
-import getContrastingColor from '../../utils/getContrastingColor';
-import theme from '../../styles/themes/v3/LightTheme';
+const defaultSize = 64;
 
-const defaultSize = theme.spacing.x16;
-
-type Props = React.ComponentPropsWithRef<typeof View> & {
+export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Initials to show as the text in the `Avatar`.
    */
@@ -38,6 +40,7 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 /**
@@ -63,6 +66,7 @@ const AvatarText = ({
   label,
   size = defaultSize,
   style,
+  theme,
   labelStyle,
   color: customColor,
   ...rest
@@ -72,6 +76,7 @@ const AvatarText = ({
   const textColor =
     customColor ??
     getContrastingColor(backgroundColor, white, 'rgba(0, 0, 0, .54)');
+  const { fontScale } = useWindowDimensions();
 
   return (
     <View
@@ -93,7 +98,7 @@ const AvatarText = ({
           {
             color: textColor,
             fontSize: size / 2,
-            lineHeight: size,
+            lineHeight: size / fontScale,
           },
           labelStyle,
         ]}
@@ -118,4 +123,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AvatarText;
+export default withInternalTheme(AvatarText);

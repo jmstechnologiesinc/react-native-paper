@@ -1,22 +1,23 @@
 import * as React from 'react';
 import {
-  StyleProp,
-  ViewStyle,
-  GestureResponderEvent,
-  StyleSheet,
-  View,
-  TextStyle,
   Animated,
+  GestureResponderEvent,
+  StyleProp,
+  StyleSheet,
+  TextStyle,
+  View,
+  ViewStyle,
 } from 'react-native';
+
+import color from 'color';
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../../styles/themes/v3/LightTheme';
-
-import Text from '../Typography/Text';
-import TouchableRipple from '../TouchableRipple/TouchableRipple';
+import { useInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { IconSource } from '../Icon';
-import color from 'color';
 import Icon from '../Icon';
+import TouchableRipple from '../TouchableRipple/TouchableRipple';
+import Text from '../Typography/Text';
 import {
   getSegmentedButtonBorderRadius,
   getSegmentedButtonColors,
@@ -90,6 +91,8 @@ const SegmentedButtonItem = ({
   segment,
   density = 'regular',
 }: Props) => {
+  const theme = useInternalTheme();
+
   const checkScale = React.useRef(new Animated.Value(0)).current;
 
   React.useEffect(() => {
@@ -162,8 +165,7 @@ const SegmentedButtonItem = ({
           textTransform: 'uppercase',
           fontWeight: '500',
         }
-      : //  @ts-ignore:next-line
-        theme.typescale.labelLarge),
+      : theme.fonts.labelLarge),
     color: textColor,
   };
 
@@ -175,7 +177,6 @@ const SegmentedButtonItem = ({
     <View style={[buttonStyle, styles.button, style]}>
       <TouchableRipple
         borderless
-        delayPressIn={0}
         onPress={onPress}
         accessibilityLabel={accessibilityLabel}
         accessibilityState={{ disabled, checked }}
@@ -185,7 +186,13 @@ const SegmentedButtonItem = ({
         testID={testID}
         style={rippleStyle}
       >
-        <View style={ subLabel ? [styles.subLabelContent, { paddingVertical } ] : [styles.content, { paddingVertical }] }>
+        <View
+          style={
+            subLabel
+              ? [styles.subLabelContent, { paddingVertical }]
+              : [styles.content, { paddingVertical }]
+          }
+        >
           {checked && showSelectedCheck ? (
             <Animated.View
               testID={`${testID}-check-icon`}
@@ -229,6 +236,7 @@ const SegmentedButtonItem = ({
 
 const styles = StyleSheet.create({
   button: {
+    flex: 1,
     minWidth: theme.spacing.x19,
     borderStyle: 'solid',
   },
@@ -250,3 +258,6 @@ const styles = StyleSheet.create({
 });
 
 export default SegmentedButtonItem;
+
+const SegmentedButtonWithTheme = SegmentedButtonItem;
+export { SegmentedButtonWithTheme as SegmentedButton };

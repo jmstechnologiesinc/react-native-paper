@@ -10,20 +10,22 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+
 import { moderateScale } from 'react-native-size-matters';
 
+import { withInternalTheme } from '../../core/theming';
+import { white } from '../../styles/themes/v2/colors';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { EllipsizeProp, InternalTheme } from '../../types';
 import type { IconSource } from '../Icon';
 import Icon from '../Icon';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Surface from '../Surface';
-import Text from '../Typography/Text';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import { white } from '../../styles/themes/v2/colors';
-import type { EllipsizeProp } from '../../types';
+import Text from '../Typography/Text';
 import { getChipColors } from './helpers';
-import theme from '../../styles/themes/v3/LightTheme';
 
-type Props = React.ComponentProps<typeof Surface> & {
+export type Props = React.ComponentProps<typeof Surface> & {
   /**
    * Mode of the chip.
    * - `flat` - flat chip without outline.
@@ -102,7 +104,7 @@ type Props = React.ComponentProps<typeof Surface> & {
   /**
    * @optional
    */
-
+  theme: InternalTheme;
   /**
    * Pass down testID from chip props to touchable for Detox tests.
    */
@@ -154,6 +156,7 @@ const Chip = ({
   closeIcon,
   textStyle,
   style,
+  theme,
   testID,
   selectedColor,
   showSelectedOverlay = false,
@@ -206,6 +209,7 @@ const Chip = ({
     backgroundColor,
   } = getChipColors({
     isOutlined,
+    theme,
     selectedColor,
     showSelectedOverlay,
     customBackgroundColor,
@@ -235,7 +239,10 @@ const Chip = ({
       ? theme.spacing.x8
       : theme.spacing.x1,
   };
-
+  const labelTextStyle = {
+    color: textColor,
+    ...(isV3 ? theme.fonts.labelLarge : theme.fonts.regular),
+  };
   return (
     <Surface
       style={
@@ -261,7 +268,6 @@ const Chip = ({
     >
       <TouchableRipple
         borderless
-        delayPressIn={0}
         style={[{ borderRadius }, styles.touchable]}
         onPress={onPress}
         onLongPress={onLongPress}
@@ -286,7 +292,7 @@ const Chip = ({
               ]}
             >
               {React.isValidElement(avatar)
-                ? React.cloneElement(avatar, {
+                ? React.cloneElement(avatar as React.ReactElement<any>, {
                     style: [styles.avatar, avatar.props.style],
                   })
                 : avatar}
@@ -333,13 +339,8 @@ const Chip = ({
             selectable={false}
             numberOfLines={1}
             style={[
-              styles.text,
-              {
-                color: textColor,
-                ...(!isV3 && {
-                  ...theme.fonts.regular,
-                }),
-              },
+              isV3 ? styles.md3LabelText : styles.labelText,
+              labelTextStyle,
               labelSpacings,
               textStyle,
             ]}
@@ -418,11 +419,15 @@ const styles = StyleSheet.create({
     marginRight: theme.spacing.x2,
     padding: 0,
   },
-  text: {
+  labelText: {
     minHeight: theme.spacing.x6,
     lineHeight: theme.spacing.x6,
     textAlignVertical: 'center',
     marginVertical: theme.spacing.x1,
+  },
+  md3LabelText: {
+    textAlignVertical: 'center',
+    marginVertical: 6,
   },
   avatar: {
     width: theme.spacing.x6,
@@ -457,4 +462,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Chip;
+export default withInternalTheme(Chip);

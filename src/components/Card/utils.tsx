@@ -1,26 +1,31 @@
 import color from 'color';
+
 import { black, white } from '../../styles/themes/v2/colors';
-import theme from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 
 type CardMode = 'elevated' | 'outlined' | 'contained';
 
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+
 export const getCardCoverStyle = ({
+  theme,
   index,
   total,
 }: {
+  theme: InternalTheme;
   index?: number;
   total?: number;
 }) => {
   const { isV3, roundness } = theme;
 
+  if (isV3) {
+    return {
+      borderRadius: 3 * roundness,
+    };
+  }
+
   if (index === 0) {
     if (total === 1) {
-      return {
-        borderRadius: roundness,
-      };
-    }
-
-    if (isV3) {
       return {
         borderRadius: roundness,
       };
@@ -41,7 +46,7 @@ export const getCardCoverStyle = ({
   return undefined;
 };
 
-const getBorderColor = () => {
+const getBorderColor = ({ theme }: { theme: InternalTheme }) => {
   if (theme.isV3) {
     return theme.colors.outline;
   }
@@ -53,28 +58,39 @@ const getBorderColor = () => {
 };
 
 const getBackgroundColor = ({
+  theme,
   isMode,
 }: {
+  theme: InternalTheme;
   isMode: (mode: CardMode) => boolean;
 }) => {
   if (theme.isV3) {
     if (isMode('contained')) {
       return theme.colors.surfaceVariant;
     }
-    return theme.colors.surface;
+    if (isMode('outlined')) {
+      return theme.colors.surface;
+    }
   }
   return undefined;
 };
 
-export const getCardColors = ({ mode }: { mode: CardMode }) => {
+export const getCardColors = ({
+  theme,
+  mode,
+}: {
+  theme: InternalTheme;
+  mode: CardMode;
+}) => {
   const isMode = (modeToCompare: CardMode) => {
     return mode === modeToCompare;
   };
 
   return {
     backgroundColor: getBackgroundColor({
+      theme,
       isMode,
     }),
-    borderColor: getBorderColor(),
+    borderColor: getBorderColor({ theme }),
   };
 };

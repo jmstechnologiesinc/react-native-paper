@@ -1,30 +1,31 @@
 import * as React from 'react';
 import {
+  AccessibilityState,
   Animated,
+  StyleProp,
+  StyleSheet,
   View,
   ViewStyle,
-  StyleSheet,
-  StyleProp,
-  AccessibilityState,
 } from 'react-native';
+
 import { moderateScale } from 'react-native-size-matters';
 
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { $RemoveChildren, InternalTheme } from '../../types';
 import ActivityIndicator from '../ActivityIndicator';
-import Surface from '../Surface';
 import CrossFadeIcon from '../CrossFadeIcon';
 import Icon, { IconSource } from '../Icon';
-import Text from '../Typography/Text';
+import Surface from '../Surface';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-
+import Text from '../Typography/Text';
 import { getExtendedFabStyle, getFABColors, getFabStyle } from './utils';
-import type { $RemoveChildren } from '../../types';
-import theme from '../../styles/themes/v3/LightTheme';
 
 type FABSize = 'small' | 'medium' | 'large';
 
 type FABMode = 'flat' | 'elevated';
 
-type Props = $RemoveChildren<typeof Surface> & {
+export type Props = $RemoveChildren<typeof Surface> & {
   /**
    * Icon to display for the `FAB`.
    */
@@ -113,8 +114,9 @@ type Props = $RemoveChildren<typeof Surface> & {
   /**
    * @optional
    */
-
+  theme: InternalTheme;
   testID?: string;
+  ref?: React.RefObject<View>;
 };
 
 /**
@@ -152,153 +154,168 @@ type Props = $RemoveChildren<typeof Surface> & {
  * export default MyComponent;
  * ```
  */
-const FAB = ({
-  icon,
-  label,
-  accessibilityLabel = label,
-  accessibilityState,
-  animated = true,
-  color: customColor,
-  disabled,
-  onPress,
-  onLongPress,
+const FAB = React.forwardRef<View, Props>(
+  (
+    {
+      icon,
+      label,
+      accessibilityLabel = label,
+      accessibilityState,
+      animated = true,
+      color: customColor,
+      disabled,
+      onPress,
+      onLongPress,
+      theme,
+      style,
+      visible = true,
+      uppercase = !theme.isV3,
+      loading,
+      testID = 'fab',
+      size = 'medium',
+      customSize,
+      mode = 'elevated',
+      variant = 'primary',
+      ...rest
+    }: Props,
+    ref
+  ) => {
+    const { current: visibility } = React.useRef<Animated.Value>(
+      new Animated.Value(visible ? 1 : 0)
+    );
+    const { isV3, animation } = theme;
+    const { scale } = animation;
 
-  style,
-  visible = true,
-  uppercase = !theme.isV3,
-  loading,
-  testID,
-  size = 'medium',
-  customSize,
-  mode = 'elevated',
-  variant = 'primary',
-  ...rest
-}: Props) => {
-  const { current: visibility } = React.useRef<Animated.Value>(
-    new Animated.Value(visible ? 1 : 0)
-  );
-  const { isV3, animation } = theme;
-  const { scale } = animation;
-
-  React.useEffect(() => {
-    if (visible) {
-      Animated.timing(visibility, {
-        toValue: 1,
-        duration: 200 * scale,
-        useNativeDriver: true,
-      }).start();
-    } else {
-      Animated.timing(visibility, {
-        toValue: 0,
-        duration: 150 * scale,
-        useNativeDriver: true,
-      }).start();
-    }
-  }, [visible, scale, visibility]);
-
-  const IconComponent = animated ? CrossFadeIcon : Icon;
-
-  const { backgroundColor, foregroundColor, rippleColor } = getFABColors({
-    variant,
-    disabled,
-    customColor,
-    style,
-  });
-
-  const isLargeSize = size === 'large';
-  const isFlatMode = mode === 'flat';
-  const iconSize = isLargeSize ? theme.spacing.x9 : theme.spacing.x6;
-  const loadingIndicatorSize = isLargeSize
-    ? theme.spacing.x6
-    : moderateScale(18);
-
-  const fabStyle = getFabStyle({ customSize, size });
-  const extendedStyle = getExtendedFabStyle({ customSize });
-  const textStyle = {
-    color: foregroundColor,
-    ...(isV3 ? theme.typescale.labelLarge : theme.fonts.medium),
-  };
-  const shapeStyle = { borderRadius: fabStyle.borderRadius };
-
-  const containerStyles = [
-    !isV3 && styles.elevated,
-    !isV3 && disabled && styles.disabled,
-    shapeStyle,
-  ];
-  const md3Elevation = isFlatMode || disabled ? 0 : 3;
-
-  return (
-    <Surface
-      {...rest}
-      style={
-        [
-          {
-            backgroundColor,
-            opacity: visibility,
-            transform: [
-              {
-                scale: visibility,
-              },
-            ],
-          },
-          containerStyles,
-          style,
-        ] as StyleProp<ViewStyle>
+    React.useEffect(() => {
+      if (visible) {
+        Animated.timing(visibility, {
+          toValue: 1,
+          duration: 200 * scale,
+          useNativeDriver: true,
+        }).start();
+      } else {
+        Animated.timing(visibility, {
+          toValue: 0,
+          duration: 150 * scale,
+          useNativeDriver: true,
+        }).start();
       }
-      pointerEvents={visible ? 'auto' : 'none'}
-      {...(isV3 && { elevation: md3Elevation })}
-    >
-      <TouchableRipple
-        borderless
-        onPress={onPress}
-        onLongPress={onLongPress}
-        rippleColor={rippleColor}
-        disabled={disabled}
-        accessibilityLabel={accessibilityLabel}
-        accessibilityRole="button"
-        accessibilityState={{ ...accessibilityState, disabled }}
-        style={shapeStyle}
-        testID={testID}
+    }, [visible, scale, visibility]);
+
+    const IconComponent = animated ? CrossFadeIcon : Icon;
+
+    const { backgroundColor, foregroundColor, rippleColor } = getFABColors({
+      theme,
+      variant,
+      disabled,
+      customColor,
+      style,
+    });
+
+    const isLargeSize = size === 'large';
+    const isFlatMode = mode === 'flat';
+    const iconSize = isLargeSize ? theme.spacing.x9 : theme.spacing.x6;
+    const loadingIndicatorSize = isLargeSize
+      ? theme.spacing.x6
+      : moderateScale(18);
+    const font = isV3 ? theme.fonts.labelLarge : theme.fonts.medium;
+
+    const fabStyle = getFabStyle({ customSize, size, theme });
+    const extendedStyle = getExtendedFabStyle({ customSize, theme });
+    const textStyle = {
+      color: foregroundColor,
+      ...font,
+    };
+
+    const { borderRadius = fabStyle.borderRadius } = (StyleSheet.flatten(
+      style
+    ) || {}) as ViewStyle;
+
+    const md3Elevation = isFlatMode || disabled ? 0 : 3;
+
+    const newAccessibilityState = { ...accessibilityState, disabled };
+
+    return (
+      <Surface
+        ref={ref}
+        {...rest}
+        style={
+          [
+            {
+              borderRadius,
+              backgroundColor,
+              opacity: visibility,
+              transform: [
+                {
+                  scale: visibility,
+                },
+              ],
+            },
+            styles.container,
+            !isV3 && styles.elevated,
+            !isV3 && disabled && styles.disabled,
+            style,
+          ] as StyleProp<ViewStyle>
+        }
+        pointerEvents={visible ? 'auto' : 'none'}
+        testID={`${testID}-container`}
+        {...(isV3 && { elevation: md3Elevation })}
       >
-        <View
-          style={[styles.content, label ? extendedStyle : fabStyle]}
-          pointerEvents="none"
+        <TouchableRipple
+          borderless
+          onPress={onPress}
+          onLongPress={onLongPress}
+          rippleColor={rippleColor}
+          disabled={disabled}
+          accessibilityLabel={accessibilityLabel}
+          accessibilityRole="button"
+          accessibilityState={newAccessibilityState}
+          testID={testID}
         >
-          {icon && loading !== true ? (
-            <IconComponent
-              source={icon}
-              size={customSize ? customSize / 2 : iconSize}
-              color={foregroundColor}
-            />
-          ) : null}
-          {loading ? (
-            <ActivityIndicator
-              size={customSize ? customSize / 2 : loadingIndicatorSize}
-              color={foregroundColor}
-            />
-          ) : null}
-          {label ? (
-            <Text
-              variant="labelLarge"
-              selectable={false}
-              style={[
-                styles.label,
-                uppercase && styles.uppercaseLabel,
-                textStyle,
-              ]}
-            >
-              {label}
-            </Text>
-          ) : null}
-        </View>
-      </TouchableRipple>
-    </Surface>
-  );
-};
+          <View
+            style={[styles.content, label ? extendedStyle : fabStyle]}
+            testID={`${testID}-content`}
+            pointerEvents="none"
+          >
+            {icon && loading !== true ? (
+              <IconComponent
+                source={icon}
+                size={customSize ? customSize / 2 : iconSize}
+                color={foregroundColor}
+              />
+            ) : null}
+            {loading ? (
+              <ActivityIndicator
+                size={customSize ? customSize / 2 : loadingIndicatorSize}
+                color={foregroundColor}
+              />
+            ) : null}
+            {label ? (
+              <Text
+                variant="labelLarge"
+                selectable={false}
+                style={[
+                  styles.label,
+                  uppercase && styles.uppercaseLabel,
+                  textStyle,
+                ]}
+              >
+                {label}
+              </Text>
+            ) : null}
+          </View>
+        </TouchableRipple>
+      </Surface>
+    );
+  }
+);
 
 const styles = StyleSheet.create({
   elevated: {
     elevation: 6,
+  },
+  container: {
+    overflow: 'hidden',
   },
   content: {
     flexDirection: 'row',
@@ -316,6 +333,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FAB;
+export default withInternalTheme(FAB);
 
-export { FAB };
+// @component-docs ignore-next-line
+const FABWithTheme = withInternalTheme(FAB);
+// @component-docs ignore-next-line
+export { FABWithTheme as FAB };

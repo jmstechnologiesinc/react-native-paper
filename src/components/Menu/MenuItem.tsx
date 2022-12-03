@@ -6,11 +6,12 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+
+import { withInternalTheme } from '../../core/theming';
+import type { InternalTheme } from '../../types';
 import Icon, { IconSource } from '../Icon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
-
-import theme from '../../styles/themes/v3/LightTheme';
 import {
   getContentMaxWidth,
   getMenuItemColor,
@@ -18,7 +19,7 @@ import {
   MIN_WIDTH,
 } from './utils';
 
-type Props = {
+export type Props = {
   /**
    * Title text for the `MenuItem`.
    */
@@ -58,7 +59,7 @@ type Props = {
   /**
    * @optional
    */
-
+  theme: InternalTheme;
   /**
    * TestID used for testing purposes
    */
@@ -109,8 +110,10 @@ const MenuItem = ({
   testID,
   titleStyle,
   accessibilityLabel,
+  theme,
 }: Props) => {
   const { titleColor, iconColor, underlayColor } = getMenuItemColor({
+    theme,
     disabled,
   });
   const { isV3 } = theme;
@@ -127,6 +130,11 @@ const MenuItem = ({
     leadingIcon,
     trailingIcon,
   });
+
+  const titleTextStyle = {
+    color: titleColor,
+    ...(isV3 ? theme.fonts.bodyLarge : {}),
+  };
 
   return (
     <TouchableRipple
@@ -170,7 +178,7 @@ const MenuItem = ({
             variant="bodyLarge"
             selectable={false}
             numberOfLines={1}
-            style={[!isV3 && styles.title, { color: titleColor }, titleStyle]}
+            style={[!isV3 && styles.title, titleTextStyle, titleStyle]}
           >
             {title}
           </Text>
@@ -220,4 +228,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MenuItem;
+export default withInternalTheme(MenuItem);

@@ -1,6 +1,4 @@
 import { Platform } from 'react-native';
-import type { Font } from '../../../types';
-import { moderateScale } from 'react-native-size-matters';
 
 import {
   MdRefPalettePrimary0,
@@ -111,7 +109,6 @@ import {
   MdSysTypescaleLabelSmallSize,
   MdSysTypescaleBodyLargeSize,
   MdSysTypescaleBodyLargeLineHeight,
-  MdSysTypescaleBodyLargeWeight,
   MdSysTypescaleBodyMediumTracking,
   MdSysTypescaleBodyMediumLineHeight,
   MdSysTypescaleBodyMediumSize,
@@ -141,6 +138,9 @@ import {
   MdSysSpacing20X,
   //  @ts-ignore:next-line
 } from '@jmsstudiosinc/material-tokens';
+import { moderateScale } from 'react-native-size-matters';
+
+import type { Font } from '../../../types';
 
 const ref = {
   palette: {
@@ -235,7 +235,7 @@ const ref = {
       ios: 'System',
       default: 'sans-serif',
     }),
-    weightRegular: MdSysTypescaleBodyLargeWeight as Font['fontWeight'],
+    weightRegular: '400' as Font['fontWeight'],
 
     plainMedium: Platform.select({
       web: 'Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif',
@@ -365,6 +365,10 @@ export const typescale = {
     letterSpacing: moderateScale(parseFloat(MdSysTypescaleBodySmallTracking)),
     lineHeight: moderateScale(parseFloat(MdSysTypescaleBodySmallLineHeight)),
     fontSize: moderateScale(parseFloat(MdSysTypescaleBodySmallSize)),
+  },
+
+  default: {
+    ...regularType,
   },
 };
 

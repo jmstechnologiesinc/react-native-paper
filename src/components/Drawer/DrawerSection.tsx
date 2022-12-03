@@ -1,14 +1,16 @@
-import color from 'color';
 import * as React from 'react';
-import { View, ViewStyle, StyleSheet, StyleProp } from 'react-native';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
-import Text from '../Typography/Text';
-import Divider from '../Divider';
+import color from 'color';
 
-import theme from '../../styles/themes/v3/LightTheme';
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import { MD3Colors } from '../../styles/themes/v3/tokens';
+import type { InternalTheme } from '../../types';
+import Divider from '../Divider';
+import Text from '../Typography/Text';
 
-type Props = React.ComponentPropsWithRef<typeof View> & {
+export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Title to show as the header for the section.
    */
@@ -21,6 +23,7 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 /**
@@ -59,12 +62,14 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
  * export default MyComponent;
  * ```
  */
-const DrawerSection = ({ children, title, style, ...rest }: Props) => {
+const DrawerSection = ({ children, title, theme, style, ...rest }: Props) => {
   const { isV3 } = theme;
   const titleColor = isV3
     ? theme.colors.onSurfaceVariant
     : color(theme.colors.text).alpha(0.54).rgb().string();
   const titleMargin = isV3 ? theme.spacing.x7 : theme.spacing.x4;
+  const font = isV3 ? theme.fonts.titleSmall : theme.fonts.medium;
+
   return (
     <View style={[styles.container, style]} {...rest}>
       {title && (
@@ -77,7 +82,7 @@ const DrawerSection = ({ children, title, style, ...rest }: Props) => {
                 {
                   color: titleColor,
                   marginLeft: titleMargin,
-                  ...(isV3 ? theme.typescale.titleSmall : theme.fonts.medium),
+                  ...font,
                 },
               ]}
             >
@@ -116,4 +121,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DrawerSection;
+export default withInternalTheme(DrawerSection);

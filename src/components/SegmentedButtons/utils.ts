@@ -1,13 +1,14 @@
 import { StyleSheet, ViewStyle } from 'react-native';
+
 import color from 'color';
 import { moderateScale } from 'react-native-size-matters';
-import type { Theme } from '../../types';
-import { black, white } from '../../styles/themes/v2/colors';
-import theme from '../../styles/themes/v3/LightTheme';
 
+import { black, white } from '../../styles/themes/v2/colors';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 
 type BaseProps = {
-  theme: Theme;
+  theme: InternalTheme;
   disabled?: boolean;
   checked: boolean;
 };
@@ -25,7 +26,7 @@ export const getSegmentedButtonDensityPadding = ({
     case 'small':
       return padding - moderateScale(2);
     case 'medium':
-      return padding -theme.spacing.x1;
+      return padding - theme.spacing.x1;
     case 'high':
       return padding - theme.spacing.x2;
     default:
@@ -38,7 +39,7 @@ export const getDisabledSegmentedButtonStyle = ({
   index,
   buttons,
 }: {
-  theme: Theme;
+  theme: InternalTheme;
   buttons: { disabled?: boolean }[];
   index: number;
 }): ViewStyle => {
@@ -58,7 +59,7 @@ export const getSegmentedButtonBorderRadius = ({
   segment,
   theme,
 }: {
-  theme: Theme;
+  theme: InternalTheme;
   segment?: 'first' | 'last' | 'single';
 }): ViewStyle => {
   if (segment === 'single') {

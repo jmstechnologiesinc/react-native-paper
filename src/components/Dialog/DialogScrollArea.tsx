@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { View, ViewStyle, StyleSheet, StyleProp } from 'react-native';
-import theme from '../../styles/themes/v3/LightTheme';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
-type Props = React.ComponentPropsWithRef<typeof View> & {
+import { useInternalTheme } from '../../core/theming';
+
+export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Content of the `DialogScrollArea`.
    */
@@ -48,6 +49,7 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
  * ```
  */
 const DialogScrollArea = (props: Props) => {
+  const theme = useInternalTheme();
   const borderStyles = {
     borderColor: theme.isV3
       ? theme.colors.surfaceVariant

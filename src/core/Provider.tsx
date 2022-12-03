@@ -5,20 +5,15 @@ import {
   ColorSchemeName,
   NativeEventSubscription,
 } from 'react-native';
-import { defaultThemesByVersion, ThemeProvider } from './theming';
-import { Provider as SettingsProvider, Settings } from './settings';
+
 import MaterialCommunityIcon from '../components/MaterialCommunityIcon';
 import PortalHost from '../components/Portal/PortalHost';
+import type { ThemeProp } from '../types';
 import { addEventListener } from '../utils/addEventListener';
-import type { Theme, ThemeBase } from '../types';
+import { Provider as SettingsProvider, Settings } from './settings';
+import { defaultThemesByVersion, ThemeProvider } from './theming';
 
-type ThemeProp =
-  | ThemeBase
-  | {
-      version: 2 | 3;
-    };
-
-type Props = {
+export type Props = {
   children: React.ReactNode;
   theme?: ThemeProp;
   settings?: Settings;
@@ -73,11 +68,12 @@ const Provider = (props: Props) => {
         if (appearanceSubscription) {
           appearanceSubscription.remove();
         } else {
+          // @ts-expect-error: We keep deprecated listener remove method for backwards compat with old RN versions
           Appearance?.removeChangeListener(handleAppearanceChange);
         }
       }
     };
-  }, [props.theme]);
+  }, [props.theme, isOnlyVersionInTheme]);
 
   const getTheme = () => {
     const themeVersion = props.theme?.version || 3;
@@ -86,7 +82,7 @@ const Provider = (props: Props) => {
 
     const extendedThemeBase = {
       ...defaultThemeBase,
-      ...(props.theme as ThemeBase),
+      ...props.theme,
       version: themeVersion,
       animation: {
         scale: reduceMotionEnabled ? 0 : 1,
@@ -96,7 +92,7 @@ const Provider = (props: Props) => {
     return {
       ...extendedThemeBase,
       isV3: extendedThemeBase.version === 3,
-    } as Theme;
+    };
   };
 
   const { children, settings } = props;
@@ -104,6 +100,7 @@ const Provider = (props: Props) => {
   return (
     <PortalHost>
       <SettingsProvider value={settings || { icon: MaterialCommunityIcon }}>
+        {/* @ts-expect-error check @callstack/react-theme-provider's children prop */}
         <ThemeProvider theme={getTheme()}>{children}</ThemeProvider>
       </SettingsProvider>
     </PortalHost>

@@ -1,14 +1,18 @@
-import color from 'color';
-import theme from '../../styles/themes/v3/LightTheme';
-import { black, white } from '../../styles/themes/v2/colors';
 import type { ColorValue } from 'react-native';
 
+import color from 'color';
+
+import { black, white } from '../../styles/themes/v2/colors';
+import type { InternalTheme } from '../../types';
+
 type BaseProps = {
+  theme: InternalTheme;
   isOutlined: boolean;
   disabled?: boolean;
 };
 
 const getBorderColor = ({
+  theme,
   isOutlined,
   disabled,
   selectedColor,
@@ -44,6 +48,7 @@ const getBorderColor = ({
 };
 
 const getTextColor = ({
+  theme,
   isOutlined,
   disabled,
   selectedColor,
@@ -79,6 +84,7 @@ const getTextColor = ({
 };
 
 const getDefaultBackgroundColor = ({
+  theme,
   isOutlined,
 }: Omit<BaseProps, 'disabled' | 'selectedColor'>) => {
   if (theme.isV3) {
@@ -101,6 +107,7 @@ const getDefaultBackgroundColor = ({
 };
 
 const getBackgroundColor = ({
+  theme,
   isOutlined,
   disabled,
   customBackgroundColor,
@@ -120,10 +127,11 @@ const getBackgroundColor = ({
     }
   }
 
-  return getDefaultBackgroundColor({ isOutlined });
+  return getDefaultBackgroundColor({ theme, isOutlined });
 };
 
 const getSelectedBackgroundColor = ({
+  theme,
   isOutlined,
   disabled,
   customBackgroundColor,
@@ -133,6 +141,7 @@ const getSelectedBackgroundColor = ({
   showSelectedOverlay?: boolean;
 }) => {
   const backgroundColor = getBackgroundColor({
+    theme,
     disabled,
     isOutlined,
     customBackgroundColor,
@@ -180,6 +189,7 @@ const getSelectedBackgroundColor = ({
 };
 
 const getIconColor = ({
+  theme,
   isOutlined,
   disabled,
   selectedColor,
@@ -215,6 +225,7 @@ const getIconColor = ({
 };
 
 const getUnderlayColor = ({
+  theme,
   isOutlined,
   disabled,
   selectedColor,
@@ -222,6 +233,7 @@ const getUnderlayColor = ({
 }: BaseProps & { selectedBackgroundColor: string; selectedColor?: string }) => {
   const isSelectedColor = selectedColor !== undefined;
   const textColor = getTextColor({
+    theme,
     disabled,
     selectedColor,
     isOutlined,
@@ -244,6 +256,7 @@ const getUnderlayColor = ({
 
 export const getChipColors = ({
   isOutlined,
+  theme,
   selectedColor,
   showSelectedOverlay,
   customBackgroundColor,

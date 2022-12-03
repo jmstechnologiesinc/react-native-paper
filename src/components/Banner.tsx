@@ -1,16 +1,19 @@
 import * as React from 'react';
-import { View, ViewStyle, StyleSheet, StyleProp, Animated } from 'react-native';
+import { Animated, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+
 import { moderateScale } from 'react-native-size-matters';
-import Surface from './Surface';
-import Text from './Typography/Text';
+
+import { withInternalTheme } from '../core/theming';
+import { MD3LightTheme as theme } from '../styles/themes/v3/LightTheme';
+import type { $RemoveChildren, InternalTheme } from '../types';
 import Button from './Button/Button';
 import Icon, { IconSource } from './Icon';
-import theme from '../styles/themes/v3/LightTheme';
-import type { $RemoveChildren } from '../types';
+import Surface from './Surface';
+import Text from './Typography/Text';
 
 const DEFAULT_MAX_WIDTH = moderateScale(960);
 
-type Props = $RemoveChildren<typeof Surface> & {
+export type Props = $RemoveChildren<typeof Surface> & {
   /**
    * Whether banner is currently visible.
    */
@@ -18,7 +21,7 @@ type Props = $RemoveChildren<typeof Surface> & {
   /**
    * Content that will be displayed inside banner.
    */
-  children: string;
+  children: React.ReactNode;
   /**
    * Icon to display for the `Banner`. Can be an image.
    */
@@ -32,7 +35,7 @@ type Props = $RemoveChildren<typeof Surface> & {
    *
    * To customize button you can pass other props that button component takes.
    */
-  actions: Array<
+  actions?: Array<
     {
       label: string;
     } & Omit<React.ComponentProps<typeof Button>, 'children'>
@@ -52,7 +55,7 @@ type Props = $RemoveChildren<typeof Surface> & {
   /**
    * @optional
    */
-
+  theme: InternalTheme;
   /**
    * @optional
    * Optional callback that will be called after the opening animation finished running normally
@@ -128,10 +131,11 @@ const Banner = ({
   visible,
   icon,
   children,
-  actions,
+  actions = [],
   contentStyle,
   elevation = 1,
   style,
+  theme,
   onShowAnimationFinished = () => {},
   onHideAnimationFinished = () => {},
   ...rest
@@ -189,7 +193,6 @@ const Banner = ({
     <Surface
       {...rest}
       style={[!theme.isV3 && styles.elevation, style]}
-      //  @ts-ignore:next-line
       theme={theme}
       {...(theme.isV3 && { elevation })}
     >
@@ -291,4 +294,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Banner;
+export default withInternalTheme(Banner);

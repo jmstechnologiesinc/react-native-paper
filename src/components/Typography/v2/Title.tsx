@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Text, StyleSheet } from 'react-native';
+
 import { moderateScale } from 'react-native-size-matters';
+
+import { MD3LightTheme as theme } from '../../../styles/themes/v3/LightTheme';
 import StyledText from './StyledText';
 
-import theme from '../../../styles/themes/v3/LightTheme';
-
-type Props = React.ComponentProps<typeof Text> & {
+export type Props = React.ComponentProps<typeof Text> & {
   children: React.ReactNode;
 };
 

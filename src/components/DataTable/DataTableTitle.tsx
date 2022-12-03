@@ -1,21 +1,25 @@
 import * as React from 'react';
 import {
   Animated,
+  I18nManager,
   StyleProp,
   StyleSheet,
+  TextStyle,
   TouchableWithoutFeedback,
   View,
   ViewStyle,
-  I18nManager,
-  TextStyle,
 } from 'react-native';
+
 import color from 'color';
+
+import { withInternalTheme } from '../../core/theming';
+import type { InternalTheme } from '../../types';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Text from '../Typography/Text';
 
-import theme from '../../styles/themes/v3/LightTheme';
-
-type Props = React.ComponentPropsWithRef<typeof TouchableWithoutFeedback> & {
+export type Props = React.ComponentPropsWithRef<
+  typeof TouchableWithoutFeedback
+> & {
   /**
    * Text content of the `DataTableTitle`.
    */
@@ -44,6 +48,7 @@ type Props = React.ComponentPropsWithRef<typeof TouchableWithoutFeedback> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 /**
@@ -84,6 +89,7 @@ const DataTableTitle = ({
   children,
   onPress,
   sortDirection,
+  theme,
   textStyle,
   style,
   numberOfLines = 1,
@@ -116,7 +122,7 @@ const DataTableTitle = ({
         name="arrow-up"
         size={16}
         color={textColor}
-        direction={I18nManager.isRTL ? 'rtl' : 'ltr'}
+        direction={I18nManager.getConstants().isRTL ? 'rtl' : 'ltr'}
       />
     </Animated.View>
   ) : null;
@@ -134,7 +140,7 @@ const DataTableTitle = ({
             // if numberOfLines causes wrap, center is lost. Align directly, sensitive to numeric and RTL
             numberOfLines > 1
               ? numeric
-                ? I18nManager.isRTL
+                ? I18nManager.getConstants().isRTL
                   ? styles.leftText
                   : styles.rightText
                 : styles.centerText
@@ -194,7 +200,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DataTableTitle;
+export default withInternalTheme(DataTableTitle);
 
 // @component-docs ignore-next-line
 export { DataTableTitle };

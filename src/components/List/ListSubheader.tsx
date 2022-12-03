@@ -1,16 +1,19 @@
 import * as React from 'react';
-import { StyleSheet, StyleProp, TextStyle } from 'react-native';
+import { StyleProp, StyleSheet, TextStyle } from 'react-native';
+
 import color from 'color';
-
 import { moderateScale } from 'react-native-size-matters';
+import type { InternalTheme } from 'src/types';
 
+import { useInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import Text from '../Typography/Text';
-import theme from '../../styles/themes/v3/LightTheme';
 
-type Props = React.ComponentProps<typeof Text> & {
+export type Props = React.ComponentProps<typeof Text> & {
   /**
    * @optional
    */
+  theme?: InternalTheme;
   /**
    * Style that is passed to Text element.
    */
@@ -30,10 +33,14 @@ type Props = React.ComponentProps<typeof Text> & {
  * export default MyComponent;
  * ```
  */
-const ListSubheader = ({ style, ...rest }: Props) => {
+const ListSubheader = ({ style, theme: overrideTheme, ...rest }: Props) => {
+  const theme = useInternalTheme(overrideTheme);
+
   const textColor = theme.isV3
     ? theme.colors.onSurfaceVariant
     : color(theme.colors.text).alpha(0.54).rgb().string();
+
+  const font = theme.isV3 ? theme.fonts.bodyMedium : theme.fonts.medium;
 
   return (
     <Text
@@ -44,7 +51,7 @@ const ListSubheader = ({ style, ...rest }: Props) => {
         styles.container,
         {
           color: textColor,
-          ...(theme.isV3 ? theme.typescale.bodyMedium : theme.fonts.medium),
+          ...font,
         },
         style,
       ]}

@@ -1,18 +1,20 @@
 import * as React from 'react';
-import color from 'color';
 import {
   Animated,
-  StyleSheet,
-  StyleProp,
-  TextStyle,
   LayoutChangeEvent,
+  StyleProp,
+  StyleSheet,
+  TextStyle,
 } from 'react-native';
+
+import color from 'color';
+
+import { withInternalTheme } from '../core/theming';
+import { MD3LightTheme as theme } from '../styles/themes/v3/LightTheme';
+import type { $Omit, InternalTheme } from '../types';
 import AnimatedText from './Typography/AnimatedText';
-import type { $Omit } from '../types';
 
-import theme from '../styles/themes/v3/LightTheme';
-
-type Props = $Omit<
+export type Props = $Omit<
   $Omit<React.ComponentPropsWithRef<typeof AnimatedText>, 'padding'>,
   'type'
 > & {
@@ -36,7 +38,7 @@ type Props = $Omit<
   /**
    * @optional
    */
-
+  theme: InternalTheme;
   /**
    * TestID used for testing purposes
    */
@@ -82,6 +84,7 @@ const HelperText = ({
   style,
   type = 'info',
   visible = true,
+  theme,
   onLayout,
   padding = 'normal',
   ...rest
@@ -130,7 +133,6 @@ const HelperText = ({
           .string();
 
   return (
-    // @ts-ignore:next-line
     <AnimatedText
       onLayout={handleTextLayout}
       style={[
@@ -171,4 +173,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HelperText;
+export default withInternalTheme(HelperText);

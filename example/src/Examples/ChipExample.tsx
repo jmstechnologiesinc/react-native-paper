@@ -1,19 +1,15 @@
 import * as React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
-import {
-  Chip,
-  List,
-  useTheme,
-  Snackbar,
-  MD3Colors,
-  MD2Colors,
-} from 'react-native-paper';
+import { Image, StyleSheet, View } from 'react-native';
+
 import color from 'color';
+import { Chip, List, MD2Colors, MD3Colors, Snackbar } from 'react-native-paper';
+
+import { useExampleTheme } from '..';
 import ScreenWrapper from '../ScreenWrapper';
 
 const ChipExample = () => {
   const [visible, setVisible] = React.useState<boolean>(false);
-  const { isV3 } = useTheme();
+  const { isV3 } = useExampleTheme();
   const customColor = isV3 ? MD3Colors.secondary20 : MD2Colors.purple900;
 
   return (
@@ -60,7 +56,10 @@ const ChipExample = () => {
             </Chip>
             <Chip
               avatar={
-                <Image source={require('../../assets/images/avatar.png')} />
+                <Image
+                  source={require('../../assets/images/avatar.png')}
+                  accessibilityIgnoresInvertColors
+                />
               }
               onPress={() => {}}
               onClose={() => {}}
@@ -71,7 +70,10 @@ const ChipExample = () => {
             <Chip
               selected
               avatar={
-                <Image source={require('../../assets/images/avatar.png')} />
+                <Image
+                  source={require('../../assets/images/avatar.png')}
+                  accessibilityIgnoresInvertColors
+                />
               }
               onPress={() => {}}
               style={styles.chip}
@@ -84,7 +86,10 @@ const ChipExample = () => {
             <Chip
               disabled
               avatar={
-                <Image source={require('../../assets/images/avatar.png')} />
+                <Image
+                  source={require('../../assets/images/avatar.png')}
+                  accessibilityIgnoresInvertColors
+                />
               }
               style={styles.chip}
             >
@@ -146,7 +151,10 @@ const ChipExample = () => {
             <Chip
               mode="outlined"
               avatar={
-                <Image source={require('../../assets/images/avatar.png')} />
+                <Image
+                  source={require('../../assets/images/avatar.png')}
+                  accessibilityIgnoresInvertColors
+                />
               }
               onPress={() => {}}
               style={styles.chip}
@@ -157,7 +165,10 @@ const ChipExample = () => {
               selected
               mode="outlined"
               avatar={
-                <Image source={require('../../assets/images/avatar.png')} />
+                <Image
+                  source={require('../../assets/images/avatar.png')}
+                  accessibilityIgnoresInvertColors
+                />
               }
               onPress={() => {}}
               style={styles.chip}
@@ -177,7 +188,10 @@ const ChipExample = () => {
               disabled
               mode="outlined"
               avatar={
-                <Image source={require('../../assets/images/avatar.png')} />
+                <Image
+                  source={require('../../assets/images/avatar.png')}
+                  accessibilityIgnoresInvertColors
+                />
               }
               style={styles.chip}
             >
@@ -194,7 +208,10 @@ const ChipExample = () => {
                   onPress={() => {}}
                   compact
                   avatar={
-                    <Image source={require('../../assets/images/avatar.png')} />
+                    <Image
+                      source={require('../../assets/images/avatar.png')}
+                      accessibilityIgnoresInvertColors
+                    />
                   }
                   style={[styles.chip, styles.customBorderRadius]}
                 >
@@ -205,7 +222,10 @@ const ChipExample = () => {
                   onPress={() => {}}
                   compact
                   avatar={
-                    <Image source={require('../../assets/images/avatar.png')} />
+                    <Image
+                      source={require('../../assets/images/avatar.png')}
+                      accessibilityIgnoresInvertColors
+                    />
                   }
                   style={[styles.chip, styles.customBorderRadius]}
                 >

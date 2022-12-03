@@ -8,8 +8,11 @@ exports[`renders data table cell 1`] = `
     }
   }
   accessible={true}
-  focusable={false}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
   onClick={[Function]}
+  onFocus={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -18,6 +21,7 @@ exports[`renders data table cell 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Array [
+      false,
       false,
       Array [
         Object {
@@ -36,10 +40,16 @@ exports[`renders data table cell 1`] = `
     style={
       Array [
         Object {
-          "color": "rgba(28, 27, 31, 1)",
+          "textAlign": "left",
         },
         Object {
-          "textAlign": "left",
+          "color": "rgba(28, 27, 31, 1)",
+          "fontFamily": "System",
+          "fontWeight": "400",
+          "letterSpacing": 0,
+        },
+        Object {
+          "writingDirection": "ltr",
         },
         undefined,
       ]
@@ -100,10 +110,16 @@ exports[`renders data table header 1`] = `
       style={
         Array [
           Object {
-            "color": "rgba(28, 27, 31, 1)",
+            "textAlign": "left",
           },
           Object {
-            "textAlign": "left",
+            "color": "rgba(28, 27, 31, 1)",
+            "fontFamily": "System",
+            "fontWeight": "400",
+            "letterSpacing": 0,
+          },
+          Object {
+            "writingDirection": "ltr",
           },
           Array [
             Object {
@@ -160,10 +176,16 @@ exports[`renders data table header 1`] = `
       style={
         Array [
           Object {
-            "color": "rgba(28, 27, 31, 1)",
+            "textAlign": "left",
           },
           Object {
-            "textAlign": "left",
+            "color": "rgba(28, 27, 31, 1)",
+            "fontFamily": "System",
+            "fontWeight": "400",
+            "letterSpacing": 0,
+          },
+          Object {
+            "writingDirection": "ltr",
           },
           Array [
             Object {
@@ -212,10 +234,16 @@ exports[`renders data table pagination 1`] = `
     style={
       Array [
         Object {
-          "color": "rgba(28, 27, 31, 1)",
+          "textAlign": "left",
         },
         Object {
-          "textAlign": "left",
+          "color": "rgba(28, 27, 31, 1)",
+          "fontFamily": "System",
+          "fontWeight": "400",
+          "letterSpacing": 0,
+        },
+        Object {
+          "writingDirection": "ltr",
         },
         Array [
           Object {
@@ -240,6 +268,11 @@ exports[`renders data table pagination 1`] = `
       collapsable={false}
       style={
         Object {
+          "alignSelf": undefined,
+          "bottom": undefined,
+          "left": undefined,
+          "position": undefined,
+          "right": undefined,
           "shadowColor": "#000",
           "shadowOffset": Object {
             "height": 0,
@@ -247,6 +280,7 @@ exports[`renders data table pagination 1`] = `
           },
           "shadowOpacity": 0,
           "shadowRadius": 0,
+          "top": undefined,
         }
       }
     >
@@ -281,6 +315,7 @@ exports[`renders data table pagination 1`] = `
           }
         >
           <View
+            accessibilityComponentType="button"
             accessibilityLabel="chevron-left"
             accessibilityRole="button"
             accessibilityState={
@@ -288,7 +323,10 @@ exports[`renders data table pagination 1`] = `
                 "disabled": false,
               }
             }
+            accessibilityTraits="button"
             accessible={true}
+            centered={true}
+            collapsable={false}
             focusable={true}
             hitSlop={
               Object {
@@ -298,7 +336,9 @@ exports[`renders data table pagination 1`] = `
                 "top": 6,
               }
             }
+            onBlur={[Function]}
             onClick={[Function]}
+            onFocus={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -310,6 +350,7 @@ exports[`renders data table pagination 1`] = `
                 Object {
                   "overflow": "hidden",
                 },
+                false,
                 Object {
                   "alignItems": "center",
                   "flexGrow": 1,
@@ -320,22 +361,39 @@ exports[`renders data table pagination 1`] = `
           >
             <Text
               accessibilityElementsHidden={true}
+              allowFontScaling={false}
               importantForAccessibility="no-hide-descendants"
               pointerEvents="none"
               selectable={false}
               style={
                 Array [
                   Object {
-                    "backgroundColor": "transparent",
-                  },
-                  Object {
                     "color": "rgba(28, 27, 31, 1)",
                     "fontSize": 24,
                   },
+                  Array [
+                    Object {
+                      "lineHeight": 24,
+                      "transform": Array [
+                        Object {
+                          "scaleX": 1,
+                        },
+                      ],
+                    },
+                    Object {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  Object {
+                    "fontFamily": "Material Design Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
                 ]
               }
             >
-              □
+              󰅁
             </Text>
           </View>
         </View>
@@ -345,6 +403,11 @@ exports[`renders data table pagination 1`] = `
       collapsable={false}
       style={
         Object {
+          "alignSelf": undefined,
+          "bottom": undefined,
+          "left": undefined,
+          "position": undefined,
+          "right": undefined,
           "shadowColor": "#000",
           "shadowOffset": Object {
             "height": 0,
@@ -352,6 +415,7 @@ exports[`renders data table pagination 1`] = `
           },
           "shadowOpacity": 0,
           "shadowRadius": 0,
+          "top": undefined,
         }
       }
     >
@@ -386,6 +450,7 @@ exports[`renders data table pagination 1`] = `
           }
         >
           <View
+            accessibilityComponentType="button"
             accessibilityLabel="chevron-right"
             accessibilityRole="button"
             accessibilityState={
@@ -393,7 +458,10 @@ exports[`renders data table pagination 1`] = `
                 "disabled": false,
               }
             }
+            accessibilityTraits="button"
             accessible={true}
+            centered={true}
+            collapsable={false}
             focusable={true}
             hitSlop={
               Object {
@@ -403,7 +471,9 @@ exports[`renders data table pagination 1`] = `
                 "top": 6,
               }
             }
+            onBlur={[Function]}
             onClick={[Function]}
+            onFocus={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -415,6 +485,7 @@ exports[`renders data table pagination 1`] = `
                 Object {
                   "overflow": "hidden",
                 },
+                false,
                 Object {
                   "alignItems": "center",
                   "flexGrow": 1,
@@ -425,22 +496,39 @@ exports[`renders data table pagination 1`] = `
           >
             <Text
               accessibilityElementsHidden={true}
+              allowFontScaling={false}
               importantForAccessibility="no-hide-descendants"
               pointerEvents="none"
               selectable={false}
               style={
                 Array [
                   Object {
-                    "backgroundColor": "transparent",
-                  },
-                  Object {
                     "color": "rgba(28, 27, 31, 1)",
                     "fontSize": 24,
                   },
+                  Array [
+                    Object {
+                      "lineHeight": 24,
+                      "transform": Array [
+                        Object {
+                          "scaleX": 1,
+                        },
+                      ],
+                    },
+                    Object {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  Object {
+                    "fontFamily": "Material Design Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
                 ]
               }
             >
-              □
+              󰅂
             </Text>
           </View>
         </View>
@@ -472,10 +560,16 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
     style={
       Array [
         Object {
-          "color": "rgba(28, 27, 31, 1)",
+          "textAlign": "left",
         },
         Object {
-          "textAlign": "left",
+          "color": "rgba(28, 27, 31, 1)",
+          "fontFamily": "System",
+          "fontWeight": "400",
+          "letterSpacing": 0,
+        },
+        Object {
+          "writingDirection": "ltr",
         },
         Array [
           Object {
@@ -502,6 +596,11 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
       collapsable={false}
       style={
         Object {
+          "alignSelf": undefined,
+          "bottom": undefined,
+          "left": undefined,
+          "position": undefined,
+          "right": undefined,
           "shadowColor": "#000",
           "shadowOffset": Object {
             "height": 0,
@@ -509,6 +608,7 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
           },
           "shadowOpacity": 0,
           "shadowRadius": 0,
+          "top": undefined,
         }
       }
     >
@@ -543,6 +643,7 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
           }
         >
           <View
+            accessibilityComponentType="button"
             accessibilityLabel="page-first"
             accessibilityRole="button"
             accessibilityState={
@@ -550,7 +651,10 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
                 "disabled": false,
               }
             }
+            accessibilityTraits="button"
             accessible={true}
+            centered={true}
+            collapsable={false}
             focusable={true}
             hitSlop={
               Object {
@@ -560,7 +664,9 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
                 "top": 6,
               }
             }
+            onBlur={[Function]}
             onClick={[Function]}
+            onFocus={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -572,6 +678,7 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
                 Object {
                   "overflow": "hidden",
                 },
+                false,
                 Object {
                   "alignItems": "center",
                   "flexGrow": 1,
@@ -582,22 +689,39 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
           >
             <Text
               accessibilityElementsHidden={true}
+              allowFontScaling={false}
               importantForAccessibility="no-hide-descendants"
               pointerEvents="none"
               selectable={false}
               style={
                 Array [
                   Object {
-                    "backgroundColor": "transparent",
-                  },
-                  Object {
                     "color": "rgba(28, 27, 31, 1)",
                     "fontSize": 24,
                   },
+                  Array [
+                    Object {
+                      "lineHeight": 24,
+                      "transform": Array [
+                        Object {
+                          "scaleX": 1,
+                        },
+                      ],
+                    },
+                    Object {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  Object {
+                    "fontFamily": "Material Design Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
                 ]
               }
             >
-              □
+              󰘀
             </Text>
           </View>
         </View>
@@ -607,6 +731,11 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
       collapsable={false}
       style={
         Object {
+          "alignSelf": undefined,
+          "bottom": undefined,
+          "left": undefined,
+          "position": undefined,
+          "right": undefined,
           "shadowColor": "#000",
           "shadowOffset": Object {
             "height": 0,
@@ -614,6 +743,7 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
           },
           "shadowOpacity": 0,
           "shadowRadius": 0,
+          "top": undefined,
         }
       }
     >
@@ -648,6 +778,7 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
           }
         >
           <View
+            accessibilityComponentType="button"
             accessibilityLabel="chevron-left"
             accessibilityRole="button"
             accessibilityState={
@@ -655,7 +786,10 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
                 "disabled": false,
               }
             }
+            accessibilityTraits="button"
             accessible={true}
+            centered={true}
+            collapsable={false}
             focusable={true}
             hitSlop={
               Object {
@@ -665,7 +799,9 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
                 "top": 6,
               }
             }
+            onBlur={[Function]}
             onClick={[Function]}
+            onFocus={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -677,6 +813,7 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
                 Object {
                   "overflow": "hidden",
                 },
+                false,
                 Object {
                   "alignItems": "center",
                   "flexGrow": 1,
@@ -687,22 +824,39 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
           >
             <Text
               accessibilityElementsHidden={true}
+              allowFontScaling={false}
               importantForAccessibility="no-hide-descendants"
               pointerEvents="none"
               selectable={false}
               style={
                 Array [
                   Object {
-                    "backgroundColor": "transparent",
-                  },
-                  Object {
                     "color": "rgba(28, 27, 31, 1)",
                     "fontSize": 24,
                   },
+                  Array [
+                    Object {
+                      "lineHeight": 24,
+                      "transform": Array [
+                        Object {
+                          "scaleX": 1,
+                        },
+                      ],
+                    },
+                    Object {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  Object {
+                    "fontFamily": "Material Design Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
                 ]
               }
             >
-              □
+              󰅁
             </Text>
           </View>
         </View>
@@ -712,6 +866,11 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
       collapsable={false}
       style={
         Object {
+          "alignSelf": undefined,
+          "bottom": undefined,
+          "left": undefined,
+          "position": undefined,
+          "right": undefined,
           "shadowColor": "#000",
           "shadowOffset": Object {
             "height": 0,
@@ -719,6 +878,7 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
           },
           "shadowOpacity": 0,
           "shadowRadius": 0,
+          "top": undefined,
         }
       }
     >
@@ -753,6 +913,7 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
           }
         >
           <View
+            accessibilityComponentType="button"
             accessibilityLabel="chevron-right"
             accessibilityRole="button"
             accessibilityState={
@@ -760,7 +921,10 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
                 "disabled": false,
               }
             }
+            accessibilityTraits="button"
             accessible={true}
+            centered={true}
+            collapsable={false}
             focusable={true}
             hitSlop={
               Object {
@@ -770,7 +934,9 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
                 "top": 6,
               }
             }
+            onBlur={[Function]}
             onClick={[Function]}
+            onFocus={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -782,6 +948,7 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
                 Object {
                   "overflow": "hidden",
                 },
+                false,
                 Object {
                   "alignItems": "center",
                   "flexGrow": 1,
@@ -792,22 +959,39 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
           >
             <Text
               accessibilityElementsHidden={true}
+              allowFontScaling={false}
               importantForAccessibility="no-hide-descendants"
               pointerEvents="none"
               selectable={false}
               style={
                 Array [
                   Object {
-                    "backgroundColor": "transparent",
-                  },
-                  Object {
                     "color": "rgba(28, 27, 31, 1)",
                     "fontSize": 24,
                   },
+                  Array [
+                    Object {
+                      "lineHeight": 24,
+                      "transform": Array [
+                        Object {
+                          "scaleX": 1,
+                        },
+                      ],
+                    },
+                    Object {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  Object {
+                    "fontFamily": "Material Design Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
                 ]
               }
             >
-              □
+              󰅂
             </Text>
           </View>
         </View>
@@ -817,6 +1001,11 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
       collapsable={false}
       style={
         Object {
+          "alignSelf": undefined,
+          "bottom": undefined,
+          "left": undefined,
+          "position": undefined,
+          "right": undefined,
           "shadowColor": "#000",
           "shadowOffset": Object {
             "height": 0,
@@ -824,6 +1013,7 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
           },
           "shadowOpacity": 0,
           "shadowRadius": 0,
+          "top": undefined,
         }
       }
     >
@@ -858,6 +1048,7 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
           }
         >
           <View
+            accessibilityComponentType="button"
             accessibilityLabel="page-last"
             accessibilityRole="button"
             accessibilityState={
@@ -865,7 +1056,10 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
                 "disabled": false,
               }
             }
+            accessibilityTraits="button"
             accessible={true}
+            centered={true}
+            collapsable={false}
             focusable={true}
             hitSlop={
               Object {
@@ -875,7 +1069,9 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
                 "top": 6,
               }
             }
+            onBlur={[Function]}
             onClick={[Function]}
+            onFocus={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -887,6 +1083,7 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
                 Object {
                   "overflow": "hidden",
                 },
+                false,
                 Object {
                   "alignItems": "center",
                   "flexGrow": 1,
@@ -897,22 +1094,39 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
           >
             <Text
               accessibilityElementsHidden={true}
+              allowFontScaling={false}
               importantForAccessibility="no-hide-descendants"
               pointerEvents="none"
               selectable={false}
               style={
                 Array [
                   Object {
-                    "backgroundColor": "transparent",
-                  },
-                  Object {
                     "color": "rgba(28, 27, 31, 1)",
                     "fontSize": 24,
                   },
+                  Array [
+                    Object {
+                      "lineHeight": 24,
+                      "transform": Array [
+                        Object {
+                          "scaleX": 1,
+                        },
+                      ],
+                    },
+                    Object {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  Object {
+                    "fontFamily": "Material Design Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
                 ]
               }
             >
-              □
+              󰘁
             </Text>
           </View>
         </View>
@@ -944,10 +1158,16 @@ exports[`renders data table pagination with label 1`] = `
     style={
       Array [
         Object {
-          "color": "rgba(28, 27, 31, 1)",
+          "textAlign": "left",
         },
         Object {
-          "textAlign": "left",
+          "color": "rgba(28, 27, 31, 1)",
+          "fontFamily": "System",
+          "fontWeight": "400",
+          "letterSpacing": 0,
+        },
+        Object {
+          "writingDirection": "ltr",
         },
         Array [
           Object {
@@ -974,6 +1194,11 @@ exports[`renders data table pagination with label 1`] = `
       collapsable={false}
       style={
         Object {
+          "alignSelf": undefined,
+          "bottom": undefined,
+          "left": undefined,
+          "position": undefined,
+          "right": undefined,
           "shadowColor": "#000",
           "shadowOffset": Object {
             "height": 0,
@@ -981,6 +1206,7 @@ exports[`renders data table pagination with label 1`] = `
           },
           "shadowOpacity": 0,
           "shadowRadius": 0,
+          "top": undefined,
         }
       }
     >
@@ -1015,6 +1241,7 @@ exports[`renders data table pagination with label 1`] = `
           }
         >
           <View
+            accessibilityComponentType="button"
             accessibilityLabel="chevron-left"
             accessibilityRole="button"
             accessibilityState={
@@ -1022,7 +1249,10 @@ exports[`renders data table pagination with label 1`] = `
                 "disabled": false,
               }
             }
+            accessibilityTraits="button"
             accessible={true}
+            centered={true}
+            collapsable={false}
             focusable={true}
             hitSlop={
               Object {
@@ -1032,7 +1262,9 @@ exports[`renders data table pagination with label 1`] = `
                 "top": 6,
               }
             }
+            onBlur={[Function]}
             onClick={[Function]}
+            onFocus={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -1044,6 +1276,7 @@ exports[`renders data table pagination with label 1`] = `
                 Object {
                   "overflow": "hidden",
                 },
+                false,
                 Object {
                   "alignItems": "center",
                   "flexGrow": 1,
@@ -1054,22 +1287,39 @@ exports[`renders data table pagination with label 1`] = `
           >
             <Text
               accessibilityElementsHidden={true}
+              allowFontScaling={false}
               importantForAccessibility="no-hide-descendants"
               pointerEvents="none"
               selectable={false}
               style={
                 Array [
                   Object {
-                    "backgroundColor": "transparent",
-                  },
-                  Object {
                     "color": "rgba(28, 27, 31, 1)",
                     "fontSize": 24,
                   },
+                  Array [
+                    Object {
+                      "lineHeight": 24,
+                      "transform": Array [
+                        Object {
+                          "scaleX": 1,
+                        },
+                      ],
+                    },
+                    Object {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  Object {
+                    "fontFamily": "Material Design Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
                 ]
               }
             >
-              □
+              󰅁
             </Text>
           </View>
         </View>
@@ -1079,6 +1329,11 @@ exports[`renders data table pagination with label 1`] = `
       collapsable={false}
       style={
         Object {
+          "alignSelf": undefined,
+          "bottom": undefined,
+          "left": undefined,
+          "position": undefined,
+          "right": undefined,
           "shadowColor": "#000",
           "shadowOffset": Object {
             "height": 0,
@@ -1086,6 +1341,7 @@ exports[`renders data table pagination with label 1`] = `
           },
           "shadowOpacity": 0,
           "shadowRadius": 0,
+          "top": undefined,
         }
       }
     >
@@ -1120,6 +1376,7 @@ exports[`renders data table pagination with label 1`] = `
           }
         >
           <View
+            accessibilityComponentType="button"
             accessibilityLabel="chevron-right"
             accessibilityRole="button"
             accessibilityState={
@@ -1127,7 +1384,10 @@ exports[`renders data table pagination with label 1`] = `
                 "disabled": false,
               }
             }
+            accessibilityTraits="button"
             accessible={true}
+            centered={true}
+            collapsable={false}
             focusable={true}
             hitSlop={
               Object {
@@ -1137,7 +1397,9 @@ exports[`renders data table pagination with label 1`] = `
                 "top": 6,
               }
             }
+            onBlur={[Function]}
             onClick={[Function]}
+            onFocus={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -1149,6 +1411,7 @@ exports[`renders data table pagination with label 1`] = `
                 Object {
                   "overflow": "hidden",
                 },
+                false,
                 Object {
                   "alignItems": "center",
                   "flexGrow": 1,
@@ -1159,22 +1422,39 @@ exports[`renders data table pagination with label 1`] = `
           >
             <Text
               accessibilityElementsHidden={true}
+              allowFontScaling={false}
               importantForAccessibility="no-hide-descendants"
               pointerEvents="none"
               selectable={false}
               style={
                 Array [
                   Object {
-                    "backgroundColor": "transparent",
-                  },
-                  Object {
                     "color": "rgba(28, 27, 31, 1)",
                     "fontSize": 24,
                   },
+                  Array [
+                    Object {
+                      "lineHeight": 24,
+                      "transform": Array [
+                        Object {
+                          "scaleX": 1,
+                        },
+                      ],
+                    },
+                    Object {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  Object {
+                    "fontFamily": "Material Design Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
                 ]
               }
             >
-              □
+              󰅂
             </Text>
           </View>
         </View>
@@ -1216,10 +1496,16 @@ exports[`renders data table pagination with options select 1`] = `
       style={
         Array [
           Object {
-            "color": "rgba(28, 27, 31, 1)",
+            "textAlign": "left",
           },
           Object {
-            "textAlign": "left",
+            "color": "rgba(28, 27, 31, 1)",
+            "fontFamily": "System",
+            "fontWeight": "400",
+            "letterSpacing": 0,
+          },
+          Object {
+            "writingDirection": "ltr",
           },
           Array [
             Object {
@@ -1242,6 +1528,11 @@ exports[`renders data table pagination with options select 1`] = `
         collapsable={false}
         style={
           Object {
+            "alignSelf": undefined,
+            "bottom": undefined,
+            "left": undefined,
+            "position": undefined,
+            "right": undefined,
             "shadowColor": "#000",
             "shadowOffset": Object {
               "height": 0,
@@ -1249,6 +1540,7 @@ exports[`renders data table pagination with options select 1`] = `
             },
             "shadowOpacity": 0,
             "shadowRadius": 0,
+            "top": undefined,
           }
         }
       >
@@ -1289,8 +1581,11 @@ exports[`renders data table pagination with options select 1`] = `
                 }
               }
               accessible={true}
+              collapsable={false}
               focusable={true}
+              onBlur={[Function]}
               onClick={[Function]}
+              onFocus={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -1302,6 +1597,7 @@ exports[`renders data table pagination with options select 1`] = `
                   Object {
                     "overflow": "hidden",
                   },
+                  false,
                   Object {
                     "borderRadius": 20,
                   },
@@ -1339,22 +1635,39 @@ exports[`renders data table pagination with options select 1`] = `
                 >
                   <Text
                     accessibilityElementsHidden={true}
+                    allowFontScaling={false}
                     importantForAccessibility="no-hide-descendants"
                     pointerEvents="none"
                     selectable={false}
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "transparent",
-                        },
-                        Object {
                           "color": "rgba(103, 80, 164, 1)",
                           "fontSize": 18,
                         },
+                        Array [
+                          Object {
+                            "lineHeight": 18,
+                            "transform": Array [
+                              Object {
+                                "scaleX": 1,
+                              },
+                            ],
+                          },
+                          Object {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                        Object {
+                          "fontFamily": "Material Design Icons",
+                          "fontStyle": "normal",
+                          "fontWeight": "normal",
+                        },
+                        Object {},
                       ]
                     }
                   >
-                    □
+                    󰍝
                   </Text>
                 </View>
                 <Text
@@ -1364,6 +1677,7 @@ exports[`renders data table pagination with options select 1`] = `
                     Array [
                       Object {
                         "color": "rgba(28, 27, 31, 1)",
+                        "fontFamily": "System",
                         "fontSize": 14,
                         "fontWeight": "500",
                         "letterSpacing": 0.1,
@@ -1416,10 +1730,16 @@ exports[`renders data table pagination with options select 1`] = `
     style={
       Array [
         Object {
-          "color": "rgba(28, 27, 31, 1)",
+          "textAlign": "left",
         },
         Object {
-          "textAlign": "left",
+          "color": "rgba(28, 27, 31, 1)",
+          "fontFamily": "System",
+          "fontWeight": "400",
+          "letterSpacing": 0,
+        },
+        Object {
+          "writingDirection": "ltr",
         },
         Array [
           Object {
@@ -1446,6 +1766,11 @@ exports[`renders data table pagination with options select 1`] = `
       collapsable={false}
       style={
         Object {
+          "alignSelf": undefined,
+          "bottom": undefined,
+          "left": undefined,
+          "position": undefined,
+          "right": undefined,
           "shadowColor": "#000",
           "shadowOffset": Object {
             "height": 0,
@@ -1453,6 +1778,7 @@ exports[`renders data table pagination with options select 1`] = `
           },
           "shadowOpacity": 0,
           "shadowRadius": 0,
+          "top": undefined,
         }
       }
     >
@@ -1487,6 +1813,7 @@ exports[`renders data table pagination with options select 1`] = `
           }
         >
           <View
+            accessibilityComponentType="button"
             accessibilityLabel="page-first"
             accessibilityRole="button"
             accessibilityState={
@@ -1494,7 +1821,10 @@ exports[`renders data table pagination with options select 1`] = `
                 "disabled": false,
               }
             }
+            accessibilityTraits="button"
             accessible={true}
+            centered={true}
+            collapsable={false}
             focusable={true}
             hitSlop={
               Object {
@@ -1504,7 +1834,9 @@ exports[`renders data table pagination with options select 1`] = `
                 "top": 6,
               }
             }
+            onBlur={[Function]}
             onClick={[Function]}
+            onFocus={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -1516,6 +1848,7 @@ exports[`renders data table pagination with options select 1`] = `
                 Object {
                   "overflow": "hidden",
                 },
+                false,
                 Object {
                   "alignItems": "center",
                   "flexGrow": 1,
@@ -1526,22 +1859,39 @@ exports[`renders data table pagination with options select 1`] = `
           >
             <Text
               accessibilityElementsHidden={true}
+              allowFontScaling={false}
               importantForAccessibility="no-hide-descendants"
               pointerEvents="none"
               selectable={false}
               style={
                 Array [
                   Object {
-                    "backgroundColor": "transparent",
-                  },
-                  Object {
                     "color": "rgba(28, 27, 31, 1)",
                     "fontSize": 24,
                   },
+                  Array [
+                    Object {
+                      "lineHeight": 24,
+                      "transform": Array [
+                        Object {
+                          "scaleX": 1,
+                        },
+                      ],
+                    },
+                    Object {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  Object {
+                    "fontFamily": "Material Design Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
                 ]
               }
             >
-              □
+              󰘀
             </Text>
           </View>
         </View>
@@ -1551,6 +1901,11 @@ exports[`renders data table pagination with options select 1`] = `
       collapsable={false}
       style={
         Object {
+          "alignSelf": undefined,
+          "bottom": undefined,
+          "left": undefined,
+          "position": undefined,
+          "right": undefined,
           "shadowColor": "#000",
           "shadowOffset": Object {
             "height": 0,
@@ -1558,6 +1913,7 @@ exports[`renders data table pagination with options select 1`] = `
           },
           "shadowOpacity": 0,
           "shadowRadius": 0,
+          "top": undefined,
         }
       }
     >
@@ -1592,6 +1948,7 @@ exports[`renders data table pagination with options select 1`] = `
           }
         >
           <View
+            accessibilityComponentType="button"
             accessibilityLabel="chevron-left"
             accessibilityRole="button"
             accessibilityState={
@@ -1599,7 +1956,10 @@ exports[`renders data table pagination with options select 1`] = `
                 "disabled": false,
               }
             }
+            accessibilityTraits="button"
             accessible={true}
+            centered={true}
+            collapsable={false}
             focusable={true}
             hitSlop={
               Object {
@@ -1609,7 +1969,9 @@ exports[`renders data table pagination with options select 1`] = `
                 "top": 6,
               }
             }
+            onBlur={[Function]}
             onClick={[Function]}
+            onFocus={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -1621,6 +1983,7 @@ exports[`renders data table pagination with options select 1`] = `
                 Object {
                   "overflow": "hidden",
                 },
+                false,
                 Object {
                   "alignItems": "center",
                   "flexGrow": 1,
@@ -1631,22 +1994,39 @@ exports[`renders data table pagination with options select 1`] = `
           >
             <Text
               accessibilityElementsHidden={true}
+              allowFontScaling={false}
               importantForAccessibility="no-hide-descendants"
               pointerEvents="none"
               selectable={false}
               style={
                 Array [
                   Object {
-                    "backgroundColor": "transparent",
-                  },
-                  Object {
                     "color": "rgba(28, 27, 31, 1)",
                     "fontSize": 24,
                   },
+                  Array [
+                    Object {
+                      "lineHeight": 24,
+                      "transform": Array [
+                        Object {
+                          "scaleX": 1,
+                        },
+                      ],
+                    },
+                    Object {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  Object {
+                    "fontFamily": "Material Design Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
                 ]
               }
             >
-              □
+              󰅁
             </Text>
           </View>
         </View>
@@ -1656,6 +2036,11 @@ exports[`renders data table pagination with options select 1`] = `
       collapsable={false}
       style={
         Object {
+          "alignSelf": undefined,
+          "bottom": undefined,
+          "left": undefined,
+          "position": undefined,
+          "right": undefined,
           "shadowColor": "#000",
           "shadowOffset": Object {
             "height": 0,
@@ -1663,6 +2048,7 @@ exports[`renders data table pagination with options select 1`] = `
           },
           "shadowOpacity": 0,
           "shadowRadius": 0,
+          "top": undefined,
         }
       }
     >
@@ -1697,6 +2083,7 @@ exports[`renders data table pagination with options select 1`] = `
           }
         >
           <View
+            accessibilityComponentType="button"
             accessibilityLabel="chevron-right"
             accessibilityRole="button"
             accessibilityState={
@@ -1704,7 +2091,10 @@ exports[`renders data table pagination with options select 1`] = `
                 "disabled": false,
               }
             }
+            accessibilityTraits="button"
             accessible={true}
+            centered={true}
+            collapsable={false}
             focusable={true}
             hitSlop={
               Object {
@@ -1714,7 +2104,9 @@ exports[`renders data table pagination with options select 1`] = `
                 "top": 6,
               }
             }
+            onBlur={[Function]}
             onClick={[Function]}
+            onFocus={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -1726,6 +2118,7 @@ exports[`renders data table pagination with options select 1`] = `
                 Object {
                   "overflow": "hidden",
                 },
+                false,
                 Object {
                   "alignItems": "center",
                   "flexGrow": 1,
@@ -1736,22 +2129,39 @@ exports[`renders data table pagination with options select 1`] = `
           >
             <Text
               accessibilityElementsHidden={true}
+              allowFontScaling={false}
               importantForAccessibility="no-hide-descendants"
               pointerEvents="none"
               selectable={false}
               style={
                 Array [
                   Object {
-                    "backgroundColor": "transparent",
-                  },
-                  Object {
                     "color": "rgba(28, 27, 31, 1)",
                     "fontSize": 24,
                   },
+                  Array [
+                    Object {
+                      "lineHeight": 24,
+                      "transform": Array [
+                        Object {
+                          "scaleX": 1,
+                        },
+                      ],
+                    },
+                    Object {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  Object {
+                    "fontFamily": "Material Design Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
                 ]
               }
             >
-              □
+              󰅂
             </Text>
           </View>
         </View>
@@ -1761,6 +2171,11 @@ exports[`renders data table pagination with options select 1`] = `
       collapsable={false}
       style={
         Object {
+          "alignSelf": undefined,
+          "bottom": undefined,
+          "left": undefined,
+          "position": undefined,
+          "right": undefined,
           "shadowColor": "#000",
           "shadowOffset": Object {
             "height": 0,
@@ -1768,6 +2183,7 @@ exports[`renders data table pagination with options select 1`] = `
           },
           "shadowOpacity": 0,
           "shadowRadius": 0,
+          "top": undefined,
         }
       }
     >
@@ -1802,6 +2218,7 @@ exports[`renders data table pagination with options select 1`] = `
           }
         >
           <View
+            accessibilityComponentType="button"
             accessibilityLabel="page-last"
             accessibilityRole="button"
             accessibilityState={
@@ -1809,7 +2226,10 @@ exports[`renders data table pagination with options select 1`] = `
                 "disabled": false,
               }
             }
+            accessibilityTraits="button"
             accessible={true}
+            centered={true}
+            collapsable={false}
             focusable={true}
             hitSlop={
               Object {
@@ -1819,7 +2239,9 @@ exports[`renders data table pagination with options select 1`] = `
                 "top": 6,
               }
             }
+            onBlur={[Function]}
             onClick={[Function]}
+            onFocus={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -1831,6 +2253,7 @@ exports[`renders data table pagination with options select 1`] = `
                 Object {
                   "overflow": "hidden",
                 },
+                false,
                 Object {
                   "alignItems": "center",
                   "flexGrow": 1,
@@ -1841,22 +2264,39 @@ exports[`renders data table pagination with options select 1`] = `
           >
             <Text
               accessibilityElementsHidden={true}
+              allowFontScaling={false}
               importantForAccessibility="no-hide-descendants"
               pointerEvents="none"
               selectable={false}
               style={
                 Array [
                   Object {
-                    "backgroundColor": "transparent",
-                  },
-                  Object {
                     "color": "rgba(28, 27, 31, 1)",
                     "fontSize": 24,
                   },
+                  Array [
+                    Object {
+                      "lineHeight": 24,
+                      "transform": Array [
+                        Object {
+                          "scaleX": 1,
+                        },
+                      ],
+                    },
+                    Object {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  Object {
+                    "fontFamily": "Material Design Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
                 ]
               }
             >
-              □
+              󰘁
             </Text>
           </View>
         </View>
@@ -1911,22 +2351,39 @@ exports[`renders data table title with press handler 1`] = `
   >
     <Text
       accessibilityElementsHidden={true}
+      allowFontScaling={false}
       importantForAccessibility="no-hide-descendants"
       pointerEvents="none"
       selectable={false}
       style={
         Array [
           Object {
-            "backgroundColor": "transparent",
-          },
-          Object {
             "color": "rgba(28, 27, 31, 1)",
             "fontSize": 16,
           },
+          Array [
+            Object {
+              "lineHeight": 16,
+              "transform": Array [
+                Object {
+                  "scaleX": 1,
+                },
+              ],
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ],
+          Object {
+            "fontFamily": "Material Design Icons",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+          Object {},
         ]
       }
     >
-      □
+      󰁝
     </Text>
   </View>
   <Text
@@ -1934,10 +2391,16 @@ exports[`renders data table title with press handler 1`] = `
     style={
       Array [
         Object {
-          "color": "rgba(28, 27, 31, 1)",
+          "textAlign": "left",
         },
         Object {
-          "textAlign": "left",
+          "color": "rgba(28, 27, 31, 1)",
+          "fontFamily": "System",
+          "fontWeight": "400",
+          "letterSpacing": 0,
+        },
+        Object {
+          "writingDirection": "ltr",
         },
         Array [
           Object {
@@ -2008,22 +2471,39 @@ exports[`renders data table title with sort icon 1`] = `
   >
     <Text
       accessibilityElementsHidden={true}
+      allowFontScaling={false}
       importantForAccessibility="no-hide-descendants"
       pointerEvents="none"
       selectable={false}
       style={
         Array [
           Object {
-            "backgroundColor": "transparent",
-          },
-          Object {
             "color": "rgba(28, 27, 31, 1)",
             "fontSize": 16,
           },
+          Array [
+            Object {
+              "lineHeight": 16,
+              "transform": Array [
+                Object {
+                  "scaleX": 1,
+                },
+              ],
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ],
+          Object {
+            "fontFamily": "Material Design Icons",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+          Object {},
         ]
       }
     >
-      □
+      󰁝
     </Text>
   </View>
   <Text
@@ -2031,10 +2511,16 @@ exports[`renders data table title with sort icon 1`] = `
     style={
       Array [
         Object {
-          "color": "rgba(28, 27, 31, 1)",
+          "textAlign": "left",
         },
         Object {
-          "textAlign": "left",
+          "color": "rgba(28, 27, 31, 1)",
+          "fontFamily": "System",
+          "fontWeight": "400",
+          "letterSpacing": 0,
+        },
+        Object {
+          "writingDirection": "ltr",
         },
         Array [
           Object {
@@ -2068,8 +2554,11 @@ exports[`renders right aligned data table cell 1`] = `
     }
   }
   accessible={true}
-  focusable={false}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
   onClick={[Function]}
+  onFocus={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -2078,6 +2567,7 @@ exports[`renders right aligned data table cell 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Array [
+      false,
       false,
       Array [
         Object {
@@ -2098,10 +2588,16 @@ exports[`renders right aligned data table cell 1`] = `
     style={
       Array [
         Object {
-          "color": "rgba(28, 27, 31, 1)",
+          "textAlign": "left",
         },
         Object {
-          "textAlign": "left",
+          "color": "rgba(28, 27, 31, 1)",
+          "fontFamily": "System",
+          "fontWeight": "400",
+          "letterSpacing": 0,
+        },
+        Object {
+          "writingDirection": "ltr",
         },
         undefined,
       ]
@@ -2148,10 +2644,16 @@ exports[`renders right aligned data table title 1`] = `
     style={
       Array [
         Object {
-          "color": "rgba(28, 27, 31, 1)",
+          "textAlign": "left",
         },
         Object {
-          "textAlign": "left",
+          "color": "rgba(28, 27, 31, 1)",
+          "fontFamily": "System",
+          "fontWeight": "400",
+          "letterSpacing": 0,
+        },
+        Object {
+          "writingDirection": "ltr",
         },
         Array [
           Object {

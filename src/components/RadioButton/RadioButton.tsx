@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { Platform } from 'react-native';
+
+import { withInternalTheme } from '../../core/theming';
+import type { InternalTheme } from '../../types';
 import RadioButtonAndroid from './RadioButtonAndroid';
 import RadioButtonIOS from './RadioButtonIOS';
 
@@ -31,6 +34,7 @@ export type Props = {
   /**
    * @optional
    */
+  theme: InternalTheme;
   /**
    * testID to be used on tests.
    */
@@ -96,9 +100,4 @@ const RadioButton = (props: Props) => {
   return <Button {...props} />;
 };
 
-export default RadioButton;
-
-// @component-docs ignore-next-line
-const RadioButtonWithTheme = RadioButton;
-// @component-docs ignore-next-line
-export { RadioButtonWithTheme as RadioButton };
+export default withInternalTheme(RadioButton);

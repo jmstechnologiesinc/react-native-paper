@@ -1,27 +1,28 @@
 import * as React from 'react';
 import {
   Animated,
+  StyleProp,
+  StyleSheet,
+  TextStyle,
+  GestureResponderEvent,
   View,
   ViewStyle,
-  StyleSheet,
-  StyleProp,
-  TextStyle,
 } from 'react-native';
-import color from 'color';
 
+import color from 'color';
 import { moderateScale } from 'react-native-size-matters';
 
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 import ActivityIndicator from '../ActivityIndicator';
 import Icon, { IconSource } from '../Icon';
 import Surface from '../Surface';
-import Text from '../Typography/Text';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-
+import Text from '../Typography/Text';
 import { ButtonMode, getButtonColors } from './utils';
 
-import theme from '../../styles/themes/v3/LightTheme';
-
-type Props = React.ComponentProps<typeof Surface> & {
+export type Props = React.ComponentProps<typeof Surface> & {
   /**
    * Mode of the button. You can change the mode to adjust the styling to give it desired emphasis.
    * - `text` - flat button without background or outline, used for the lowest priority actions, especially when presenting multiple options.
@@ -87,7 +88,17 @@ type Props = React.ComponentProps<typeof Surface> & {
   /**
    * Function to execute on press.
    */
-  onPress?: () => void;
+  onPress?: (event: GestureResponderEvent) => void;
+  /**
+   * @supported Available in v5.x
+   * Function to execute as soon as the touchable element is pressed and invoked even before onPress.
+   */
+  onPressIn?: () => void;
+  /**
+   * @supported Available in v5.x
+   * Function to execute as soon as the touch is released even before onPress.
+   */
+  onPressOut?: () => void;
   /**
    * Function to execute on long press.
    */
@@ -105,7 +116,7 @@ type Props = React.ComponentProps<typeof Surface> & {
   /**
    * @optional
    */
-
+  theme: InternalTheme;
   /**
    * testID to be used on tests.
    */
@@ -165,9 +176,11 @@ const Button = ({
   accessibilityLabel,
   accessibilityHint,
   onPress,
+  onPressIn,
+  onPressOut,
   onLongPress,
   style,
-
+  theme,
   uppercase = !theme.isV3,
   contentStyle,
   labelStyle,
@@ -197,7 +210,8 @@ const Button = ({
   }, [isElevationEntitled, elevation, initialElevation]);
 
   const handlePressIn = () => {
-    if (isMode('contained')) {
+    onPressIn?.();
+    if (isV3 ? isMode('elevated') : isMode('contained')) {
       const { scale } = animation;
       Animated.timing(elevation, {
         toValue: activeElevation,
@@ -208,7 +222,8 @@ const Button = ({
   };
 
   const handlePressOut = () => {
-    if (isMode('contained')) {
+    onPressOut?.();
+    if (isV3 ? isMode('elevated') : isMode('contained')) {
       const { scale } = animation;
       Animated.timing(elevation, {
         toValue: initialElevation,
@@ -225,6 +240,7 @@ const Button = ({
     getButtonColors({
       customButtonColor,
       customTextColor,
+      theme,
       mode,
       disabled,
       dark,
@@ -240,7 +256,7 @@ const Button = ({
   };
   const touchableStyle = {
     borderRadius: style
-      ? ((StyleSheet.flatten(style) || {}) as ViewStyle).borderRadius ||
+      ? ((StyleSheet.flatten(style) || {}) as ViewStyle).borderRadius ??
         borderRadius
       : borderRadius,
   };
@@ -248,10 +264,13 @@ const Button = ({
   const { color: customLabelColor, fontSize: customLabelSize } =
     StyleSheet.flatten(labelStyle) || {};
 
+  const font = isV3 ? theme.fonts.labelLarge : theme.fonts.medium;
+
   const textStyle = {
     color: textColor,
-    ...(isV3 ? theme.typescale.labelLarge : theme.fonts.medium),
+    ...font,
   };
+
   const iconStyle =
     StyleSheet.flatten(contentStyle)?.flexDirection === 'row-reverse'
       ? [
@@ -281,7 +300,6 @@ const Button = ({
     >
       <TouchableRipple
         borderless
-        delayPressIn={0}
         onPress={onPress}
         onLongPress={onLongPress}
         onPressIn={handlePressIn}
@@ -411,4 +429,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Button;
+export default withInternalTheme(Button);

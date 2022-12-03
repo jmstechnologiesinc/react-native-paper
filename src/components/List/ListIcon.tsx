@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { View, ViewStyle, StyleSheet, StyleProp } from 'react-native';
+
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 import Icon, { IconSource } from '../Icon';
 
-import theme from '../../styles/themes/v3/LightTheme';
-
-type Props = {
+export type Props = {
   /**
    * Icon to show.
    */
@@ -14,6 +16,10 @@ type Props = {
    */
   color?: string;
   style?: StyleProp<ViewStyle>;
+  /**
+   * @optional
+   */
+  theme: InternalTheme;
 };
 
 const ICON_SIZE = theme.spacing.x6;
@@ -43,8 +49,11 @@ const ICON_SIZE = theme.spacing.x6;
  * export default MyComponent;
  * ```
  */
-const ListIcon = ({ icon, color: iconColor, style }: Props) => (
-  <View style={[styles.item, style]} pointerEvents="box-none">
+const ListIcon = ({ icon, color: iconColor, style, theme }: Props) => (
+  <View
+    style={[theme.isV3 ? styles.itemV3 : styles.item, style]}
+    pointerEvents="box-none"
+  >
     <Icon source={icon} size={ICON_SIZE} color={iconColor} />
   </View>
 );
@@ -57,8 +66,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  itemV3: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
 ListIcon.displayName = 'List.Icon';
 
-export default ListIcon;
+export default withInternalTheme(ListIcon);

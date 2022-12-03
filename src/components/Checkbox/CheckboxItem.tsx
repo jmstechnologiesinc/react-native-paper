@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import {
   StyleProp,
   StyleSheet,
@@ -8,15 +7,16 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme, MD3TypescaleKey } from '../../types';
+import TouchableRipple from '../TouchableRipple/TouchableRipple';
+import Text from '../Typography/Text';
 import Checkbox from './Checkbox';
 import CheckboxAndroid from './CheckboxAndroid';
 import CheckboxIOS from './CheckboxIOS';
-import Text from '../Typography/Text';
-import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import type { MD3TypescaleKey } from '../../types';
-import theme from '../../styles/themes/v3/LightTheme';
 
-type Props = {
+export type Props = {
   /**
    * Status of checkbox.
    */
@@ -24,7 +24,6 @@ type Props = {
   /**
    * Whether checkbox is disabled.
    */
-  type: 'checkbox' | 'radio';
   disabled?: boolean;
   /**
    * Label to be displayed on the item.
@@ -74,6 +73,7 @@ type Props = {
   /**
    * @optional
    */
+  theme: InternalTheme;
   /**
    * testID to be used on tests.
    */
@@ -114,6 +114,7 @@ const CheckboxItem = ({
   label,
   onPress,
   labelStyle,
+  theme,
   testID,
   mode,
   position = 'trailing',
@@ -182,10 +183,10 @@ const CheckboxItem = ({
 
 CheckboxItem.displayName = 'Checkbox.Item';
 
-export default CheckboxItem;
+export default withInternalTheme(CheckboxItem);
 
 // @component-docs ignore-next-line
-const CheckboxItemWithTheme = CheckboxItem;
+const CheckboxItemWithTheme = withInternalTheme(CheckboxItem);
 // @component-docs ignore-next-line
 export { CheckboxItemWithTheme as CheckboxItem };
 

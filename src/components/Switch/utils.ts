@@ -1,4 +1,5 @@
 import { Platform } from 'react-native';
+
 import setColor from 'color';
 
 import {
@@ -9,14 +10,21 @@ import {
   white,
   black,
 } from '../../styles/themes/v2/colors';
-import theme from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 
 type BaseProps = {
+  theme: InternalTheme;
   disabled?: boolean;
   value?: boolean;
 };
 
-const getCheckedColor = ({ color }: { color?: string }) => {
+const getCheckedColor = ({
+  theme,
+  color,
+}: {
+  theme: InternalTheme;
+  color?: string;
+}) => {
   if (color) {
     return color;
   }
@@ -29,6 +37,7 @@ const getCheckedColor = ({ color }: { color?: string }) => {
 };
 
 const getThumbTintColor = ({
+  theme,
   disabled,
   value,
   checkedColor,
@@ -57,6 +66,7 @@ const getThumbTintColor = ({
 };
 
 const getOnTintColor = ({
+  theme,
   disabled,
   value,
   checkedColor,
@@ -88,15 +98,16 @@ const getOnTintColor = ({
 };
 
 export const getSwitchColor = ({
+  theme,
   disabled,
   value,
   color,
 }: BaseProps & { color?: string }) => {
-  const checkedColor = getCheckedColor({ color });
+  const checkedColor = getCheckedColor({ theme, color });
 
   return {
-    onTintColor: getOnTintColor({ disabled, value, checkedColor }),
-    thumbTintColor: getThumbTintColor({ disabled, value, checkedColor }),
+    onTintColor: getOnTintColor({ theme, disabled, value, checkedColor }),
+    thumbTintColor: getThumbTintColor({ theme, disabled, value, checkedColor }),
     checkedColor,
   };
 };
