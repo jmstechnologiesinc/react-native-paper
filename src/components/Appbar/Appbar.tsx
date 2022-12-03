@@ -3,8 +3,9 @@ import { Platform, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
 import color from 'color';
 
-import theme from '../../styles/themes/v3/LightTheme';
-import type { MD3Elevation } from '../../types';
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme, MD3Elevation } from '../../types';
 import Surface from '../Surface';
 import AppbarAction from './AppbarAction';
 import AppbarBackAction from './AppbarBackAction';
@@ -55,6 +56,7 @@ export type Props = Partial<React.ComponentPropsWithRef<typeof View>> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -152,7 +154,7 @@ const Appbar = ({
   children,
   dark,
   style,
-
+  theme,
   mode = 'small',
   elevated,
   safeAreaInsets,
@@ -168,9 +170,9 @@ const Appbar = ({
   let isDark: boolean;
 
   const backgroundColor = getAppbarColor(
+    theme,
     elevation,
     customBackground,
-    //  @ts-ignore:next-line
     elevated
   );
 
@@ -325,7 +327,7 @@ const styles = StyleSheet.create({
     width: theme.spacing.x12,
   },
   v3Spacing: {
-    width: 52,
+    width: theme.spacing.x13,
   },
   controlsRow: {
     flex: 1,
@@ -348,6 +350,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Appbar;
+export default withInternalTheme(Appbar);
 
-export { Appbar };
+// @component-docs ignore-next-line
+const AppbarWithTheme = withInternalTheme(Appbar);
+// @component-docs ignore-next-line
+export { AppbarWithTheme as Appbar };

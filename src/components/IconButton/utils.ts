@@ -1,16 +1,23 @@
 import color from 'color';
 
-import theme from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 
 type IconButtonMode = 'outlined' | 'contained' | 'contained-tonal';
 
 type BaseProps = {
+  theme: InternalTheme;
   isMode: (mode: IconButtonMode) => boolean;
   disabled?: boolean;
   selected?: boolean;
 };
 
-const getBorderColor = ({ disabled }: { disabled?: boolean }) => {
+const getBorderColor = ({
+  theme,
+  disabled,
+}: {
+  theme: InternalTheme;
+  disabled?: boolean;
+}) => {
   if (theme.isV3) {
     if (disabled) {
       return theme.colors.surfaceDisabled;
@@ -23,6 +30,7 @@ const getBorderColor = ({ disabled }: { disabled?: boolean }) => {
 };
 
 const getBackgroundColor = ({
+  theme,
   isMode,
   disabled,
   selected,
@@ -117,7 +125,13 @@ const getIconColor = ({
   return theme.colors.text;
 };
 
-const getRippleColor = ({ iconColor }: { iconColor: string }) => {
+const getRippleColor = ({
+  theme,
+  iconColor,
+}: {
+  theme: InternalTheme;
+  iconColor: string;
+}) => {
   if (theme.isV3) {
     return color(iconColor).alpha(0.12).rgb().string();
   }
@@ -125,12 +139,14 @@ const getRippleColor = ({ iconColor }: { iconColor: string }) => {
 };
 
 export const getIconButtonColor = ({
+  theme,
   disabled,
   mode,
   selected,
   customIconColor,
   customContainerColor,
 }: {
+  theme: InternalTheme;
   disabled?: boolean;
   selected?: boolean;
   mode?: IconButtonMode;
@@ -159,7 +175,7 @@ export const getIconButtonColor = ({
       ...baseIconColorProps,
       customContainerColor,
     }),
-    rippleColor: getRippleColor({ iconColor }),
-    borderColor: getBorderColor({ disabled }),
+    rippleColor: getRippleColor({ theme, iconColor }),
+    borderColor: getBorderColor({ theme, disabled }),
   };
 };

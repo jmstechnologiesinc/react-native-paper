@@ -10,7 +10,8 @@ import color from 'color';
 import { moderateScale } from 'react-native-size-matters';
 
 import { black, white } from '../../styles/themes/v2/colors';
-import theme from '../../styles/themes/v3/LightTheme';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 import getContrastingColor from '../../utils/getContrastingColor';
 
 type GetCombinedStylesProps = {
@@ -30,6 +31,7 @@ type Variant = 'primary' | 'secondary' | 'tertiary' | 'surface';
 
 type BaseProps = {
   isVariant: (variant: Variant) => boolean;
+  theme: InternalTheme;
   disabled?: boolean;
 };
 
@@ -164,6 +166,7 @@ export const getCombinedStyles = ({
 };
 
 const getBackgroundColor = ({
+  theme,
   isVariant,
   disabled,
   style,
@@ -207,6 +210,7 @@ const getBackgroundColor = ({
 };
 
 const getForegroundColor = ({
+  theme,
   isVariant,
   disabled,
   backgroundColor,
@@ -257,11 +261,13 @@ const getForegroundColor = ({
 };
 
 export const getFABColors = ({
+  theme,
   variant,
   disabled,
   customColor,
   style,
 }: {
+  theme: InternalTheme;
   variant: string;
   disabled?: boolean;
   customColor?: string;
@@ -291,7 +297,7 @@ export const getFABColors = ({
   };
 };
 
-const getLabelColor = () => {
+const getLabelColor = ({ theme }: { theme: InternalTheme }) => {
   if (theme.isV3) {
     return theme.colors.onSurface;
   }
@@ -304,8 +310,10 @@ const getLabelColor = () => {
 };
 
 const getBackdropColor = ({
+  theme,
   customBackdropColor,
 }: {
+  theme: InternalTheme;
   customBackdropColor?: string;
 }) => {
   if (customBackdropColor) {
@@ -317,7 +325,7 @@ const getBackdropColor = ({
   return theme.colors?.backdrop;
 };
 
-const getStackedFABBackgroundColor = () => {
+const getStackedFABBackgroundColor = ({ theme }: { theme: InternalTheme }) => {
   if (theme.isV3) {
     return theme.colors.elevation.level3;
   }
@@ -325,14 +333,16 @@ const getStackedFABBackgroundColor = () => {
 };
 
 export const getFABGroupColors = ({
+  theme,
   customBackdropColor,
 }: {
+  theme: InternalTheme;
   customBackdropColor?: string;
 }) => {
   return {
-    labelColor: getLabelColor(),
-    backdropColor: getBackdropColor({ customBackdropColor }),
-    stackedFABBackgroundColor: getStackedFABBackgroundColor(),
+    labelColor: getLabelColor({ theme }),
+    backdropColor: getBackdropColor({ theme, customBackdropColor }),
+    stackedFABBackgroundColor: getStackedFABBackgroundColor({ theme }),
   };
 };
 
@@ -367,10 +377,12 @@ const getCustomFabSize = (customSize: number, roundness: number) => ({
 
 export const getFabStyle = ({
   size,
+  theme,
   customSize,
 }: {
   customSize?: number;
   size: 'small' | 'medium' | 'large';
+  theme: InternalTheme;
 }) => {
   const { isV3, roundness } = theme;
 
@@ -411,8 +423,10 @@ const getExtendedFabDimensions = (customSize: number) => ({
 
 export const getExtendedFabStyle = ({
   customSize,
+  theme,
 }: {
   customSize?: number;
+  theme: InternalTheme;
 }) => {
   if (customSize) return getExtendedFabDimensions(customSize);
 

@@ -7,7 +7,6 @@ import { black, pinkA400, white } from './colors';
 export const MD2LightTheme: MD2Theme = {
   dark: false,
   roundness: 4,
-  margin: 16,
   version: 2,
   isV3: false,
   colors: {

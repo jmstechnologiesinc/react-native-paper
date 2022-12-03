@@ -3,7 +3,8 @@ import { Animated, StyleSheet } from 'react-native';
 
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../../../styles/themes/v3/LightTheme';
+import { useInternalTheme } from '../../../core/theming';
+import { MD3LightTheme as theme } from '../../../styles/themes/v3/LightTheme';
 import AnimatedText from '../../Typography/AnimatedText';
 import type { LabelBackgroundProps } from '../types';
 
@@ -27,7 +28,7 @@ const LabelBackground = ({
     outputRange: [hasFocus ? 1 : 0, 0],
   });
 
-  const { isV3 } = theme;
+  const { isV3 } = useInternalTheme();
 
   const labelTranslationX = {
     translateX: parentState.labeled.interpolate({

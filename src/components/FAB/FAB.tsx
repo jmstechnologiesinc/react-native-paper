@@ -10,8 +10,9 @@ import {
 
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../../styles/themes/v3/LightTheme';
-import type { $RemoveChildren } from '../../types';
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { $RemoveChildren, InternalTheme } from '../../types';
 import ActivityIndicator from '../ActivityIndicator';
 import CrossFadeIcon from '../CrossFadeIcon';
 import Icon, { IconSource } from '../Icon';
@@ -113,6 +114,7 @@ export type Props = $RemoveChildren<typeof Surface> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
   testID?: string;
   ref?: React.RefObject<View>;
 };
@@ -164,6 +166,7 @@ const FAB = React.forwardRef<View, Props>(
       disabled,
       onPress,
       onLongPress,
+      theme,
       style,
       visible = true,
       uppercase = !theme.isV3,
@@ -202,6 +205,7 @@ const FAB = React.forwardRef<View, Props>(
     const IconComponent = animated ? CrossFadeIcon : Icon;
 
     const { backgroundColor, foregroundColor, rippleColor } = getFABColors({
+      theme,
       variant,
       disabled,
       customColor,
@@ -216,8 +220,8 @@ const FAB = React.forwardRef<View, Props>(
       : moderateScale(18);
     const font = isV3 ? theme.fonts.labelLarge : theme.fonts.medium;
 
-    const fabStyle = getFabStyle({ customSize, size });
-    const extendedStyle = getExtendedFabStyle({ customSize });
+    const fabStyle = getFabStyle({ customSize, size, theme });
+    const extendedStyle = getExtendedFabStyle({ customSize, theme });
     const textStyle = {
       color: foregroundColor,
       ...font,
@@ -329,6 +333,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FAB;
+export default withInternalTheme(FAB);
 
-export { FAB };
+// @component-docs ignore-next-line
+const FABWithTheme = withInternalTheme(FAB);
+// @component-docs ignore-next-line
+export { FABWithTheme as FAB };

@@ -3,7 +3,8 @@ import { StyleSheet, View } from 'react-native';
 
 import { moderateScale } from 'react-native-size-matters';
 
-import type { $RemoveChildren } from '../../types';
+import { withInternalTheme } from '../../core/theming';
+import type { $RemoveChildren, InternalTheme } from '../../types';
 import { getSelectionControlIOSColor } from '../Checkbox/utils';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
@@ -34,6 +35,7 @@ export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
   /**
    * testID to be used on tests.
    */
@@ -59,6 +61,7 @@ export type Props = $RemoveChildren<typeof TouchableRipple> & {
 const RadioButtonIOS = ({
   disabled,
   onPress,
+  theme,
   status,
   value,
   testID,
@@ -127,9 +130,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RadioButtonIOS;
+export default withInternalTheme(RadioButtonIOS);
 
 // @component-docs ignore-next-line
-const RadioButtonIOSWithTheme = RadioButtonIOS;
+const RadioButtonIOSWithTheme = withInternalTheme(RadioButtonIOS);
 // @component-docs ignore-next-line
 export { RadioButtonIOSWithTheme as RadioButtonIOS };

@@ -3,7 +3,7 @@ import { TextProps, StyleSheet } from 'react-native';
 
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../../../styles/themes/v3/LightTheme';
+import { MD3LightTheme as theme } from '../../../styles/themes/v3/LightTheme';
 import StyledText from './StyledText';
 
 export type Props = TextProps & {

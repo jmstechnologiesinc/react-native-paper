@@ -7,8 +7,9 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import theme from '../../styles/themes/v3/LightTheme';
-import type { MD3TypescaleKey } from '../../types';
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme, MD3TypescaleKey } from '../../types';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
 import RadioButton from './RadioButton';
@@ -78,6 +79,7 @@ export type Props = {
   /**
    * @optional
    */
+  theme: InternalTheme;
   /**
    * testID to be used on tests.
    */
@@ -132,6 +134,7 @@ const RadioButtonItem = ({
   color,
   uncheckedColor,
   status,
+  theme,
   accessibilityLabel = label,
   testID,
   mode,
@@ -212,10 +215,10 @@ const RadioButtonItem = ({
 
 RadioButtonItem.displayName = 'RadioButton.Item';
 
-export default RadioButtonItem;
+export default withInternalTheme(RadioButtonItem);
 
 // @component-docs ignore-next-line
-const RadioButtonItemWithTheme = RadioButtonItem;
+const RadioButtonItemWithTheme = withInternalTheme(RadioButtonItem);
 // @component-docs ignore-next-line
 export { RadioButtonItemWithTheme as RadioButtonItem };
 

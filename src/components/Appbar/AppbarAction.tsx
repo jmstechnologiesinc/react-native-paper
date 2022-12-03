@@ -3,8 +3,8 @@ import type { StyleProp, ViewStyle, View } from 'react-native';
 
 import color from 'color';
 
+import { useInternalTheme } from '../../core/theming';
 import { black } from '../../styles/themes/v2/colors';
-import theme from '../../styles/themes/v3/LightTheme';
 import type { IconSource } from '../Icon';
 import IconButton from '../IconButton/IconButton';
 
@@ -82,6 +82,8 @@ const AppbarAction = React.forwardRef<View, Props>(
     }: Props,
     ref
   ) => {
+    const theme = useInternalTheme();
+
     const actionIconColor = iconColor
       ? iconColor
       : theme.isV3

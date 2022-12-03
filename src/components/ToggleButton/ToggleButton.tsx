@@ -10,8 +10,9 @@ import {
 import color from 'color';
 import { moderateScale } from 'react-native-size-matters';
 
+import { withInternalTheme } from '../../core/theming';
 import { black, white } from '../../styles/themes/v2/colors';
-import theme from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 import type { IconSource } from '../Icon';
 import IconButton from '../IconButton/IconButton';
 import { ToggleButtonGroupContext } from './ToggleButtonGroup';
@@ -54,6 +55,8 @@ export type Props = {
   /**
    * @optional
    */
+  theme: InternalTheme;
+  ref?: React.RefObject<View>;
 };
 
 /**
@@ -95,6 +98,7 @@ const ToggleButton = React.forwardRef<View, Props>(
     {
       icon,
       size,
+      theme,
       accessibilityLabel,
       disabled,
       style,
@@ -115,7 +119,7 @@ const ToggleButton = React.forwardRef<View, Props>(
           const checked: boolean | null =
             (context && context.value === value) || status === 'checked';
 
-          const backgroundColor = getToggleButtonColor({ checked });
+          const backgroundColor = getToggleButtonColor({ theme, checked });
           const borderColor = theme.isV3
             ? theme.colors.outline
             : color(theme.dark ? white : black)
@@ -167,5 +171,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ToggleButton;
-export { ToggleButton };
+export default withInternalTheme(ToggleButton);
+
+// @component-docs ignore-next-line
+const ToggleButtonWithTheme = withInternalTheme(ToggleButton);
+// @component-docs ignore-next-line
+export { ToggleButtonWithTheme as ToggleButton };

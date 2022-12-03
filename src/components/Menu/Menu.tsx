@@ -24,7 +24,7 @@ import {
 import color from 'color';
 
 import { APPROX_STATUSBAR_HEIGHT } from '../../constants';
-import theme from '../../styles/themes/v3/LightTheme';
+import { withInternalTheme } from '../../core/theming';
 import type { $Omit, InternalTheme } from '../../types';
 import { addEventListener } from '../../utils/addEventListener';
 import Portal from '../Portal/Portal';
@@ -337,7 +337,7 @@ class Menu extends React.Component<Props, State> {
       () => {
         this.attachListeners();
 
-        const { animation } = theme;
+        const { animation } = this.props.theme;
         Animated.parallel([
           Animated.timing(this.state.scaleAnimation, {
             toValue: { x: menuLayout.width, y: menuLayout.height },
@@ -363,7 +363,7 @@ class Menu extends React.Component<Props, State> {
   private hide = () => {
     this.removeListeners();
 
-    const { animation } = theme;
+    const { animation } = this.props.theme;
     Animated.timing(this.state.opacityAnimation, {
       toValue: 0,
       duration: ANIMATION_DURATION * animation.scale,
@@ -394,6 +394,7 @@ class Menu extends React.Component<Props, State> {
       contentStyle,
       style,
       children,
+      theme,
       statusBarHeight,
       onDismiss,
       overlayAccessibilityLabel,
@@ -656,4 +657,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Menu;
+export default withInternalTheme(Menu);

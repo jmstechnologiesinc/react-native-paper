@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
+import { withInternalTheme } from '../../core/theming';
 import { white } from '../../styles/themes/v2/colors';
-import theme from '../../styles/themes/v3/LightTheme';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 import getContrastingColor from '../../utils/getContrastingColor';
 import Icon, { IconSource } from '../Icon';
 
@@ -25,6 +27,7 @@ export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 /**
@@ -46,7 +49,7 @@ export type Props = React.ComponentPropsWithRef<typeof View> & {
  * );
  * ```
  */
-const Avatar = ({ icon, size = defaultSize, style, ...rest }: Props) => {
+const Avatar = ({ icon, size = defaultSize, style, theme, ...rest }: Props) => {
   const { backgroundColor = theme.colors?.primary, ...restStyle } =
     StyleSheet.flatten(style) || {};
   const textColor =
@@ -81,4 +84,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Avatar;
+export default withInternalTheme(Avatar);

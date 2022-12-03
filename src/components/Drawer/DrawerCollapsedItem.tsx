@@ -13,7 +13,9 @@ import {
 
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../../styles/themes/v3/LightTheme';
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 import Badge from '../Badge';
 import Icon, { IconSource } from '../Icon';
 import Text from '../Typography/Text';
@@ -43,6 +45,7 @@ export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
   /**
    * Badge to show on the icon, can be `true` to show a dot, `string` or `number` to show text.
    */
@@ -83,6 +86,7 @@ const DrawerCollapsedItem = ({
   icon,
   label,
   active,
+  theme,
   style,
   onPress,
   accessibilityLabel,
@@ -250,4 +254,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DrawerCollapsedItem;
+export default withInternalTheme(DrawerCollapsedItem);

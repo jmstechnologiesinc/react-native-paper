@@ -3,14 +3,17 @@ import { StyleProp, StyleSheet, TextStyle } from 'react-native';
 
 import color from 'color';
 import { moderateScale } from 'react-native-size-matters';
+import type { InternalTheme } from 'src/types';
 
-import theme from '../../styles/themes/v3/LightTheme';
+import { useInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import Text from '../Typography/Text';
 
 export type Props = React.ComponentProps<typeof Text> & {
   /**
    * @optional
    */
+  theme?: InternalTheme;
   /**
    * Style that is passed to Text element.
    */
@@ -30,7 +33,9 @@ export type Props = React.ComponentProps<typeof Text> & {
  * export default MyComponent;
  * ```
  */
-const ListSubheader = ({ style, ...rest }: Props) => {
+const ListSubheader = ({ style, theme: overrideTheme, ...rest }: Props) => {
+  const theme = useInternalTheme(overrideTheme);
+
   const textColor = theme.isV3
     ? theme.colors.onSurfaceVariant
     : color(theme.colors.text).alpha(0.54).rgb().string();

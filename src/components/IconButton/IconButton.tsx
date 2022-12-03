@@ -9,8 +9,9 @@ import {
 
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../../styles/themes/v3/LightTheme';
-import type { $RemoveChildren } from '../../types';
+import { useInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { $RemoveChildren, ThemeProp } from '../../types';
 import CrossFadeIcon from '../CrossFadeIcon';
 import Icon, { IconSource } from '../Icon';
 import Surface from '../Surface';
@@ -71,6 +72,7 @@ export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * @optional
    */
+  theme?: ThemeProp;
 };
 
 /**
@@ -132,12 +134,14 @@ const IconButton = React.forwardRef<View, Props>(
     }: Props,
     ref
   ) => {
+    const theme = useInternalTheme();
     const { isV3 } = theme;
 
     const IconComponent = animated ? CrossFadeIcon : Icon;
 
     const { iconColor, rippleColor, backgroundColor, borderColor } =
       getIconButtonColor({
+        theme,
         disabled,
         selected,
         mode,

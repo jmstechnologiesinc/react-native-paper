@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Animated, StyleSheet, View } from 'react-native';
 
-import theme from '../styles/themes/v3/LightTheme';
+import { withInternalTheme } from '../core/theming';
+import type { InternalTheme } from '../types';
 import Icon, { IconSource, isEqualIcon, isValidIcon } from './Icon';
 
 type Props = {
@@ -20,9 +21,10 @@ type Props = {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
-const CrossFadeIcon = ({ color, size, source }: Props) => {
+const CrossFadeIcon = ({ color, size, source, theme }: Props) => {
   const [currentIcon, setCurrentIcon] = React.useState<IconSource>(
     () => source
   );
@@ -108,7 +110,7 @@ const CrossFadeIcon = ({ color, size, source }: Props) => {
   );
 };
 
-export default CrossFadeIcon;
+export default withInternalTheme(CrossFadeIcon);
 
 const styles = StyleSheet.create({
   content: {

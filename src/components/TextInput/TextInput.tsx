@@ -8,7 +8,8 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import theme from '../../styles/themes/v3/LightTheme';
+import { withInternalTheme } from '../../core/theming';
+import type { InternalTheme } from '../../types';
 import TextInputAffix, {
   Props as TextInputAffixProps,
 } from './Adornment/TextInputAffix';
@@ -137,6 +138,7 @@ export type Props = React.ComponentPropsWithRef<typeof NativeTextInput> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
   /**
    * testID to be used on tests.
    */
@@ -276,7 +278,7 @@ const TextInput = React.forwardRef<TextInputHandles, Props>(
 
     const root = React.useRef<NativeTextInput | undefined | null>();
 
-    const { scale } = theme.animation;
+    const { scale } = rest.theme.animation;
 
     React.useImperativeHandle(ref, () => ({
       focus: () => root.current?.focus(),
@@ -505,4 +507,4 @@ TextInput.Icon = TextInputIcon;
 // @ts-ignore Types of property 'theme' are incompatible.
 TextInput.Affix = TextInputAffix;
 
-export default TextInput;
+export default withInternalTheme(TextInput);

@@ -11,7 +11,9 @@ import {
 
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../../styles/themes/v3/LightTheme';
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
@@ -56,6 +58,7 @@ export type Props = {
   /**
    * @optional
    */
+  theme: InternalTheme;
   /**
    * Style that is passed to the wrapping TouchableRipple element.
    */
@@ -141,6 +144,7 @@ const ListAccordion = ({
   title,
   description,
   children,
+  theme,
   titleStyle,
   descriptionStyle,
   titleNumberOfLines = 1,
@@ -312,4 +316,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ListAccordion;
+export default withInternalTheme(ListAccordion);

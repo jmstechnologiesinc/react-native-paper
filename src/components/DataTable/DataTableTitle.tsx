@@ -12,7 +12,8 @@ import {
 
 import color from 'color';
 
-import theme from '../../styles/themes/v3/LightTheme';
+import { withInternalTheme } from '../../core/theming';
+import type { InternalTheme } from '../../types';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Text from '../Typography/Text';
 
@@ -47,6 +48,7 @@ export type Props = React.ComponentPropsWithRef<
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 /**
@@ -87,6 +89,7 @@ const DataTableTitle = ({
   children,
   onPress,
   sortDirection,
+  theme,
   textStyle,
   style,
   numberOfLines = 1,
@@ -197,7 +200,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DataTableTitle;
+export default withInternalTheme(DataTableTitle);
 
 // @component-docs ignore-next-line
 export { DataTableTitle };

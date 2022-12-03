@@ -9,9 +9,9 @@ import {
 
 import color from 'color';
 
+import { withInternalTheme } from '../../core/theming';
 import { black, white } from '../../styles/themes/v2/colors';
-import theme from '../../styles/themes/v3/LightTheme';
-import type { $RemoveChildren } from '../../types';
+import type { $RemoveChildren, InternalTheme } from '../../types';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 
 export type Props = $RemoveChildren<typeof TouchableRipple> & {
@@ -27,6 +27,7 @@ export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
   /**
    * `pointerEvents` passed to the `View` container, which is wrapping children within `TouchableRipple`.
    */
@@ -64,6 +65,7 @@ export type Props = $RemoveChildren<typeof TouchableRipple> & {
 const DataTableRow = ({
   onPress,
   style,
+  theme,
   children,
   pointerEvents,
   ...rest
@@ -103,7 +105,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DataTableRow;
+export default withInternalTheme(DataTableRow);
 
 // @component-docs ignore-next-line
 export { DataTableRow };

@@ -1,7 +1,7 @@
 import color from 'color';
 
 import { black, white } from '../../styles/themes/v2/colors';
-import theme from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 import type { IconSource } from '../Icon';
 
 export const MIN_WIDTH = 112;
@@ -15,10 +15,11 @@ type ContentProps = {
 };
 
 type ColorProps = {
+  theme: InternalTheme;
   disabled?: boolean;
 };
 
-const getDisabledColor = () => {
+const getDisabledColor = (theme: InternalTheme) => {
   if (theme.isV3) {
     return theme.colors.onSurfaceDisabled;
   }
@@ -29,9 +30,9 @@ const getDisabledColor = () => {
     .string();
 };
 
-const getTitleColor = ({ disabled }: ColorProps) => {
+const getTitleColor = ({ theme, disabled }: ColorProps) => {
   if (disabled) {
-    return getDisabledColor();
+    return getDisabledColor(theme);
   }
 
   if (theme.isV3) {
@@ -41,9 +42,9 @@ const getTitleColor = ({ disabled }: ColorProps) => {
   return color(theme.colors.text).alpha(0.87).rgb().string();
 };
 
-const getIconColor = ({ disabled }: ColorProps) => {
+const getIconColor = ({ theme, disabled }: ColorProps) => {
   if (disabled) {
-    return getDisabledColor();
+    return getDisabledColor(theme);
   }
 
   if (theme.isV3) {
@@ -53,10 +54,10 @@ const getIconColor = ({ disabled }: ColorProps) => {
   return color(theme.colors.text).alpha(0.54).rgb().string();
 };
 
-export const getMenuItemColor = ({ disabled }: ColorProps) => {
+export const getMenuItemColor = ({ theme, disabled }: ColorProps) => {
   return {
-    titleColor: getTitleColor({ disabled }),
-    iconColor: getIconColor({ disabled }),
+    titleColor: getTitleColor({ theme, disabled }),
+    iconColor: getIconColor({ theme, disabled }),
     underlayColor: theme.isV3
       ? color(theme.colors.primary).alpha(0.12).rgb().string()
       : undefined,

@@ -12,7 +12,9 @@ import {
 import color from 'color';
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../../styles/themes/v3/LightTheme';
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 import ActivityIndicator from '../ActivityIndicator';
 import Icon, { IconSource } from '../Icon';
 import Surface from '../Surface';
@@ -114,6 +116,7 @@ export type Props = React.ComponentProps<typeof Surface> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
   /**
    * testID to be used on tests.
    */
@@ -177,7 +180,7 @@ const Button = ({
   onPressOut,
   onLongPress,
   style,
-
+  theme,
   uppercase = !theme.isV3,
   contentStyle,
   labelStyle,
@@ -237,6 +240,7 @@ const Button = ({
     getButtonColors({
       customButtonColor,
       customTextColor,
+      theme,
       mode,
       disabled,
       dark,
@@ -425,4 +429,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Button;
+export default withInternalTheme(Button);

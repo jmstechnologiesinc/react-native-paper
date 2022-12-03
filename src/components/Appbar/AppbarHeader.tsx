@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 
 import { APPROX_STATUSBAR_HEIGHT } from '../../constants';
+import { withInternalTheme } from '../../core/theming';
 import shadow from '../../styles/shadow';
-import theme from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 import { Appbar } from './Appbar';
 import {
   DEFAULT_APPBAR_HEIGHT,
@@ -52,6 +53,7 @@ export type Props = React.ComponentProps<typeof Appbar> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -110,10 +112,9 @@ const AppbarHeader = ({
   dark,
   mode = Platform.OS === 'ios' ? 'center-aligned' : 'small',
   elevated = false,
-  transparentBackgroundColorByPass,
   ...rest
 }: Props) => {
-  const { isV3 } = theme;
+  const { isV3 } = rest.theme;
 
   const {
     height = isV3 ? modeAppbarHeight[mode] : DEFAULT_APPBAR_HEIGHT,
@@ -123,18 +124,12 @@ const AppbarHeader = ({
     ...restStyle
   }: ViewStyle = StyleSheet.flatten(style) || {};
 
-  let backgroundColor;
-  if (transparentBackgroundColorByPass === true) {
-    backgroundColor = theme.colors.surface;
-  } else {
-    backgroundColor = getAppbarColor(
-      theme,
-      elevation,
-      customBackground,
-      //  @ts-ignore:next-line
-      elevated
-    );
-  }
+  const backgroundColor = getAppbarColor(
+    rest.theme,
+    elevation,
+    customBackground,
+    elevated
+  );
 
   // Let the user override the behaviour
   const Wrapper = typeof statusBarHeight === 'number' ? View : SafeAreaView;
@@ -154,7 +149,6 @@ const AppbarHeader = ({
     >
       <Appbar
         style={[{ height, backgroundColor }, styles.appbar, restStyle]}
-        transparentBackgroundColorByPass={transparentBackgroundColorByPass}
         dark={dark}
         {...(isV3 && {
           mode,
@@ -173,6 +167,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AppbarHeader;
+export default withInternalTheme(AppbarHeader);
 
-export { AppbarHeader };
+// @component-docs ignore-next-line
+const AppbarHeaderWithTheme = withInternalTheme(AppbarHeader);
+// @component-docs ignore-next-line
+export { AppbarHeaderWithTheme as AppbarHeader };

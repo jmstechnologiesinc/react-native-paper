@@ -13,7 +13,7 @@ import {
 
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../../styles/themes/v3/LightTheme';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import { AdornmentType, AdornmentSide } from './Adornment/enums';
 import TextInputAdornment, {
   getAdornmentConfig,
@@ -58,7 +58,7 @@ const TextInputOutlined = ({
   textColor,
   dense,
   style,
-
+  theme,
   render = (props: RenderProps) => <NativeTextInput {...props} />,
   multiline = false,
   parentState,
@@ -108,6 +108,7 @@ const TextInputOutlined = ({
     textColor,
     disabled,
     error,
+    theme,
   });
 
   const labelScale = MINIMIZED_LABEL_FONT_SIZE / fontSize;

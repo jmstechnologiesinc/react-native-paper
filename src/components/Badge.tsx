@@ -9,8 +9,10 @@ import {
 
 import { moderateScale } from 'react-native-size-matters';
 
+import { withInternalTheme } from '../core/theming';
 import { black, white } from '../styles/themes/v2/colors';
-import theme from '../styles/themes/v3/LightTheme';
+import { MD3LightTheme as theme } from '../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../types';
 import getContrastingColor from '../utils/getContrastingColor';
 
 const defaultSize = theme.spacing.x5;
@@ -33,6 +35,7 @@ export type Props = React.ComponentProps<typeof Animated.Text> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 /**
@@ -66,7 +69,7 @@ const Badge = ({
   children,
   size = defaultSize,
   style,
-
+  theme,
   visible = true,
   ...rest
 }: Props) => {
@@ -136,7 +139,7 @@ const Badge = ({
   );
 };
 
-export default Badge;
+export default withInternalTheme(Badge);
 
 const styles = StyleSheet.create({
   container: {

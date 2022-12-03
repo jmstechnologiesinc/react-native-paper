@@ -9,9 +9,10 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import theme from '../../styles/themes/v3/LightTheme';
+import { withInternalTheme } from '../../core/theming';
+import type { InternalTheme } from '../../types';
 
-const defaultSize = theme.spacing.x16;
+const defaultSize = 64;
 
 export type AvatarImageSource =
   | ImageSourcePropType
@@ -56,6 +57,7 @@ export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 /**
@@ -88,6 +90,7 @@ const AvatarImage = ({
   onLoadEnd,
   onLoadStart,
   onProgress,
+  theme,
   ...rest
 }: Props) => {
   const { colors } = theme;
@@ -127,4 +130,4 @@ const AvatarImage = ({
 
 AvatarImage.displayName = 'Avatar.Image';
 
-export default AvatarImage;
+export default withInternalTheme(AvatarImage);

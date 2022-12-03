@@ -20,8 +20,9 @@ import {
 import color from 'color';
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../../styles/themes/v3/LightTheme';
-import type { $RemoveChildren } from '../../types';
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { $RemoveChildren, InternalTheme } from '../../types';
 import type { IconSource } from '../Icon';
 import Icon from '../Icon';
 import Surface from '../Surface';
@@ -96,6 +97,7 @@ export type Props = $RemoveChildren<typeof Surface> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
   testID?: string;
 };
 
@@ -191,6 +193,7 @@ const AnimatedFAB = ({
   disabled,
   onPress,
   onLongPress,
+  theme,
   style,
   visible = true,
   uppercase = !theme.isV3,
@@ -236,6 +239,7 @@ const AnimatedFAB = ({
   }, [visible, scale, visibility]);
 
   const { backgroundColor, foregroundColor } = getFABColors({
+    theme,
     variant,
     disabled,
     customColor,
@@ -430,7 +434,6 @@ const AnimatedFAB = ({
       </Animated.View>
 
       <View pointerEvents="none">
-        {/* @ts-ignore:next-line */}
         <AnimatedText
           variant="labelLarge"
           numberOfLines={1}
@@ -520,4 +523,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AnimatedFAB;
+export default withInternalTheme(AnimatedFAB);

@@ -12,7 +12,8 @@ import {
 import color from 'color';
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../../styles/themes/v3/LightTheme';
+import { useInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { IconSource } from '../Icon';
 import Icon from '../Icon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
@@ -90,6 +91,8 @@ const SegmentedButtonItem = ({
   segment,
   density = 'regular',
 }: Props) => {
+  const theme = useInternalTheme();
+
   const checkScale = React.useRef(new Animated.Value(0)).current;
 
   React.useEffect(() => {
@@ -113,11 +116,13 @@ const SegmentedButtonItem = ({
   const { borderColor, textColor, borderWidth, backgroundColor } =
     getSegmentedButtonColors({
       checked,
+      theme,
       disabled,
     });
 
   const borderRadius = (isV3 ? moderateScale(5) : moderateScale(1)) * roundness;
   const segmentBorderRadius = getSegmentedButtonBorderRadius({
+    theme,
     segment,
   });
   const rippleColor = color(textColor).alpha(0.12).rgb().string();
@@ -160,8 +165,7 @@ const SegmentedButtonItem = ({
           textTransform: 'uppercase',
           fontWeight: '500',
         }
-      : //  @ts-ignore:next-line
-        theme.fonts.labelLarge),
+      : theme.fonts.labelLarge),
     color: textColor,
   };
 
@@ -254,3 +258,6 @@ const styles = StyleSheet.create({
 });
 
 export default SegmentedButtonItem;
+
+const SegmentedButtonWithTheme = SegmentedButtonItem;
+export { SegmentedButtonWithTheme as SegmentedButton };

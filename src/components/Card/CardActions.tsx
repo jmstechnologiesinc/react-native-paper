@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
-import theme from '../../styles/themes/v3/LightTheme';
+import { useInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 
 export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
@@ -38,7 +39,7 @@ export type Props = React.ComponentPropsWithRef<typeof View> & {
  * ```
  */
 const CardActions = (props: Props) => {
-  const { isV3 } = theme;
+  const { isV3 } = useInternalTheme();
   const justifyContent = isV3 ? 'flex-end' : 'flex-start';
 
   return (

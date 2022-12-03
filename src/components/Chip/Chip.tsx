@@ -13,9 +13,10 @@ import {
 
 import { moderateScale } from 'react-native-size-matters';
 
+import { withInternalTheme } from '../../core/theming';
 import { white } from '../../styles/themes/v2/colors';
-import theme from '../../styles/themes/v3/LightTheme';
-import type { EllipsizeProp } from '../../types';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { EllipsizeProp, InternalTheme } from '../../types';
 import type { IconSource } from '../Icon';
 import Icon from '../Icon';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
@@ -103,6 +104,7 @@ export type Props = React.ComponentProps<typeof Surface> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
   /**
    * Pass down testID from chip props to touchable for Detox tests.
    */
@@ -154,6 +156,7 @@ const Chip = ({
   closeIcon,
   textStyle,
   style,
+  theme,
   testID,
   selectedColor,
   showSelectedOverlay = false,
@@ -206,6 +209,7 @@ const Chip = ({
     backgroundColor,
   } = getChipColors({
     isOutlined,
+    theme,
     selectedColor,
     showSelectedOverlay,
     customBackgroundColor,
@@ -415,7 +419,7 @@ const styles = StyleSheet.create({
     marginRight: theme.spacing.x2,
     padding: 0,
   },
-  text: {
+  labelText: {
     minHeight: theme.spacing.x6,
     lineHeight: theme.spacing.x6,
     textAlignVertical: 'center',
@@ -458,4 +462,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Chip;
+export default withInternalTheme(Chip);

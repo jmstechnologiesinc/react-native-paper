@@ -13,7 +13,8 @@ import {
 
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../../styles/themes/v3/LightTheme';
+import { useInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import { AdornmentSide, AdornmentType, InputMode } from './Adornment/enums';
 import TextInputAdornment, {
   TextInputAdornmentProps,
@@ -59,6 +60,7 @@ const TextInputFlat = ({
   textColor,
   dense,
   style,
+  theme,
   render = (props: RenderProps) => <NativeTextInput {...props} />,
   multiline = false,
   parentState,
@@ -147,6 +149,7 @@ const TextInputFlat = ({
     textColor,
     disabled,
     error,
+    theme,
   });
 
   const containerStyle = {
@@ -413,7 +416,7 @@ const Underline = ({
   hasActiveOutline,
   style,
 }: UnderlineProps) => {
-  const { isV3 } = theme;
+  const { isV3 } = useInternalTheme();
 
   let backgroundColor = parentState.focused
     ? activeColor

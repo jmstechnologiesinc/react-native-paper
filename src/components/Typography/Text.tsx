@@ -7,8 +7,8 @@ import {
   TextStyle,
 } from 'react-native';
 
-import theme from '../../styles/themes/v3/LightTheme';
-import { Font, MD3TypescaleKey } from '../../types';
+import { useInternalTheme } from '../../core/theming';
+import { Font, MD3TypescaleKey, ThemeProp } from '../../types';
 
 export type Props = React.ComponentProps<typeof NativeText> & {
   /**
@@ -29,6 +29,7 @@ export type Props = React.ComponentProps<typeof NativeText> & {
    */
   variant?: keyof typeof MD3TypescaleKey;
   children: React.ReactNode;
+  theme?: ThemeProp;
   style?: StyleProp<TextStyle>;
 };
 
@@ -77,11 +78,12 @@ export type Props = React.ComponentProps<typeof NativeText> & {
  */
 
 const Text: React.ForwardRefRenderFunction<{}, Props> = (
-  { style, variant, ...rest }: Props,
+  { style, variant, theme: initialTheme, ...rest }: Props,
   ref
 ) => {
   const root = React.useRef<NativeText | null>(null);
   // FIXME: destructure it in TS 4.6+
+  const theme = useInternalTheme(initialTheme);
   const writingDirection = I18nManager.getConstants().isRTL ? 'rtl' : 'ltr';
 
   React.useImperativeHandle(ref, () => ({

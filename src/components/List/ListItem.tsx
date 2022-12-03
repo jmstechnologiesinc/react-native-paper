@@ -13,8 +13,13 @@ import {
 import color from 'color';
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../../styles/themes/v3/LightTheme';
-import type { $RemoveChildren, EllipsizeProp } from '../../types';
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type {
+  $RemoveChildren,
+  EllipsizeProp,
+  InternalTheme,
+} from '../../types';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
 import { getLeftStyles, getRightStyles } from './utils';
@@ -68,6 +73,7 @@ export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
   /**
    * Style that is passed to the wrapping TouchableRipple element.
    */
@@ -137,6 +143,7 @@ const ListItem = ({
   title,
   description,
   onPress,
+  theme,
   style,
   titleStyle,
   titleNumberOfLines = 1,
@@ -283,4 +290,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ListItem;
+export default withInternalTheme(ListItem);

@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Platform, StyleProp, StyleSheet, ViewStyle } from 'react-native';
 
+import { withInternalTheme } from '../../core/theming';
 import overlay from '../../styles/overlay';
+import type { InternalTheme } from '../../types';
 import Modal from '../Modal';
 import DialogActions from './DialogActions';
 import DialogContent from './DialogContent';
@@ -30,6 +32,7 @@ export type Props = {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 const DIALOG_ELEVATION: number = 24;
@@ -85,6 +88,7 @@ const Dialog = ({
   onDismiss,
   visible = false,
   style,
+  theme,
 }: Props) => {
   const { isV3, dark, mode, colors, roundness } = theme;
 
@@ -168,4 +172,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Dialog;
+export default withInternalTheme(Dialog);

@@ -4,7 +4,9 @@ import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import color from 'color';
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../../styles/themes/v3/LightTheme';
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 import Icon, { IconSource } from '../Icon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
@@ -38,6 +40,7 @@ export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 /**
@@ -69,6 +72,7 @@ const DrawerItem = ({
   icon,
   label,
   active,
+  theme,
   style,
   onPress,
   accessibilityLabel,
@@ -183,4 +187,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DrawerItem;
+export default withInternalTheme(DrawerItem);

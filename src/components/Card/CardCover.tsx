@@ -3,8 +3,10 @@ import { Image, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
 import { moderateScale } from 'react-native-size-matters';
 
+import { withInternalTheme } from '../../core/theming';
 import { grey200 } from '../../styles/themes/v2/colors';
-import theme from '../../styles/themes/v3/LightTheme';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 import { getCardCoverStyle } from './utils';
 
 export type Props = React.ComponentPropsWithRef<typeof Image> & {
@@ -20,6 +22,7 @@ export type Props = React.ComponentPropsWithRef<typeof Image> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 /**
@@ -47,8 +50,8 @@ export type Props = React.ComponentPropsWithRef<typeof Image> & {
  *
  * @extends Image props https://reactnative.dev/docs/image#props
  */
-const CardCover = ({ index, total, style, ...rest }: Props) => {
-  const coverStyle = getCardCoverStyle({ index, total });
+const CardCover = ({ index, total, style, theme, ...rest }: Props) => {
+  const coverStyle = getCardCoverStyle({ theme, index, total });
 
   return (
     <View style={[styles.container, coverStyle, style]}>
@@ -77,7 +80,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CardCover;
+export default withInternalTheme(CardCover);
 
 // @component-docs ignore-next-line
 export { CardCover };

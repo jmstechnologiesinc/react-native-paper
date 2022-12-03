@@ -11,7 +11,8 @@ import {
 
 import color from 'color';
 
-import theme from '../../../styles/themes/v3/LightTheme';
+import { withInternalTheme } from '../../../core/theming';
+import type { InternalTheme } from '../../../types';
 import { getConstants } from '../helpers';
 import { AdornmentSide } from './enums';
 
@@ -28,6 +29,7 @@ export type Props = {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 type ContextState = {
@@ -112,7 +114,7 @@ const AffixAdornment: React.FunctionComponent<
  * ```
  */
 
-const TextInputAffix = ({ text, textStyle: labelStyle }: Props) => {
+const TextInputAffix = ({ text, textStyle: labelStyle, theme }: Props) => {
   const { AFFIX_OFFSET } = getConstants(theme.isV3);
 
   const {
@@ -176,7 +178,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TextInputAffix;
+export default withInternalTheme(TextInputAffix);
 
 // @component-docs ignore-next-line
 export { TextInputAffix, AffixAdornment };

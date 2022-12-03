@@ -11,7 +11,9 @@ import {
 
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../styles/themes/v3/LightTheme';
+import { withInternalTheme } from '../core/theming';
+import { MD3LightTheme as theme } from '../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../types';
 import Button from './Button/Button';
 import Surface from './Surface';
 import Text from './Typography/Text';
@@ -55,6 +57,7 @@ export type Props = React.ComponentProps<typeof Surface> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 const DURATION_SHORT = 4000;
@@ -118,6 +121,7 @@ const Snackbar = ({
   elevation = 2,
   wrapperStyle,
   style,
+  theme,
   ...rest
 }: Props) => {
   const { current: opacity } = React.useRef<Animated.Value>(
@@ -309,4 +313,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Snackbar;
+export default withInternalTheme(Snackbar);

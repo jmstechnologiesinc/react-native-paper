@@ -7,6 +7,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { useTheme } from '../../core/theming';
 import type { IconSource } from '../Icon';
 import SegmentedButtonItem from './SegmentedButtonItem';
 import { getDisabledSegmentedButtonStyle } from './utils';
@@ -129,10 +130,12 @@ const SegmentedButtons = ({
   density,
   style,
 }: Props) => {
+  const theme = useTheme();
   return (
     <View style={[styles.row, style]}>
       {buttons.map((item, i) => {
         const disabledChildStyle = getDisabledSegmentedButtonStyle({
+          theme,
           buttons,
           index: i,
         });
@@ -187,3 +190,6 @@ const styles = StyleSheet.create({
 });
 
 export default SegmentedButtons;
+
+// @component-docs ignore-next-line
+export { SegmentedButtons as SegmentedButtons };

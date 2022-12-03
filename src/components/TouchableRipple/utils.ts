@@ -1,11 +1,13 @@
 import color from 'color';
 
-import theme from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 
 const getUnderlayColor = ({
+  theme,
   calculatedRippleColor,
   underlayColor,
 }: {
+  theme: InternalTheme;
   calculatedRippleColor: string;
   underlayColor?: string;
 }) => {
@@ -20,7 +22,13 @@ const getUnderlayColor = ({
   return color(calculatedRippleColor).fade(0.5).rgb().string();
 };
 
-const getRippleColor = ({ rippleColor }: { rippleColor?: string }) => {
+const getRippleColor = ({
+  theme,
+  rippleColor,
+}: {
+  theme: InternalTheme;
+  rippleColor?: string;
+}) => {
   if (rippleColor) {
     return rippleColor;
   }
@@ -36,16 +44,19 @@ const getRippleColor = ({ rippleColor }: { rippleColor?: string }) => {
 };
 
 export const getTouchableRippleColors = ({
+  theme,
   rippleColor,
   underlayColor,
 }: {
+  theme: InternalTheme;
   rippleColor?: string;
   underlayColor?: string;
 }) => {
-  const calculatedRippleColor = getRippleColor({ rippleColor });
+  const calculatedRippleColor = getRippleColor({ theme, rippleColor });
   return {
     calculatedRippleColor,
     calculatedUnderlayColor: getUnderlayColor({
+      theme,
       calculatedRippleColor,
       underlayColor,
     }),

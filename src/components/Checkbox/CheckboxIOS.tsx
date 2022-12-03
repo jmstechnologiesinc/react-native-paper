@@ -3,8 +3,9 @@ import { StyleSheet, View } from 'react-native';
 
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../../styles/themes/v3/LightTheme';
-import type { $RemoveChildren } from '../../types';
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { $RemoveChildren, InternalTheme } from '../../types';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import { getSelectionControlIOSColor } from './utils';
@@ -29,6 +30,7 @@ export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
   /**
    * testID to be used on tests.
    */
@@ -51,7 +53,14 @@ export type Props = $RemoveChildren<typeof TouchableRipple> & {
  *   </figure>
  * </div>
  */
-const CheckboxIOS = ({ status, disabled, onPress, testID, ...rest }: Props) => {
+const CheckboxIOS = ({
+  status,
+  disabled,
+  onPress,
+  theme,
+  testID,
+  ...rest
+}: Props) => {
   const checked = status === 'checked';
   const indeterminate = status === 'indeterminate';
 
@@ -98,9 +107,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CheckboxIOS;
+export default withInternalTheme(CheckboxIOS);
 
 // @component-docs ignore-next-line
-const CheckboxIOSWithTheme = CheckboxIOS;
+const CheckboxIOSWithTheme = withInternalTheme(CheckboxIOS);
 // @component-docs ignore-next-line
 export { CheckboxIOSWithTheme as CheckboxIOS };

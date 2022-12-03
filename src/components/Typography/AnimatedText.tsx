@@ -7,8 +7,8 @@ import {
   TextStyle,
 } from 'react-native';
 
-import theme from '../../styles/themes/v3/LightTheme';
-import { Font, MD3TypescaleKey } from '../../types';
+import { withInternalTheme } from '../../core/theming';
+import { Font, InternalTheme, MD3TypescaleKey } from '../../types';
 
 type Props = React.ComponentPropsWithRef<typeof Animated.Text> & {
   /**
@@ -30,6 +30,7 @@ type Props = React.ComponentPropsWithRef<typeof Animated.Text> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 /**
@@ -37,7 +38,7 @@ type Props = React.ComponentPropsWithRef<typeof Animated.Text> & {
  *
  * @extends Text props https://reactnative.dev/docs/text#props
  */
-function AnimatedText({ style, variant, ...rest }: Props) {
+function AnimatedText({ style, theme, variant, ...rest }: Props) {
   const writingDirection = I18nManager.getConstants().isRTL ? 'rtl' : 'ltr';
 
   if (theme.isV3 && variant) {
@@ -104,4 +105,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AnimatedText;
+export default withInternalTheme(AnimatedText);

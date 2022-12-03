@@ -109,7 +109,6 @@ import {
   MdSysTypescaleLabelSmallSize,
   MdSysTypescaleBodyLargeSize,
   MdSysTypescaleBodyLargeLineHeight,
-  MdSysTypescaleBodyLargeWeight,
   MdSysTypescaleBodyMediumTracking,
   MdSysTypescaleBodyMediumLineHeight,
   MdSysTypescaleBodyMediumSize,
@@ -236,7 +235,7 @@ const ref = {
       ios: 'System',
       default: 'sans-serif',
     }),
-    weightRegular: MdSysTypescaleBodyLargeWeight as Font['fontWeight'],
+    weightRegular: '400' as Font['fontWeight'],
 
     plainMedium: Platform.select({
       web: 'Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif',

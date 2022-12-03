@@ -10,7 +10,8 @@ import {
 
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../../styles/themes/v3/LightTheme';
+import { withInternalTheme } from '../../core/theming';
+import type { InternalTheme } from '../../types';
 import Surface from '../Surface';
 import CardActions from './CardActions';
 import CardContent from './CardContent';
@@ -67,6 +68,7 @@ export type Props = React.ComponentProps<typeof Surface> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
   /**
    * Pass down testID from card props to touchable
    */
@@ -127,6 +129,7 @@ const Card = ({
   mode: cardMode = 'elevated',
   children,
   style,
+  theme,
   testID,
   accessible,
   ...rest
@@ -213,6 +216,7 @@ const Card = ({
     dark && isAdaptiveMode ? elevationDarkAdaptive : elevation;
 
   const { backgroundColor, borderColor } = getCardColors({
+    theme,
     mode: cardMode,
   });
 
@@ -231,7 +235,7 @@ const Card = ({
               elevation: computedElevation as unknown as number,
             },
         style,
-      ]} //  @ts-ignore:next-line
+      ]}
       theme={theme}
       {...(isV3 && {
         elevation: isMode('elevated') ? computedElevation : 0,
@@ -301,4 +305,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Card;
+export default withInternalTheme(Card);

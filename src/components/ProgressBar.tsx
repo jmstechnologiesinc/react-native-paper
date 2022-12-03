@@ -12,7 +12,9 @@ import {
 
 import setColor from 'color';
 
-import theme from '../styles/themes/v3/LightTheme';
+import { withInternalTheme } from '../core/theming';
+import { MD3LightTheme as theme } from '../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../types';
 
 export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
@@ -41,6 +43,7 @@ export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 const INDETERMINATE_DURATION = 2000;
@@ -72,6 +75,7 @@ const ProgressBar = ({
   style,
   progress = 0,
   visible = true,
+  theme,
   animatedValue,
   ...rest
 }: Props) => {
@@ -259,4 +263,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProgressBar;
+export default withInternalTheme(ProgressBar);

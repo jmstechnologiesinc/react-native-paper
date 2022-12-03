@@ -12,7 +12,9 @@ import {
 
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../../styles/themes/v3/LightTheme';
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 import Card from '../Card/Card';
 import type { IconSource } from '../Icon';
 import Text from '../Typography/Text';
@@ -102,6 +104,7 @@ export type Props = {
   /**
    * @optional
    */
+  theme: InternalTheme;
   /**
    * Pass down testID from Group props to FAB.
    */
@@ -174,6 +177,7 @@ const FABGroup = ({
   open,
   onPress,
   accessibilityLabel,
+  theme,
   style,
   fabStyle,
   visible,
@@ -250,7 +254,7 @@ const FABGroup = ({
   const toggle = () => onStateChange({ open: !open });
 
   const { labelColor, backdropColor, stackedFABBackgroundColor } =
-    getFABGroupColors({ customBackdropColor });
+    getFABGroupColors({ theme, customBackdropColor });
 
   const backdropOpacity = open
     ? backdrop.interpolate({
@@ -421,9 +425,12 @@ const FABGroup = ({
 
 FABGroup.displayName = 'FAB.Group';
 
-export default FABGroup;
+export default withInternalTheme(FABGroup);
 
-export { FABGroup };
+// @component-docs ignore-next-line
+const FABGroupWithTheme = withInternalTheme(FABGroup);
+// @component-docs ignore-next-line
+export { FABGroupWithTheme as FABGroup };
 
 const styles = StyleSheet.create({
   safeArea: {

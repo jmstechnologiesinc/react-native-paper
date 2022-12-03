@@ -11,7 +11,6 @@ const spacing = tokens.md.sys.spacing;
 export const MD3LightTheme: MD3Theme = {
   dark: false,
   roundness: moderateScale(4),
-  margin: moderateScale(16),
   version: 3,
   isV3: true,
   colors: {
@@ -71,5 +70,3 @@ export const MD3LightTheme: MD3Theme = {
   },
   spacing,
 };
-
-export default MD3LightTheme;

@@ -8,12 +8,13 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { withInternalTheme } from '../../core/theming';
 import { white } from '../../styles/themes/v2/colors';
-import theme from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 import getContrastingColor from '../../utils/getContrastingColor';
 import Text from '../Typography/Text';
 
-const defaultSize = theme.spacing.x16;
+const defaultSize = 64;
 
 export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
@@ -39,6 +40,7 @@ export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 /**
@@ -64,6 +66,7 @@ const AvatarText = ({
   label,
   size = defaultSize,
   style,
+  theme,
   labelStyle,
   color: customColor,
   ...rest
@@ -120,4 +123,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AvatarText;
+export default withInternalTheme(AvatarText);

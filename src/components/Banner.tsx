@@ -3,8 +3,9 @@ import { Animated, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../styles/themes/v3/LightTheme';
-import type { $RemoveChildren } from '../types';
+import { withInternalTheme } from '../core/theming';
+import { MD3LightTheme as theme } from '../styles/themes/v3/LightTheme';
+import type { $RemoveChildren, InternalTheme } from '../types';
 import Button from './Button/Button';
 import Icon, { IconSource } from './Icon';
 import Surface from './Surface';
@@ -54,6 +55,7 @@ export type Props = $RemoveChildren<typeof Surface> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
   /**
    * @optional
    * Optional callback that will be called after the opening animation finished running normally
@@ -133,6 +135,7 @@ const Banner = ({
   contentStyle,
   elevation = 1,
   style,
+  theme,
   onShowAnimationFinished = () => {},
   onHideAnimationFinished = () => {},
   ...rest
@@ -190,7 +193,6 @@ const Banner = ({
     <Surface
       {...rest}
       style={[!theme.isV3 && styles.elevation, style]}
-      //  @ts-ignore:next-line
       theme={theme}
       {...(theme.isV3 && { elevation })}
     >
@@ -292,4 +294,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Banner;
+export default withInternalTheme(Banner);

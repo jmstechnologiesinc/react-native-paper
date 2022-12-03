@@ -4,7 +4,8 @@ import { I18nManager, StyleProp, StyleSheet, TextStyle } from 'react-native';
 import color from 'color';
 import type { ThemeProp } from 'src/types';
 
-import theme from '../../../styles/themes/v3/LightTheme';
+import { useInternalTheme } from '../../../core/theming';
+import { MD3LightTheme as theme } from '../../../styles/themes/v3/LightTheme';
 import Text from './Text';
 
 type Props = React.ComponentProps<typeof Text> & {
@@ -14,7 +15,15 @@ type Props = React.ComponentProps<typeof Text> & {
   theme?: ThemeProp;
 };
 
-const StyledText = ({ alpha = 1, family, style, ...rest }: Props) => {
+const StyledText = ({
+  alpha = 1,
+  family,
+  style,
+  theme: themeOverrides,
+  ...rest
+}: Props) => {
+  const theme = useInternalTheme(themeOverrides);
+
   const textColor = color(
     theme.isV3 ? theme.colors.onSurface : theme.colors?.text
   )

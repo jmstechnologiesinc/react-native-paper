@@ -8,8 +8,9 @@ import {
 } from 'react-native';
 
 import color from 'color';
+import type { InternalTheme } from 'src/types';
 
-import theme from '../../styles/themes/v3/LightTheme';
+import { useInternalTheme, withInternalTheme } from '../../core/theming';
 import Button from '../Button/Button';
 import IconButton from '../IconButton/IconButton';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
@@ -39,6 +40,7 @@ export type Props = React.ComponentPropsWithRef<typeof View> &
     /**
      * @optional
      */
+    theme: InternalTheme;
   };
 
 type PaginationDropdownProps = {
@@ -81,6 +83,8 @@ const PaginationControls = ({
   onPageChange,
   showFastPaginationControls,
 }: PaginationControlsProps) => {
+  const theme = useInternalTheme();
+
   const textColor = theme.isV3 ? theme.colors.onSurface : theme.colors.text;
 
   return (
@@ -154,7 +158,7 @@ const PaginationDropdown = ({
   numberOfItemsPerPage,
   onItemsPerPageChange,
 }: PaginationDropdownProps) => {
-  const { colors } = theme;
+  const { colors } = useInternalTheme();
   const [showSelect, toggleSelect] = React.useState<boolean>(false);
 
   return (
@@ -261,6 +265,7 @@ const DataTablePagination = ({
   numberOfPages,
   onPageChange,
   style,
+  theme,
   showFastPaginationControls = false,
   numberOfItemsPerPageList,
   numberOfItemsPerPage,
@@ -356,7 +361,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DataTablePagination;
+export default withInternalTheme(DataTablePagination);
 
 // @component-docs ignore-next-line
 export { DataTablePagination };

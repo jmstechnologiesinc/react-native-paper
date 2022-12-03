@@ -3,8 +3,9 @@ import { Animated, StyleSheet, View } from 'react-native';
 
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../../styles/themes/v3/LightTheme';
-import type { $RemoveChildren } from '../../types';
+import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { $RemoveChildren, InternalTheme } from '../../types';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import { getAndroidSelectionControlColor } from './utils';
@@ -33,6 +34,7 @@ export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
   /**
    * testID to be used on tests.
    */
@@ -60,6 +62,7 @@ const ANIMATION_DURATION = 100;
  */
 const CheckboxAndroid = ({
   status,
+  theme,
   disabled,
   onPress,
   testID,
@@ -176,9 +179,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CheckboxAndroid;
+export default withInternalTheme(CheckboxAndroid);
 
 // @component-docs ignore-next-line
-const CheckboxAndroidWithTheme = CheckboxAndroid;
+const CheckboxAndroidWithTheme = withInternalTheme(CheckboxAndroid);
 // @component-docs ignore-next-line
 export { CheckboxAndroidWithTheme as CheckboxAndroid };

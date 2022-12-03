@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import color from 'color';
 
 import { black, white } from '../../styles/themes/v2/colors';
-import theme from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 
 export type ButtonMode =
   | 'text'
@@ -14,6 +14,7 @@ export type ButtonMode =
 
 type BaseProps = {
   isMode: (mode: ButtonMode) => boolean;
+  theme: InternalTheme;
   disabled?: boolean;
 };
 
@@ -41,6 +42,7 @@ const isDark = ({
 
 const getButtonBackgroundColor = ({
   isMode,
+  theme,
   disabled,
   customButtonColor,
 }: BaseProps & {
@@ -88,7 +90,7 @@ const getButtonBackgroundColor = ({
 
 const getButtonTextColor = ({
   isMode,
-
+  theme,
   disabled,
   customTextColor,
   backgroundColor,
@@ -144,7 +146,7 @@ const getButtonTextColor = ({
   return theme.colors.primary;
 };
 
-const getButtonBorderColor = ({ isMode, disabled }: BaseProps) => {
+const getButtonBorderColor = ({ isMode, disabled, theme }: BaseProps) => {
   if (theme.isV3) {
     if (disabled && isMode('outlined')) {
       return theme.colors.surfaceDisabled;
@@ -165,7 +167,10 @@ const getButtonBorderColor = ({ isMode, disabled }: BaseProps) => {
   return 'transparent';
 };
 
-const getButtonBorderWidth = ({ isMode }: Omit<BaseProps, 'disabled'>) => {
+const getButtonBorderWidth = ({
+  isMode,
+  theme,
+}: Omit<BaseProps, 'disabled'>) => {
   if (theme.isV3) {
     if (isMode('outlined')) {
       return 1;
@@ -180,12 +185,14 @@ const getButtonBorderWidth = ({ isMode }: Omit<BaseProps, 'disabled'>) => {
 };
 
 export const getButtonColors = ({
+  theme,
   mode,
   customButtonColor,
   customTextColor,
   disabled,
   dark,
 }: {
+  theme: InternalTheme;
   mode: ButtonMode;
   customButtonColor?: string;
   customTextColor?: string;
@@ -198,23 +205,23 @@ export const getButtonColors = ({
 
   const backgroundColor = getButtonBackgroundColor({
     isMode,
-
+    theme,
     disabled,
     customButtonColor,
   });
 
   const textColor = getButtonTextColor({
     isMode,
-
+    theme,
     disabled,
     customTextColor,
     backgroundColor,
     dark,
   });
 
-  const borderColor = getButtonBorderColor({ isMode, disabled });
+  const borderColor = getButtonBorderColor({ isMode, theme, disabled });
 
-  const borderWidth = getButtonBorderWidth({ isMode });
+  const borderWidth = getButtonBorderWidth({ isMode, theme });
 
   return {
     backgroundColor,

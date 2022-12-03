@@ -15,7 +15,8 @@ import {
 import color from 'color';
 import { moderateScale } from 'react-native-size-matters';
 
-import theme from '../styles/themes/v3/LightTheme';
+import { withInternalTheme } from '../core/theming';
+import { MD3LightTheme as theme } from '../styles/themes/v3/LightTheme';
 import type { InternalTheme } from '../types';
 import ActivityIndicator from './ActivityIndicator';
 import type { IconSource } from './Icon';
@@ -62,10 +63,6 @@ export type Props = React.ComponentPropsWithRef<typeof TextInput> & {
    */
   inputStyle?: StyleProp<TextStyle>;
   style?: StyleProp<ViewStyle>;
-  /**
-   * @optional
-   */
-
   /**
    * Custom color for icon, default will be derived from theme
    */
@@ -137,6 +134,7 @@ const Searchbar = React.forwardRef<TextInputHandles, Props>(
       searchAccessibilityLabel = 'search',
       elevation = 1,
       style,
+      theme,
       value,
       loading = false,
       testID = 'search-bar',
@@ -298,4 +296,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Searchbar;
+export default withInternalTheme(Searchbar);

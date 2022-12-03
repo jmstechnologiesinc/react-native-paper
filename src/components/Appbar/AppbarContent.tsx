@@ -12,9 +12,14 @@ import {
 import color from 'color';
 import { moderateScale } from 'react-native-size-matters';
 
+import { withInternalTheme } from '../../core/theming';
 import { white } from '../../styles/themes/v2/colors';
-import theme from '../../styles/themes/v3/LightTheme';
-import type { $RemoveChildren, MD3TypescaleKey } from '../../types';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type {
+  $RemoveChildren,
+  InternalTheme,
+  MD3TypescaleKey,
+} from '../../types';
 import Text from '../Typography/Text';
 import { modeTextVariant } from './utils';
 
@@ -57,6 +62,7 @@ export type Props = $RemoveChildren<typeof View> & {
   /**
    * @optional
    */
+  theme: InternalTheme;
 };
 
 /**
@@ -88,7 +94,7 @@ const AppbarContent = ({
   style,
   titleRef,
   titleStyle,
-
+  theme,
   title,
   mode = 'small',
   ...rest
@@ -187,6 +193,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AppbarContent;
+export default withInternalTheme(AppbarContent);
 
-export { AppbarContent };
+// @component-docs ignore-next-line
+const AppbarContentWithTheme = withInternalTheme(AppbarContent);
+// @component-docs ignore-next-line
+export { AppbarContentWithTheme as AppbarContent };

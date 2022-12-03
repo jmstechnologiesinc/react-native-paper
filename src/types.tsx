@@ -142,7 +142,6 @@ export type ThemeBase = {
   dark: boolean;
   mode?: Mode;
   roundness: number;
-  margin: number;
   spacing: Spacing;
   animation: {
     scale: number;

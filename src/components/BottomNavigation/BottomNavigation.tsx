@@ -18,7 +18,7 @@ import { moderateScale } from 'react-native-size-matters';
 import { withInternalTheme } from '../../core/theming';
 import overlay from '../../styles/overlay';
 import { black, white } from '../../styles/themes/v2/colors';
-import theme from '../../styles/themes/v3/LightTheme';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { InternalTheme } from '../../types';
 import useAnimatedValue from '../../utils/useAnimatedValue';
 import useAnimatedValueArray from '../../utils/useAnimatedValueArray';
@@ -265,6 +265,11 @@ export type Props = {
   /**
    * @optional
    */
+  theme: InternalTheme;
+  /**
+   * TestID used for testing purposes
+   */
+  testID?: string;
 };
 
 const MIN_RIPPLE_SCALE = 0.001; // Minimum scale is not 0 due to bug with animation
@@ -377,6 +382,7 @@ const BottomNavigation = ({
   barStyle,
   labeled = true,
   style,
+  theme,
   sceneAnimationEnabled = false,
   sceneAnimationType = 'opacity',
   sceneAnimationEasing,
@@ -902,7 +908,7 @@ const BottomNavigation = ({
 
               const badgeStyle = {
                 top: !isV3
-                  ? -2
+                  ? -moderateScale(2)
                   : typeof badge === 'boolean'
                   ? theme.spacing.x1
                   : moderateScale(2),
@@ -1138,7 +1144,7 @@ BottomNavigation.SceneMap = (scenes: {
   );
 };
 
-export default BottomNavigation;
+export default withInternalTheme(BottomNavigation);
 
 const styles = StyleSheet.create({
   container: {
