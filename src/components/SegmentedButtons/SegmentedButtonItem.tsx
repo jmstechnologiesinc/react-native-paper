@@ -189,7 +189,7 @@ const SegmentedButtonItem = ({
         <View
           style={
             subLabel
-              ? [styles.subLabelContent, { paddingVertical }]
+              ? [styles.subLabelContent, { paddingVertical, paddingBottom: 3 }]
               : [styles.content, { paddingVertical }]
           }
         >

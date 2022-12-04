@@ -7,7 +7,10 @@ import {
   ImageStyle,
 } from 'react-native';
 
+import { moderateScale } from 'react-native-size-matters';
+
 import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { InternalTheme } from '../../types';
 
 export type Props = {
@@ -69,17 +72,17 @@ const ListImage = ({ style, source, variant = 'image', theme }: Props) => {
 
 const styles = StyleSheet.create({
   image: {
-    width: 56,
-    height: 56,
+    width: theme.spacing.x14,
+    height: theme.spacing.x14,
   },
   video: {
-    width: 100,
-    height: 64,
+    width: moderateScale(100),
+    height: moderateScale(64),
     marginLeft: 0,
   },
   videoV3: {
-    width: 114,
-    height: 64,
+    width: moderateScale(114),
+    height: theme.spacing.x16,
     marginLeft: 0,
   },
 });
