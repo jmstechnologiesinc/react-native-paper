@@ -8,9 +8,10 @@ import {
 
 import { Consumer as SettingsConsumer } from '../core/settings';
 import { withInternalTheme } from '../core/theming';
-import { MD3LightTheme as theme } from '../styles/themes/v3/LightTheme';
 import type { InternalTheme } from '../types';
 import { accessibilityProps } from './MaterialCommunityIcon';
+
+import {MD3LightTheme as theme} from '../styles/themes/v3/LightTheme';
 
 type IconSourceBase = string | ImageSourcePropType;
 
@@ -69,7 +70,7 @@ export const isEqualIcon = (a: any, b: any) =>
   a === b || getIconId(a) === getIconId(b);
 
 const Icon = ({ source, color, size, theme, ...rest }: Props) => {
-  const direction =
+    const direction =
     typeof source === 'object' && source.direction && source.source
       ? source.direction === 'auto'
         ? I18nManager.getConstants().isRTL

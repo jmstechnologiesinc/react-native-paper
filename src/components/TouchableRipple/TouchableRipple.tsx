@@ -9,9 +9,10 @@ import {
 } from 'react-native';
 
 import { withInternalTheme } from '../../core/theming';
-import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { InternalTheme } from '../../types';
 import { getTouchableRippleColors } from './utils';
+
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 export type Props = React.ComponentPropsWithRef<typeof Pressable> & {
   /**

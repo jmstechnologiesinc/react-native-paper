@@ -4,11 +4,12 @@ import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import color from 'color';
 
 import { withInternalTheme } from '../../core/theming';
-import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import { MD3Colors } from '../../styles/themes/v3/tokens';
 import type { InternalTheme } from '../../types';
 import Divider from '../Divider';
 import Text from '../Typography/Text';
+
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**

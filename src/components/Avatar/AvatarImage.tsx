@@ -57,8 +57,8 @@ export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * @optional
    */
-  theme: InternalTheme;
-};
+   theme: InternalTheme;
+  };
 
 /**
  * Avatars can be used to represent people in a graphical way.

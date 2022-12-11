@@ -8,10 +8,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { moderateScale } from 'react-native-size-matters';
-
 import { withInternalTheme } from '../../core/theming';
-import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { $RemoveChildren, InternalTheme } from '../../types';
 import ActivityIndicator from '../ActivityIndicator';
 import CrossFadeIcon from '../CrossFadeIcon';
@@ -20,6 +17,9 @@ import Surface from '../Surface';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
 import { getExtendedFabStyle, getFABColors, getFabStyle } from './utils';
+
+import { moderateScale } from 'react-native-size-matters';
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 type FABSize = 'small' | 'medium' | 'large';
 
@@ -215,9 +215,7 @@ const FAB = React.forwardRef<View, Props>(
     const isLargeSize = size === 'large';
     const isFlatMode = mode === 'flat';
     const iconSize = isLargeSize ? theme.spacing.x9 : theme.spacing.x6;
-    const loadingIndicatorSize = isLargeSize
-      ? theme.spacing.x6
-      : moderateScale(18);
+    const loadingIndicatorSize = isLargeSize ? theme.spacing.x6 : moderateScale(18);
     const font = isV3 ? theme.fonts.labelLarge : theme.fonts.medium;
 
     const fabStyle = getFabStyle({ customSize, size, theme });

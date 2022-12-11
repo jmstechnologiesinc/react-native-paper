@@ -10,10 +10,8 @@ import {
 } from 'react-native';
 
 import color from 'color';
-import { moderateScale } from 'react-native-size-matters';
 
 import { withInternalTheme } from '../../core/theming';
-import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { InternalTheme } from '../../types';
 import ActivityIndicator from '../ActivityIndicator';
 import Icon, { IconSource } from '../Icon';
@@ -21,6 +19,9 @@ import Surface from '../Surface';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
 import { ButtonMode, getButtonColors } from './utils';
+
+import { moderateScale } from 'react-native-size-matters';
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 export type Props = React.ComponentProps<typeof Surface> & {
   /**
@@ -116,8 +117,8 @@ export type Props = React.ComponentProps<typeof Surface> & {
   /**
    * @optional
    */
-  theme: InternalTheme;
-  /**
+   theme: InternalTheme;
+   /**
    * testID to be used on tests.
    */
   testID?: string;

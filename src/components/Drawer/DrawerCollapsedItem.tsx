@@ -11,14 +11,14 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { moderateScale } from 'react-native-size-matters';
-
 import { withInternalTheme } from '../../core/theming';
-import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { InternalTheme } from '../../types';
 import Badge from '../Badge';
 import Icon, { IconSource } from '../Icon';
 import Text from '../Typography/Text';
+
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
+import { moderateScale } from 'react-native-size-matters';
 
 export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
@@ -46,7 +46,7 @@ export type Props = React.ComponentPropsWithRef<typeof View> & {
    * @optional
    */
   theme: InternalTheme;
-  /**
+   /**
    * Badge to show on the icon, can be `true` to show a dot, `string` or `number` to show text.
    */
   badge?: string | number | boolean;

@@ -11,11 +11,8 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { moderateScale } from 'react-native-size-matters';
-
 import { withInternalTheme } from '../../core/theming';
 import { white } from '../../styles/themes/v2/colors';
-import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { EllipsizeProp, InternalTheme } from '../../types';
 import type { IconSource } from '../Icon';
 import Icon from '../Icon';
@@ -24,6 +21,9 @@ import Surface from '../Surface';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
 import { getChipColors } from './helpers';
+
+import { moderateScale } from 'react-native-size-matters';
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 export type Props = React.ComponentProps<typeof Surface> & {
   /**

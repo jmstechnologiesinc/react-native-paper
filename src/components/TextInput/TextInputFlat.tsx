@@ -11,10 +11,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { moderateScale } from 'react-native-size-matters';
-
 import { useInternalTheme } from '../../core/theming';
-import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import { AdornmentSide, AdornmentType, InputMode } from './Adornment/enums';
 import TextInputAdornment, {
   TextInputAdornmentProps,
@@ -47,6 +44,9 @@ import {
 } from './helpers';
 import InputLabel from './Label/InputLabel';
 import type { ChildTextInputProps, RenderProps } from './types';
+
+import { moderateScale } from 'react-native-size-matters';
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 const TextInputFlat = ({
   disabled = false,

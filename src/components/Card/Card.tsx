@@ -8,10 +8,11 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { moderateScale } from 'react-native-size-matters';
-
 import { withInternalTheme } from '../../core/theming';
 import type { InternalTheme } from '../../types';
+
+import { moderateScale } from 'react-native-size-matters';
+
 import Surface from '../Surface';
 import CardActions from './CardActions';
 import CardContent from './CardContent';
@@ -68,8 +69,8 @@ export type Props = React.ComponentProps<typeof Surface> & {
   /**
    * @optional
    */
-  theme: InternalTheme;
-  /**
+   theme: InternalTheme;
+   /**
    * Pass down testID from card props to touchable
    */
   testID?: string;

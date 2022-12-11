@@ -11,9 +11,6 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { moderateScale } from 'react-native-size-matters';
-
-import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import { AdornmentType, AdornmentSide } from './Adornment/enums';
 import TextInputAdornment, {
   getAdornmentConfig,
@@ -44,6 +41,9 @@ import {
 import InputLabel from './Label/InputLabel';
 import LabelBackground from './Label/LabelBackground';
 import type { RenderProps, ChildTextInputProps } from './types';
+
+import { moderateScale } from 'react-native-size-matters';
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 const TextInputOutlined = ({
   disabled = false,

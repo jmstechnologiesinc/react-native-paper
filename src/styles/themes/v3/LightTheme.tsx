@@ -1,9 +1,10 @@
 import color from 'color';
-import { moderateScale } from 'react-native-size-matters';
 
 import type { MD3Theme } from '../../../types';
 import configureFonts from '../../fonts';
 import { MD3Colors, tokens } from './tokens';
+
+import { moderateScale } from 'react-native-size-matters';
 
 const { palette, opacity } = tokens.md.ref;
 const spacing = tokens.md.sys.spacing;

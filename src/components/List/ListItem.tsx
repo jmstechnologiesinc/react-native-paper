@@ -11,10 +11,8 @@ import {
 } from 'react-native';
 
 import color from 'color';
-import { moderateScale } from 'react-native-size-matters';
 
 import { withInternalTheme } from '../../core/theming';
-import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type {
   $RemoveChildren,
   EllipsizeProp,
@@ -23,6 +21,9 @@ import type {
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
 import { getLeftStyles, getRightStyles } from './utils';
+
+import { moderateScale } from 'react-native-size-matters';
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 type Title =
   | React.ReactNode

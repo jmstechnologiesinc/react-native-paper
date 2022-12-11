@@ -8,9 +8,10 @@ import {
 } from 'react-native';
 
 import { withInternalTheme } from '../../core/theming';
-import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { InternalTheme } from '../../types';
 import ListSubheader from './ListSubheader';
+
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
@@ -25,7 +26,7 @@ export type Props = React.ComponentPropsWithRef<typeof View> & {
    * @optional
    */
   theme: InternalTheme;
-  /**
+   /**
    * Style that is passed to Title element.
    */
   titleStyle?: StyleProp<TextStyle>;

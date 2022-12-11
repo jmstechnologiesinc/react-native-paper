@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { moderateScale } from 'react-native-size-matters';
-
 import { withInternalTheme } from '../../core/theming';
 import type { $RemoveChildren, InternalTheme } from '../../types';
 import { getSelectionControlIOSColor } from '../Checkbox/utils';
@@ -10,6 +8,8 @@ import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import { RadioButtonContext, RadioButtonContextType } from './RadioButtonGroup';
 import { handlePress, isChecked } from './utils';
+
+import { moderateScale } from 'react-native-size-matters';
 
 export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
@@ -36,7 +36,7 @@ export type Props = $RemoveChildren<typeof TouchableRipple> & {
    * @optional
    */
   theme: InternalTheme;
-  /**
+   /**
    * testID to be used on tests.
    */
   testID?: string;

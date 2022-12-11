@@ -3,11 +3,9 @@ import type { ColorValue, StyleProp, ViewStyle } from 'react-native';
 import { StyleSheet } from 'react-native';
 
 import color from 'color';
-import { moderateScale } from 'react-native-size-matters';
 
 import overlay from '../../styles/overlay';
 import { black, white } from '../../styles/themes/v2/colors';
-import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { InternalTheme } from '../../types';
 import Tooltip from '../Tooltip/Tooltip';
 import AppbarAction from './AppbarAction';
@@ -15,6 +13,9 @@ import AppbarBackAction from './AppbarBackAction';
 import AppbarContent from './AppbarContent';
 
 export type AppbarModes = 'small' | 'medium' | 'large' | 'center-aligned';
+
+import { moderateScale } from 'react-native-size-matters';
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 export const getAppbarColor = (
   theme: InternalTheme,

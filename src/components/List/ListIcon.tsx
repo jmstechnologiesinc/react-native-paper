@@ -2,9 +2,10 @@ import * as React from 'react';
 import { View, ViewStyle, StyleSheet, StyleProp } from 'react-native';
 
 import { withInternalTheme } from '../../core/theming';
-import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { InternalTheme } from '../../types';
 import Icon, { IconSource } from '../Icon';
+
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 export type Props = {
   /**

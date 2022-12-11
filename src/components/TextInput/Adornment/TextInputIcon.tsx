@@ -120,7 +120,7 @@ const TextInputIcon = ({
   }, [forceTextInputFocus, forceFocus, isTextInputFocused, onPress]);
 
   const theme = useInternalTheme();
-
+  
   let iconColor = color;
 
   if (theme.isV3) {

@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 
 import color from 'color';
-import { moderateScale } from 'react-native-size-matters';
 
 import { withInternalTheme } from '../../core/theming';
 import { black, white } from '../../styles/themes/v2/colors';
@@ -17,6 +16,8 @@ import type { IconSource } from '../Icon';
 import IconButton from '../IconButton/IconButton';
 import { ToggleButtonGroupContext } from './ToggleButtonGroup';
 import { getToggleButtonColor } from './utils';
+
+import { moderateScale } from 'react-native-size-matters';
 
 export type Props = {
   /**

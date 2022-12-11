@@ -13,8 +13,9 @@ import {
 import setColor from 'color';
 
 import { withInternalTheme } from '../core/theming';
-import { MD3LightTheme as theme } from '../styles/themes/v3/LightTheme';
 import type { InternalTheme } from '../types';
+
+import {MD3LightTheme as theme} from '../styles/themes/v3/LightTheme';
 
 export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**

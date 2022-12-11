@@ -2,12 +2,13 @@ import * as React from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
 import color from 'color';
-import { moderateScale } from 'react-native-size-matters';
 
 import { withInternalTheme } from '../core/theming';
 import { black, white } from '../styles/themes/v2/colors';
-import { MD3LightTheme as theme } from '../styles/themes/v3/LightTheme';
 import type { $RemoveChildren, InternalTheme } from '../types';
+
+import { moderateScale } from 'react-native-size-matters';
+import {MD3LightTheme as theme} from '../styles/themes/v3/LightTheme';
 
 export type Props = $RemoveChildren<typeof View> & {
   /**

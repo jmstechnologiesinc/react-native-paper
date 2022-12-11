@@ -5,8 +5,9 @@ import color from 'color';
 import type { ThemeProp } from 'src/types';
 
 import { useInternalTheme } from '../../../core/theming';
-import { MD3LightTheme as theme } from '../../../styles/themes/v3/LightTheme';
 import Text from './Text';
+
+import {MD3LightTheme as theme}  from '../../../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentProps<typeof Text> & {
   alpha?: number;

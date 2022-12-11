@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Image, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
-import { moderateScale } from 'react-native-size-matters';
-
 import { withInternalTheme } from '../../core/theming';
 import { grey200 } from '../../styles/themes/v2/colors';
-import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { InternalTheme } from '../../types';
 import { getCardCoverStyle } from './utils';
+
+import { moderateScale } from 'react-native-size-matters';
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 export type Props = React.ComponentPropsWithRef<typeof Image> & {
   /**
@@ -50,7 +50,7 @@ export type Props = React.ComponentPropsWithRef<typeof Image> & {
  *
  * @extends Image props https://reactnative.dev/docs/image#props
  */
-const CardCover = ({ index, total, style, theme, ...rest }: Props) => {
+ const CardCover = ({ index, total, style, theme, ...rest }: Props) => {
   const coverStyle = getCardCoverStyle({ theme, index, total });
 
   return (

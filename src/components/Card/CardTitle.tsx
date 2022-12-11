@@ -7,14 +7,14 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { moderateScale } from 'react-native-size-matters';
-
 import { withInternalTheme } from '../../core/theming';
-import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { InternalTheme, MD3TypescaleKey } from '../../types';
 import Text from '../Typography/Text';
 import Caption from '../Typography/v2/Caption';
 import Title from '../Typography/v2/Title';
+
+import { moderateScale } from 'react-native-size-matters';
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**

@@ -5,7 +5,7 @@ import type { InternalTheme } from '../../types';
 
 type CardMode = 'elevated' | 'outlined' | 'contained';
 
-import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 export const getCardCoverStyle = ({
   theme,
@@ -81,7 +81,7 @@ export const getCardColors = ({
 }: {
   theme: InternalTheme;
   mode: CardMode;
-}) => {
+}) => { 
   const isMode = (modeToCompare: CardMode) => {
     return mode === modeToCompare;
   };

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Animated, StyleSheet } from 'react-native';
 
-import { moderateScale } from 'react-native-size-matters';
-
 import { useInternalTheme } from '../../../core/theming';
-import { MD3LightTheme as theme } from '../../../styles/themes/v3/LightTheme';
 import AnimatedText from '../../Typography/AnimatedText';
 import type { LabelBackgroundProps } from '../types';
+
+import { moderateScale } from 'react-native-size-matters';
+import {MD3LightTheme as theme}  from '../../../styles/themes/v3/LightTheme';
 
 const LabelBackground = ({
   parentState,

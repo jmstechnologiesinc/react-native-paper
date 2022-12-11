@@ -28,7 +28,7 @@ const getRippleColor = ({
 }: {
   theme: InternalTheme;
   rippleColor?: string;
-}) => {
+}) => {  
   if (rippleColor) {
     return rippleColor;
   }

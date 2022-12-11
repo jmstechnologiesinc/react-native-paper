@@ -17,7 +17,7 @@ const getBorderColor = ({
 }: {
   theme: InternalTheme;
   disabled?: boolean;
-}) => {
+}) => { 
   if (theme.isV3) {
     if (disabled) {
       return theme.colors.surfaceDisabled;

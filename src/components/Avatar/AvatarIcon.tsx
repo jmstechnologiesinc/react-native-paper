@@ -3,10 +3,11 @@ import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
 import { withInternalTheme } from '../../core/theming';
 import { white } from '../../styles/themes/v2/colors';
-import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { InternalTheme } from '../../types';
 import getContrastingColor from '../../utils/getContrastingColor';
 import Icon, { IconSource } from '../Icon';
+
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 const defaultSize = theme.spacing.x16;
 
@@ -49,7 +50,7 @@ export type Props = React.ComponentPropsWithRef<typeof View> & {
  * );
  * ```
  */
-const Avatar = ({ icon, size = defaultSize, style, theme, ...rest }: Props) => {
+ const Avatar = ({ icon, size = defaultSize, style, theme, ...rest }: Props) => {
   const { backgroundColor = theme.colors?.primary, ...restStyle } =
     StyleSheet.flatten(style) || {};
   const textColor =

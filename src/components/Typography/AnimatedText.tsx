@@ -38,7 +38,7 @@ type Props = React.ComponentPropsWithRef<typeof Animated.Text> & {
  *
  * @extends Text props https://reactnative.dev/docs/text#props
  */
-function AnimatedText({ style, theme, variant, ...rest }: Props) {
+ function AnimatedText({ style, theme, variant, ...rest }: Props) {
   const writingDirection = I18nManager.getConstants().isRTL ? 'rtl' : 'ltr';
 
   if (theme.isV3 && variant) {

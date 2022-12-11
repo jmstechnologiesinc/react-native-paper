@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 
 import { withInternalTheme } from '../../core/theming';
-import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { InternalTheme, MD3TypescaleKey } from '../../types';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
@@ -17,6 +16,8 @@ import RadioButtonAndroid from './RadioButtonAndroid';
 import { RadioButtonContext, RadioButtonContextType } from './RadioButtonGroup';
 import RadioButtonIOS from './RadioButtonIOS';
 import { handlePress, isChecked } from './utils';
+
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 export type Props = {
   /**

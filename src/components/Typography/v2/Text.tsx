@@ -9,7 +9,8 @@ import {
 import type { MD2Theme } from 'src/types';
 
 import { useInternalTheme } from '../../../core/theming';
-import { MD3LightTheme as theme } from '../../../styles/themes/v3/LightTheme';
+
+import {MD3LightTheme as theme}  from '../../../styles/themes/v3/LightTheme';
 
 type Props = React.ComponentProps<typeof NativeText> & {
   style?: StyleProp<TextStyle>;

@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { Animated, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
-import { moderateScale } from 'react-native-size-matters';
-
 import { withInternalTheme } from '../core/theming';
-import { MD3LightTheme as theme } from '../styles/themes/v3/LightTheme';
 import type { $RemoveChildren, InternalTheme } from '../types';
 import Button from './Button/Button';
 import Icon, { IconSource } from './Icon';
 import Surface from './Surface';
 import Text from './Typography/Text';
+
+import { moderateScale } from 'react-native-size-matters';
+import {MD3LightTheme as theme} from '../styles/themes/v3/LightTheme';
 
 const DEFAULT_MAX_WIDTH = moderateScale(960);
 

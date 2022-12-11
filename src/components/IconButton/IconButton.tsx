@@ -7,16 +7,16 @@ import {
   View,
 } from 'react-native';
 
-import { moderateScale } from 'react-native-size-matters';
-
 import { useInternalTheme } from '../../core/theming';
-import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { $RemoveChildren, ThemeProp } from '../../types';
 import CrossFadeIcon from '../CrossFadeIcon';
 import Icon, { IconSource } from '../Icon';
 import Surface from '../Surface';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import { getIconButtonColor } from './utils';
+
+import { moderateScale } from 'react-native-size-matters';
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 const PADDING = theme.spacing.x2;
 

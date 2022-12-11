@@ -13,16 +13,17 @@ import {
 } from 'react-native';
 
 import color from 'color';
-import { moderateScale } from 'react-native-size-matters';
 
 import { withInternalTheme } from '../core/theming';
-import { MD3LightTheme as theme } from '../styles/themes/v3/LightTheme';
 import type { InternalTheme } from '../types';
 import ActivityIndicator from './ActivityIndicator';
 import type { IconSource } from './Icon';
 import IconButton from './IconButton/IconButton';
 import MaterialCommunityIcon from './MaterialCommunityIcon';
 import Surface from './Surface';
+
+import { moderateScale } from 'react-native-size-matters';
+import {MD3LightTheme as theme} from '../styles/themes/v3/LightTheme';
 
 export type Props = React.ComponentPropsWithRef<typeof TextInput> & {
   /**

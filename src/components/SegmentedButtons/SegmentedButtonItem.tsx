@@ -10,10 +10,8 @@ import {
 } from 'react-native';
 
 import color from 'color';
-import { moderateScale } from 'react-native-size-matters';
 
 import { useInternalTheme } from '../../core/theming';
-import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { IconSource } from '../Icon';
 import Icon from '../Icon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
@@ -23,6 +21,9 @@ import {
   getSegmentedButtonColors,
   getSegmentedButtonDensityPadding,
 } from './utils';
+
+import { moderateScale } from 'react-native-size-matters';
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 export type Props = {
   /**
