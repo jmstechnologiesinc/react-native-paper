@@ -11,8 +11,6 @@ import { withInternalTheme } from '../core/theming';
 import type { InternalTheme } from '../types';
 import { accessibilityProps } from './MaterialCommunityIcon';
 
-import {MD3LightTheme as theme} from '../styles/themes/v3/LightTheme';
-
 type IconSourceBase = string | ImageSourcePropType;
 
 export type IconSource =

@@ -8,7 +8,6 @@ import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import { getSelectionControlIOSColor } from './utils';
 
 import { moderateScale } from 'react-native-size-matters';
-import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**

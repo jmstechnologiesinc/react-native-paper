@@ -5,8 +5,6 @@ import type { InternalTheme } from '../../types';
 
 type CardMode = 'elevated' | 'outlined' | 'contained';
 
-import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
-
 export const getCardCoverStyle = ({
   theme,
   index,

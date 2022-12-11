@@ -13,8 +13,6 @@ import overlay, { isAnimatedValue } from '../styles/overlay';
 import shadow from '../styles/shadow';
 import type { InternalTheme, MD3Elevation } from '../types';
 
-import {MD3LightTheme as theme} from '../styles/themes/v3/LightTheme';
-
 export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Content of the `Surface`.
