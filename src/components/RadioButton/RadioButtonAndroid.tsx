@@ -138,11 +138,12 @@ const RadioButtonAndroid = ({
             onPress={
               disabled
                 ? undefined
-                : () => {
+                : (event) => {
                     handlePress({
                       onPress,
                       onValueChange: context?.onValueChange,
                       value,
+                      event,
                     });
                   }
             }

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  GestureResponderEvent,
   Platform,
   StyleProp,
   StyleSheet,
@@ -54,7 +55,7 @@ export type Props = $RemoveChildren<typeof View> & {
   /**
    * Function to execute on press.
    */
-  onPress?: () => void;
+  onPress?: (e: GestureResponderEvent) => void;
   /**
    * @internal
    */
