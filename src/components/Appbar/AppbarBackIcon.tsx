@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Platform, I18nManager, View, Image, StyleSheet } from 'react-native';
+import { Platform, I18nManager, View, StyleSheet } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 
@@ -17,7 +18,7 @@ const AppbarBackIcon = ({ size, color }: { size: number; color: string }) => {
         },
       ]}
     >
-      <Image
+      <FastImage 
         source={require('../../assets/back-chevron.png')}
         style={[
           styles.icon,

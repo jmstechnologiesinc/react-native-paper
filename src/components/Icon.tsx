@@ -1,10 +1,7 @@
 import * as React from 'react';
-import {
-  I18nManager,
-  Image,
-  ImageSourcePropType,
-  Platform,
-} from 'react-native';
+import { I18nManager, ImageSourcePropType, Platform } from 'react-native';
+
+import FastImage from 'react-native-fast-image';
 
 import { Consumer as SettingsConsumer } from '../core/settings';
 import { withInternalTheme } from '../core/theming';
@@ -68,7 +65,7 @@ export const isEqualIcon = (a: any, b: any) =>
   a === b || getIconId(a) === getIconId(b);
 
 const Icon = ({ source, color, size, theme, ...rest }: Props) => {
-    const direction =
+  const direction =
     typeof source === 'object' && source.direction && source.source
       ? source.direction === 'auto'
         ? I18nManager.getConstants().isRTL
@@ -85,7 +82,7 @@ const Icon = ({ source, color, size, theme, ...rest }: Props) => {
 
   if (isImageSource(s)) {
     return (
-      <Image
+      <FastImage
         {...rest}
         source={s}
         style={[
