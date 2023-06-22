@@ -1,6 +1,6 @@
 {
-  "name": "@jmsstudiosinc/react-native-paper",
-  "version": "5.0.0-rc.19",
+  "name": "@jmstechnologiesinc/react-native-paper",
+  "version": "5.0.0-rc.22",
   "description": "Material design for React Native",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -15,12 +15,12 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/JmsStudiosInc/react-native-paper.git"
+    "url": "https://github.com/jmstechnologiesinc/react-native-paper.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JmsStudiosInc/react-native-paper/issues"
+    "url": "https://github.com/jmstechnologiesinc/react-native-paper/issues"
   },
   "homepage": "https://callstack.github.io/react-native-paper",
   "keywords": [

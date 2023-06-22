@@ -137,7 +137,7 @@ import {
   MdSysSpacing19X,
   MdSysSpacing20X,
   //  @ts-ignore:next-line
-} from '@jmsstudiosinc/material-tokens';
+} from '@jmstechnologiesinc/material-tokens';
 import { moderateScale } from 'react-native-size-matters';
 
 import type { Font } from '../../../types';
