@@ -9,7 +9,7 @@ import Surface from './Surface';
 import Text from './Typography/Text';
 
 import { moderateScale } from 'react-native-size-matters';
-import {MD3LightTheme as theme} from '../styles/themes/v3/LightTheme';
+import { MD3LightTheme as theme } from '../styles/themes/v3/LightTheme';
 
 const DEFAULT_MAX_WIDTH = moderateScale(960);
 
@@ -280,6 +280,7 @@ const styles = StyleSheet.create({
   message: {
     flex: 1,
     margin: theme.spacing.x2,
+    fontSize: moderateScale(14),
   },
   actions: {
     flexDirection: 'row',
