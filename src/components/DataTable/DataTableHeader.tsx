@@ -6,6 +6,7 @@ import color from 'color';
 import { withInternalTheme } from '../../core/theming';
 import { black, white } from '../../styles/themes/v2/colors';
 import type { InternalTheme } from '../../types';
+import { moderateScale } from 'react-native-size-matters';
 
 export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
@@ -72,9 +73,9 @@ DataTableHeader.displayName = 'DataTable.Header';
 const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
-    height: 48,
-    paddingHorizontal: 16,
-    borderBottomWidth: StyleSheet.hairlineWidth * 2,
+    height: moderateScale(48),
+    paddingHorizontal: moderateScale(16),
+    borderBottomWidth: moderateScale(StyleSheet.hairlineWidth * 2),
   },
 });
 

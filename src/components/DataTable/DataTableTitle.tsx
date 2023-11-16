@@ -17,6 +17,7 @@ import { withInternalTheme } from '../../core/theming';
 import type { InternalTheme } from '../../types';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Text from '../Typography/Text';
+import { moderateScale } from 'react-native-size-matters';
 
 export type Props = React.ComponentPropsWithRef<
   typeof TouchableWithoutFeedback
@@ -121,7 +122,7 @@ const DataTableTitle = ({
     <Animated.View style={[styles.icon, { transform: [{ rotate: spin }] }]}>
       <MaterialCommunityIcon
         name="arrow-up"
-        size={16}
+        size={moderateScale(16)}
         color={textColor}
         direction={I18nManager.getConstants().isRTL ? 'rtl' : 'ltr'}
       />
@@ -137,7 +138,7 @@ const DataTableTitle = ({
           style={[
             styles.cell,
             // height must scale with numberOfLines
-            { maxHeight: 24 * numberOfLines },
+            { maxHeight: moderateScale(24 * numberOfLines) },
             // if numberOfLines causes wrap, center is lost. Align directly, sensitive to numeric and RTL
             numberOfLines > 1
               ? numeric
@@ -165,7 +166,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignContent: 'center',
-    paddingVertical: 12,
+    paddingVertical: moderateScale(12),
   },
 
   rightText: {
@@ -185,18 +186,18 @@ const styles = StyleSheet.create({
   },
 
   cell: {
-    lineHeight: 24,
-    fontSize: 12,
+    lineHeight: moderateScale(24),
+    fontSize: moderateScale(12),
     fontWeight: '500',
     alignItems: 'center',
   },
 
   sorted: {
-    marginLeft: 8,
+    marginLeft: moderateScale(8),
   },
 
   icon: {
-    height: 24,
+    height: moderateScale(24),
     justifyContent: 'center',
   },
 });

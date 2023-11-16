@@ -14,6 +14,7 @@ import { withInternalTheme } from '../../core/theming';
 import { black, white } from '../../styles/themes/v2/colors';
 import type { $RemoveChildren, InternalTheme } from '../../types';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
+import { moderateScale } from 'react-native-size-matters';
 
 export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
@@ -96,9 +97,9 @@ DataTableRow.displayName = 'DataTable.Row';
 const styles = StyleSheet.create({
   container: {
     borderStyle: 'solid',
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    minHeight: 48,
-    paddingHorizontal: 16,
+    borderBottomWidth: moderateScale(StyleSheet.hairlineWidth),
+    minHeight: moderateScale(48),
+    paddingHorizontal: moderateScale(16),
   },
   content: {
     flex: 1,

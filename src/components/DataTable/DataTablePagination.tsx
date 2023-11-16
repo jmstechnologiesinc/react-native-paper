@@ -16,6 +16,7 @@ import IconButton from '../IconButton/IconButton';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Menu from '../Menu/Menu';
 import Text from '../Typography/Text';
+import { moderateScale } from 'react-native-size-matters';
 
 export type Props = React.ComponentPropsWithRef<typeof View> &
   PaginationControlsProps &
@@ -337,21 +338,21 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: 16,
+    paddingLeft: moderateScale(16),
     flexWrap: 'wrap',
   },
   optionsContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 6,
+    marginVertical: moderateScale(6),
   },
   label: {
-    fontSize: 12,
-    marginRight: 16,
+    fontSize: moderateScale(12),
+    marginRight: moderateScale(16),
   },
   button: {
     textAlign: 'center',
-    marginRight: 16,
+    marginRight: moderateScale(16),
   },
   iconsContainer: {
     flexDirection: 'row',

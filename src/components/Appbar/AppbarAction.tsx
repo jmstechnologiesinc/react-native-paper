@@ -7,6 +7,7 @@ import { useInternalTheme } from '../../core/theming';
 import { black } from '../../styles/themes/v2/colors';
 import type { IconSource } from '../Icon';
 import IconButton from '../IconButton/IconButton';
+import { moderateScale } from 'react-native-size-matters';
 
 export type Props = React.ComponentPropsWithoutRef<typeof IconButton> & {
   /**
@@ -71,7 +72,7 @@ export type Props = React.ComponentPropsWithoutRef<typeof IconButton> & {
 const AppbarAction = React.forwardRef<View, Props>(
   (
     {
-      size = 24,
+      size = moderateScale(24),
       color: iconColor,
       icon,
       disabled,
