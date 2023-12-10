@@ -140,7 +140,7 @@ import {
 } from '@jmstechnologiesinc/material-tokens';
 import { moderateScale } from 'react-native-size-matters';
 
-import type { Font } from '../../../types';
+import type { Font, MD3Spacing } from '../../../types';
 
 const ref = {
   palette: {
@@ -372,7 +372,7 @@ export const typescale = {
   },
 };
 
-export const spacing = {
+export const spacing: MD3Spacing =  {
   base: moderateScale(parseFloat(MdSysSpacingBase)),
   x1: moderateScale(parseFloat(MdSysSpacing1X)),
   x2: moderateScale(parseFloat(MdSysSpacing2X)),

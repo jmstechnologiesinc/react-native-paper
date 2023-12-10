@@ -102,7 +102,6 @@ const Provider = (props: Props) => {
     <SafeAreaProviderCompat>
       <PortalHost>
         <SettingsProvider value={settings || { icon: MaterialCommunityIcon }}>
-          {/* @ts-expect-error check @callstack/react-theme-provider's children prop */}
           <ThemeProvider theme={getTheme()}>{children}</ThemeProvider>
         </SettingsProvider>
       </PortalHost>

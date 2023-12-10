@@ -92,6 +92,7 @@ const Icon = ({ source, color, size, theme, ...rest }: Props) => {
           {
             width: size,
             height: size,
+            // @ts-ignore
             tintColor: color,
             resizeMode: 'contain',
           },

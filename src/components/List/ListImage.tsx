@@ -61,7 +61,7 @@ const ListImage = ({ style, source, variant = 'image', theme }: Props) => {
     return [style, styles.image];
   };
 
-  return (
+  return (// @ts-ignore
     <FastImage
       style={getStyles()}
       source={source}

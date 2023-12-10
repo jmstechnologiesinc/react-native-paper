@@ -1,9 +1,12 @@
 import color from 'color';
 
-import type { Fonts, MD2Theme } from '../../../types';
-import configureFonts from '../../fonts';
 import { black, pinkA100, white } from './colors';
 import { MD2LightTheme } from './LightTheme';
+import type { Fonts, MD2Theme } from '../../../types';
+import configureFonts from '../../fonts';
+import { tokens } from '../v3/tokens';
+
+const spacing = tokens.md.sys.spacing;
 
 export const MD2DarkTheme: MD2Theme = {
   ...MD2LightTheme,
@@ -27,4 +30,5 @@ export const MD2DarkTheme: MD2Theme = {
     tooltip: 'rgba(230, 225, 229, 1)',
   },
   fonts: configureFonts({ isV3: false }) as Fonts,
+  spacing
 };

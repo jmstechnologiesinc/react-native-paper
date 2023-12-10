@@ -1,8 +1,11 @@
 import color from 'color';
 
+import { black, pinkA400, white } from './colors';
 import type { Fonts, MD2Theme } from '../../../types';
 import configureFonts from '../../fonts';
-import { black, pinkA400, white } from './colors';
+import { tokens } from '../v3/tokens';
+
+const spacing = tokens.md.sys.spacing;
 
 export const MD2LightTheme: MD2Theme = {
   dark: false,
@@ -27,4 +30,5 @@ export const MD2LightTheme: MD2Theme = {
   animation: {
     scale: 1.0,
   },
+  spacing
 };

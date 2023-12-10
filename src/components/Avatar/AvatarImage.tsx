@@ -113,6 +113,7 @@ const AvatarImage = ({
     >
       {typeof source === 'function' && source({ size })}
       {typeof source !== 'function' && (
+        // @ts-ignore
         <FastImage
           source={source}
           style={{ width: size, height: size, borderRadius: size / 2 }}
