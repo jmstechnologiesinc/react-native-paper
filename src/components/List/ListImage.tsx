@@ -4,9 +4,10 @@ import {
   StyleProp,
   ImageSourcePropType,
   ImageStyle,
+  Image
 } from 'react-native';
 
-import FastImage from 'react-native-fast-image';
+// import FastImage from 'react-native-fast-image';
 
 import { withInternalTheme } from '../../core/theming';
 import type { InternalTheme } from '../../types';
@@ -61,8 +62,8 @@ const ListImage = ({ style, source, variant = 'image', theme }: Props) => {
     return [style, styles.image];
   };
 
-  return (// @ts-ignore
-    <FastImage
+  return (
+    <Image
       style={getStyles()}
       source={source}
       accessibilityIgnoresInvertColors

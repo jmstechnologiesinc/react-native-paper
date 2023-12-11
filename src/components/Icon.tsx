@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { I18nManager, ImageSourcePropType, Platform } from 'react-native';
+import { I18nManager, ImageSourcePropType, Platform, Image } from 'react-native';
 
-import FastImage from 'react-native-fast-image';
+// import FastImage from 'react-native-fast-image';
 
 import { Consumer as SettingsConsumer } from '../core/settings';
 import { withInternalTheme } from '../core/theming';
@@ -82,7 +82,7 @@ const Icon = ({ source, color, size, theme, ...rest }: Props) => {
 
   if (isImageSource(s)) {
     return (
-      <FastImage
+      <Image
         {...rest}
         source={s}
         style={[

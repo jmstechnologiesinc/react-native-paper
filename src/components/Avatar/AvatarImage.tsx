@@ -6,14 +6,17 @@ import {
   StyleSheet,
   View,
   ViewStyle,
+  Image
 } from 'react-native';
 
-import FastImage from 'react-native-fast-image';
+// import FastImage from 'react-native-fast-image';
 
 import { withInternalTheme } from '../../core/theming';
 import type { InternalTheme } from '../../types';
 
-const defaultSize = 64;
+import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
+
+const defaultSize = theme.spacing.x16;
 
 export type AvatarImageSource =
   | ImageSourcePropType
@@ -113,8 +116,7 @@ const AvatarImage = ({
     >
       {typeof source === 'function' && source({ size })}
       {typeof source !== 'function' && (
-        // @ts-ignore
-        <FastImage
+        <Image
           source={source}
           style={{ width: size, height: size, borderRadius: size / 2 }}
           onError={onError}
