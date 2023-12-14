@@ -1,12 +1,11 @@
-import color from 'color';
 
 import type { MD3Theme } from '../../../types';
 import configureFonts from '../../fonts';
-import { MD3Colors, tokens } from './tokens';
+import { tokens } from './tokens';
 
 import { moderateScale } from 'react-native-size-matters';
 
-const { palette, opacity } = tokens.md.ref;
+
 const spacing = tokens.md.sys.spacing;
 
 export const MD3LightTheme: MD3Theme = {
@@ -15,52 +14,46 @@ export const MD3LightTheme: MD3Theme = {
   version: 3,
   isV3: true,
   colors: {
-    primary: palette.primary40,
-    primaryContainer: palette.primary90,
-    secondary: palette.secondary40,
-    secondaryContainer: palette.secondary90,
-    tertiary: palette.tertiary40,
-    tertiaryContainer: palette.tertiary90,
-    surface: palette.neutral99,
-    surfaceVariant: palette.neutralVariant90,
-    surfaceDisabled: color(palette.neutral10)
-    .alpha(opacity.level2)
-    .rgb()
-    .string(),
-    background: palette.neutral99,
-    error: palette.error40,
-    errorContainer: palette.error90,
-    onPrimary: palette.primary100,
-    onPrimaryContainer: palette.primary10,
-    onSecondary: palette.secondary100,
-    onSecondaryContainer: palette.secondary10,
-    onTertiary: palette.tertiary100,
-    onTertiaryContainer: palette.tertiary10,
-    onSurface: palette.neutral10,
-    onSurfaceVariant: palette.neutralVariant30,
-    onSurfaceDisabled: color(palette.neutral10)
-    .alpha(opacity.level4)
-    .rgb()
-    .string(),
-    onError: palette.error100,
-    onErrorContainer: palette.error10,
-    onBackground: palette.neutral10,
-    outline: palette.neutralVariant50,
-    outlineVariant: palette.neutralVariant80,
-    inverseSurface: palette.neutral20,
-    inverseOnSurface: palette.neutral95,
-    inversePrimary: palette.primary80,
-    shadow: palette.neutral0,
-    scrim: palette.neutral0,
-    backdrop: color(MD3Colors.neutralVariant20).alpha(0.4).rgb().string(),
+    primary: 'rgb(133, 84, 0)',
+    onPrimary: 'rgb(255, 255, 255)',
+    primaryContainer: 'rgb(255, 221, 183)',
+    onPrimaryContainer: 'rgb(42, 23, 0)',
+    secondary: 'rgb(112, 91, 65)',
+    onSecondary: 'rgb(255, 255, 255)',
+    secondaryContainer: 'rgb(252, 222, 188)',
+    onSecondaryContainer: 'rgb(40, 24, 5)',
+    tertiary: 'rgb(83, 100, 62)',
+    onTertiary: 'rgb(255, 255, 255)',
+    tertiaryContainer: 'rgb(214, 233, 185)',
+    onTertiaryContainer: 'rgb(18, 31, 3)',
+    error: 'rgb(186, 26, 26)',
+    onError: 'rgb(255, 255, 255)',
+    errorContainer: 'rgb(255, 218, 214)',
+    onErrorContainer: 'rgb(65, 0, 2)',
+    background: 'rgb(255, 251, 255)',
+    onBackground: 'rgb(31, 27, 22)',
+    surface: 'rgb(255, 251, 255)',
+    onSurface: 'rgb(31, 27, 22)',
+    surfaceVariant: 'rgb(240, 224, 208)',
+    onSurfaceVariant: 'rgb(80, 69, 57)',
+    outline: 'rgb(130, 117, 104)',
+    outlineVariant: 'rgb(212, 196, 181)',
+    shadow: 'rgb(0, 0, 0)',
+    scrim: 'rgb(0, 0, 0)',
+    inverseSurface: 'rgb(53, 47, 42)',
+    inverseOnSurface: 'rgb(249, 239, 231)',
+    inversePrimary: 'rgb(255, 185, 92)',
     elevation: {
-      level0: palette.level0,
-      level1: palette.level1,
-      level2: palette.level2,
-      level3: palette.level3,
-      level4: palette.level4,
-      level5: palette.level5,
+      level0: 'transparent',
+      level1: 'rgb(249, 243, 242)',
+      level2: 'rgb(245, 238, 235)',
+      level3: 'rgb(242, 233, 227)',
+      level4: 'rgb(240, 231, 224)',
+      level5: 'rgb(238, 228, 219)',
     },
+    surfaceDisabled: 'rgba(31, 27, 22, 0.12)',
+    onSurfaceDisabled: 'rgba(31, 27, 22, 0.38)',
+    backdrop: 'rgba(56, 47, 36, 0.4)',
   },
   fonts: configureFonts(),
   animation: {
