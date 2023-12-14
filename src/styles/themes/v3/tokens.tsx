@@ -136,6 +136,12 @@ import {
   MdSysSpacing18X,
   MdSysSpacing19X,
   MdSysSpacing20X,
+  MdRefPaletteLevel0,
+  MdRefPaletteLevel1,
+  MdRefPaletteLevel2,
+  MdRefPaletteLevel3,
+  MdRefPaletteLevel4,
+  MdRefPaletteLevel5
   //  @ts-ignore:next-line
 } from '@jmstechnologiesinc/material-tokens';
 import { moderateScale } from 'react-native-size-matters';
@@ -227,6 +233,13 @@ const ref = {
     error20: MdRefPaletteError20,
     error10: MdRefPaletteError10,
     error0: MdRefPaletteError0,
+
+    level0: MdRefPaletteLevel0,
+    level1: MdRefPaletteLevel1,
+    level2: MdRefPaletteLevel2,
+    level3: MdRefPaletteLevel3,
+    level4: MdRefPaletteLevel4,
+    level5: MdRefPaletteLevel5
   },
 
   typeface: {
@@ -372,7 +385,7 @@ export const typescale = {
   },
 };
 
-export const spacing: MD3Spacing =  {
+export const spacing: MD3Spacing = {
   base: moderateScale(parseFloat(MdSysSpacingBase)),
   x1: moderateScale(parseFloat(MdSysSpacing1X)),
   x2: moderateScale(parseFloat(MdSysSpacing2X)),

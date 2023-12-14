@@ -24,9 +24,9 @@ export const MD3LightTheme: MD3Theme = {
     surface: palette.neutral99,
     surfaceVariant: palette.neutralVariant90,
     surfaceDisabled: color(palette.neutral10)
-      .alpha(opacity.level2)
-      .rgb()
-      .string(),
+    .alpha(opacity.level2)
+    .rgb()
+    .string(),
     background: palette.neutral99,
     error: palette.error40,
     errorContainer: palette.error90,
@@ -39,9 +39,9 @@ export const MD3LightTheme: MD3Theme = {
     onSurface: palette.neutral10,
     onSurfaceVariant: palette.neutralVariant30,
     onSurfaceDisabled: color(palette.neutral10)
-      .alpha(opacity.level4)
-      .rgb()
-      .string(),
+    .alpha(opacity.level4)
+    .rgb()
+    .string(),
     onError: palette.error100,
     onErrorContainer: palette.error10,
     onBackground: palette.neutral10,
@@ -54,15 +54,12 @@ export const MD3LightTheme: MD3Theme = {
     scrim: palette.neutral0,
     backdrop: color(MD3Colors.neutralVariant20).alpha(0.4).rgb().string(),
     elevation: {
-      level0: 'transparent',
-      // Note: Color values with transparency cause RN to transfer shadows to children nodes
-      // instead of View component in Surface. Providing solid background fixes the issue.
-      // Opaque color values generated with `palette.primary99` used as background
-      level1: 'rgb(247, 243, 249)', // palette.primary40, alpha 0.05
-      level2: 'rgb(243, 237, 246)', // palette.primary40, alpha 0.08
-      level3: 'rgb(238, 232, 244)', // palette.primary40, alpha 0.11
-      level4: 'rgb(236, 230, 243)', // palette.primary40, alpha 0.12
-      level5: 'rgb(233, 227, 241)', // palette.primary40, alpha 0.14
+      level0: palette.level0,
+      level1: palette.level1,
+      level2: palette.level2,
+      level3: palette.level3,
+      level4: palette.level4,
+      level5: palette.level5,
     },
   },
   fonts: configureFonts(),
