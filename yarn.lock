@@ -1923,6 +1923,11 @@
   resolved "https://npm.pkg.github.com/download/@jmstechnologiesinc/material-tokens/0.0.16/bb5d25f9dca1717f7f74ec3ef9161eaa22dd418e"
   integrity sha512-00ut9s9sbkUZNqBPV87Skzb9Y5k3ltPd1l0gi5rrnsMQoGooJIQeom0ieVK8cwDZgBMpE2HVtdC5Sj1N5ymBWA==
 
+"@jmstechnologiesinc/react-native-size-matters@^0.4.2":
+  version "0.4.2"
+  resolved "https://npm.pkg.github.com/download/@jmstechnologiesinc/react-native-size-matters/0.4.2/0dd3877bdb09f144c083bff058b5e423821ab3b2"
+  integrity sha512-o2V+IzIwlFGfzzaG79ftgrXg0oln6WxaB1VAbiG7vpnnoQhKe75iZ94LKRHxvdqjitMbHFbRVr2yHW4WECKEew==
+
 "@jridgewell/gen-mapping@^0.3.0", "@jridgewell/gen-mapping@^0.3.2":
   version "0.3.3"
   resolved "https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.3.3.tgz"

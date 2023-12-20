@@ -29,7 +29,7 @@ import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import AnimatedText from '../Typography/AnimatedText';
 import { getCombinedStyles, getFABColors } from './utils';
 
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 export type AnimatedFABIconMode = 'static' | 'dynamic';

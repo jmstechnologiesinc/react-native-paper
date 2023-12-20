@@ -144,7 +144,7 @@ import {
   MdRefPaletteLevel5
   //  @ts-ignore:next-line
 } from '@jmstechnologiesinc/material-tokens';
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 import type { Font, MD3Spacing } from '../../../types';
 

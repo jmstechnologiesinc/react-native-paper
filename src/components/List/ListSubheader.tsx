@@ -7,7 +7,7 @@ import type { InternalTheme } from 'src/types';
 import { useInternalTheme } from '../../core/theming';
 import Text from '../Typography/Text';
 
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 export type Props = React.ComponentProps<typeof Text> & {

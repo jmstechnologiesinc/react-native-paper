@@ -7,7 +7,7 @@ import { useInternalTheme } from '../../core/theming';
 import { black } from '../../styles/themes/v2/colors';
 import type { IconSource } from '../Icon';
 import IconButton from '../IconButton/IconButton';
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 export type Props = React.ComponentPropsWithoutRef<typeof IconButton> & {
   /**

@@ -19,7 +19,7 @@ import Icon, { IconSource } from '../Icon';
 import Text from '../Typography/Text';
 
 import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**

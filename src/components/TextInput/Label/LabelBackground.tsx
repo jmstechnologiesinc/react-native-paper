@@ -5,7 +5,7 @@ import { useInternalTheme } from '../../../core/theming';
 import AnimatedText from '../../Typography/AnimatedText';
 import type { LabelBackgroundProps } from '../types';
 
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import {MD3LightTheme as theme}  from '../../../styles/themes/v3/LightTheme';
 
 const LabelBackground = ({

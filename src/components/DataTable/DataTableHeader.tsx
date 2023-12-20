@@ -6,7 +6,7 @@ import color from 'color';
 import { withInternalTheme } from '../../core/theming';
 import { black, white } from '../../styles/themes/v2/colors';
 import type { InternalTheme } from '../../types';
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**

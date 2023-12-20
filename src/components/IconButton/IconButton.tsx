@@ -15,7 +15,7 @@ import Surface from '../Surface';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import { getIconButtonColor } from './utils';
 
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 const PADDING = theme.spacing.x2;

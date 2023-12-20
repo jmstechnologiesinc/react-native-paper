@@ -45,7 +45,7 @@ import {
 import InputLabel from './Label/InputLabel';
 import type { ChildTextInputProps, RenderProps } from './types';
 
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 const TextInputFlat = ({

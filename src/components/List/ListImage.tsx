@@ -12,7 +12,7 @@ import {
 import { withInternalTheme } from '../../core/theming';
 import type { InternalTheme } from '../../types';
 
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 
 export type Props = {

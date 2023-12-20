@@ -17,7 +17,7 @@ import IconButton from '../IconButton/IconButton';
 import { ToggleButtonGroupContext } from './ToggleButtonGroup';
 import { getToggleButtonColor } from './utils';
 
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 export type Props = {
   /**

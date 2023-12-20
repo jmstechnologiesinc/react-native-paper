@@ -14,7 +14,7 @@ import { withInternalTheme } from '../../core/theming';
 import { black, white } from '../../styles/themes/v2/colors';
 import type { $RemoveChildren, InternalTheme } from '../../types';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**

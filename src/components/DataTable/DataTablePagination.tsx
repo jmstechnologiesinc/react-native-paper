@@ -16,7 +16,7 @@ import IconButton from '../IconButton/IconButton';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Menu from '../Menu/Menu';
 import Text from '../Typography/Text';
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 export type Props = React.ComponentPropsWithRef<typeof View> &
   PaginationControlsProps &

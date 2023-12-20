@@ -6,7 +6,7 @@ import { black, white } from '../../styles/themes/v2/colors';
 import type { InternalTheme } from '../../types';
 
 import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 type BaseProps = {
   theme: InternalTheme;

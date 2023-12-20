@@ -3,7 +3,7 @@ import type { MD3Theme } from '../../../types';
 import configureFonts from '../../fonts';
 import { tokens } from './tokens';
 
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 
 const spacing = tokens.md.sys.spacing;
