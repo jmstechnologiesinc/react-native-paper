@@ -17,7 +17,7 @@ import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 
 export type Props = {
   source: ImageSourcePropType;
-  variant?: 'image' | 'video';
+  variant?: 'image' | 'video' | 'flag';
   style?: StyleProp<ImageStyle>;
   /**
    * @optional
@@ -57,6 +57,8 @@ const ListImage = ({ style, source, variant = 'image', theme }: Props) => {
       }
 
       return [style, styles.videoV3];
+    }else if(variant === 'flag'){
+      return [style, styles.flag]
     }
 
     return [style, styles.image];
@@ -76,6 +78,10 @@ const styles = StyleSheet.create({
   image: {
     width: moderateScale(76),
     height: moderateScale(76),
+  },
+  flag: {
+    width: moderateScale(40),
+    height: moderateScale(40)
   },
   video: {
     width: moderateScale(100),

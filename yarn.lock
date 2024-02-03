@@ -1918,7 +1918,7 @@
     "@babel/runtime" "^7.7.2"
     regenerator-runtime "^0.13.3"
 
-"@jmstechnologiesinc/material-tokens@npm:@jmsstudiosinc/material-tokens@^0.0.16":
+"@jmstechnologiesinc/material-tokens@*":
   version "0.0.16"
   resolved "https://npm.pkg.github.com/download/@jmstechnologiesinc/material-tokens/0.0.16/bb5d25f9dca1717f7f74ec3ef9161eaa22dd418e"
   integrity sha512-00ut9s9sbkUZNqBPV87Skzb9Y5k3ltPd1l0gi5rrnsMQoGooJIQeom0ieVK8cwDZgBMpE2HVtdC5Sj1N5ymBWA==
