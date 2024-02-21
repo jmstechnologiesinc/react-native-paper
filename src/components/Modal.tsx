@@ -9,6 +9,8 @@ import {
   TouchableWithoutFeedback,
   View,
   ViewStyle,
+  Keyboard,
+  Pressable
 } from 'react-native';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -166,7 +168,7 @@ function Modal({
 
   const hideModal = () => {
     removeListeners();
-
+    Keyboard.dismiss()
     Animated.timing(opacity, {
       toValue: 0,
       duration: scale * DEFAULT_DURATION,
@@ -244,6 +246,7 @@ function Modal({
         pointerEvents="box-none"
         testID={`${testID}-wrapper`}
       >
+        <Pressable onPress={() => Keyboard.dismiss()}>
         <Surface
           style={
             [
@@ -255,6 +258,7 @@ function Modal({
         >
           {children}
         </Surface>
+        </Pressable>
       </View>
     </Animated.View>
   );
