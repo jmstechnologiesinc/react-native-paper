@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Platform, StyleProp, StyleSheet, ViewStyle } from 'react-native';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 import { withInternalTheme } from '../../core/theming';
 import overlay from '../../styles/overlay';
@@ -92,7 +93,7 @@ const Dialog = ({
 }: Props) => {
   const { isV3, dark, mode, colors, roundness } = theme;
 
-  const borderRadius = (isV3 ? 7 : 1) * roundness;
+  const borderRadius = (isV3 ? moderateScale(7) : moderateScale(1)) * roundness;
 
   const backgroundColorV2 =
     dark && mode === 'adaptive'
@@ -123,7 +124,7 @@ const Dialog = ({
           if (isV3) {
             if (i === 0 && React.isValidElement(child)) {
               return React.cloneElement(child as React.ReactElement<any>, {
-                style: [{ marginTop: 24 }, child.props.style],
+                style: [{ marginTop: moderateScale(24) }, child.props.style],
               });
             }
           }
@@ -135,7 +136,7 @@ const Dialog = ({
           ) {
             // Dialog content is the first item, so we add a top padding
             return React.cloneElement(child as React.ReactElement<any>, {
-              style: [{ paddingTop: 24 }, child.props.style],
+              style: [{ paddingTop: moderateScale(24) }, child.props.style],
             });
           }
 
@@ -165,8 +166,8 @@ const styles = StyleSheet.create({
      * of the shadow around the dialog, consequently, if you click around the
      * dialog (44 pixel from the top and bottom) it won't be dismissed.
      */
-    marginVertical: Platform.OS === 'android' ? 44 : 0,
-    marginHorizontal: 26,
+    marginVertical: Platform.OS === 'android' ? moderateScale(44) : 0,
+    marginHorizontal: moderateScale(26),
     elevation: DIALOG_ELEVATION,
     justifyContent: 'flex-start',
   },

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
 import { useInternalTheme } from '../../core/theming';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
@@ -60,7 +61,7 @@ const DialogActions = (props: Props) => {
               compact: true,
               uppercase: !isV3,
               style: isV3 && {
-                paddingRight: i + 1 === actionsLength ? 0 : 8,
+                paddingRight: i + moderateScale(1) === actionsLength ? 0 : moderateScale(8),
               },
             })
           : child
@@ -76,15 +77,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    padding: 8,
+    padding: moderateScale(8),
   },
   v3Container: {
     flexDirection: 'row',
     flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'flex-end',
-    paddingBottom: 24,
-    paddingHorizontal: 24,
+    paddingBottom: moderateScale(24),
+    paddingHorizontal: moderateScale(24),
   },
 });
 

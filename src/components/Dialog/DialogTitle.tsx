@@ -5,6 +5,7 @@ import { withInternalTheme } from '../../core/theming';
 import type { InternalTheme } from '../../types';
 import Text from '../Typography/Text';
 import Title from '../Typography/v2/Title';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 export type Props = React.ComponentPropsWithRef<typeof Title> & {
   /**
@@ -78,13 +79,13 @@ DialogTitle.displayName = 'Dialog.Title';
 
 const styles = StyleSheet.create({
   text: {
-    marginTop: 22,
-    marginBottom: 18,
-    marginHorizontal: 24,
+    marginTop: moderateScale(22),
+    marginBottom: moderateScale(18),
+    marginHorizontal: moderateScale(24),
   },
   v3Text: {
-    marginTop: 16,
-    marginBottom: 16,
+    marginTop: moderateScale(16),
+    marginBottom: moderateScale(16),
   },
 });
 

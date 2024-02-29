@@ -1,3 +1,4 @@
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import * as React from 'react';
 import { View, ViewStyle, StyleSheet, StyleProp } from 'react-native';
 
@@ -53,8 +54,8 @@ DialogContent.displayName = 'Dialog.Content';
 
 const styles = StyleSheet.create({
   container: {
-    paddingBottom: 24,
-    paddingHorizontal: 24,
+    paddingBottom: moderateScale(24),
+    paddingHorizontal: moderateScale(24),
   },
 });
 

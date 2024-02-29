@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { useInternalTheme } from '../../core/theming';
 import Icon, { IconSource } from '../Icon';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 export type Props = {
   /**
@@ -72,7 +73,7 @@ const DialogIcon = ({ size = 24, color, icon }: Props) => {
 
   return (
     <View style={styles.wrapper}>
-      <Icon source={icon} color={iconColor} size={size} />
+      <Icon source={icon} color={iconColor} size={moderateScale(size)} />
     </View>
   );
 };
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
   wrapper: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 24,
+    paddingTop: moderateScale(24),
   },
 });
 
