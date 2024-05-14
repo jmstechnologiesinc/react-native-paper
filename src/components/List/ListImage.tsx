@@ -4,10 +4,10 @@ import {
   StyleProp,
   ImageSourcePropType,
   ImageStyle,
-  Image
+  Image,
 } from 'react-native';
 
-// import FastImage from 'react-native-fast-image';
+import FastImage from 'react-native-fast-image';
 
 import { withInternalTheme } from '../../core/theming';
 import type { InternalTheme } from '../../types';
@@ -57,17 +57,18 @@ const ListImage = ({ style, source, variant = 'image', theme }: Props) => {
       }
 
       return [style, styles.videoV3];
-    }else if(variant === 'flag'){
-      return [style, styles.flag]
+    } else if (variant === 'flag') {
+      return [style, styles.flag];
     }
 
     return [style, styles.image];
   };
 
   return (
-    <Image
+    <FastImage
       style={getStyles()}
       source={source}
+      resizeMode={FastImage.resizeMode.stretch}
       accessibilityIgnoresInvertColors
       testID="list-image"
     />
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
   },
   flag: {
     width: moderateScale(40),
-    height: moderateScale(40)
+    height: moderateScale(40),
   },
   video: {
     width: moderateScale(100),
