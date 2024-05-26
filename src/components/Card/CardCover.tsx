@@ -6,7 +6,7 @@ import { grey200 } from '../../styles/themes/v2/colors';
 import type { InternalTheme } from '../../types';
 import { getCardCoverStyle } from './utils';
 
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 
 import FastImage from 'react-native-fast-image';
@@ -52,6 +52,7 @@ export type Props = React.ComponentPropsWithRef<typeof Image> & {
  *
  * @extends Image props https://reactnative.dev/docs/image#props
  */
+
 const CardCover = ({ index, total, style, theme, ...rest }: Props) => {
   const coverStyle = getCardCoverStyle({ theme, index, total });
 
@@ -61,6 +62,7 @@ const CardCover = ({ index, total, style, theme, ...rest }: Props) => {
         {...rest}
         style={[styles.image, coverStyle]}
         accessibilityIgnoresInvertColors
+        resizeMode={FastImage.resizeMode.stretch}
       />
     </View>
   );
