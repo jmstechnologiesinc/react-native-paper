@@ -6,10 +6,9 @@ import {
   StyleSheet,
   View,
   ViewStyle,
-  Image
 } from 'react-native';
 
-// import FastImage from 'react-native-fast-image';
+import FastImage from 'react-native-fast-image';
 
 import { withInternalTheme } from '../../core/theming';
 import type { InternalTheme } from '../../types';
@@ -116,7 +115,7 @@ const AvatarImage = ({
     >
       {typeof source === 'function' && source({ size })}
       {typeof source !== 'function' && (
-        <Image
+        <FastImage
           source={source}
           style={{ width: size, height: size, borderRadius: size / 2 }}
           onError={onError}

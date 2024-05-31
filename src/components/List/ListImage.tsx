@@ -67,7 +67,6 @@ const ListImage = ({ style, source, variant = 'image', theme }: Props) => {
     <FastImage
       style={getStyles()}
       source={source}
-      resizeMode={FastImage.resizeMode.stretch}
       accessibilityIgnoresInvertColors
       testID="list-image"
     />

@@ -62,7 +62,6 @@ const CardCover = ({ index, total, style, theme, ...rest }: Props) => {
         {...rest}
         style={[styles.image, coverStyle]}
         accessibilityIgnoresInvertColors
-        resizeMode={FastImage.resizeMode.stretch}
       />
     </View>
   );
