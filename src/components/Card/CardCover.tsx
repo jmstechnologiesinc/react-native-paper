@@ -9,7 +9,7 @@ import { getCardCoverStyle } from './utils';
 import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 
-import FastImage from 'react-native-fast-image';
+import ImageBlurLoading from '@jmstechnologiesinc/react-native-image-blur-loading'
 
 export type Props = React.ComponentPropsWithRef<typeof Image> & {
   /**
@@ -58,11 +58,12 @@ const CardCover = ({ index, total, style, theme, ...rest }: Props) => {
 
   return (
     <View style={[styles.container, coverStyle, style]}>
-      <FastImage
-        {...rest}
-        style={[styles.image, coverStyle]}
-        accessibilityIgnoresInvertColors
-      />
+      <ImageBlurLoading
+          thumbnailSource={{ uri: rest.source?.lqipUri }}
+          source={{ uri: rest.source?.uri }}
+          fastImage={true}
+          style={[styles.image, coverStyle]}
+          accessibilityIgnoresInvertColors/>
     </View>
   );
 };

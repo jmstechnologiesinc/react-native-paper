@@ -6,7 +6,7 @@ import {
   ImageStyle,
 } from 'react-native';
 
-import FastImage from 'react-native-fast-image';
+import ImageBlurLoading from '@jmstechnologiesinc/react-native-image-blur-loading'
 
 import { withInternalTheme } from '../../core/theming';
 import type { InternalTheme } from '../../types';
@@ -64,12 +64,13 @@ const ListImage = ({ style, source, variant = 'image', theme }: Props) => {
   };
 
   return (
-    <FastImage
-      style={getStyles()}
-      source={source}
-      accessibilityIgnoresInvertColors
-      testID="list-image"
-    />
+    <ImageBlurLoading
+        thumbnailSource={{ uri: source.lqipUri }}
+        source={{ uri: source.uri }}
+        fastImage={true}
+        style={getStyles()}
+        testID="list-image"
+      />
   );
 };
 
