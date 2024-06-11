@@ -1,24 +1,17 @@
 import * as React from 'react';
-import {
-  ImageProps,
-  ImageSourcePropType,
-  StyleProp,
-  StyleSheet,
-  View,
-  ViewStyle,
-} from 'react-native';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
-import FastImage from 'react-native-fast-image';
+import FastImage, { FastImageProps, Source } from 'react-native-fast-image';
 
 import { withInternalTheme } from '../../core/theming';
 import type { InternalTheme } from '../../types';
 
-import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 
 const defaultSize = theme.spacing.x16;
 
 export type AvatarImageSource =
-  | ImageSourcePropType
+  | Source
   | ((props: { size: number }) => React.ReactNode);
 
 export type Props = React.ComponentPropsWithRef<typeof View> & {
@@ -36,32 +29,32 @@ export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
    * Invoked on load error.
    */
-  onError?: ImageProps['onError'];
+  onError?: FastImageProps['onError'];
   /**
    * Invoked on mount and on layout changes.
    */
-  onLayout?: ImageProps['onLayout'];
+  onLayout?: FastImageProps['onLayout'];
   /**
    * Invoked when load completes successfully.
    */
-  onLoad?: ImageProps['onLoad'];
+  onLoad?: FastImageProps['onLoad'];
   /**
    * Invoked when load either succeeds or fails.
    */
-  onLoadEnd?: ImageProps['onLoadEnd'];
+  onLoadEnd?: FastImageProps['onLoadEnd'];
   /**
    * Invoked on load start.
    */
-  onLoadStart?: ImageProps['onLoadStart'];
+  onLoadStart?: FastImageProps['onLoadStart'];
   /**
    * Invoked on download progress.
    */
-  onProgress?: ImageProps['onProgress'];
+  onProgress?: FastImageProps['onProgress'];
   /**
    * @optional
    */
-   theme: InternalTheme;
-  };
+  theme: InternalTheme;
+};
 
 /**
  * Avatars can be used to represent people in a graphical way.

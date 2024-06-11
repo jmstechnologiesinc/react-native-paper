@@ -80,6 +80,7 @@ const defaultIcon = ({
   direction,
   allowFontScaling,
 }: IconProps) => (
+  // @ts-ignore
   <MaterialCommunityIcons
     allowFontScaling={allowFontScaling}
     name={name}

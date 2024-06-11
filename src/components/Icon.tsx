@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { I18nManager, ImageSourcePropType, Platform, Image } from 'react-native';
+import {
+  I18nManager,
+  ImageSourcePropType,
+  Platform,
+  Image,
+} from 'react-native';
 
 // import FastImage from 'react-native-fast-image';
 
@@ -82,6 +87,7 @@ const Icon = ({ source, color, size, theme, ...rest }: Props) => {
 
   if (isImageSource(s)) {
     return (
+      // @ts-ignore
       <Image
         {...rest}
         source={s}

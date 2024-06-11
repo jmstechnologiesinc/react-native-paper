@@ -6,7 +6,7 @@ import {
   ImageStyle,
 } from 'react-native';
 
-import ImageBlurLoading from '@jmstechnologiesinc/react-native-image-blur-loading'
+import ImageBlurLoading from '@jmstechnologiesinc/react-native-image-blur-loading';
 
 import { withInternalTheme } from '../../core/theming';
 import type { InternalTheme } from '../../types';
@@ -65,12 +65,15 @@ const ListImage = ({ style, source, variant = 'image', theme }: Props) => {
 
   return (
     <ImageBlurLoading
-        thumbnailSource={{ uri: source.lqipUri }}
-        source={{ uri: source.uri }}
-        fastImage={true}
-        style={getStyles()}
-        testID="list-image"
-      />
+      // @ts-ignore
+      thumbnailSource={{ uri: source.lqipUri }}
+      // @ts-ignore
+      source={{ uri: source.uri }}
+      fastImage={true}
+      // @ts-ignore
+      style={getStyles()}
+      testID="list-image"
+    />
   );
 };
 
