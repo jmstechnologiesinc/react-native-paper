@@ -1,6 +1,6 @@
 {
   "name": "@jmstechnologiesinc/react-native-paper",
-  "version": "5.0.0-rc.29",
+  "version": "5.12.3",
   "description": "Material design for React Native",
   "main": "lib/commonjs/index.js",
   "react-native": "src/index.tsx",

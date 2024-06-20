@@ -1,7 +1,9 @@
 import React from 'react';
 import {
   Animated,
+  GestureResponderEvent,
   LayoutChangeEvent,
+  Pressable,
   StyleProp,
   StyleSheet,
   Text,
@@ -9,12 +11,11 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import color from 'color';
-
-import { withInternalTheme } from '../../../core/theming';
-import type { InternalTheme } from '../../../types';
-import { getConstants } from '../helpers';
 import { AdornmentSide } from './enums';
+import { getTextColor } from './utils';
+import { useInternalTheme } from '../../../core/theming';
+import type { ThemeProp } from '../../../types';
+import { getConstants } from '../helpers';
 
 export type Props = {
   /**
@@ -23,13 +24,21 @@ export type Props = {
   text: string;
   onLayout?: (event: LayoutChangeEvent) => void;
   /**
+   * Function to execute on press.
+   */
+  onPress?: (e: GestureResponderEvent) => void;
+  /**
+   * Accessibility label for the affix. This is read by the screen reader when the user taps the affix.
+   */
+  accessibilityLabel?: string;
+  /**
    * Style that is passed to the Text element.
    */
   textStyle?: StyleProp<TextStyle>;
   /**
    * @optional
    */
-  theme: InternalTheme;
+  theme?: ThemeProp;
 };
 
 type ContextState = {
@@ -41,6 +50,7 @@ type ContextState = {
   paddingHorizontal?: number | string;
   maxFontSizeMultiplier?: number | undefined | null;
   testID?: string;
+  disabled?: boolean;
 };
 
 const AffixContext = React.createContext<ContextState>({
@@ -64,6 +74,7 @@ const AffixAdornment: React.FunctionComponent<
   paddingHorizontal,
   maxFontSizeMultiplier,
   testID,
+  disabled,
 }) => {
   return (
     <AffixContext.Provider
@@ -76,6 +87,7 @@ const AffixAdornment: React.FunctionComponent<
         paddingHorizontal,
         maxFontSizeMultiplier,
         testID,
+        disabled,
       }}
     >
       {affix}
@@ -85,12 +97,6 @@ const AffixAdornment: React.FunctionComponent<
 
 /**
  * A component to render a leading / trailing text in the TextInput
- *
- * <div class="screenshots">
- *   <figure>
- *     <img class="small" src="screenshots/textinput-outline.affix.png" />
- *   </figure>
- * </div>
  *
  * ## Usage
  * ```js
@@ -114,7 +120,15 @@ const AffixAdornment: React.FunctionComponent<
  * ```
  */
 
-const TextInputAffix = ({ text, textStyle: labelStyle, theme }: Props) => {
+const TextInputAffix = ({
+  text,
+  textStyle: labelStyle,
+  theme: themeOverrides,
+  onLayout: onTextLayout,
+  onPress,
+  accessibilityLabel = text,
+}: Props) => {
+  const theme = useInternalTheme(themeOverrides);
   const { AFFIX_OFFSET } = getConstants(theme.isV3);
 
   const {
@@ -126,14 +140,8 @@ const TextInputAffix = ({ text, textStyle: labelStyle, theme }: Props) => {
     paddingHorizontal,
     maxFontSizeMultiplier,
     testID,
+    disabled,
   } = React.useContext(AffixContext);
-
-  const textColor = color(
-    theme.isV3 ? theme.colors.onSurface : theme.colors?.text
-  )
-    .alpha(theme.dark ? 0.7 : 0.54)
-    .rgb()
-    .string();
 
   const offset =
     typeof paddingHorizontal === 'number' ? paddingHorizontal : AFFIX_OFFSET;
@@ -143,7 +151,9 @@ const TextInputAffix = ({ text, textStyle: labelStyle, theme }: Props) => {
     [side]: offset,
   } as ViewStyle;
 
-  return (
+  const textColor = getTextColor({ theme, disabled });
+
+  const affix = (
     <Animated.View
       style={[
         styles.container,
@@ -162,12 +172,29 @@ const TextInputAffix = ({ text, textStyle: labelStyle, theme }: Props) => {
       <Text
         maxFontSizeMultiplier={maxFontSizeMultiplier}
         style={[{ color: textColor }, textStyle, labelStyle]}
+        onLayout={onTextLayout}
+        testID={`${testID}-text`}
       >
         {text}
       </Text>
     </Animated.View>
   );
+
+  if (onPress) {
+    return (
+      <Pressable
+        onPress={onPress}
+        accessibilityRole="button"
+        accessibilityLabel={accessibilityLabel}
+        style={styles.container}
+      >
+        {affix}
+      </Pressable>
+    );
+  }
+  return affix;
 };
+
 TextInputAffix.displayName = 'TextInput.Affix';
 
 const styles = StyleSheet.create({
@@ -178,7 +205,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withInternalTheme(TextInputAffix);
+export default TextInputAffix;
 
 // @component-docs ignore-next-line
 export { TextInputAffix, AffixAdornment };

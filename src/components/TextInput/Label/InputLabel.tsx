@@ -1,15 +1,29 @@
 import React from 'react';
-import { Animated, StyleSheet } from 'react-native';
+import {
+  Animated,
+  ColorValue,
+  Platform,
+  StyleSheet,
+  useWindowDimensions,
+} from 'react-native';
 
 import AnimatedText from '../../Typography/AnimatedText';
+import { getConstants } from '../helpers';
 import type { InputLabelProps } from '../types';
 
 const InputLabel = (props: InputLabelProps) => {
-  const { parentState, labelBackground } = props;
   const {
-    label,
+    labeled,
+    wiggle,
     error,
+    focused,
+    opacity,
+    labelLayoutWidth,
+    labelBackground,
+    label,
+    labelError,
     onLayoutAnimatedText,
+    onLabelTextLayout,
     hasActiveOutline,
     activeColor,
     placeholderStyle,
@@ -23,19 +37,30 @@ const InputLabel = (props: InputLabelProps) => {
     wiggleOffsetX,
     labelScale,
     topPosition,
-    paddingOffset,
+    paddingLeft,
+    paddingRight,
+    backgroundColor,
+    roundness,
     placeholderColor,
     errorColor,
     labelTranslationXOffset,
     maxFontSizeMultiplier,
     testID,
-  } = props.labelProps;
+    isV3,
+    inputContainerLayout,
+  } = props;
+
+  const { INPUT_PADDING_HORIZONTAL } = getConstants(isV3);
+  const { width } = useWindowDimensions();
+
+  const paddingOffset =
+    paddingLeft && paddingRight ? { paddingLeft, paddingRight } : {};
 
   const labelTranslationX = {
     transform: [
       {
         // Offset label scale since RN doesn't support transform origin
-        translateX: parentState.labeled.interpolate({
+        translateX: labeled.interpolate({
           inputRange: [0, 1],
           outputRange: [baseLabelTranslateX, labelTranslationXOffset || 0],
         }),
@@ -48,34 +73,58 @@ const InputLabel = (props: InputLabelProps) => {
     fontSize,
     lineHeight,
     fontWeight,
+    opacity: labeled.interpolate({
+      inputRange: [0, 1],
+      outputRange: [hasActiveOutline ? 1 : 0, 0],
+    }),
     transform: [
       {
         // Wiggle the label when there's an error
-        translateX: parentState.error.interpolate({
-          inputRange: [0, 0.5, 1],
-          outputRange: [0, parentState.value && error ? wiggleOffsetX : 0, 0],
-        }),
+        translateX: wiggle
+          ? error.interpolate({
+              inputRange: [0, 0.5, 1],
+              outputRange: [0, wiggleOffsetX, 0],
+            })
+          : 0,
       },
       {
         // Move label to top
-        translateY: parentState.labeled.interpolate({
-          inputRange: [0, 1],
-          outputRange: [baseLabelTranslateY, 0],
-        }),
+        translateY:
+          baseLabelTranslateY !== 0
+            ? labeled.interpolate({
+                inputRange: [0, 1],
+                outputRange: [baseLabelTranslateY, 0],
+              })
+            : 0,
       },
       {
         // Make label smaller
-        scale: parentState.labeled.interpolate({
-          inputRange: [0, 1],
-          outputRange: [labelScale, 1],
-        }),
+        scale:
+          labelScale !== 0
+            ? labeled.interpolate({
+                inputRange: [0, 1],
+                outputRange: [labelScale, 1],
+              })
+            : labeled,
       },
     ],
   };
 
-  const textColor = error && errorColor ? errorColor : placeholderColor;
+  const commonStyles = [
+    placeholderStyle,
+    {
+      top: topPosition,
+      maxWidth: inputContainerLayout.width + INPUT_PADDING_HORIZONTAL / 2,
+    },
+    labelStyle,
+    paddingOffset || {},
+  ];
 
-  return label ? (
+  const textColor = (
+    labelError && errorColor ? errorColor : placeholderColor
+  ) as ColorValue;
+
+  return (
     // Position colored placeholder and gray placeholder on top of each other and crossfade them
     // This gives the effect of animating the color, but allows us to use native driver
     <Animated.View
@@ -83,40 +132,32 @@ const InputLabel = (props: InputLabelProps) => {
       style={[
         StyleSheet.absoluteFill,
         styles.labelContainer,
-        {
-          opacity:
-            // Hide the label in minimized state until we measure it's width
-            parentState.value || parentState.focused
-              ? parentState.labelLayout.measured
-                ? 1
-                : 0
-              : 1,
-        },
+        Platform.OS !== 'web' && { width },
+        { opacity },
         labelTranslationX,
       ]}
     >
       {labelBackground?.({
-        parentState,
+        labeled,
+        labelLayoutWidth,
         labelStyle,
-        labelProps: props.labelProps,
+        placeholderStyle,
+        baseLabelTranslateX,
+        topPosition,
+        label,
+        backgroundColor,
+        roundness,
         maxFontSizeMultiplier: maxFontSizeMultiplier,
+        testID,
       })}
       <AnimatedText
         variant="bodySmall"
         onLayout={onLayoutAnimatedText}
+        onTextLayout={onLabelTextLayout}
         style={[
-          placeholderStyle,
-          {
-            top: topPosition,
-          },
-          labelStyle,
-          paddingOffset || {},
+          commonStyles,
           {
             color: activeColor,
-            opacity: parentState.labeled.interpolate({
-              inputRange: [0, 1],
-              outputRange: [hasActiveOutline ? 1 : 0, 0],
-            }),
           },
         ]}
         numberOfLines={1}
@@ -126,14 +167,9 @@ const InputLabel = (props: InputLabelProps) => {
         {label}
       </AnimatedText>
       <AnimatedText
-        variant={parentState.focused ? 'bodyLarge' : 'bodySmall'}
+        variant={focused ? 'bodyLarge' : 'bodySmall'}
         style={[
-          placeholderStyle,
-          {
-            top: topPosition,
-          },
-          labelStyle,
-          paddingOffset,
+          commonStyles,
           {
             color: textColor,
             opacity: placeholderOpacity,
@@ -146,7 +182,7 @@ const InputLabel = (props: InputLabelProps) => {
         {label}
       </AnimatedText>
     </Animated.View>
-  ) : null;
+  );
 };
 
 const styles = StyleSheet.create({
@@ -155,4 +191,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InputLabel;
+export default React.memo(InputLabel);

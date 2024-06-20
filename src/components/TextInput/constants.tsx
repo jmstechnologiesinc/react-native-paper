@@ -1,11 +1,12 @@
 import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
-import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 
 export const MAXIMIZED_LABEL_FONT_SIZE = theme.spacing.x4;
 export const MINIMIZED_LABEL_FONT_SIZE = theme.spacing.x3;
 export const LABEL_WIGGLE_X_OFFSET = theme.spacing.x1;
 
 export const ADORNMENT_SIZE = theme.spacing.x6;
+export const MIN_WIDTH = moderateScale(100);
 
 //Text input affix offset
 export const MD2_AFFIX_OFFSET = theme.spacing.x3;
