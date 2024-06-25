@@ -4,6 +4,7 @@ import {
   StyleProp,
   ImageSourcePropType,
   ImageStyle,
+  Image,
 } from 'react-native';
 
 import ImageBlurLoading from '@jmstechnologiesinc/react-native-image-blur-loading';
@@ -17,6 +18,7 @@ import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 export type Props = {
   source: ImageSourcePropType;
   variant?: 'image' | 'video' | 'flag';
+  defaultImageComponent?: boolean;
   style?: StyleProp<ImageStyle>;
   /**
    * @optional
@@ -48,7 +50,13 @@ export type Props = {
  * export default MyComponent;
  * ```
  */
-const ListImage = ({ style, source, variant = 'image', theme }: Props) => {
+const ListImage = ({
+  style,
+  source,
+  variant = 'image',
+  theme,
+  defaultImageComponent = false,
+}: Props) => {
   const getStyles = () => {
     if (variant === 'video') {
       if (!theme.isV3) {
@@ -63,7 +71,15 @@ const ListImage = ({ style, source, variant = 'image', theme }: Props) => {
     return [style, styles.image];
   };
 
-  return (
+  return defaultImageComponent ? (
+    <Image
+      style={getStyles()}
+      source={source}
+      accessibilityIgnoresInvertColors
+      testID="list-image"
+      // @ts-ignore
+    />
+  ) : (
     <ImageBlurLoading
       // @ts-ignore
       thumbnailSource={{ uri: source.lqipUri }}
