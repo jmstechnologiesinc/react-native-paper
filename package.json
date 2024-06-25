@@ -50,7 +50,7 @@
     "@jmstechnologiesinc/react-native-image-blur-loading": "^1.2.1",
     "@jmstechnologiesinc/react-native-size-matters": "^0.4.2",
     "color": "^3.1.2",
-    "react-native-fast-image": "^8.6.3",
+    "@jmstechnologiesinc/react-native-fast-image": "^8.6.3",
     "use-latest-callback": "^0.1.5"
   },
   "devDependencies": {
