@@ -16,9 +16,10 @@ import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import { getIconButtonColor } from './utils';
 
 import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
-import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 
 const PADDING = theme.spacing.x2;
+const ZISE = theme.spacing.x6;
 
 type IconButtonMode = 'outlined' | 'contained' | 'contained-tonal';
 
@@ -122,7 +123,7 @@ const IconButton = React.forwardRef<View, Props>(
       icon,
       iconColor: customIconColor,
       containerColor: customContainerColor,
-      size = theme.spacing.x6,
+      size = ZISE,
       accessibilityLabel,
       disabled,
       onPress,

@@ -10,7 +10,8 @@ import {
   View,
   ViewStyle,
   Keyboard,
-  Pressable
+  Pressable,
+  Platform,
 } from 'react-native';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -168,7 +169,7 @@ function Modal({
 
   const hideModal = () => {
     removeListeners();
-    Keyboard.dismiss()
+    Keyboard.dismiss();
     Animated.timing(opacity, {
       toValue: 0,
       duration: scale * DEFAULT_DURATION,
@@ -246,19 +247,33 @@ function Modal({
         pointerEvents="box-none"
         testID={`${testID}-wrapper`}
       >
-        <Pressable onPress={() => Keyboard.dismiss()}>
-        <Surface
-          style={
-            [
-              { opacity },
-              styles.content,
-              contentContainerStyle,
-            ] as StyleProp<ViewStyle>
-          }
-        >
-          {children}
-        </Surface>
-        </Pressable>
+        {Platform.OS === 'web' ? (
+          <Surface
+            style={
+              [
+                { opacity },
+                styles.content,
+                contentContainerStyle,
+              ] as StyleProp<ViewStyle>
+            }
+          >
+            {children}
+          </Surface>
+        ) : (
+          <Pressable onPress={() => Keyboard.dismiss()}>
+            <Surface
+              style={
+                [
+                  { opacity },
+                  styles.content,
+                  contentContainerStyle,
+                ] as StyleProp<ViewStyle>
+              }
+            >
+              {children}
+            </Surface>
+          </Pressable>
+        )}
       </View>
     </Animated.View>
   );
