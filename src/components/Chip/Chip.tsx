@@ -321,6 +321,7 @@ const Chip = ({
         onPressIn={hasPassedTouchHandler ? handlePressIn : undefined}
         onPressOut={hasPassedTouchHandler ? handlePressOut : undefined}
         delayLongPress={delayLongPress}
+        // @ts-ignore
         rippleColor={rippleColor}
         disabled={disabled}
         accessibilityLabel={accessibilityLabel}
