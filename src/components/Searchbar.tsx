@@ -24,7 +24,7 @@ import MaterialCommunityIcon from './MaterialCommunityIcon';
 import Surface from './Surface';
 
 import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
-import {MD3LightTheme as theme} from '../styles/themes/v3/LightTheme';
+import { MD3LightTheme as theme } from '../styles/themes/v3/LightTheme';
 
 export type Props = React.ComponentPropsWithRef<typeof TextInput> & {
   /**
@@ -55,6 +55,8 @@ export type Props = React.ComponentPropsWithRef<typeof TextInput> & {
    * Callback to execute if we want the left icon to act as button.
    */
   onIconPress?: (e: GestureResponderEvent) => void;
+
+  onClear?: () => void;
   /**
    * @supported Available in v5.x with theme version 3
    * Changes Searchbar shadow and background on iOS and Android.
@@ -140,6 +142,7 @@ const Searchbar = React.forwardRef<TextInputHandles, Props>(
       value,
       loading = false,
       testID = 'search-bar',
+      onClear,
       ...rest
     }: Props,
     ref
@@ -175,6 +178,7 @@ const Searchbar = React.forwardRef<TextInputHandles, Props>(
     const handleClearPress = () => {
       root.current?.clear();
       rest.onChangeText?.('');
+      onClear?.();
     };
 
     const { colors, roundness, dark, isV3 } = theme;
