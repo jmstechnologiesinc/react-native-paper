@@ -130,7 +130,7 @@ const Searchbar = React.forwardRef<TextInputHandles, Props>(
     {
       clearAccessibilityLabel = 'clear',
       clearIcon,
-      icon,
+      icon="magnify",
       iconColor: customIconColor,
       inputStyle,
       onIconPress,
@@ -208,7 +208,8 @@ const Searchbar = React.forwardRef<TextInputHandles, Props>(
             icon ||
             (({ size, color }) => (
               <MaterialCommunityIcon
-                name="magnify"
+            // @ts-ignore
+                name={icon}
                 color={color}
                 size={size}
                 direction={I18nManager.getConstants().isRTL ? 'rtl' : 'ltr'}

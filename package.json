@@ -1,6 +1,6 @@
 {
   "name": "@jmstechnologiesinc/react-native-paper",
-  "version": "5.12.6",
+  "version": "5.12.7",
   "description": "Material design for React Native",
   "main": "lib/commonjs/index.js",
   "react-native": "src/index.tsx",
@@ -31,16 +31,8 @@
     "material design",
     "bootstrap"
   ],
-  "scripts": {
-    "typescript": "tsc --noEmit",
-    "lint": "yarn lint-no-fix --fix",
-    "lint-no-fix": "eslint --ext '.js,.ts,.tsx' .",
-    "test": "jest",
-    "prepack": "bob build && node ./scripts/generate-mappings.js",
-    "release": "release-it",
-    "bootstrap": "yarn --cwd example && yarn --cwd docs && yarn",
-    "docs": "yarn --cwd docs",
-    "example": "yarn --cwd example"
+ "scripts": {
+
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
