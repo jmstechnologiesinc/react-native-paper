@@ -268,11 +268,14 @@ const ListAccordion = ({
             if (
               left &&
               React.isValidElement(child) &&
-              !child.props.left &&
-              !child.props.right
+              !(child as React.ReactElement<any>).props.left &&
+              !(child as React.ReactElement<any>).props.right
             ) {
               return React.cloneElement(child as React.ReactElement<any>, {
-                style: [styles.child, child.props.style],
+                style: [
+                  styles.child,
+                  (child as React.ReactElement<any>).props.style,
+                ],
               });
             }
 

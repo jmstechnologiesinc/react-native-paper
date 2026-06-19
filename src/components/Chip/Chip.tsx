@@ -298,7 +298,7 @@ const Chip = ({
         isV3 &&
           (isOutlined ? styles.md3OutlineContainer : styles.md3FlatContainer),
         !theme.isV3 && {
-          elevation: elevationStyle,
+          elevation: elevationStyle as number,
         },
         {
           backgroundColor: selected ? selectedBackgroundColor : backgroundColor,
@@ -343,7 +343,10 @@ const Chip = ({
             >
               {React.isValidElement(avatar)
                 ? React.cloneElement(avatar as React.ReactElement<any>, {
-                    style: [styles.avatar, avatar.props.style],
+                    style: [
+                      styles.avatar,
+                      (avatar as React.ReactElement<any>).props.style,
+                    ],
                   })
                 : avatar}
             </View>

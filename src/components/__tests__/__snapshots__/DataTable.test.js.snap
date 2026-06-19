@@ -1,554 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders data table cell 1`] = `
-<View
-  accessibilityState={
-    Object {
-      "disabled": true,
-    }
-  }
-  accessible={true}
-  collapsable={false}
-  focusable={true}
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  style={
-    Array [
-      false,
-      false,
-      Array [
-        Object {
-          "alignItems": "center",
-          "flex": 1,
-          "flexDirection": "row",
-        },
-        undefined,
-        undefined,
-      ],
-    ]
-  }
->
-  <Text
-    numberOfLines={1}
-    style={
-      Array [
-        Object {
-          "textAlign": "left",
-        },
-        Object {
-          "color": "rgba(28, 27, 31, 1)",
-          "fontFamily": "System",
-          "fontWeight": "400",
-          "letterSpacing": 0,
-        },
-        Object {
-          "writingDirection": "ltr",
-        },
-        undefined,
-      ]
-    }
-  >
-    Cupcake
-  </Text>
-</View>
-`;
+exports[`renders data table cell 1`] = `null`;
 
-exports[`renders data table header 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "borderBottomWidth": 1,
-        "flexDirection": "row",
-        "height": 48,
-        "paddingHorizontal": 16,
-      },
-      Object {
-        "borderBottomColor": "rgba(231, 224, 236, 1)",
-      },
-      undefined,
-    ]
-  }
->
-  <View
-    accessibilityState={
-      Object {
-        "disabled": true,
-      }
-    }
-    accessible={true}
-    focusable={false}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Array [
-        Object {
-          "alignContent": "center",
-          "flex": 1,
-          "flexDirection": "row",
-          "paddingVertical": 12,
-        },
-        undefined,
-        undefined,
-      ]
-    }
-  >
-    <Text
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "textAlign": "left",
-          },
-          Object {
-            "color": "rgba(28, 27, 31, 1)",
-            "fontFamily": "System",
-            "fontWeight": "400",
-            "letterSpacing": 0,
-          },
-          Object {
-            "writingDirection": "ltr",
-          },
-          Array [
-            Object {
-              "alignItems": "center",
-              "fontSize": 12,
-              "fontWeight": "500",
-              "lineHeight": 24,
-            },
-            Object {
-              "maxHeight": 24,
-            },
-            Object {},
-            Object {
-              "color": "rgba(28, 27, 31, 0.6)",
-            },
-            undefined,
-          ],
-        ]
-      }
-    >
-      Dessert
-    </Text>
-  </View>
-  <View
-    accessibilityState={
-      Object {
-        "disabled": true,
-      }
-    }
-    accessible={true}
-    focusable={false}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Array [
-        Object {
-          "alignContent": "center",
-          "flex": 1,
-          "flexDirection": "row",
-          "paddingVertical": 12,
-        },
-        undefined,
-        undefined,
-      ]
-    }
-  >
-    <Text
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "textAlign": "left",
-          },
-          Object {
-            "color": "rgba(28, 27, 31, 1)",
-            "fontFamily": "System",
-            "fontWeight": "400",
-            "letterSpacing": 0,
-          },
-          Object {
-            "writingDirection": "ltr",
-          },
-          Array [
-            Object {
-              "alignItems": "center",
-              "fontSize": 12,
-              "fontWeight": "500",
-              "lineHeight": 24,
-            },
-            Object {
-              "maxHeight": 24,
-            },
-            Object {},
-            Object {
-              "color": "rgba(28, 27, 31, 0.6)",
-            },
-            undefined,
-          ],
-        ]
-      }
-    >
-      Calories
-    </Text>
-  </View>
-</View>
-`;
+exports[`renders data table header 1`] = `null`;
 
-exports[`renders data table pagination 1`] = `
-<View
-  accessibilityLabel="pagination-container"
-  style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "flexDirection": "row",
-        "flexWrap": "wrap",
-        "justifyContent": "flex-end",
-        "paddingLeft": 16,
-      },
-      undefined,
-    ]
-  }
->
-  <Text
-    accessibilityLabel="label"
-    numberOfLines={3}
-    style={
-      Array [
-        Object {
-          "textAlign": "left",
-        },
-        Object {
-          "color": "rgba(28, 27, 31, 1)",
-          "fontFamily": "System",
-          "fontWeight": "400",
-          "letterSpacing": 0,
-        },
-        Object {
-          "writingDirection": "ltr",
-        },
-        Array [
-          Object {
-            "fontSize": 12,
-            "marginRight": 16,
-          },
-          Object {
-            "color": "rgba(28, 27, 31, 0.6)",
-          },
-        ],
-      ]
-    }
-  />
-  <View
-    style={
-      Object {
-        "flexDirection": "row",
-      }
-    }
-  >
-    <View
-      collapsable={false}
-      style={
-        Object {
-          "alignSelf": undefined,
-          "bottom": undefined,
-          "left": undefined,
-          "position": undefined,
-          "right": undefined,
-          "shadowColor": "#000",
-          "shadowOffset": Object {
-            "height": 0,
-            "width": 0,
-          },
-          "shadowOpacity": 0,
-          "shadowRadius": 0,
-          "top": undefined,
-        }
-      }
-    >
-      <View
-        collapsable={false}
-        style={
-          Object {
-            "shadowColor": "#000",
-            "shadowOffset": Object {
-              "height": 0,
-              "width": 0,
-            },
-            "shadowOpacity": 0,
-            "shadowRadius": 0,
-          }
-        }
-      >
-        <View
-          collapsable={false}
-          style={
-            Object {
-              "backgroundColor": undefined,
-              "borderColor": "rgba(121, 116, 126, 1)",
-              "borderRadius": 20,
-              "borderWidth": 0,
-              "elevation": 0,
-              "height": 40,
-              "margin": 6,
-              "overflow": "hidden",
-              "width": 40,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType="button"
-            accessibilityLabel="chevron-left"
-            accessibilityRole="button"
-            accessibilityState={
-              Object {
-                "disabled": false,
-              }
-            }
-            accessibilityTraits="button"
-            accessible={true}
-            centered={true}
-            collapsable={false}
-            focusable={true}
-            hitSlop={
-              Object {
-                "bottom": 6,
-                "left": 6,
-                "right": 6,
-                "top": 6,
-              }
-            }
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "overflow": "hidden",
-                },
-                false,
-                Object {
-                  "alignItems": "center",
-                  "flexGrow": 1,
-                  "justifyContent": "center",
-                },
-              ]
-            }
-          >
-            <Text
-              accessibilityElementsHidden={true}
-              allowFontScaling={false}
-              importantForAccessibility="no-hide-descendants"
-              pointerEvents="none"
-              selectable={false}
-              style={
-                Array [
-                  Object {
-                    "color": "rgba(28, 27, 31, 1)",
-                    "fontSize": 24,
-                  },
-                  Array [
-                    Object {
-                      "lineHeight": 24,
-                      "transform": Array [
-                        Object {
-                          "scaleX": 1,
-                        },
-                      ],
-                    },
-                    Object {
-                      "backgroundColor": "transparent",
-                    },
-                  ],
-                  Object {
-                    "fontFamily": "Material Design Icons",
-                    "fontStyle": "normal",
-                    "fontWeight": "normal",
-                  },
-                  Object {},
-                ]
-              }
-            >
-              󰅁
-            </Text>
-          </View>
-        </View>
-      </View>
-    </View>
-    <View
-      collapsable={false}
-      style={
-        Object {
-          "alignSelf": undefined,
-          "bottom": undefined,
-          "left": undefined,
-          "position": undefined,
-          "right": undefined,
-          "shadowColor": "#000",
-          "shadowOffset": Object {
-            "height": 0,
-            "width": 0,
-          },
-          "shadowOpacity": 0,
-          "shadowRadius": 0,
-          "top": undefined,
-        }
-      }
-    >
-      <View
-        collapsable={false}
-        style={
-          Object {
-            "shadowColor": "#000",
-            "shadowOffset": Object {
-              "height": 0,
-              "width": 0,
-            },
-            "shadowOpacity": 0,
-            "shadowRadius": 0,
-          }
-        }
-      >
-        <View
-          collapsable={false}
-          style={
-            Object {
-              "backgroundColor": undefined,
-              "borderColor": "rgba(121, 116, 126, 1)",
-              "borderRadius": 20,
-              "borderWidth": 0,
-              "elevation": 0,
-              "height": 40,
-              "margin": 6,
-              "overflow": "hidden",
-              "width": 40,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType="button"
-            accessibilityLabel="chevron-right"
-            accessibilityRole="button"
-            accessibilityState={
-              Object {
-                "disabled": false,
-              }
-            }
-            accessibilityTraits="button"
-            accessible={true}
-            centered={true}
-            collapsable={false}
-            focusable={true}
-            hitSlop={
-              Object {
-                "bottom": 6,
-                "left": 6,
-                "right": 6,
-                "top": 6,
-              }
-            }
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "overflow": "hidden",
-                },
-                false,
-                Object {
-                  "alignItems": "center",
-                  "flexGrow": 1,
-                  "justifyContent": "center",
-                },
-              ]
-            }
-          >
-            <Text
-              accessibilityElementsHidden={true}
-              allowFontScaling={false}
-              importantForAccessibility="no-hide-descendants"
-              pointerEvents="none"
-              selectable={false}
-              style={
-                Array [
-                  Object {
-                    "color": "rgba(28, 27, 31, 1)",
-                    "fontSize": 24,
-                  },
-                  Array [
-                    Object {
-                      "lineHeight": 24,
-                      "transform": Array [
-                        Object {
-                          "scaleX": 1,
-                        },
-                      ],
-                    },
-                    Object {
-                      "backgroundColor": "transparent",
-                    },
-                  ],
-                  Object {
-                    "fontFamily": "Material Design Icons",
-                    "fontStyle": "normal",
-                    "fontWeight": "normal",
-                  },
-                  Object {},
-                ]
-              }
-            >
-              󰅂
-            </Text>
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-</View>
-`;
+exports[`renders data table pagination 1`] = `null`;
 
 exports[`renders data table pagination with fast-forward buttons 1`] = `
 <View
   accessibilityLabel="pagination-container"
   style={
-    Array [
-      Object {
+    [
+      {
         "alignItems": "center",
         "flexDirection": "row",
         "flexWrap": "wrap",
         "justifyContent": "flex-end",
-        "paddingLeft": 16,
+        "paddingLeft": 25.142857142857142,
       },
       undefined,
     ]
@@ -558,26 +26,26 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
     accessibilityLabel="label"
     numberOfLines={3}
     style={
-      Array [
-        Object {
+      [
+        {
           "textAlign": "left",
         },
-        Object {
-          "color": "rgba(28, 27, 31, 1)",
+        {
+          "color": "rgb(31, 27, 22)",
           "fontFamily": "System",
           "fontWeight": "400",
           "letterSpacing": 0,
         },
-        Object {
+        {
           "writingDirection": "ltr",
         },
-        Array [
-          Object {
-            "fontSize": 12,
-            "marginRight": 16,
+        [
+          {
+            "fontSize": 18.857142857142858,
+            "marginRight": 25.142857142857142,
           },
-          Object {
-            "color": "rgba(28, 27, 31, 0.6)",
+          {
+            "color": "rgba(31, 27, 22, 0.6)",
           },
         ],
       ]
@@ -587,7 +55,7 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
   </Text>
   <View
     style={
-      Object {
+      {
         "flexDirection": "row",
       }
     }
@@ -595,14 +63,14 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
     <View
       collapsable={false}
       style={
-        Object {
+        {
           "alignSelf": undefined,
           "bottom": undefined,
           "left": undefined,
           "position": undefined,
           "right": undefined,
           "shadowColor": "#000",
-          "shadowOffset": Object {
+          "shadowOffset": {
             "height": 0,
             "width": 0,
           },
@@ -615,9 +83,9 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
       <View
         collapsable={false}
         style={
-          Object {
+          {
             "shadowColor": "#000",
-            "shadowOffset": Object {
+            "shadowOffset": {
               "height": 0,
               "width": 0,
             },
@@ -629,16 +97,16 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
         <View
           collapsable={false}
           style={
-            Object {
+            {
               "backgroundColor": undefined,
-              "borderColor": "rgba(121, 116, 126, 1)",
-              "borderRadius": 20,
+              "borderColor": "rgb(130, 117, 104)",
+              "borderRadius": 31.42857142857143,
               "borderWidth": 0,
               "elevation": 0,
-              "height": 40,
-              "margin": 6,
+              "height": 62.85714285714286,
+              "margin": 9.428571428571429,
               "overflow": "hidden",
-              "width": 40,
+              "width": 62.85714285714286,
             }
           }
         >
@@ -647,17 +115,29 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
             accessibilityLabel="page-first"
             accessibilityRole="button"
             accessibilityState={
-              Object {
+              {
+                "busy": undefined,
+                "checked": undefined,
                 "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
             accessibilityTraits="button"
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             centered={true}
             collapsable={false}
             focusable={true}
             hitSlop={
-              Object {
+              {
                 "bottom": 6,
                 "left": 6,
                 "right": 6,
@@ -674,12 +154,12 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "overflow": "hidden",
                 },
                 false,
-                Object {
+                {
                   "alignItems": "center",
                   "flexGrow": 1,
                   "justifyContent": "center",
@@ -694,30 +174,30 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
               pointerEvents="none"
               selectable={false}
               style={
-                Array [
-                  Object {
-                    "color": "rgba(28, 27, 31, 1)",
-                    "fontSize": 24,
+                [
+                  {
+                    "color": "rgb(31, 27, 22)",
+                    "fontSize": 37.714285714285715,
                   },
-                  Array [
-                    Object {
-                      "lineHeight": 24,
-                      "transform": Array [
-                        Object {
+                  [
+                    {
+                      "lineHeight": 37.714285714285715,
+                      "transform": [
+                        {
                           "scaleX": 1,
                         },
                       ],
                     },
-                    Object {
+                    {
                       "backgroundColor": "transparent",
                     },
                   ],
-                  Object {
+                  {
                     "fontFamily": "Material Design Icons",
                     "fontStyle": "normal",
                     "fontWeight": "normal",
                   },
-                  Object {},
+                  {},
                 ]
               }
             >
@@ -730,14 +210,14 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
     <View
       collapsable={false}
       style={
-        Object {
+        {
           "alignSelf": undefined,
           "bottom": undefined,
           "left": undefined,
           "position": undefined,
           "right": undefined,
           "shadowColor": "#000",
-          "shadowOffset": Object {
+          "shadowOffset": {
             "height": 0,
             "width": 0,
           },
@@ -750,9 +230,9 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
       <View
         collapsable={false}
         style={
-          Object {
+          {
             "shadowColor": "#000",
-            "shadowOffset": Object {
+            "shadowOffset": {
               "height": 0,
               "width": 0,
             },
@@ -764,16 +244,16 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
         <View
           collapsable={false}
           style={
-            Object {
+            {
               "backgroundColor": undefined,
-              "borderColor": "rgba(121, 116, 126, 1)",
-              "borderRadius": 20,
+              "borderColor": "rgb(130, 117, 104)",
+              "borderRadius": 31.42857142857143,
               "borderWidth": 0,
               "elevation": 0,
-              "height": 40,
-              "margin": 6,
+              "height": 62.85714285714286,
+              "margin": 9.428571428571429,
               "overflow": "hidden",
-              "width": 40,
+              "width": 62.85714285714286,
             }
           }
         >
@@ -782,17 +262,29 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
             accessibilityLabel="chevron-left"
             accessibilityRole="button"
             accessibilityState={
-              Object {
+              {
+                "busy": undefined,
+                "checked": undefined,
                 "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
             accessibilityTraits="button"
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             centered={true}
             collapsable={false}
             focusable={true}
             hitSlop={
-              Object {
+              {
                 "bottom": 6,
                 "left": 6,
                 "right": 6,
@@ -809,12 +301,12 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "overflow": "hidden",
                 },
                 false,
-                Object {
+                {
                   "alignItems": "center",
                   "flexGrow": 1,
                   "justifyContent": "center",
@@ -829,30 +321,30 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
               pointerEvents="none"
               selectable={false}
               style={
-                Array [
-                  Object {
-                    "color": "rgba(28, 27, 31, 1)",
-                    "fontSize": 24,
+                [
+                  {
+                    "color": "rgb(31, 27, 22)",
+                    "fontSize": 37.714285714285715,
                   },
-                  Array [
-                    Object {
-                      "lineHeight": 24,
-                      "transform": Array [
-                        Object {
+                  [
+                    {
+                      "lineHeight": 37.714285714285715,
+                      "transform": [
+                        {
                           "scaleX": 1,
                         },
                       ],
                     },
-                    Object {
+                    {
                       "backgroundColor": "transparent",
                     },
                   ],
-                  Object {
+                  {
                     "fontFamily": "Material Design Icons",
                     "fontStyle": "normal",
                     "fontWeight": "normal",
                   },
-                  Object {},
+                  {},
                 ]
               }
             >
@@ -865,14 +357,14 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
     <View
       collapsable={false}
       style={
-        Object {
+        {
           "alignSelf": undefined,
           "bottom": undefined,
           "left": undefined,
           "position": undefined,
           "right": undefined,
           "shadowColor": "#000",
-          "shadowOffset": Object {
+          "shadowOffset": {
             "height": 0,
             "width": 0,
           },
@@ -885,9 +377,9 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
       <View
         collapsable={false}
         style={
-          Object {
+          {
             "shadowColor": "#000",
-            "shadowOffset": Object {
+            "shadowOffset": {
               "height": 0,
               "width": 0,
             },
@@ -899,16 +391,16 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
         <View
           collapsable={false}
           style={
-            Object {
+            {
               "backgroundColor": undefined,
-              "borderColor": "rgba(121, 116, 126, 1)",
-              "borderRadius": 20,
+              "borderColor": "rgb(130, 117, 104)",
+              "borderRadius": 31.42857142857143,
               "borderWidth": 0,
               "elevation": 0,
-              "height": 40,
-              "margin": 6,
+              "height": 62.85714285714286,
+              "margin": 9.428571428571429,
               "overflow": "hidden",
-              "width": 40,
+              "width": 62.85714285714286,
             }
           }
         >
@@ -917,17 +409,29 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
             accessibilityLabel="chevron-right"
             accessibilityRole="button"
             accessibilityState={
-              Object {
+              {
+                "busy": undefined,
+                "checked": undefined,
                 "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
             accessibilityTraits="button"
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             centered={true}
             collapsable={false}
             focusable={true}
             hitSlop={
-              Object {
+              {
                 "bottom": 6,
                 "left": 6,
                 "right": 6,
@@ -944,12 +448,12 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "overflow": "hidden",
                 },
                 false,
-                Object {
+                {
                   "alignItems": "center",
                   "flexGrow": 1,
                   "justifyContent": "center",
@@ -964,30 +468,30 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
               pointerEvents="none"
               selectable={false}
               style={
-                Array [
-                  Object {
-                    "color": "rgba(28, 27, 31, 1)",
-                    "fontSize": 24,
+                [
+                  {
+                    "color": "rgb(31, 27, 22)",
+                    "fontSize": 37.714285714285715,
                   },
-                  Array [
-                    Object {
-                      "lineHeight": 24,
-                      "transform": Array [
-                        Object {
+                  [
+                    {
+                      "lineHeight": 37.714285714285715,
+                      "transform": [
+                        {
                           "scaleX": 1,
                         },
                       ],
                     },
-                    Object {
+                    {
                       "backgroundColor": "transparent",
                     },
                   ],
-                  Object {
+                  {
                     "fontFamily": "Material Design Icons",
                     "fontStyle": "normal",
                     "fontWeight": "normal",
                   },
-                  Object {},
+                  {},
                 ]
               }
             >
@@ -1000,14 +504,14 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
     <View
       collapsable={false}
       style={
-        Object {
+        {
           "alignSelf": undefined,
           "bottom": undefined,
           "left": undefined,
           "position": undefined,
           "right": undefined,
           "shadowColor": "#000",
-          "shadowOffset": Object {
+          "shadowOffset": {
             "height": 0,
             "width": 0,
           },
@@ -1020,9 +524,9 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
       <View
         collapsable={false}
         style={
-          Object {
+          {
             "shadowColor": "#000",
-            "shadowOffset": Object {
+            "shadowOffset": {
               "height": 0,
               "width": 0,
             },
@@ -1034,16 +538,16 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
         <View
           collapsable={false}
           style={
-            Object {
+            {
               "backgroundColor": undefined,
-              "borderColor": "rgba(121, 116, 126, 1)",
-              "borderRadius": 20,
+              "borderColor": "rgb(130, 117, 104)",
+              "borderRadius": 31.42857142857143,
               "borderWidth": 0,
               "elevation": 0,
-              "height": 40,
-              "margin": 6,
+              "height": 62.85714285714286,
+              "margin": 9.428571428571429,
               "overflow": "hidden",
-              "width": 40,
+              "width": 62.85714285714286,
             }
           }
         >
@@ -1052,17 +556,29 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
             accessibilityLabel="page-last"
             accessibilityRole="button"
             accessibilityState={
-              Object {
+              {
+                "busy": undefined,
+                "checked": undefined,
                 "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
             accessibilityTraits="button"
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             centered={true}
             collapsable={false}
             focusable={true}
             hitSlop={
-              Object {
+              {
                 "bottom": 6,
                 "left": 6,
                 "right": 6,
@@ -1079,12 +595,12 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "overflow": "hidden",
                 },
                 false,
-                Object {
+                {
                   "alignItems": "center",
                   "flexGrow": 1,
                   "justifyContent": "center",
@@ -1099,30 +615,30 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
               pointerEvents="none"
               selectable={false}
               style={
-                Array [
-                  Object {
-                    "color": "rgba(28, 27, 31, 1)",
-                    "fontSize": 24,
+                [
+                  {
+                    "color": "rgb(31, 27, 22)",
+                    "fontSize": 37.714285714285715,
                   },
-                  Array [
-                    Object {
-                      "lineHeight": 24,
-                      "transform": Array [
-                        Object {
+                  [
+                    {
+                      "lineHeight": 37.714285714285715,
+                      "transform": [
+                        {
                           "scaleX": 1,
                         },
                       ],
                     },
-                    Object {
+                    {
                       "backgroundColor": "transparent",
                     },
                   ],
-                  Object {
+                  {
                     "fontFamily": "Material Design Icons",
                     "fontStyle": "normal",
                     "fontWeight": "normal",
                   },
-                  Object {},
+                  {},
                 ]
               }
             >
@@ -1136,345 +652,19 @@ exports[`renders data table pagination with fast-forward buttons 1`] = `
 </View>
 `;
 
-exports[`renders data table pagination with label 1`] = `
-<View
-  accessibilityLabel="pagination-container"
-  style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "flexDirection": "row",
-        "flexWrap": "wrap",
-        "justifyContent": "flex-end",
-        "paddingLeft": 16,
-      },
-      undefined,
-    ]
-  }
->
-  <Text
-    accessibilityLabel="label"
-    numberOfLines={3}
-    style={
-      Array [
-        Object {
-          "textAlign": "left",
-        },
-        Object {
-          "color": "rgba(28, 27, 31, 1)",
-          "fontFamily": "System",
-          "fontWeight": "400",
-          "letterSpacing": 0,
-        },
-        Object {
-          "writingDirection": "ltr",
-        },
-        Array [
-          Object {
-            "fontSize": 12,
-            "marginRight": 16,
-          },
-          Object {
-            "color": "rgba(28, 27, 31, 0.6)",
-          },
-        ],
-      ]
-    }
-  >
-    11-20 of 150
-  </Text>
-  <View
-    style={
-      Object {
-        "flexDirection": "row",
-      }
-    }
-  >
-    <View
-      collapsable={false}
-      style={
-        Object {
-          "alignSelf": undefined,
-          "bottom": undefined,
-          "left": undefined,
-          "position": undefined,
-          "right": undefined,
-          "shadowColor": "#000",
-          "shadowOffset": Object {
-            "height": 0,
-            "width": 0,
-          },
-          "shadowOpacity": 0,
-          "shadowRadius": 0,
-          "top": undefined,
-        }
-      }
-    >
-      <View
-        collapsable={false}
-        style={
-          Object {
-            "shadowColor": "#000",
-            "shadowOffset": Object {
-              "height": 0,
-              "width": 0,
-            },
-            "shadowOpacity": 0,
-            "shadowRadius": 0,
-          }
-        }
-      >
-        <View
-          collapsable={false}
-          style={
-            Object {
-              "backgroundColor": undefined,
-              "borderColor": "rgba(121, 116, 126, 1)",
-              "borderRadius": 20,
-              "borderWidth": 0,
-              "elevation": 0,
-              "height": 40,
-              "margin": 6,
-              "overflow": "hidden",
-              "width": 40,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType="button"
-            accessibilityLabel="chevron-left"
-            accessibilityRole="button"
-            accessibilityState={
-              Object {
-                "disabled": false,
-              }
-            }
-            accessibilityTraits="button"
-            accessible={true}
-            centered={true}
-            collapsable={false}
-            focusable={true}
-            hitSlop={
-              Object {
-                "bottom": 6,
-                "left": 6,
-                "right": 6,
-                "top": 6,
-              }
-            }
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "overflow": "hidden",
-                },
-                false,
-                Object {
-                  "alignItems": "center",
-                  "flexGrow": 1,
-                  "justifyContent": "center",
-                },
-              ]
-            }
-          >
-            <Text
-              accessibilityElementsHidden={true}
-              allowFontScaling={false}
-              importantForAccessibility="no-hide-descendants"
-              pointerEvents="none"
-              selectable={false}
-              style={
-                Array [
-                  Object {
-                    "color": "rgba(28, 27, 31, 1)",
-                    "fontSize": 24,
-                  },
-                  Array [
-                    Object {
-                      "lineHeight": 24,
-                      "transform": Array [
-                        Object {
-                          "scaleX": 1,
-                        },
-                      ],
-                    },
-                    Object {
-                      "backgroundColor": "transparent",
-                    },
-                  ],
-                  Object {
-                    "fontFamily": "Material Design Icons",
-                    "fontStyle": "normal",
-                    "fontWeight": "normal",
-                  },
-                  Object {},
-                ]
-              }
-            >
-              󰅁
-            </Text>
-          </View>
-        </View>
-      </View>
-    </View>
-    <View
-      collapsable={false}
-      style={
-        Object {
-          "alignSelf": undefined,
-          "bottom": undefined,
-          "left": undefined,
-          "position": undefined,
-          "right": undefined,
-          "shadowColor": "#000",
-          "shadowOffset": Object {
-            "height": 0,
-            "width": 0,
-          },
-          "shadowOpacity": 0,
-          "shadowRadius": 0,
-          "top": undefined,
-        }
-      }
-    >
-      <View
-        collapsable={false}
-        style={
-          Object {
-            "shadowColor": "#000",
-            "shadowOffset": Object {
-              "height": 0,
-              "width": 0,
-            },
-            "shadowOpacity": 0,
-            "shadowRadius": 0,
-          }
-        }
-      >
-        <View
-          collapsable={false}
-          style={
-            Object {
-              "backgroundColor": undefined,
-              "borderColor": "rgba(121, 116, 126, 1)",
-              "borderRadius": 20,
-              "borderWidth": 0,
-              "elevation": 0,
-              "height": 40,
-              "margin": 6,
-              "overflow": "hidden",
-              "width": 40,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType="button"
-            accessibilityLabel="chevron-right"
-            accessibilityRole="button"
-            accessibilityState={
-              Object {
-                "disabled": false,
-              }
-            }
-            accessibilityTraits="button"
-            accessible={true}
-            centered={true}
-            collapsable={false}
-            focusable={true}
-            hitSlop={
-              Object {
-                "bottom": 6,
-                "left": 6,
-                "right": 6,
-                "top": 6,
-              }
-            }
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "overflow": "hidden",
-                },
-                false,
-                Object {
-                  "alignItems": "center",
-                  "flexGrow": 1,
-                  "justifyContent": "center",
-                },
-              ]
-            }
-          >
-            <Text
-              accessibilityElementsHidden={true}
-              allowFontScaling={false}
-              importantForAccessibility="no-hide-descendants"
-              pointerEvents="none"
-              selectable={false}
-              style={
-                Array [
-                  Object {
-                    "color": "rgba(28, 27, 31, 1)",
-                    "fontSize": 24,
-                  },
-                  Array [
-                    Object {
-                      "lineHeight": 24,
-                      "transform": Array [
-                        Object {
-                          "scaleX": 1,
-                        },
-                      ],
-                    },
-                    Object {
-                      "backgroundColor": "transparent",
-                    },
-                  ],
-                  Object {
-                    "fontFamily": "Material Design Icons",
-                    "fontStyle": "normal",
-                    "fontWeight": "normal",
-                  },
-                  Object {},
-                ]
-              }
-            >
-              󰅂
-            </Text>
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-</View>
-`;
+exports[`renders data table pagination with label 1`] = `null`;
 
 exports[`renders data table pagination with options select 1`] = `
 <View
   accessibilityLabel="pagination-container"
   style={
-    Array [
-      Object {
+    [
+      {
         "alignItems": "center",
         "flexDirection": "row",
         "flexWrap": "wrap",
         "justifyContent": "flex-end",
-        "paddingLeft": 16,
+        "paddingLeft": 25.142857142857142,
       },
       undefined,
     ]
@@ -1483,10 +673,10 @@ exports[`renders data table pagination with options select 1`] = `
   <View
     accessibilityLabel="Options Select"
     style={
-      Object {
+      {
         "alignItems": "center",
         "flexDirection": "row",
-        "marginVertical": 6,
+        "marginVertical": 9.428571428571429,
       }
     }
   >
@@ -1494,26 +684,26 @@ exports[`renders data table pagination with options select 1`] = `
       accessibilityLabel="selectPageDropdownLabel"
       numberOfLines={3}
       style={
-        Array [
-          Object {
+        [
+          {
             "textAlign": "left",
           },
-          Object {
-            "color": "rgba(28, 27, 31, 1)",
+          {
+            "color": "rgb(31, 27, 22)",
             "fontFamily": "System",
             "fontWeight": "400",
             "letterSpacing": 0,
           },
-          Object {
+          {
             "writingDirection": "ltr",
           },
-          Array [
-            Object {
-              "fontSize": 12,
-              "marginRight": 16,
+          [
+            {
+              "fontSize": 18.857142857142858,
+              "marginRight": 25.142857142857142,
             },
-            Object {
-              "color": "rgba(28, 27, 31, 0.6)",
+            {
+              "color": "rgba(31, 27, 22, 0.6)",
             },
           ],
         ]
@@ -1527,14 +717,14 @@ exports[`renders data table pagination with options select 1`] = `
       <View
         collapsable={false}
         style={
-          Object {
+          {
             "alignSelf": undefined,
             "bottom": undefined,
             "left": undefined,
             "position": undefined,
             "right": undefined,
             "shadowColor": "#000",
-            "shadowOffset": Object {
+            "shadowOffset": {
               "height": 0,
               "width": 0,
             },
@@ -1547,9 +737,9 @@ exports[`renders data table pagination with options select 1`] = `
         <View
           collapsable={false}
           style={
-            Object {
+            {
               "shadowColor": "#000",
-              "shadowOffset": Object {
+              "shadowOffset": {
                 "height": 0,
                 "width": 0,
               },
@@ -1561,14 +751,14 @@ exports[`renders data table pagination with options select 1`] = `
           <View
             collapsable={false}
             style={
-              Object {
+              {
                 "backgroundColor": "transparent",
-                "borderColor": "rgba(121, 116, 126, 1)",
-                "borderRadius": 20,
+                "borderColor": "rgb(130, 117, 104)",
+                "borderRadius": 49.38775510204081,
                 "borderStyle": "solid",
                 "borderWidth": 1,
-                "marginRight": 16,
-                "minWidth": 64,
+                "marginRight": 25.142857142857142,
+                "minWidth": 100.57142857142857,
                 "textAlign": "center",
               }
             }
@@ -1576,8 +766,20 @@ exports[`renders data table pagination with options select 1`] = `
             <View
               accessibilityRole="button"
               accessibilityState={
-                Object {
+                {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}
@@ -1593,26 +795,26 @@ exports[`renders data table pagination with options select 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "overflow": "hidden",
                   },
                   false,
-                  Object {
-                    "borderRadius": 20,
+                  {
+                    "borderRadius": 49.38775510204081,
                   },
                 ]
               }
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "center",
                     },
-                    Object {
+                    {
                       "flexDirection": "row-reverse",
                     },
                   ]
@@ -1620,14 +822,14 @@ exports[`renders data table pagination with options select 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
-                        "marginLeft": -4,
-                        "marginRight": 12,
+                    [
+                      {
+                        "marginLeft": -6.285714285714286,
+                        "marginRight": 18.857142857142858,
                       },
-                      Object {
-                        "marginLeft": -16,
-                        "marginRight": 16,
+                      {
+                        "marginLeft": -25.142857142857142,
+                        "marginRight": 25.142857142857142,
                       },
                       false,
                     ]
@@ -1640,30 +842,30 @@ exports[`renders data table pagination with options select 1`] = `
                     pointerEvents="none"
                     selectable={false}
                     style={
-                      Array [
-                        Object {
-                          "color": "rgba(103, 80, 164, 1)",
-                          "fontSize": 18,
+                      [
+                        {
+                          "color": "rgb(133, 84, 0)",
+                          "fontSize": 28.285714285714285,
                         },
-                        Array [
-                          Object {
-                            "lineHeight": 18,
-                            "transform": Array [
-                              Object {
+                        [
+                          {
+                            "lineHeight": 28.285714285714285,
+                            "transform": [
+                              {
                                 "scaleX": 1,
                               },
                             ],
                           },
-                          Object {
+                          {
                             "backgroundColor": "transparent",
                           },
                         ],
-                        Object {
+                        {
                           "fontFamily": "Material Design Icons",
                           "fontStyle": "normal",
                           "fontWeight": "normal",
                         },
-                        Object {},
+                        {},
                       ]
                     }
                   >
@@ -1674,41 +876,41 @@ exports[`renders data table pagination with options select 1`] = `
                   numberOfLines={1}
                   selectable={false}
                   style={
-                    Array [
-                      Object {
-                        "color": "rgba(28, 27, 31, 1)",
+                    [
+                      {
+                        "color": "rgb(31, 27, 22)",
                         "fontFamily": "System",
-                        "fontSize": 14,
+                        "fontSize": 22,
                         "fontWeight": "500",
-                        "letterSpacing": 0.1,
-                        "lineHeight": 20,
+                        "letterSpacing": 0.15714285714285714,
+                        "lineHeight": 31.428571428571427,
                       },
-                      Object {
+                      {
                         "textAlign": "left",
                       },
-                      Object {
+                      {
                         "writingDirection": "ltr",
                       },
-                      Array [
-                        Object {
-                          "marginHorizontal": 16,
-                          "marginVertical": 9,
+                      [
+                        {
+                          "marginHorizontal": 25.142857142857142,
+                          "marginVertical": 14.142857142857142,
                           "textAlign": "center",
                         },
                         false,
-                        Object {
-                          "marginHorizontal": 24,
-                          "marginVertical": 10,
+                        {
+                          "marginHorizontal": 37.714285714285715,
+                          "marginVertical": 15.714285714285714,
                         },
                         undefined,
                         false,
-                        Object {
-                          "color": "rgba(103, 80, 164, 1)",
+                        {
+                          "color": "rgb(133, 84, 0)",
                           "fontFamily": "System",
-                          "fontSize": 14,
+                          "fontSize": 22,
                           "fontWeight": "500",
-                          "letterSpacing": 0.1,
-                          "lineHeight": 20,
+                          "letterSpacing": 0.15714285714285714,
+                          "lineHeight": 31.428571428571427,
                         },
                         undefined,
                       ],
@@ -1728,26 +930,26 @@ exports[`renders data table pagination with options select 1`] = `
     accessibilityLabel="label"
     numberOfLines={3}
     style={
-      Array [
-        Object {
+      [
+        {
           "textAlign": "left",
         },
-        Object {
-          "color": "rgba(28, 27, 31, 1)",
+        {
+          "color": "rgb(31, 27, 22)",
           "fontFamily": "System",
           "fontWeight": "400",
           "letterSpacing": 0,
         },
-        Object {
+        {
           "writingDirection": "ltr",
         },
-        Array [
-          Object {
-            "fontSize": 12,
-            "marginRight": 16,
+        [
+          {
+            "fontSize": 18.857142857142858,
+            "marginRight": 25.142857142857142,
           },
-          Object {
-            "color": "rgba(28, 27, 31, 0.6)",
+          {
+            "color": "rgba(31, 27, 22, 0.6)",
           },
         ],
       ]
@@ -1757,7 +959,7 @@ exports[`renders data table pagination with options select 1`] = `
   </Text>
   <View
     style={
-      Object {
+      {
         "flexDirection": "row",
       }
     }
@@ -1765,14 +967,14 @@ exports[`renders data table pagination with options select 1`] = `
     <View
       collapsable={false}
       style={
-        Object {
+        {
           "alignSelf": undefined,
           "bottom": undefined,
           "left": undefined,
           "position": undefined,
           "right": undefined,
           "shadowColor": "#000",
-          "shadowOffset": Object {
+          "shadowOffset": {
             "height": 0,
             "width": 0,
           },
@@ -1785,9 +987,9 @@ exports[`renders data table pagination with options select 1`] = `
       <View
         collapsable={false}
         style={
-          Object {
+          {
             "shadowColor": "#000",
-            "shadowOffset": Object {
+            "shadowOffset": {
               "height": 0,
               "width": 0,
             },
@@ -1799,16 +1001,16 @@ exports[`renders data table pagination with options select 1`] = `
         <View
           collapsable={false}
           style={
-            Object {
+            {
               "backgroundColor": undefined,
-              "borderColor": "rgba(121, 116, 126, 1)",
-              "borderRadius": 20,
+              "borderColor": "rgb(130, 117, 104)",
+              "borderRadius": 31.42857142857143,
               "borderWidth": 0,
               "elevation": 0,
-              "height": 40,
-              "margin": 6,
+              "height": 62.85714285714286,
+              "margin": 9.428571428571429,
               "overflow": "hidden",
-              "width": 40,
+              "width": 62.85714285714286,
             }
           }
         >
@@ -1817,17 +1019,29 @@ exports[`renders data table pagination with options select 1`] = `
             accessibilityLabel="page-first"
             accessibilityRole="button"
             accessibilityState={
-              Object {
+              {
+                "busy": undefined,
+                "checked": undefined,
                 "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
             accessibilityTraits="button"
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             centered={true}
             collapsable={false}
             focusable={true}
             hitSlop={
-              Object {
+              {
                 "bottom": 6,
                 "left": 6,
                 "right": 6,
@@ -1844,12 +1058,12 @@ exports[`renders data table pagination with options select 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "overflow": "hidden",
                 },
                 false,
-                Object {
+                {
                   "alignItems": "center",
                   "flexGrow": 1,
                   "justifyContent": "center",
@@ -1864,30 +1078,30 @@ exports[`renders data table pagination with options select 1`] = `
               pointerEvents="none"
               selectable={false}
               style={
-                Array [
-                  Object {
-                    "color": "rgba(28, 27, 31, 1)",
-                    "fontSize": 24,
+                [
+                  {
+                    "color": "rgb(31, 27, 22)",
+                    "fontSize": 37.714285714285715,
                   },
-                  Array [
-                    Object {
-                      "lineHeight": 24,
-                      "transform": Array [
-                        Object {
+                  [
+                    {
+                      "lineHeight": 37.714285714285715,
+                      "transform": [
+                        {
                           "scaleX": 1,
                         },
                       ],
                     },
-                    Object {
+                    {
                       "backgroundColor": "transparent",
                     },
                   ],
-                  Object {
+                  {
                     "fontFamily": "Material Design Icons",
                     "fontStyle": "normal",
                     "fontWeight": "normal",
                   },
-                  Object {},
+                  {},
                 ]
               }
             >
@@ -1900,14 +1114,14 @@ exports[`renders data table pagination with options select 1`] = `
     <View
       collapsable={false}
       style={
-        Object {
+        {
           "alignSelf": undefined,
           "bottom": undefined,
           "left": undefined,
           "position": undefined,
           "right": undefined,
           "shadowColor": "#000",
-          "shadowOffset": Object {
+          "shadowOffset": {
             "height": 0,
             "width": 0,
           },
@@ -1920,9 +1134,9 @@ exports[`renders data table pagination with options select 1`] = `
       <View
         collapsable={false}
         style={
-          Object {
+          {
             "shadowColor": "#000",
-            "shadowOffset": Object {
+            "shadowOffset": {
               "height": 0,
               "width": 0,
             },
@@ -1934,16 +1148,16 @@ exports[`renders data table pagination with options select 1`] = `
         <View
           collapsable={false}
           style={
-            Object {
+            {
               "backgroundColor": undefined,
-              "borderColor": "rgba(121, 116, 126, 1)",
-              "borderRadius": 20,
+              "borderColor": "rgb(130, 117, 104)",
+              "borderRadius": 31.42857142857143,
               "borderWidth": 0,
               "elevation": 0,
-              "height": 40,
-              "margin": 6,
+              "height": 62.85714285714286,
+              "margin": 9.428571428571429,
               "overflow": "hidden",
-              "width": 40,
+              "width": 62.85714285714286,
             }
           }
         >
@@ -1952,17 +1166,29 @@ exports[`renders data table pagination with options select 1`] = `
             accessibilityLabel="chevron-left"
             accessibilityRole="button"
             accessibilityState={
-              Object {
+              {
+                "busy": undefined,
+                "checked": undefined,
                 "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
             accessibilityTraits="button"
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             centered={true}
             collapsable={false}
             focusable={true}
             hitSlop={
-              Object {
+              {
                 "bottom": 6,
                 "left": 6,
                 "right": 6,
@@ -1979,12 +1205,12 @@ exports[`renders data table pagination with options select 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "overflow": "hidden",
                 },
                 false,
-                Object {
+                {
                   "alignItems": "center",
                   "flexGrow": 1,
                   "justifyContent": "center",
@@ -1999,30 +1225,30 @@ exports[`renders data table pagination with options select 1`] = `
               pointerEvents="none"
               selectable={false}
               style={
-                Array [
-                  Object {
-                    "color": "rgba(28, 27, 31, 1)",
-                    "fontSize": 24,
+                [
+                  {
+                    "color": "rgb(31, 27, 22)",
+                    "fontSize": 37.714285714285715,
                   },
-                  Array [
-                    Object {
-                      "lineHeight": 24,
-                      "transform": Array [
-                        Object {
+                  [
+                    {
+                      "lineHeight": 37.714285714285715,
+                      "transform": [
+                        {
                           "scaleX": 1,
                         },
                       ],
                     },
-                    Object {
+                    {
                       "backgroundColor": "transparent",
                     },
                   ],
-                  Object {
+                  {
                     "fontFamily": "Material Design Icons",
                     "fontStyle": "normal",
                     "fontWeight": "normal",
                   },
-                  Object {},
+                  {},
                 ]
               }
             >
@@ -2035,14 +1261,14 @@ exports[`renders data table pagination with options select 1`] = `
     <View
       collapsable={false}
       style={
-        Object {
+        {
           "alignSelf": undefined,
           "bottom": undefined,
           "left": undefined,
           "position": undefined,
           "right": undefined,
           "shadowColor": "#000",
-          "shadowOffset": Object {
+          "shadowOffset": {
             "height": 0,
             "width": 0,
           },
@@ -2055,9 +1281,9 @@ exports[`renders data table pagination with options select 1`] = `
       <View
         collapsable={false}
         style={
-          Object {
+          {
             "shadowColor": "#000",
-            "shadowOffset": Object {
+            "shadowOffset": {
               "height": 0,
               "width": 0,
             },
@@ -2069,16 +1295,16 @@ exports[`renders data table pagination with options select 1`] = `
         <View
           collapsable={false}
           style={
-            Object {
+            {
               "backgroundColor": undefined,
-              "borderColor": "rgba(121, 116, 126, 1)",
-              "borderRadius": 20,
+              "borderColor": "rgb(130, 117, 104)",
+              "borderRadius": 31.42857142857143,
               "borderWidth": 0,
               "elevation": 0,
-              "height": 40,
-              "margin": 6,
+              "height": 62.85714285714286,
+              "margin": 9.428571428571429,
               "overflow": "hidden",
-              "width": 40,
+              "width": 62.85714285714286,
             }
           }
         >
@@ -2087,17 +1313,29 @@ exports[`renders data table pagination with options select 1`] = `
             accessibilityLabel="chevron-right"
             accessibilityRole="button"
             accessibilityState={
-              Object {
+              {
+                "busy": undefined,
+                "checked": undefined,
                 "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
             accessibilityTraits="button"
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             centered={true}
             collapsable={false}
             focusable={true}
             hitSlop={
-              Object {
+              {
                 "bottom": 6,
                 "left": 6,
                 "right": 6,
@@ -2114,12 +1352,12 @@ exports[`renders data table pagination with options select 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "overflow": "hidden",
                 },
                 false,
-                Object {
+                {
                   "alignItems": "center",
                   "flexGrow": 1,
                   "justifyContent": "center",
@@ -2134,30 +1372,30 @@ exports[`renders data table pagination with options select 1`] = `
               pointerEvents="none"
               selectable={false}
               style={
-                Array [
-                  Object {
-                    "color": "rgba(28, 27, 31, 1)",
-                    "fontSize": 24,
+                [
+                  {
+                    "color": "rgb(31, 27, 22)",
+                    "fontSize": 37.714285714285715,
                   },
-                  Array [
-                    Object {
-                      "lineHeight": 24,
-                      "transform": Array [
-                        Object {
+                  [
+                    {
+                      "lineHeight": 37.714285714285715,
+                      "transform": [
+                        {
                           "scaleX": 1,
                         },
                       ],
                     },
-                    Object {
+                    {
                       "backgroundColor": "transparent",
                     },
                   ],
-                  Object {
+                  {
                     "fontFamily": "Material Design Icons",
                     "fontStyle": "normal",
                     "fontWeight": "normal",
                   },
-                  Object {},
+                  {},
                 ]
               }
             >
@@ -2170,14 +1408,14 @@ exports[`renders data table pagination with options select 1`] = `
     <View
       collapsable={false}
       style={
-        Object {
+        {
           "alignSelf": undefined,
           "bottom": undefined,
           "left": undefined,
           "position": undefined,
           "right": undefined,
           "shadowColor": "#000",
-          "shadowOffset": Object {
+          "shadowOffset": {
             "height": 0,
             "width": 0,
           },
@@ -2190,9 +1428,9 @@ exports[`renders data table pagination with options select 1`] = `
       <View
         collapsable={false}
         style={
-          Object {
+          {
             "shadowColor": "#000",
-            "shadowOffset": Object {
+            "shadowOffset": {
               "height": 0,
               "width": 0,
             },
@@ -2204,16 +1442,16 @@ exports[`renders data table pagination with options select 1`] = `
         <View
           collapsable={false}
           style={
-            Object {
+            {
               "backgroundColor": undefined,
-              "borderColor": "rgba(121, 116, 126, 1)",
-              "borderRadius": 20,
+              "borderColor": "rgb(130, 117, 104)",
+              "borderRadius": 31.42857142857143,
               "borderWidth": 0,
               "elevation": 0,
-              "height": 40,
-              "margin": 6,
+              "height": 62.85714285714286,
+              "margin": 9.428571428571429,
               "overflow": "hidden",
-              "width": 40,
+              "width": 62.85714285714286,
             }
           }
         >
@@ -2222,17 +1460,29 @@ exports[`renders data table pagination with options select 1`] = `
             accessibilityLabel="page-last"
             accessibilityRole="button"
             accessibilityState={
-              Object {
+              {
+                "busy": undefined,
+                "checked": undefined,
                 "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
             accessibilityTraits="button"
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             centered={true}
             collapsable={false}
             focusable={true}
             hitSlop={
-              Object {
+              {
                 "bottom": 6,
                 "left": 6,
                 "right": 6,
@@ -2249,12 +1499,12 @@ exports[`renders data table pagination with options select 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "overflow": "hidden",
                 },
                 false,
-                Object {
+                {
                   "alignItems": "center",
                   "flexGrow": 1,
                   "justifyContent": "center",
@@ -2269,30 +1519,30 @@ exports[`renders data table pagination with options select 1`] = `
               pointerEvents="none"
               selectable={false}
               style={
-                Array [
-                  Object {
-                    "color": "rgba(28, 27, 31, 1)",
-                    "fontSize": 24,
+                [
+                  {
+                    "color": "rgb(31, 27, 22)",
+                    "fontSize": 37.714285714285715,
                   },
-                  Array [
-                    Object {
-                      "lineHeight": 24,
-                      "transform": Array [
-                        Object {
+                  [
+                    {
+                      "lineHeight": 37.714285714285715,
+                      "transform": [
+                        {
                           "scaleX": 1,
                         },
                       ],
                     },
-                    Object {
+                    {
                       "backgroundColor": "transparent",
                     },
                   ],
-                  Object {
+                  {
                     "fontFamily": "Material Design Icons",
                     "fontStyle": "normal",
                     "fontWeight": "normal",
                   },
-                  Object {},
+                  {},
                 ]
               }
             >
@@ -2306,375 +1556,10 @@ exports[`renders data table pagination with options select 1`] = `
 </View>
 `;
 
-exports[`renders data table title with press handler 1`] = `
-<View
-  accessibilityState={
-    Object {
-      "disabled": false,
-    }
-  }
-  accessible={true}
-  focusable={true}
-  onClick={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  style={
-    Array [
-      Object {
-        "alignContent": "center",
-        "flex": 1,
-        "flexDirection": "row",
-        "paddingVertical": 12,
-      },
-      undefined,
-      undefined,
-    ]
-  }
->
-  <View
-    collapsable={false}
-    style={
-      Object {
-        "height": 24,
-        "justifyContent": "center",
-        "transform": Array [
-          Object {
-            "rotate": "180deg",
-          },
-        ],
-      }
-    }
-  >
-    <Text
-      accessibilityElementsHidden={true}
-      allowFontScaling={false}
-      importantForAccessibility="no-hide-descendants"
-      pointerEvents="none"
-      selectable={false}
-      style={
-        Array [
-          Object {
-            "color": "rgba(28, 27, 31, 1)",
-            "fontSize": 16,
-          },
-          Array [
-            Object {
-              "lineHeight": 16,
-              "transform": Array [
-                Object {
-                  "scaleX": 1,
-                },
-              ],
-            },
-            Object {
-              "backgroundColor": "transparent",
-            },
-          ],
-          Object {
-            "fontFamily": "Material Design Icons",
-            "fontStyle": "normal",
-            "fontWeight": "normal",
-          },
-          Object {},
-        ]
-      }
-    >
-      󰁝
-    </Text>
-  </View>
-  <Text
-    numberOfLines={1}
-    style={
-      Array [
-        Object {
-          "textAlign": "left",
-        },
-        Object {
-          "color": "rgba(28, 27, 31, 1)",
-          "fontFamily": "System",
-          "fontWeight": "400",
-          "letterSpacing": 0,
-        },
-        Object {
-          "writingDirection": "ltr",
-        },
-        Array [
-          Object {
-            "alignItems": "center",
-            "fontSize": 12,
-            "fontWeight": "500",
-            "lineHeight": 24,
-          },
-          Object {
-            "maxHeight": 24,
-          },
-          Object {},
-          Object {
-            "marginLeft": 8,
-          },
-          undefined,
-        ],
-      ]
-    }
-  >
-    Dessert
-  </Text>
-</View>
-`;
+exports[`renders data table title with press handler 1`] = `null`;
 
-exports[`renders data table title with sort icon 1`] = `
-<View
-  accessibilityState={
-    Object {
-      "disabled": true,
-    }
-  }
-  accessible={true}
-  focusable={false}
-  onClick={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  style={
-    Array [
-      Object {
-        "alignContent": "center",
-        "flex": 1,
-        "flexDirection": "row",
-        "paddingVertical": 12,
-      },
-      undefined,
-      undefined,
-    ]
-  }
->
-  <View
-    collapsable={false}
-    style={
-      Object {
-        "height": 24,
-        "justifyContent": "center",
-        "transform": Array [
-          Object {
-            "rotate": "180deg",
-          },
-        ],
-      }
-    }
-  >
-    <Text
-      accessibilityElementsHidden={true}
-      allowFontScaling={false}
-      importantForAccessibility="no-hide-descendants"
-      pointerEvents="none"
-      selectable={false}
-      style={
-        Array [
-          Object {
-            "color": "rgba(28, 27, 31, 1)",
-            "fontSize": 16,
-          },
-          Array [
-            Object {
-              "lineHeight": 16,
-              "transform": Array [
-                Object {
-                  "scaleX": 1,
-                },
-              ],
-            },
-            Object {
-              "backgroundColor": "transparent",
-            },
-          ],
-          Object {
-            "fontFamily": "Material Design Icons",
-            "fontStyle": "normal",
-            "fontWeight": "normal",
-          },
-          Object {},
-        ]
-      }
-    >
-      󰁝
-    </Text>
-  </View>
-  <Text
-    numberOfLines={1}
-    style={
-      Array [
-        Object {
-          "textAlign": "left",
-        },
-        Object {
-          "color": "rgba(28, 27, 31, 1)",
-          "fontFamily": "System",
-          "fontWeight": "400",
-          "letterSpacing": 0,
-        },
-        Object {
-          "writingDirection": "ltr",
-        },
-        Array [
-          Object {
-            "alignItems": "center",
-            "fontSize": 12,
-            "fontWeight": "500",
-            "lineHeight": 24,
-          },
-          Object {
-            "maxHeight": 24,
-          },
-          Object {},
-          Object {
-            "marginLeft": 8,
-          },
-          undefined,
-        ],
-      ]
-    }
-  >
-    Dessert
-  </Text>
-</View>
-`;
+exports[`renders data table title with sort icon 1`] = `null`;
 
-exports[`renders right aligned data table cell 1`] = `
-<View
-  accessibilityState={
-    Object {
-      "disabled": true,
-    }
-  }
-  accessible={true}
-  collapsable={false}
-  focusable={true}
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  style={
-    Array [
-      false,
-      false,
-      Array [
-        Object {
-          "alignItems": "center",
-          "flex": 1,
-          "flexDirection": "row",
-        },
-        Object {
-          "justifyContent": "flex-end",
-        },
-        undefined,
-      ],
-    ]
-  }
->
-  <Text
-    numberOfLines={1}
-    style={
-      Array [
-        Object {
-          "textAlign": "left",
-        },
-        Object {
-          "color": "rgba(28, 27, 31, 1)",
-          "fontFamily": "System",
-          "fontWeight": "400",
-          "letterSpacing": 0,
-        },
-        Object {
-          "writingDirection": "ltr",
-        },
-        undefined,
-      ]
-    }
-  >
-    356
-  </Text>
-</View>
-`;
+exports[`renders right aligned data table cell 1`] = `null`;
 
-exports[`renders right aligned data table title 1`] = `
-<View
-  accessibilityState={
-    Object {
-      "disabled": true,
-    }
-  }
-  accessible={true}
-  focusable={false}
-  onClick={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  style={
-    Array [
-      Object {
-        "alignContent": "center",
-        "flex": 1,
-        "flexDirection": "row",
-        "paddingVertical": 12,
-      },
-      Object {
-        "justifyContent": "flex-end",
-      },
-      undefined,
-    ]
-  }
->
-  <Text
-    numberOfLines={1}
-    style={
-      Array [
-        Object {
-          "textAlign": "left",
-        },
-        Object {
-          "color": "rgba(28, 27, 31, 1)",
-          "fontFamily": "System",
-          "fontWeight": "400",
-          "letterSpacing": 0,
-        },
-        Object {
-          "writingDirection": "ltr",
-        },
-        Array [
-          Object {
-            "alignItems": "center",
-            "fontSize": 12,
-            "fontWeight": "500",
-            "lineHeight": 24,
-          },
-          Object {
-            "maxHeight": 24,
-          },
-          Object {},
-          Object {
-            "color": "rgba(28, 27, 31, 0.6)",
-          },
-          undefined,
-        ],
-      ]
-    }
-  >
-    Calories
-  </Text>
-</View>
-`;
+exports[`renders right aligned data table title 1`] = `null`;

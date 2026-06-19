@@ -109,8 +109,9 @@ export const renderAppbarContent = ({
           mode?: AppbarModes;
         } = {
           color:
-            typeof child.props.color !== 'undefined'
-              ? child.props.color
+            typeof (child as React.ReactElement<any>).props.color !==
+            'undefined'
+              ? (child as React.ReactElement<any>).props.color
               : isV3
               ? undefined
               : isDark
@@ -125,7 +126,7 @@ export const renderAppbarContent = ({
               ? i === 0 && !shouldCenterContent && styles.v3Spacing
               : i !== 0 && styles.v2Spacing,
             shouldCenterContent && styles.centerAlignedContent,
-            child.props.style,
+            (child as React.ReactElement<any>).props.style,
           ];
         }
         return React.cloneElement(child, props);

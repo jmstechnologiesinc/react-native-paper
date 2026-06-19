@@ -283,9 +283,9 @@ const TextInput = forwardRef<TextInputHandles, Props>(
       height: null,
     });
 
-    const timer = React.useRef<NodeJS.Timeout | undefined>();
+    const timer = React.useRef<NodeJS.Timeout | undefined>(undefined);
 
-    const root = React.useRef<NativeTextInput | undefined | null>();
+    const root = React.useRef<NativeTextInput | undefined | null>(null);
 
     const { scale } = theme.animation;
 

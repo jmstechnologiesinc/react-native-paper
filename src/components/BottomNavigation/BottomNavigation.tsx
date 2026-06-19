@@ -569,7 +569,9 @@ const BottomNavigation = ({
     onHide: handleKeyboardHide,
   });
 
-  const prevNavigationState = React.useRef<NavigationState>();
+  const prevNavigationState = React.useRef<NavigationState | undefined>(
+    undefined
+  );
 
   React.useEffect(() => {
     // Reset offsets of previous and current tabs before animation
@@ -1199,7 +1201,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   iconWrapper: {
-    ...StyleSheet.absoluteFillObject,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
     alignItems: 'center',
   },
   v3IconWrapper: {
@@ -1210,7 +1216,11 @@ const styles = StyleSheet.create({
     paddingBottom: moderateScale(2),
   },
   labelWrapper: {
-    ...StyleSheet.absoluteFillObject,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
   },
   // eslint-disable-next-line react-native/no-color-literals
   label: {

@@ -17,7 +17,7 @@ export type Props = {
   /**
    * Tooltip reference element. Needs to be able to hold a ref.
    */
-  children: React.ReactElement;
+  children: React.ReactElement<any>;
   /**
    * The number of milliseconds a user must touch the element before showing the tooltip.
    */
@@ -72,9 +72,11 @@ const Tooltip = ({
     tooltip: {},
     measured: false,
   });
-  const showTooltipTimer = React.useRef<NodeJS.Timeout>();
-  const hideTooltipTimer = React.useRef<NodeJS.Timeout>();
-  const childrenWrapperRef = React.useRef() as React.MutableRefObject<View>;
+  const showTooltipTimer = React.useRef<NodeJS.Timeout | undefined>(undefined);
+  const hideTooltipTimer = React.useRef<NodeJS.Timeout | undefined>(undefined);
+  const childrenWrapperRef = React.useRef<View | null>(
+    null
+  ) as React.MutableRefObject<View>;
   const touched = React.useRef(false);
 
   const isWeb = Platform.OS === 'web';

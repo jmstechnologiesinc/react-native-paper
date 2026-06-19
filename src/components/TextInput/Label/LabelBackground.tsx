@@ -79,7 +79,9 @@ const LabelBackground = ({
       numberOfLines={1}
       maxFontSizeMultiplier={maxFontSizeMultiplier}
     >
-      {typeof label === 'string' ? label : label?.props.children}
+      {typeof label === 'string'
+        ? label
+        : (label as React.ReactElement<any>)?.props.children}
     </AnimatedText>,
   ];
 };

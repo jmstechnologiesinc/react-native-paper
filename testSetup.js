@@ -1,3 +1,3 @@
 jest.useFakeTimers();
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
+jest.mock('react-native/src/private/animated/NativeAnimatedHelper');
 

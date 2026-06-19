@@ -4,7 +4,7 @@ import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import FastImage, {
   FastImageProps,
   Source,
-} from '@jmstechnologiesinc/react-native-fast-image';
+} from '@d11/react-native-fast-image';
 
 import { withInternalTheme } from '../../core/theming';
 import type { InternalTheme } from '../../types';

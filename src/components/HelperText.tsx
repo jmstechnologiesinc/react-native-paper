@@ -16,7 +16,7 @@ import AnimatedText from './Typography/AnimatedText';
 import {MD3LightTheme as theme} from '../styles/themes/v3/LightTheme';
 
 export type Props = $Omit<
-  $Omit<React.ComponentPropsWithRef<typeof AnimatedText>, 'padding'>,
+  $Omit<React.ComponentProps<typeof AnimatedText>, 'padding'>,
   'type'
 > & {
   /**

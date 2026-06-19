@@ -3,28 +3,28 @@
 exports[`correctly applies a component as the text label 1`] = `
 <View
   style={
-    Array [
-      Object {
-        "backgroundColor": "rgba(231, 224, 236, 1)",
-        "borderTopLeftRadius": 4,
-        "borderTopRightRadius": 4,
+    [
+      {
+        "backgroundColor": "rgb(240, 224, 208)",
+        "borderTopLeftRadius": 6.285714285714286,
+        "borderTopRightRadius": 6.285714285714286,
       },
-      Object {},
+      {},
     ]
   }
 >
   <View
     collapsable={false}
     style={
-      Object {
-        "backgroundColor": "rgba(28, 27, 31, 1)",
+      {
+        "backgroundColor": "rgb(80, 69, 57)",
         "bottom": 0,
-        "height": 1,
+        "height": 1.5714285714285714,
         "left": 0,
         "position": "absolute",
         "right": 0,
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "scaleY": 0.5,
           },
         ],
@@ -34,14 +34,15 @@ exports[`correctly applies a component as the text label 1`] = `
     testID="text-input-underline"
   />
   <View
+    onLayout={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "paddingBottom": 0,
           "paddingTop": 0,
         },
-        Object {
-          "minHeight": 56,
+        {
+          "minHeight": 88,
         },
       ]
     }
@@ -50,18 +51,19 @@ exports[`correctly applies a component as the text label 1`] = `
       collapsable={false}
       pointerEvents="none"
       style={
-        Object {
+        {
           "bottom": 0,
           "left": 0,
           "opacity": 0,
           "position": "absolute",
           "right": 0,
           "top": 0,
-          "transform": Array [
-            Object {
-              "translateX": 4,
+          "transform": [
+            {
+              "translateX": 6.285714285714286,
             },
           ],
+          "width": 750,
           "zIndex": 3,
         }
       }
@@ -71,29 +73,31 @@ exports[`correctly applies a component as the text label 1`] = `
         maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         onLayout={[Function]}
+        onTextLayout={[Function]}
         style={
-          Object {
-            "color": "rgba(103, 80, 164, 1)",
+          {
+            "color": "rgb(133, 84, 0)",
             "fontFamily": "System",
-            "fontSize": 16,
+            "fontSize": 25.142857142857142,
             "fontWeight": undefined,
             "left": 0,
-            "letterSpacing": 0.15,
+            "letterSpacing": 0.2357142857142857,
             "lineHeight": undefined,
+            "maxWidth": 114.71428571428571,
             "opacity": 0,
-            "paddingLeft": 16,
-            "paddingRight": 16,
+            "paddingLeft": 25.142857142857142,
+            "paddingRight": 25.142857142857142,
             "position": "absolute",
             "textAlign": "left",
-            "top": 30,
-            "transform": Array [
-              Object {
+            "top": 47,
+            "transform": [
+              {
                 "translateX": 0,
               },
-              Object {
-                "translateY": -12,
+              {
+                "translateY": -18.714285714285715,
               },
-              Object {
+              {
                 "scale": 0.75,
               },
             ],
@@ -104,7 +108,7 @@ exports[`correctly applies a component as the text label 1`] = `
       >
         <Text
           style={
-            Object {
+            {
               "color": "#f44336",
             }
           }
@@ -117,28 +121,29 @@ exports[`correctly applies a component as the text label 1`] = `
         maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         style={
-          Object {
-            "color": "rgba(73, 69, 79, 1)",
+          {
+            "color": "rgb(80, 69, 57)",
             "fontFamily": "System",
-            "fontSize": 16,
+            "fontSize": 25.142857142857142,
             "fontWeight": undefined,
             "left": 0,
-            "letterSpacing": 0.15,
+            "letterSpacing": 0.2357142857142857,
             "lineHeight": undefined,
+            "maxWidth": 114.71428571428571,
             "opacity": 0,
-            "paddingLeft": 16,
-            "paddingRight": 16,
+            "paddingLeft": 25.142857142857142,
+            "paddingRight": 25.142857142857142,
             "position": "absolute",
             "textAlign": "left",
-            "top": 30,
-            "transform": Array [
-              Object {
+            "top": 47,
+            "transform": [
+              {
                 "translateX": 0,
               },
-              Object {
-                "translateY": -12,
+              {
+                "translateY": -18.714285714285715,
               },
-              Object {
+              {
                 "scale": 0.75,
               },
             ],
@@ -149,7 +154,7 @@ exports[`correctly applies a component as the text label 1`] = `
       >
         <Text
           style={
-            Object {
+            {
               "color": "#f44336",
             }
           }
@@ -159,6 +164,7 @@ exports[`correctly applies a component as the text label 1`] = `
       </Text>
     </View>
     <TextInput
+      cursorColor="rgb(133, 84, 0)"
       editable={true}
       maxFontSizeMultiplier={1.5}
       multiline={false}
@@ -166,39 +172,38 @@ exports[`correctly applies a component as the text label 1`] = `
       onChangeText={[Function]}
       onFocus={[Function]}
       placeholder=" "
-      placeholderTextColor="rgba(73, 69, 79, 1)"
-      selectionColor="rgba(103, 80, 164, 1)"
+      placeholderTextColor="rgb(80, 69, 57)"
+      selectionColor="rgb(133, 84, 0)"
       style={
-        Array [
-          Object {
-            "flexGrow": 1,
+        [
+          {
             "margin": 0,
           },
-          Object {
-            "paddingLeft": 16,
-            "paddingRight": 16,
+          {
+            "height": 88,
           },
-          Object {
-            "height": 56,
+          {
+            "paddingBottom": 6.285714285714286,
+            "paddingTop": 37.714285714285715,
           },
-          Object {
-            "paddingBottom": 4,
-            "paddingTop": 24,
-          },
-          Object {
-            "color": "rgba(73, 69, 79, 1)",
+          {
+            "color": "rgb(31, 27, 22)",
             "fontFamily": "System",
-            "fontSize": 16,
+            "fontSize": 25.142857142857142,
             "fontWeight": undefined,
-            "letterSpacing": 0.15,
+            "letterSpacing": 0.2357142857142857,
             "lineHeight": undefined,
+            "minWidth": 102.14285714285714,
+            "paddingLeft": 25.142857142857142,
+            "paddingRight": 25.142857142857142,
             "textAlign": "left",
             "textAlignVertical": "center",
           },
           false,
-          Array [
-            Object {},
+          [
+            {},
           ],
+          undefined,
         ]
       }
       testID="text-input-flat"
@@ -212,28 +217,28 @@ exports[`correctly applies a component as the text label 1`] = `
 exports[`correctly applies default textAlign based on default RTL 1`] = `
 <View
   style={
-    Array [
-      Object {
-        "backgroundColor": "rgba(231, 224, 236, 1)",
-        "borderTopLeftRadius": 4,
-        "borderTopRightRadius": 4,
+    [
+      {
+        "backgroundColor": "rgb(240, 224, 208)",
+        "borderTopLeftRadius": 6.285714285714286,
+        "borderTopRightRadius": 6.285714285714286,
       },
-      Object {},
+      {},
     ]
   }
 >
   <View
     collapsable={false}
     style={
-      Object {
-        "backgroundColor": "rgba(28, 27, 31, 1)",
+      {
+        "backgroundColor": "rgb(80, 69, 57)",
         "bottom": 0,
-        "height": 1,
+        "height": 1.5714285714285714,
         "left": 0,
         "position": "absolute",
         "right": 0,
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "scaleY": 0.5,
           },
         ],
@@ -243,14 +248,15 @@ exports[`correctly applies default textAlign based on default RTL 1`] = `
     testID="text-input-underline"
   />
   <View
+    onLayout={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "paddingBottom": 0,
           "paddingTop": 0,
         },
-        Object {
-          "minHeight": 56,
+        {
+          "minHeight": 88,
         },
       ]
     }
@@ -259,18 +265,19 @@ exports[`correctly applies default textAlign based on default RTL 1`] = `
       collapsable={false}
       pointerEvents="none"
       style={
-        Object {
+        {
           "bottom": 0,
           "left": 0,
           "opacity": 0,
           "position": "absolute",
           "right": 0,
           "top": 0,
-          "transform": Array [
-            Object {
-              "translateX": 4,
+          "transform": [
+            {
+              "translateX": 6.285714285714286,
             },
           ],
+          "width": 750,
           "zIndex": 3,
         }
       }
@@ -280,29 +287,31 @@ exports[`correctly applies default textAlign based on default RTL 1`] = `
         maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         onLayout={[Function]}
+        onTextLayout={[Function]}
         style={
-          Object {
-            "color": "rgba(103, 80, 164, 1)",
+          {
+            "color": "rgb(133, 84, 0)",
             "fontFamily": "System",
-            "fontSize": 16,
+            "fontSize": 25.142857142857142,
             "fontWeight": undefined,
             "left": 0,
-            "letterSpacing": 0.15,
+            "letterSpacing": 0.2357142857142857,
             "lineHeight": undefined,
+            "maxWidth": 114.71428571428571,
             "opacity": 0,
-            "paddingLeft": 16,
-            "paddingRight": 16,
+            "paddingLeft": 25.142857142857142,
+            "paddingRight": 25.142857142857142,
             "position": "absolute",
             "textAlign": "left",
-            "top": 30,
-            "transform": Array [
-              Object {
+            "top": 47,
+            "transform": [
+              {
                 "translateX": 0,
               },
-              Object {
-                "translateY": -12,
+              {
+                "translateY": -18.714285714285715,
               },
-              Object {
+              {
                 "scale": 0.75,
               },
             ],
@@ -318,28 +327,29 @@ exports[`correctly applies default textAlign based on default RTL 1`] = `
         maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         style={
-          Object {
-            "color": "rgba(73, 69, 79, 1)",
+          {
+            "color": "rgb(80, 69, 57)",
             "fontFamily": "System",
-            "fontSize": 16,
+            "fontSize": 25.142857142857142,
             "fontWeight": undefined,
             "left": 0,
-            "letterSpacing": 0.15,
+            "letterSpacing": 0.2357142857142857,
             "lineHeight": undefined,
+            "maxWidth": 114.71428571428571,
             "opacity": 0,
-            "paddingLeft": 16,
-            "paddingRight": 16,
+            "paddingLeft": 25.142857142857142,
+            "paddingRight": 25.142857142857142,
             "position": "absolute",
             "textAlign": "left",
-            "top": 30,
-            "transform": Array [
-              Object {
+            "top": 47,
+            "transform": [
+              {
                 "translateX": 0,
               },
-              Object {
-                "translateY": -12,
+              {
+                "translateY": -18.714285714285715,
               },
-              Object {
+              {
                 "scale": 0.75,
               },
             ],
@@ -352,6 +362,7 @@ exports[`correctly applies default textAlign based on default RTL 1`] = `
       </Text>
     </View>
     <TextInput
+      cursorColor="rgb(133, 84, 0)"
       editable={true}
       maxFontSizeMultiplier={1.5}
       multiline={false}
@@ -359,39 +370,38 @@ exports[`correctly applies default textAlign based on default RTL 1`] = `
       onChangeText={[Function]}
       onFocus={[Function]}
       placeholder=" "
-      placeholderTextColor="rgba(73, 69, 79, 1)"
-      selectionColor="rgba(103, 80, 164, 1)"
+      placeholderTextColor="rgb(80, 69, 57)"
+      selectionColor="rgb(133, 84, 0)"
       style={
-        Array [
-          Object {
-            "flexGrow": 1,
+        [
+          {
             "margin": 0,
           },
-          Object {
-            "paddingLeft": 16,
-            "paddingRight": 16,
+          {
+            "height": 88,
           },
-          Object {
-            "height": 56,
+          {
+            "paddingBottom": 6.285714285714286,
+            "paddingTop": 37.714285714285715,
           },
-          Object {
-            "paddingBottom": 4,
-            "paddingTop": 24,
-          },
-          Object {
-            "color": "rgba(73, 69, 79, 1)",
+          {
+            "color": "rgb(31, 27, 22)",
             "fontFamily": "System",
-            "fontSize": 16,
+            "fontSize": 25.142857142857142,
             "fontWeight": undefined,
-            "letterSpacing": 0.15,
+            "letterSpacing": 0.2357142857142857,
             "lineHeight": undefined,
+            "minWidth": 102.14285714285714,
+            "paddingLeft": 25.142857142857142,
+            "paddingRight": 25.142857142857142,
             "textAlign": "left",
             "textAlignVertical": "center",
           },
           false,
-          Array [
-            Object {},
+          [
+            {},
           ],
+          undefined,
         ]
       }
       testID="text-input-flat"
@@ -404,23 +414,24 @@ exports[`correctly applies default textAlign based on default RTL 1`] = `
 
 exports[`correctly applies height to multiline Outline TextInput 1`] = `
 <View
-  style={Object {}}
+  style={{}}
 >
   <View
     pointerEvents="none"
     style={
-      Array [
-        Object {
+      [
+        {
           "bottom": 0,
           "left": 0,
           "position": "absolute",
           "right": 0,
-          "top": 6,
+          "top": 9.428571428571429,
         },
-        Object {
-          "backgroundColor": "rgba(255, 251, 254, 1)",
-          "borderColor": "rgba(121, 116, 126, 1)",
-          "borderRadius": 4,
+        false,
+        {
+          "backgroundColor": "rgb(255, 251, 255)",
+          "borderColor": "rgb(130, 117, 104)",
+          "borderRadius": 6.285714285714286,
           "borderWidth": 1,
         },
         undefined,
@@ -428,222 +439,227 @@ exports[`correctly applies height to multiline Outline TextInput 1`] = `
     }
     testID="text-input-outline"
   />
-  <View>
+  <View
+    style={
+      [
+        {
+          "paddingBottom": 0,
+        },
+        {
+          "minHeight": 100,
+          "paddingTop": 12.571428571428571,
+        },
+      ]
+    }
+  >
     <View
+      collapsable={false}
+      pointerEvents="none"
       style={
-        Array [
-          Object {
-            "paddingBottom": 0,
-          },
-          Object {
-            "minHeight": 100,
-            "paddingTop": 8,
-          },
-        ]
+        {
+          "bottom": 0,
+          "left": 0,
+          "opacity": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "transform": [
+            {
+              "translateX": 4.7142857142857135,
+            },
+          ],
+          "width": 750,
+          "zIndex": 3,
+        }
       }
     >
       <View
         collapsable={false}
         pointerEvents="none"
         style={
-          Object {
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
+          {
+            "backgroundColor": "rgb(255, 251, 255)",
+            "bottom": 6.285714285714286,
+            "left": 15.714285714285714,
+            "maxHeight": 2.0952380952380953,
+            "opacity": 1,
             "position": "absolute",
             "right": 0,
-            "top": 0,
-            "transform": Array [
-              Object {
-                "translateX": 3,
+            "top": 9.428571428571429,
+            "transform": [
+              {
+                "translateX": -4.7142857142857135,
               },
             ],
-            "zIndex": 3,
+            "width": 18.857142857142858,
           }
         }
-      >
-        <View
-          collapsable={false}
-          pointerEvents="none"
-          style={
-            Object {
-              "backgroundColor": "rgba(255, 251, 254, 1)",
-              "bottom": 4,
-              "left": 10,
-              "maxHeight": 2,
-              "opacity": 1,
-              "position": "absolute",
-              "right": 0,
-              "top": 6,
-              "transform": Array [
-                Object {
-                  "translateX": -3,
-                },
-              ],
-              "width": 12,
-            }
-          }
-        />
-        <Text
-          collapsable={false}
-          maxFontSizeMultiplier={1.5}
-          numberOfLines={1}
-          style={
-            Object {
-              "backgroundColor": "rgba(255, 251, 254, 1)",
-              "color": "transparent",
-              "fontFamily": "System",
-              "fontSize": 16,
-              "fontWeight": undefined,
-              "left": 8,
-              "letterSpacing": 0.15,
-              "lineHeight": undefined,
-              "opacity": 1,
-              "paddingHorizontal": 0,
-              "position": "absolute",
-              "textAlign": "left",
-              "top": 59,
-              "transform": Array [
-                Object {
-                  "translateX": 0,
-                },
-                Object {
-                  "translateY": -52,
-                },
-                Object {
-                  "scale": 0.75,
-                },
-                Object {
-                  "scaleY": 0.2,
-                },
-              ],
-              "width": -16,
-              "writingDirection": "ltr",
-            }
-          }
-        >
-          Outline Input
-        </Text>
-        <Text
-          collapsable={false}
-          maxFontSizeMultiplier={1.5}
-          numberOfLines={1}
-          onLayout={[Function]}
-          style={
-            Object {
-              "color": "rgba(103, 80, 164, 1)",
-              "fontFamily": "System",
-              "fontSize": 16,
-              "fontWeight": undefined,
-              "left": 0,
-              "letterSpacing": 0.15,
-              "lineHeight": undefined,
-              "opacity": 0,
-              "paddingHorizontal": 16,
-              "position": "absolute",
-              "textAlign": "left",
-              "top": 58,
-              "transform": Array [
-                Object {
-                  "translateX": 0,
-                },
-                Object {
-                  "translateY": -52,
-                },
-                Object {
-                  "scale": 0.75,
-                },
-              ],
-              "writingDirection": "ltr",
-            }
-          }
-          testID="text-input-outlined-label-active"
-        >
-          Outline Input
-        </Text>
-        <Text
-          collapsable={false}
-          maxFontSizeMultiplier={1.5}
-          numberOfLines={1}
-          style={
-            Object {
-              "color": "rgba(73, 69, 79, 1)",
-              "fontFamily": "System",
-              "fontSize": 16,
-              "fontWeight": undefined,
-              "left": 0,
-              "letterSpacing": 0.15,
-              "lineHeight": undefined,
-              "opacity": 0,
-              "paddingHorizontal": 16,
-              "position": "absolute",
-              "textAlign": "left",
-              "top": 58,
-              "transform": Array [
-                Object {
-                  "translateX": 0,
-                },
-                Object {
-                  "translateY": -52,
-                },
-                Object {
-                  "scale": 0.75,
-                },
-              ],
-              "writingDirection": "ltr",
-            }
-          }
-          testID="text-input-outlined-label-inactive"
-        >
-          Outline Input
-        </Text>
-      </View>
-      <TextInput
-        editable={true}
-        maxFontSizeMultiplier={1.5}
-        multiline={true}
-        onBlur={[Function]}
-        onChangeText={[Function]}
-        onFocus={[Function]}
-        placeholder=" "
-        placeholderTextColor="rgba(73, 69, 79, 1)"
-        selectionColor="rgba(103, 80, 164, 1)"
-        style={
-          Array [
-            Object {
-              "flexGrow": 1,
-              "margin": 0,
-              "zIndex": 1,
-            },
-            Object {
-              "height": 100,
-            },
-            Object {
-              "paddingBottom": 24,
-              "paddingTop": 24,
-            },
-            Object {
-              "color": "rgba(28, 27, 31, 1)",
-              "fontFamily": "System",
-              "fontSize": 16,
-              "fontWeight": undefined,
-              "letterSpacing": 0.15,
-              "lineHeight": undefined,
-              "paddingHorizontal": 16,
-              "textAlign": "left",
-              "textAlignVertical": "top",
-            },
-            false,
-            Array [
-              Object {},
-            ],
-          ]
-        }
-        testID="text-input-outlined"
-        underlineColorAndroid="transparent"
-        value="Some test value"
       />
+      <Text
+        collapsable={false}
+        maxFontSizeMultiplier={1.5}
+        numberOfLines={1}
+        style={
+          {
+            "backgroundColor": "rgb(255, 251, 255)",
+            "color": "transparent",
+            "fontFamily": "System",
+            "fontSize": 25.142857142857142,
+            "fontWeight": undefined,
+            "left": 12.571428571428571,
+            "letterSpacing": 0.2357142857142857,
+            "lineHeight": undefined,
+            "opacity": 1,
+            "paddingHorizontal": 0,
+            "position": "absolute",
+            "textAlign": "left",
+            "top": 63,
+            "transform": [
+              {
+                "translateX": 0,
+              },
+              {
+                "translateY": -52.57142857142857,
+              },
+              {
+                "scale": 0.75,
+              },
+              {
+                "scaleY": 0.2,
+              },
+            ],
+            "width": -25.142857142857142,
+            "writingDirection": "ltr",
+          }
+        }
+        testID="text-input-outlined-label-background"
+      >
+        Outline Input
+      </Text>
+      <Text
+        collapsable={false}
+        maxFontSizeMultiplier={1.5}
+        numberOfLines={1}
+        onLayout={[Function]}
+        onTextLayout={[Function]}
+        style={
+          {
+            "color": "rgb(133, 84, 0)",
+            "fontFamily": "System",
+            "fontSize": 25.142857142857142,
+            "fontWeight": undefined,
+            "left": 0,
+            "letterSpacing": 0.2357142857142857,
+            "lineHeight": undefined,
+            "maxWidth": 114.71428571428571,
+            "opacity": 0,
+            "paddingHorizontal": 25.142857142857142,
+            "position": "absolute",
+            "textAlign": "left",
+            "top": 62,
+            "transform": [
+              {
+                "translateX": 0,
+              },
+              {
+                "translateY": -52.57142857142857,
+              },
+              {
+                "scale": 0.75,
+              },
+            ],
+            "writingDirection": "ltr",
+          }
+        }
+        testID="text-input-outlined-label-active"
+      >
+        Outline Input
+      </Text>
+      <Text
+        collapsable={false}
+        maxFontSizeMultiplier={1.5}
+        numberOfLines={1}
+        style={
+          {
+            "color": "rgb(80, 69, 57)",
+            "fontFamily": "System",
+            "fontSize": 25.142857142857142,
+            "fontWeight": undefined,
+            "left": 0,
+            "letterSpacing": 0.2357142857142857,
+            "lineHeight": undefined,
+            "maxWidth": 114.71428571428571,
+            "opacity": 0,
+            "paddingHorizontal": 25.142857142857142,
+            "position": "absolute",
+            "textAlign": "left",
+            "top": 62,
+            "transform": [
+              {
+                "translateX": 0,
+              },
+              {
+                "translateY": -52.57142857142857,
+              },
+              {
+                "scale": 0.75,
+              },
+            ],
+            "writingDirection": "ltr",
+          }
+        }
+        testID="text-input-outlined-label-inactive"
+      >
+        Outline Input
+      </Text>
     </View>
+    <TextInput
+      cursorColor="rgb(133, 84, 0)"
+      editable={true}
+      maxFontSizeMultiplier={1.5}
+      multiline={true}
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      onLayout={[Function]}
+      placeholder=" "
+      placeholderTextColor="rgb(80, 69, 57)"
+      selectionColor="rgb(133, 84, 0)"
+      style={
+        [
+          {
+            "margin": 0,
+          },
+          {
+            "height": 100,
+          },
+          {
+            "paddingBottom": 26,
+            "paddingTop": 26,
+          },
+          {
+            "color": "rgb(31, 27, 22)",
+            "fontFamily": "System",
+            "fontSize": 25.142857142857142,
+            "fontWeight": undefined,
+            "letterSpacing": 0.2357142857142857,
+            "lineHeight": undefined,
+            "minWidth": 102.14285714285714,
+            "paddingHorizontal": 25.142857142857142,
+            "textAlign": "left",
+            "textAlignVertical": "top",
+          },
+          false,
+          [
+            {},
+          ],
+          undefined,
+        ]
+      }
+      testID="text-input-outlined"
+      underlineColorAndroid="transparent"
+      value="Some test value"
+    />
   </View>
 </View>
 `;
@@ -651,28 +667,28 @@ exports[`correctly applies height to multiline Outline TextInput 1`] = `
 exports[`correctly applies textAlign center 1`] = `
 <View
   style={
-    Array [
-      Object {
-        "backgroundColor": "rgba(231, 224, 236, 1)",
-        "borderTopLeftRadius": 4,
-        "borderTopRightRadius": 4,
+    [
+      {
+        "backgroundColor": "rgb(240, 224, 208)",
+        "borderTopLeftRadius": 6.285714285714286,
+        "borderTopRightRadius": 6.285714285714286,
       },
-      Object {},
+      {},
     ]
   }
 >
   <View
     collapsable={false}
     style={
-      Object {
-        "backgroundColor": "rgba(28, 27, 31, 1)",
+      {
+        "backgroundColor": "rgb(80, 69, 57)",
         "bottom": 0,
-        "height": 1,
+        "height": 1.5714285714285714,
         "left": 0,
         "position": "absolute",
         "right": 0,
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "scaleY": 0.5,
           },
         ],
@@ -682,14 +698,15 @@ exports[`correctly applies textAlign center 1`] = `
     testID="text-input-underline"
   />
   <View
+    onLayout={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "paddingBottom": 0,
           "paddingTop": 0,
         },
-        Object {
-          "minHeight": 56,
+        {
+          "minHeight": 88,
         },
       ]
     }
@@ -698,18 +715,19 @@ exports[`correctly applies textAlign center 1`] = `
       collapsable={false}
       pointerEvents="none"
       style={
-        Object {
+        {
           "bottom": 0,
           "left": 0,
           "opacity": 0,
           "position": "absolute",
           "right": 0,
           "top": 0,
-          "transform": Array [
-            Object {
-              "translateX": 4,
+          "transform": [
+            {
+              "translateX": 6.285714285714286,
             },
           ],
+          "width": 750,
           "zIndex": 3,
         }
       }
@@ -719,29 +737,31 @@ exports[`correctly applies textAlign center 1`] = `
         maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         onLayout={[Function]}
+        onTextLayout={[Function]}
         style={
-          Object {
-            "color": "rgba(103, 80, 164, 1)",
+          {
+            "color": "rgb(133, 84, 0)",
             "fontFamily": "System",
-            "fontSize": 16,
+            "fontSize": 25.142857142857142,
             "fontWeight": undefined,
             "left": 0,
-            "letterSpacing": 0.15,
+            "letterSpacing": 0.2357142857142857,
             "lineHeight": undefined,
+            "maxWidth": 114.71428571428571,
             "opacity": 0,
-            "paddingLeft": 16,
-            "paddingRight": 16,
+            "paddingLeft": 25.142857142857142,
+            "paddingRight": 25.142857142857142,
             "position": "absolute",
             "textAlign": "left",
-            "top": 30,
-            "transform": Array [
-              Object {
+            "top": 47,
+            "transform": [
+              {
                 "translateX": 0,
               },
-              Object {
-                "translateY": -12,
+              {
+                "translateY": -18.714285714285715,
               },
-              Object {
+              {
                 "scale": 0.75,
               },
             ],
@@ -757,28 +777,29 @@ exports[`correctly applies textAlign center 1`] = `
         maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         style={
-          Object {
-            "color": "rgba(73, 69, 79, 1)",
+          {
+            "color": "rgb(80, 69, 57)",
             "fontFamily": "System",
-            "fontSize": 16,
+            "fontSize": 25.142857142857142,
             "fontWeight": undefined,
             "left": 0,
-            "letterSpacing": 0.15,
+            "letterSpacing": 0.2357142857142857,
             "lineHeight": undefined,
+            "maxWidth": 114.71428571428571,
             "opacity": 0,
-            "paddingLeft": 16,
-            "paddingRight": 16,
+            "paddingLeft": 25.142857142857142,
+            "paddingRight": 25.142857142857142,
             "position": "absolute",
             "textAlign": "left",
-            "top": 30,
-            "transform": Array [
-              Object {
+            "top": 47,
+            "transform": [
+              {
                 "translateX": 0,
               },
-              Object {
-                "translateY": -12,
+              {
+                "translateY": -18.714285714285715,
               },
-              Object {
+              {
                 "scale": 0.75,
               },
             ],
@@ -791,6 +812,7 @@ exports[`correctly applies textAlign center 1`] = `
       </Text>
     </View>
     <TextInput
+      cursorColor="rgb(133, 84, 0)"
       editable={true}
       maxFontSizeMultiplier={1.5}
       multiline={false}
@@ -798,39 +820,38 @@ exports[`correctly applies textAlign center 1`] = `
       onChangeText={[Function]}
       onFocus={[Function]}
       placeholder=" "
-      placeholderTextColor="rgba(73, 69, 79, 1)"
-      selectionColor="rgba(103, 80, 164, 1)"
+      placeholderTextColor="rgb(80, 69, 57)"
+      selectionColor="rgb(133, 84, 0)"
       style={
-        Array [
-          Object {
-            "flexGrow": 1,
+        [
+          {
             "margin": 0,
           },
-          Object {
-            "paddingLeft": 16,
-            "paddingRight": 16,
+          {
+            "height": 88,
           },
-          Object {
-            "height": 56,
+          {
+            "paddingBottom": 6.285714285714286,
+            "paddingTop": 37.714285714285715,
           },
-          Object {
-            "paddingBottom": 4,
-            "paddingTop": 24,
-          },
-          Object {
-            "color": "rgba(73, 69, 79, 1)",
+          {
+            "color": "rgb(31, 27, 22)",
             "fontFamily": "System",
-            "fontSize": 16,
+            "fontSize": 25.142857142857142,
             "fontWeight": undefined,
-            "letterSpacing": 0.15,
+            "letterSpacing": 0.2357142857142857,
             "lineHeight": undefined,
+            "minWidth": 102.14285714285714,
+            "paddingLeft": 25.142857142857142,
+            "paddingRight": 25.142857142857142,
             "textAlign": "center",
             "textAlignVertical": "center",
           },
           false,
-          Array [
-            Object {},
+          [
+            {},
           ],
+          undefined,
         ]
       }
       testID="text-input-flat"
@@ -844,28 +865,28 @@ exports[`correctly applies textAlign center 1`] = `
 exports[`correctly renders left-side affix adornment, and right-side icon adornment 1`] = `
 <View
   style={
-    Array [
-      Object {
-        "backgroundColor": "rgba(231, 224, 236, 1)",
-        "borderTopLeftRadius": 4,
-        "borderTopRightRadius": 4,
+    [
+      {
+        "backgroundColor": "rgb(240, 224, 208)",
+        "borderTopLeftRadius": 6.285714285714286,
+        "borderTopRightRadius": 6.285714285714286,
       },
-      Object {},
+      {},
     ]
   }
 >
   <View
     collapsable={false}
     style={
-      Object {
-        "backgroundColor": "rgba(28, 27, 31, 1)",
+      {
+        "backgroundColor": "rgb(80, 69, 57)",
         "bottom": 0,
-        "height": 1,
+        "height": 1.5714285714285714,
         "left": 0,
         "position": "absolute",
         "right": 0,
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "scaleY": 0.5,
           },
         ],
@@ -875,14 +896,15 @@ exports[`correctly renders left-side affix adornment, and right-side icon adornm
     testID="text-input-underline"
   />
   <View
+    onLayout={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "paddingBottom": 0,
           "paddingTop": 0,
         },
-        Object {
-          "minHeight": 56,
+        {
+          "minHeight": 88,
         },
       ]
     }
@@ -891,18 +913,19 @@ exports[`correctly renders left-side affix adornment, and right-side icon adornm
       collapsable={false}
       pointerEvents="none"
       style={
-        Object {
+        {
           "bottom": 0,
           "left": 0,
           "opacity": 0,
           "position": "absolute",
           "right": 0,
           "top": 0,
-          "transform": Array [
-            Object {
-              "translateX": 4,
+          "transform": [
+            {
+              "translateX": 6.285714285714286,
             },
           ],
+          "width": 750,
           "zIndex": 3,
         }
       }
@@ -912,29 +935,31 @@ exports[`correctly renders left-side affix adornment, and right-side icon adornm
         maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         onLayout={[Function]}
+        onTextLayout={[Function]}
         style={
-          Object {
-            "color": "rgba(103, 80, 164, 1)",
+          {
+            "color": "rgb(133, 84, 0)",
             "fontFamily": "System",
-            "fontSize": 16,
+            "fontSize": 25.142857142857142,
             "fontWeight": undefined,
             "left": 0,
-            "letterSpacing": 0.15,
+            "letterSpacing": 0.2357142857142857,
             "lineHeight": undefined,
+            "maxWidth": 114.71428571428571,
             "opacity": 0,
-            "paddingLeft": 16,
-            "paddingRight": 56,
+            "paddingLeft": 25.142857142857142,
+            "paddingRight": 88,
             "position": "absolute",
             "textAlign": "left",
-            "top": 30,
-            "transform": Array [
-              Object {
+            "top": 47,
+            "transform": [
+              {
                 "translateX": 0,
               },
-              Object {
-                "translateY": -12,
+              {
+                "translateY": -18.714285714285715,
               },
-              Object {
+              {
                 "scale": 0.75,
               },
             ],
@@ -950,28 +975,29 @@ exports[`correctly renders left-side affix adornment, and right-side icon adornm
         maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         style={
-          Object {
-            "color": "rgba(73, 69, 79, 1)",
+          {
+            "color": "rgb(80, 69, 57)",
             "fontFamily": "System",
-            "fontSize": 16,
+            "fontSize": 25.142857142857142,
             "fontWeight": undefined,
             "left": 0,
-            "letterSpacing": 0.15,
+            "letterSpacing": 0.2357142857142857,
             "lineHeight": undefined,
+            "maxWidth": 114.71428571428571,
             "opacity": 0,
-            "paddingLeft": 16,
-            "paddingRight": 56,
+            "paddingLeft": 25.142857142857142,
+            "paddingRight": 88,
             "position": "absolute",
             "textAlign": "left",
-            "top": 30,
-            "transform": Array [
-              Object {
+            "top": 47,
+            "transform": [
+              {
                 "translateX": 0,
               },
-              Object {
-                "translateY": -12,
+              {
+                "translateY": -18.714285714285715,
               },
-              Object {
+              {
                 "scale": 0.75,
               },
             ],
@@ -984,6 +1010,7 @@ exports[`correctly renders left-side affix adornment, and right-side icon adornm
       </Text>
     </View>
     <TextInput
+      cursorColor="rgb(133, 84, 0)"
       editable={true}
       maxFontSizeMultiplier={1.5}
       multiline={false}
@@ -991,42 +1018,41 @@ exports[`correctly renders left-side affix adornment, and right-side icon adornm
       onChangeText={[Function]}
       onFocus={[Function]}
       placeholder=" "
-      placeholderTextColor="rgba(73, 69, 79, 1)"
-      selectionColor="rgba(103, 80, 164, 1)"
+      placeholderTextColor="rgb(80, 69, 57)"
+      selectionColor="rgb(133, 84, 0)"
       style={
-        Array [
-          Object {
-            "flexGrow": 1,
+        [
+          {
             "margin": 0,
           },
-          Object {
-            "paddingLeft": 16,
-            "paddingRight": 56,
+          {
+            "height": 88,
           },
-          Object {
-            "height": 56,
+          {
+            "paddingBottom": 6.285714285714286,
+            "paddingTop": 37.714285714285715,
           },
-          Object {
-            "paddingBottom": 4,
-            "paddingTop": 24,
-          },
-          Object {
-            "color": "rgba(73, 69, 79, 1)",
+          {
+            "color": "rgb(31, 27, 22)",
             "fontFamily": "System",
-            "fontSize": 16,
+            "fontSize": 25.142857142857142,
             "fontWeight": undefined,
-            "letterSpacing": 0.15,
+            "letterSpacing": 0.2357142857142857,
             "lineHeight": undefined,
+            "minWidth": 102.14285714285714,
+            "paddingLeft": 25.142857142857142,
+            "paddingRight": 88,
             "textAlign": "left",
             "textAlignVertical": "center",
           },
           false,
-          Object {
+          {
             "marginLeft": 0,
-            "marginRight": 40,
-            "paddingLeft": 40,
-            "paddingRight": 16,
+            "marginRight": 62.85714285714286,
+            "paddingLeft": 62.85714285714286,
+            "paddingRight": 25.142857142857142,
           },
+          undefined,
         ]
       }
       testID="text-input-flat"
@@ -1038,10 +1064,10 @@ exports[`correctly renders left-side affix adornment, and right-side icon adornm
     collapsable={false}
     onLayout={[Function]}
     style={
-      Object {
+      {
         "alignItems": "center",
         "justifyContent": "center",
-        "left": 16,
+        "left": 25.142857142857142,
         "opacity": 1,
         "position": "absolute",
         "top": null,
@@ -1052,39 +1078,40 @@ exports[`correctly renders left-side affix adornment, and right-side icon adornm
     <Text
       maxFontSizeMultiplier={1.5}
       style={
-        Array [
-          Object {
-            "color": "rgba(28, 27, 31, 0.54)",
+        [
+          {
+            "color": "rgb(80, 69, 57)",
           },
-          Object {
+          {
             "fontFamily": "System",
-            "fontSize": 16,
+            "fontSize": 25.142857142857142,
             "fontWeight": undefined,
-            "letterSpacing": 0.15,
+            "letterSpacing": 0.2357142857142857,
             "lineHeight": undefined,
           },
-          Object {
+          {
             "color": "#f44336",
           },
         ]
       }
+      testID="left-affix-adornment-text"
     >
       /100
     </Text>
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
-          "height": 24,
+          "height": 37.714285714285715,
           "justifyContent": "center",
           "position": "absolute",
-          "width": 24,
+          "width": 37.714285714285715,
         },
-        Object {
-          "right": 16,
-          "top": 16,
+        {
+          "right": 25.142857142857142,
+          "top": 25.142857142857142,
         },
       ]
     }
@@ -1092,14 +1119,14 @@ exports[`correctly renders left-side affix adornment, and right-side icon adornm
     <View
       collapsable={false}
       style={
-        Object {
+        {
           "alignSelf": undefined,
           "bottom": undefined,
           "left": undefined,
           "position": undefined,
           "right": undefined,
           "shadowColor": "#000",
-          "shadowOffset": Object {
+          "shadowOffset": {
             "height": 0,
             "width": 0,
           },
@@ -1112,9 +1139,9 @@ exports[`correctly renders left-side affix adornment, and right-side icon adornm
       <View
         collapsable={false}
         style={
-          Object {
+          {
             "shadowColor": "#000",
-            "shadowOffset": Object {
+            "shadowOffset": {
               "height": 0,
               "width": 0,
             },
@@ -1126,16 +1153,16 @@ exports[`correctly renders left-side affix adornment, and right-side icon adornm
         <View
           collapsable={false}
           style={
-            Object {
+            {
               "backgroundColor": undefined,
-              "borderColor": "rgba(121, 116, 126, 1)",
-              "borderRadius": 20,
+              "borderColor": "rgb(130, 117, 104)",
+              "borderRadius": 31.42857142857143,
               "borderWidth": 0,
               "elevation": 0,
-              "height": 40,
+              "height": 62.85714285714286,
               "margin": 0,
               "overflow": "hidden",
-              "width": 40,
+              "width": 62.85714285714286,
             }
           }
         >
@@ -1143,17 +1170,29 @@ exports[`correctly renders left-side affix adornment, and right-side icon adornm
             accessibilityComponentType="button"
             accessibilityRole="button"
             accessibilityState={
-              Object {
+              {
+                "busy": undefined,
+                "checked": undefined,
                 "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
             accessibilityTraits="button"
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             centered={true}
             collapsable={false}
             focusable={true}
             hitSlop={
-              Object {
+              {
                 "bottom": 6,
                 "left": 6,
                 "right": 6,
@@ -1170,12 +1209,12 @@ exports[`correctly renders left-side affix adornment, and right-side icon adornm
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "overflow": "hidden",
                 },
                 false,
-                Object {
+                {
                   "alignItems": "center",
                   "flexGrow": 1,
                   "justifyContent": "center",
@@ -1191,30 +1230,30 @@ exports[`correctly renders left-side affix adornment, and right-side icon adornm
               pointerEvents="none"
               selectable={false}
               style={
-                Array [
-                  Object {
-                    "color": "rgba(73, 69, 79, 1)",
-                    "fontSize": 24,
+                [
+                  {
+                    "color": "rgb(80, 69, 57)",
+                    "fontSize": 37.714285714285715,
                   },
-                  Array [
-                    Object {
-                      "lineHeight": 24,
-                      "transform": Array [
-                        Object {
+                  [
+                    {
+                      "lineHeight": 37.714285714285715,
+                      "transform": [
+                        {
                           "scaleX": 1,
                         },
                       ],
                     },
-                    Object {
+                    {
                       "backgroundColor": "transparent",
                     },
                   ],
-                  Object {
+                  {
                     "fontFamily": "Material Design Icons",
                     "fontStyle": "normal",
                     "fontWeight": "normal",
                   },
-                  Object {},
+                  {},
                 ]
               }
             >
@@ -1231,28 +1270,28 @@ exports[`correctly renders left-side affix adornment, and right-side icon adornm
 exports[`correctly renders left-side icon adornment, and right-side affix adornment 1`] = `
 <View
   style={
-    Array [
-      Object {
-        "backgroundColor": "rgba(231, 224, 236, 1)",
-        "borderTopLeftRadius": 4,
-        "borderTopRightRadius": 4,
+    [
+      {
+        "backgroundColor": "rgb(240, 224, 208)",
+        "borderTopLeftRadius": 6.285714285714286,
+        "borderTopRightRadius": 6.285714285714286,
       },
-      Object {},
+      {},
     ]
   }
 >
   <View
     collapsable={false}
     style={
-      Object {
-        "backgroundColor": "rgba(28, 27, 31, 1)",
+      {
+        "backgroundColor": "rgb(80, 69, 57)",
         "bottom": 0,
-        "height": 1,
+        "height": 1.5714285714285714,
         "left": 0,
         "position": "absolute",
         "right": 0,
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "scaleY": 0.5,
           },
         ],
@@ -1262,14 +1301,15 @@ exports[`correctly renders left-side icon adornment, and right-side affix adornm
     testID="text-input-underline"
   />
   <View
+    onLayout={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "paddingBottom": 0,
           "paddingTop": 0,
         },
-        Object {
-          "minHeight": 56,
+        {
+          "minHeight": 88,
         },
       ]
     }
@@ -1278,18 +1318,19 @@ exports[`correctly renders left-side icon adornment, and right-side affix adornm
       collapsable={false}
       pointerEvents="none"
       style={
-        Object {
+        {
           "bottom": 0,
           "left": 0,
           "opacity": 0,
           "position": "absolute",
           "right": 0,
           "top": 0,
-          "transform": Array [
-            Object {
-              "translateX": 14,
+          "transform": [
+            {
+              "translateX": 22,
             },
           ],
+          "width": 750,
           "zIndex": 3,
         }
       }
@@ -1299,29 +1340,31 @@ exports[`correctly renders left-side icon adornment, and right-side affix adornm
         maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         onLayout={[Function]}
+        onTextLayout={[Function]}
         style={
-          Object {
-            "color": "rgba(103, 80, 164, 1)",
+          {
+            "color": "rgb(133, 84, 0)",
             "fontFamily": "System",
-            "fontSize": 16,
+            "fontSize": 25.142857142857142,
             "fontWeight": undefined,
             "left": 0,
-            "letterSpacing": 0.15,
+            "letterSpacing": 0.2357142857142857,
             "lineHeight": undefined,
+            "maxWidth": 114.71428571428571,
             "opacity": 0,
-            "paddingLeft": 56,
-            "paddingRight": 56,
+            "paddingLeft": 88,
+            "paddingRight": 88,
             "position": "absolute",
             "textAlign": "left",
-            "top": 30,
-            "transform": Array [
-              Object {
+            "top": 47,
+            "transform": [
+              {
                 "translateX": 0,
               },
-              Object {
-                "translateY": -12,
+              {
+                "translateY": -18.714285714285715,
               },
-              Object {
+              {
                 "scale": 0.75,
               },
             ],
@@ -1337,28 +1380,29 @@ exports[`correctly renders left-side icon adornment, and right-side affix adornm
         maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         style={
-          Object {
-            "color": "rgba(73, 69, 79, 1)",
+          {
+            "color": "rgb(80, 69, 57)",
             "fontFamily": "System",
-            "fontSize": 16,
+            "fontSize": 25.142857142857142,
             "fontWeight": undefined,
             "left": 0,
-            "letterSpacing": 0.15,
+            "letterSpacing": 0.2357142857142857,
             "lineHeight": undefined,
+            "maxWidth": 114.71428571428571,
             "opacity": 0,
-            "paddingLeft": 56,
-            "paddingRight": 56,
+            "paddingLeft": 88,
+            "paddingRight": 88,
             "position": "absolute",
             "textAlign": "left",
-            "top": 30,
-            "transform": Array [
-              Object {
+            "top": 47,
+            "transform": [
+              {
                 "translateX": 0,
               },
-              Object {
-                "translateY": -12,
+              {
+                "translateY": -18.714285714285715,
               },
-              Object {
+              {
                 "scale": 0.75,
               },
             ],
@@ -1371,6 +1415,7 @@ exports[`correctly renders left-side icon adornment, and right-side affix adornm
       </Text>
     </View>
     <TextInput
+      cursorColor="rgb(133, 84, 0)"
       editable={true}
       maxFontSizeMultiplier={1.5}
       multiline={false}
@@ -1378,42 +1423,41 @@ exports[`correctly renders left-side icon adornment, and right-side affix adornm
       onChangeText={[Function]}
       onFocus={[Function]}
       placeholder=" "
-      placeholderTextColor="rgba(73, 69, 79, 1)"
-      selectionColor="rgba(103, 80, 164, 1)"
+      placeholderTextColor="rgb(80, 69, 57)"
+      selectionColor="rgb(133, 84, 0)"
       style={
-        Array [
-          Object {
-            "flexGrow": 1,
+        [
+          {
             "margin": 0,
           },
-          Object {
-            "paddingLeft": 56,
-            "paddingRight": 56,
+          {
+            "height": 88,
           },
-          Object {
-            "height": 56,
+          {
+            "paddingBottom": 6.285714285714286,
+            "paddingTop": 37.714285714285715,
           },
-          Object {
-            "paddingBottom": 4,
-            "paddingTop": 24,
-          },
-          Object {
-            "color": "rgba(73, 69, 79, 1)",
+          {
+            "color": "rgb(31, 27, 22)",
             "fontFamily": "System",
-            "fontSize": 16,
+            "fontSize": 25.142857142857142,
             "fontWeight": undefined,
-            "letterSpacing": 0.15,
+            "letterSpacing": 0.2357142857142857,
             "lineHeight": undefined,
+            "minWidth": 102.14285714285714,
+            "paddingLeft": 88,
+            "paddingRight": 88,
             "textAlign": "left",
             "textAlignVertical": "center",
           },
           false,
-          Object {
-            "marginLeft": 40,
+          {
+            "marginLeft": 62.85714285714286,
             "marginRight": 0,
-            "paddingLeft": 16,
-            "paddingRight": 40,
+            "paddingLeft": 25.142857142857142,
+            "paddingRight": 62.85714285714286,
           },
+          undefined,
         ]
       }
       testID="text-input-flat"
@@ -1423,17 +1467,17 @@ exports[`correctly renders left-side icon adornment, and right-side affix adornm
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
-          "height": 24,
+          "height": 37.714285714285715,
           "justifyContent": "center",
           "position": "absolute",
-          "width": 24,
+          "width": 37.714285714285715,
         },
-        Object {
-          "left": 16,
-          "top": 16,
+        {
+          "left": 25.142857142857142,
+          "top": 25.142857142857142,
         },
       ]
     }
@@ -1441,14 +1485,14 @@ exports[`correctly renders left-side icon adornment, and right-side affix adornm
     <View
       collapsable={false}
       style={
-        Object {
+        {
           "alignSelf": undefined,
           "bottom": undefined,
           "left": undefined,
           "position": undefined,
           "right": undefined,
           "shadowColor": "#000",
-          "shadowOffset": Object {
+          "shadowOffset": {
             "height": 0,
             "width": 0,
           },
@@ -1461,9 +1505,9 @@ exports[`correctly renders left-side icon adornment, and right-side affix adornm
       <View
         collapsable={false}
         style={
-          Object {
+          {
             "shadowColor": "#000",
-            "shadowOffset": Object {
+            "shadowOffset": {
               "height": 0,
               "width": 0,
             },
@@ -1475,16 +1519,16 @@ exports[`correctly renders left-side icon adornment, and right-side affix adornm
         <View
           collapsable={false}
           style={
-            Object {
+            {
               "backgroundColor": undefined,
-              "borderColor": "rgba(121, 116, 126, 1)",
-              "borderRadius": 20,
+              "borderColor": "rgb(130, 117, 104)",
+              "borderRadius": 31.42857142857143,
               "borderWidth": 0,
               "elevation": 0,
-              "height": 40,
+              "height": 62.85714285714286,
               "margin": 0,
               "overflow": "hidden",
-              "width": 40,
+              "width": 62.85714285714286,
             }
           }
         >
@@ -1492,17 +1536,29 @@ exports[`correctly renders left-side icon adornment, and right-side affix adornm
             accessibilityComponentType="button"
             accessibilityRole="button"
             accessibilityState={
-              Object {
+              {
+                "busy": undefined,
+                "checked": undefined,
                 "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
             accessibilityTraits="button"
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             centered={true}
             collapsable={false}
             focusable={true}
             hitSlop={
-              Object {
+              {
                 "bottom": 6,
                 "left": 6,
                 "right": 6,
@@ -1519,12 +1575,12 @@ exports[`correctly renders left-side icon adornment, and right-side affix adornm
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "overflow": "hidden",
                 },
                 false,
-                Object {
+                {
                   "alignItems": "center",
                   "flexGrow": 1,
                   "justifyContent": "center",
@@ -1540,30 +1596,30 @@ exports[`correctly renders left-side icon adornment, and right-side affix adornm
               pointerEvents="none"
               selectable={false}
               style={
-                Array [
-                  Object {
-                    "color": "rgba(73, 69, 79, 1)",
-                    "fontSize": 24,
+                [
+                  {
+                    "color": "rgb(80, 69, 57)",
+                    "fontSize": 37.714285714285715,
                   },
-                  Array [
-                    Object {
-                      "lineHeight": 24,
-                      "transform": Array [
-                        Object {
+                  [
+                    {
+                      "lineHeight": 37.714285714285715,
+                      "transform": [
+                        {
                           "scaleX": 1,
                         },
                       ],
                     },
-                    Object {
+                    {
                       "backgroundColor": "transparent",
                     },
                   ],
-                  Object {
+                  {
                     "fontFamily": "Material Design Icons",
                     "fontStyle": "normal",
                     "fontWeight": "normal",
                   },
-                  Object {},
+                  {},
                 ]
               }
             >
@@ -1578,12 +1634,12 @@ exports[`correctly renders left-side icon adornment, and right-side affix adornm
     collapsable={false}
     onLayout={[Function]}
     style={
-      Object {
+      {
         "alignItems": "center",
         "justifyContent": "center",
         "opacity": 1,
         "position": "absolute",
-        "right": 16,
+        "right": 25.142857142857142,
         "top": null,
       }
     }
@@ -1592,22 +1648,23 @@ exports[`correctly renders left-side icon adornment, and right-side affix adornm
     <Text
       maxFontSizeMultiplier={1.5}
       style={
-        Array [
-          Object {
-            "color": "rgba(28, 27, 31, 0.54)",
+        [
+          {
+            "color": "rgb(80, 69, 57)",
           },
-          Object {
+          {
             "fontFamily": "System",
-            "fontSize": 16,
+            "fontSize": 25.142857142857142,
             "fontWeight": undefined,
-            "letterSpacing": 0.15,
+            "letterSpacing": 0.2357142857142857,
             "lineHeight": undefined,
           },
-          Object {
+          {
             "color": "#f44336",
           },
         ]
       }
+      testID="right-affix-adornment-text"
     >
       /100
     </Text>

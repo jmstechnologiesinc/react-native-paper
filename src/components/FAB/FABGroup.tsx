@@ -450,7 +450,11 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   container: {
-    ...StyleSheet.absoluteFillObject,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
     justifyContent: 'flex-end',
   },
   fab: {
@@ -459,7 +463,11 @@ const styles = StyleSheet.create({
     marginTop: 0,
   },
   backdrop: {
-    ...StyleSheet.absoluteFillObject,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
   },
   containerStyle: {
     borderRadius: moderateScale(5),

@@ -79,7 +79,8 @@ const Provider = (props: Props) => {
   const getTheme = () => {
     const themeVersion = props.theme?.version || 3;
     const scheme = colorScheme || 'light';
-    const defaultThemeBase = defaultThemesByVersion[themeVersion][scheme];
+    const defaultThemeBase =
+      defaultThemesByVersion[themeVersion][scheme as 'light' | 'dark'];
 
     const extendedThemeBase = {
       ...defaultThemeBase,

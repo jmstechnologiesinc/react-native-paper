@@ -1,46 +1,194 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders ListImage with default variant & styles 1`] = `
-<Image
-  accessibilityIgnoresInvertColors={true}
-  source={
-    Object {
-      "testUri": "../../../example/assets/images/strawberries.jpg",
-    }
-  }
+<View
   style={
-    Array [
-      Object {
-        "height": 56,
-        "width": 30,
-      },
-      Object {
-        "height": 56,
-        "width": 56,
-      },
+    [
+      [
+        {
+          "height": 56,
+          "width": 30,
+        },
+        {
+          "height": 119.42857142857143,
+          "width": 119.42857142857143,
+        },
+      ],
     ]
   }
-  testID="list-image"
-/>
+>
+  <View
+    style={
+      [
+        {
+          "overflow": "hidden",
+        },
+        {
+          "bottom": 0,
+          "left": 0,
+          "opacity": 0.01,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+      ]
+    }
+  >
+    <FastImageView
+      collapsable={false}
+      defaultSource={null}
+      onFastImageLoad={[Function]}
+      resizeMode="cover"
+      source={
+        {
+          "uri": undefined,
+        }
+      }
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+      testID="list-image"
+    />
+  </View>
+  <View
+    style={
+      [
+        {
+          "overflow": "hidden",
+        },
+        {
+          "bottom": 0,
+          "left": 0,
+          "opacity": 0.01,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+      ]
+    }
+  >
+    <FastImageView
+      collapsable={false}
+      defaultSource={null}
+      onFastImageLoad={[Function]}
+      resizeMode="cover"
+      source={
+        {
+          "uri": undefined,
+        }
+      }
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+      testID="list-image"
+    />
+  </View>
+</View>
 `;
 
 exports[`renders ListImage with default variant 1`] = `
-<Image
-  accessibilityIgnoresInvertColors={true}
-  source={
-    Object {
-      "testUri": "../../../example/assets/images/strawberries.jpg",
-    }
-  }
+<View
   style={
-    Array [
-      undefined,
-      Object {
-        "height": 56,
-        "width": 56,
-      },
+    [
+      [
+        undefined,
+        {
+          "height": 119.42857142857143,
+          "width": 119.42857142857143,
+        },
+      ],
     ]
   }
-  testID="list-image"
-/>
+>
+  <View
+    style={
+      [
+        {
+          "overflow": "hidden",
+        },
+        {
+          "bottom": 0,
+          "left": 0,
+          "opacity": 0.01,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+      ]
+    }
+  >
+    <FastImageView
+      collapsable={false}
+      defaultSource={null}
+      onFastImageLoad={[Function]}
+      resizeMode="cover"
+      source={
+        {
+          "uri": undefined,
+        }
+      }
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+      testID="list-image"
+    />
+  </View>
+  <View
+    style={
+      [
+        {
+          "overflow": "hidden",
+        },
+        {
+          "bottom": 0,
+          "left": 0,
+          "opacity": 0.01,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+      ]
+    }
+  >
+    <FastImageView
+      collapsable={false}
+      defaultSource={null}
+      onFastImageLoad={[Function]}
+      resizeMode="cover"
+      source={
+        {
+          "uri": undefined,
+        }
+      }
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+      testID="list-image"
+    />
+  </View>
+</View>
 `;

@@ -51,7 +51,6 @@ try {
       <Text
         {...rest}
         style={[styles.icon, { color, fontSize: size }]}
-        // @ts-expect-error: Text doesn't support this, but it seems to affect TouchableNativeFeedback
         pointerEvents="none"
         selectable={false}
       >
