@@ -64,3 +64,6 @@ CHANGELOG.md
 lib/
 
 .expo
+
+# npm auth / secrets
+.npmrc
