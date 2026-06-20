@@ -6,7 +6,6 @@ import {
   Image,
 } from 'react-native';
 
-// import FastImage from '@d11/react-native-fast-image';
 
 import { Consumer as SettingsConsumer } from '../core/settings';
 import { withInternalTheme } from '../core/theming';

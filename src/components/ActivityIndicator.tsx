@@ -240,6 +240,7 @@ const ActivityIndicator = ({
   );
 };
 
+
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
@@ -247,12 +248,7 @@ const styles = StyleSheet.create({
   },
 
   layer: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-
+    ...StyleSheet.absoluteFill,
     justifyContent: 'center',
     alignItems: 'center',
   },
