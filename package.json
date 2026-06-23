@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@callstack/react-theme-provider": "^3.0.9",
-    "@d11/react-native-fast-image": "^8.13.0",
+    "@jmstechnologiesinc/material-tokens": "^0.0.17",
     "@jmstechnologiesinc/react-native-image-blur-loading": "^1.2.4",
     "@jmstechnologiesinc/react-native-size-matters": "^0.4.2",
     "color": "^3.1.2",
@@ -92,7 +92,6 @@
     "typescript": "^5.3.0"
   },
   "peerDependencies": {
-    "@jmstechnologiesinc/material-tokens": "*",
     "react": ">=19.0.0",
     "react-native": ">=0.85.0",
     "react-native-safe-area-context": ">=5.0.0",
