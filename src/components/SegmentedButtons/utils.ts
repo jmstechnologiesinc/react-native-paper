@@ -1,12 +1,11 @@
 import { StyleSheet, ViewStyle } from 'react-native';
 
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import color from 'color';
 
 import { black, white } from '../../styles/themes/v2/colors';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { InternalTheme } from '../../types';
-
-import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 type BaseProps = {
   theme: InternalTheme;
@@ -75,6 +74,11 @@ export const getSegmentedButtonBorderRadius = ({
     return {
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,
+      // Plan B (#49442): rompemos la uniformidad del borde en 'last' para evitar
+      // el degradado fantasma de iOS (borde uniforme + radios no uniformes). Esto
+      // quita su borde izquierdo, que hacía de divisor; se repone con una línea
+      // de 1px en SegmentedButtons.
+      ...(theme.isV3 && { borderLeftWidth: 0 }),
     };
   } else {
     return {

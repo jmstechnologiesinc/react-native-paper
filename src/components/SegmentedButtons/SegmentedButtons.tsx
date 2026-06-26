@@ -148,6 +148,10 @@ const SegmentedButtons = ({
             ? 'last'
             : undefined;
 
+
+      
+        
+
         const checked =
           multiSelect && Array.isArray(value)
             ? value.includes(item.value)
@@ -168,15 +172,25 @@ const SegmentedButtons = ({
         };
 
         return (
-          <SegmentedButtonItem
-            {...item}
-            key={i}
-            checked={checked}
-            segment={segment}
-            density={density}
-            onPress={onPress}
-            style={[item.style, disabledChildStyle]}
-          />
+          <React.Fragment key={i}>
+            {/* Repone el divisor que pierde 'last' al romper su borde (Plan B). */}
+            {segment === 'last' ? (
+              <View
+                style={[
+                  styles.divider,
+                  { backgroundColor: theme.colors.outline },
+                ]}
+              />
+            ) : null}
+            <SegmentedButtonItem
+              {...item}
+              checked={checked}
+              segment={segment}
+              density={density}
+              onPress={onPress}
+              style={[item.style, disabledChildStyle]}
+            />
+          </React.Fragment>
         );
       })}
     </View>
@@ -186,6 +200,11 @@ const SegmentedButtons = ({
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
+  },
+  // Divisor de 1px que sustituye al borde izquierdo eliminado en 'last'.
+  divider: {
+    width: 1,
+    alignSelf: 'stretch',
   },
 });
 
