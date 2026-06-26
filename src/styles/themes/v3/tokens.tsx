@@ -141,7 +141,7 @@ import {
   MdRefPaletteLevel2,
   MdRefPaletteLevel3,
   MdRefPaletteLevel4,
-  MdRefPaletteLevel5
+  MdRefPaletteLevel5,
   //  @ts-ignore:next-line
 } from '@jmstechnologiesinc/material-tokens';
 import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
@@ -239,7 +239,7 @@ const ref = {
     level2: MdRefPaletteLevel2,
     level3: MdRefPaletteLevel3,
     level4: MdRefPaletteLevel4,
-    level5: MdRefPaletteLevel5
+    level5: MdRefPaletteLevel5,
   },
 
   typeface: {

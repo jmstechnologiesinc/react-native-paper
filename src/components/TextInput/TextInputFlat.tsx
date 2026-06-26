@@ -9,6 +9,8 @@ import {
   Animated,
 } from 'react-native';
 
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
+
 import { Underline } from './Addons/Underline';
 import { AdornmentSide, AdornmentType, InputMode } from './Adornment/enums';
 import TextInputAdornment, {
@@ -41,7 +43,6 @@ import {
 } from './helpers';
 import InputLabel from './Label/InputLabel';
 import type { ChildTextInputProps, RenderProps } from './types';
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 
 const TextInputFlat = ({

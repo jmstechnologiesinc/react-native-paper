@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
 import { useInternalTheme } from '../../core/theming';
-import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 
 export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
@@ -51,8 +51,8 @@ const CardActions = (props: Props) => {
         return React.isValidElement(child)
           ? React.cloneElement(child as React.ReactElement<any>, {
               compact:
-                !isV3 && (child as React.ReactElement<any>).props.compact !==
-                  false,
+                !isV3 &&
+                (child as React.ReactElement<any>).props.compact !== false,
               mode:
                 (child as React.ReactElement<any>).props.mode ||
                 (isV3 && (i === 0 ? 'outlined' : 'contained')),

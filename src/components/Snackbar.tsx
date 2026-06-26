@@ -9,6 +9,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { withInternalTheme } from '../core/theming';
@@ -19,9 +20,7 @@ import IconButton from './IconButton/IconButton';
 import MaterialCommunityIcon from './MaterialCommunityIcon';
 import Surface from './Surface';
 import Text from './Typography/Text';
-
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
-import {MD3LightTheme as theme} from '../styles/themes/v3/LightTheme';
+import { MD3LightTheme as theme } from '../styles/themes/v3/LightTheme';
 
 export type Props = React.ComponentProps<typeof Surface> & {
   /**
@@ -225,7 +224,7 @@ const Snackbar = ({
 
   const isIconButton = isV3 && onIconPress;
 
-  const marginLeft = action ? - moderateScale(12) : -theme.spacing.x4;
+  const marginLeft = action ? -moderateScale(12) : -theme.spacing.x4;
 
   const wrapperPaddings = {
     paddingBottom: bottom,

@@ -10,18 +10,17 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import FAB from './FAB';
+import { getFABGroupColors } from './utils';
 import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { InternalTheme } from '../../types';
 import Card from '../Card/Card';
 import type { IconSource } from '../Icon';
 import Text from '../Typography/Text';
-import FAB from './FAB';
-import { getFABGroupColors } from './utils';
-
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
-import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 export type Props = {
   /**
@@ -107,7 +106,7 @@ export type Props = {
    * @optional
    */
   theme: InternalTheme;
-   /**
+  /**
    * Pass down testID from Group props to FAB.
    */
   testID?: string;

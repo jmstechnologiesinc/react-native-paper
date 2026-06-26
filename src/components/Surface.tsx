@@ -105,7 +105,7 @@ const MD2Surface = React.forwardRef<View, Props>(
  * });
  * ```
  */
- const Surface = React.forwardRef<View, Props>(
+const Surface = React.forwardRef<View, Props>(
   (
     {
       elevation = 1,

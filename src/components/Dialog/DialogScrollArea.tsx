@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
-import { useInternalTheme } from '../../core/theming';
 import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
+
+import { useInternalTheme } from '../../core/theming';
 
 export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
@@ -55,8 +56,12 @@ const DialogScrollArea = (props: Props) => {
     borderColor: theme.isV3
       ? theme.colors.surfaceVariant
       : 'rgba(0, 0, 0, .12)',
-    borderTopWidth: theme.isV3 ? moderateScale(1) : moderateScale(StyleSheet.hairlineWidth),
-    borderBottomWidth: theme.isV3 ? moderateScale(1) : moderateScale(StyleSheet.hairlineWidth),
+    borderTopWidth: theme.isV3
+      ? moderateScale(1)
+      : moderateScale(StyleSheet.hairlineWidth),
+    borderBottomWidth: theme.isV3
+      ? moderateScale(1)
+      : moderateScale(StyleSheet.hairlineWidth),
   };
   return (
     <View

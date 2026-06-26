@@ -6,14 +6,13 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import color from 'color';
 
 import { black, white } from '../../styles/themes/v2/colors';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { InternalTheme } from '../../types';
 import getContrastingColor from '../../utils/getContrastingColor';
-
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
-import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 type GetCombinedStylesProps = {
   isAnimatedFromRight: boolean;

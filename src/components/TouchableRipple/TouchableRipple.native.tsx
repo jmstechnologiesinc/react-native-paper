@@ -9,9 +9,9 @@ import {
   GestureResponderEvent,
 } from 'react-native';
 
+import { getTouchableRippleColors } from './utils';
 import { withInternalTheme } from '../../core/theming';
 import type { InternalTheme } from '../../types';
-import { getTouchableRippleColors } from './utils';
 
 const ANDROID_VERSION_LOLLIPOP = 21;
 const ANDROID_VERSION_PIE = 28;

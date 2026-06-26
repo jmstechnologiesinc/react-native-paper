@@ -79,7 +79,7 @@ export const getCardColors = ({
 }: {
   theme: InternalTheme;
   mode: CardMode;
-}) => { 
+}) => {
   const isMode = (modeToCompare: CardMode) => {
     return mode === modeToCompare;
   };

@@ -30,5 +30,5 @@ export const MD2LightTheme: MD2Theme = {
   animation: {
     scale: 1.0,
   },
-  spacing
+  spacing,
 };

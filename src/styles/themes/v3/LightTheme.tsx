@@ -1,10 +1,8 @@
-
-import type { MD3Theme } from '../../../types';
-import configureFonts from '../../fonts';
-import { tokens } from './tokens';
-
 import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
+import { tokens } from './tokens';
+import type { MD3Theme } from '../../../types';
+import configureFonts from '../../fonts';
 
 const spacing = tokens.md.sys.spacing;
 
@@ -22,10 +20,10 @@ export const MD3LightTheme: MD3Theme = {
     onSecondary: 'rgb(255, 255, 255)',
     secondaryContainer: 'rgb(252, 222, 188)',
     onSecondaryContainer: 'rgb(40, 24, 5)',
-    tertiary: "rgb(112, 93, 0)",
-    onTertiary: "rgb(255, 255, 255)",
-    tertiaryContainer: "rgb(255, 225, 109)",
-    onTertiaryContainer: "rgb(34, 27, 0)",
+    tertiary: 'rgb(112, 93, 0)',
+    onTertiary: 'rgb(255, 255, 255)',
+    tertiaryContainer: 'rgb(255, 225, 109)',
+    onTertiaryContainer: 'rgb(34, 27, 0)',
     error: 'rgb(186, 26, 26)',
     onError: 'rgb(255, 255, 255)',
     errorContainer: 'rgb(255, 218, 214)',

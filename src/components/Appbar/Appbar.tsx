@@ -17,8 +17,7 @@ import {
   modeAppbarHeight,
   renderAppbarContent,
 } from './utils';
-
-import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 
 export type Props = Partial<React.ComponentPropsWithRef<typeof View>> & {
   /**
@@ -57,8 +56,8 @@ export type Props = Partial<React.ComponentPropsWithRef<typeof View>> & {
   /**
    * @optional
    */
-   theme: InternalTheme;
-   style?: StyleProp<ViewStyle>;
+  theme: InternalTheme;
+  style?: StyleProp<ViewStyle>;
 };
 
 /**

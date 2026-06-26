@@ -8,12 +8,11 @@ import {
 } from 'react-native';
 
 import ImageBlurLoading from '@jmstechnologiesinc/react-native-image-blur-loading';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 import { withInternalTheme } from '../../core/theming';
-import type { InternalTheme } from '../../types';
-
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 
 export type Props = {
   source: ImageSourcePropType;

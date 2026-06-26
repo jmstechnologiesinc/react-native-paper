@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { Image, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
+import ImageBlurLoading from '@jmstechnologiesinc/react-native-image-blur-loading';
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
+
+import { getCardCoverStyle } from './utils';
 import { withInternalTheme } from '../../core/theming';
 import { grey200 } from '../../styles/themes/v2/colors';
-import type { InternalTheme } from '../../types';
-import { getCardCoverStyle } from './utils';
-
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
-
-import ImageBlurLoading from '@jmstechnologiesinc/react-native-image-blur-loading';
+import type { InternalTheme } from '../../types';
 
 export type Props = React.ComponentPropsWithRef<typeof Image> & {
   /**

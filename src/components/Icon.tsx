@@ -6,7 +6,6 @@ import {
   Image,
 } from 'react-native';
 
-
 import { Consumer as SettingsConsumer } from '../core/settings';
 import { withInternalTheme } from '../core/theming';
 import type { InternalTheme } from '../types';

@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { StyleProp, StyleSheet, TextStyle } from 'react-native';
 
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
+
 import { withInternalTheme } from '../../core/theming';
 import type { InternalTheme } from '../../types';
 import Text from '../Typography/Text';
 import Title from '../Typography/v2/Title';
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 export type Props = React.ComponentPropsWithRef<typeof Title> & {
   /**

@@ -11,13 +11,13 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import color from 'color';
 
 import { withInternalTheme } from '../../core/theming';
 import type { InternalTheme } from '../../types';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Text from '../Typography/Text';
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 export type Props = React.ComponentPropsWithRef<
   typeof TouchableWithoutFeedback

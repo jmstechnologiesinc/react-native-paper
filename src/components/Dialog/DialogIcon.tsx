@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
+
 import { useInternalTheme } from '../../core/theming';
 import Icon, { IconSource } from '../Icon';
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 export type Props = {
   /**

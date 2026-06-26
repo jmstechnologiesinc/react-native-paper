@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Platform, StyleProp, StyleSheet, ViewStyle } from 'react-native';
+
 import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 import { withInternalTheme } from '../../core/theming';

@@ -1,4 +1,5 @@
 import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
+
 import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 
 export const MAXIMIZED_LABEL_FONT_SIZE = theme.spacing.x4;

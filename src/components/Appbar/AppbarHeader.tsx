@@ -3,15 +3,15 @@ import { Platform, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { withInternalTheme } from '../../core/theming';
-import shadow from '../../styles/shadow';
-import type { InternalTheme } from '../../types';
 import { Appbar } from './Appbar';
 import {
   DEFAULT_APPBAR_HEIGHT,
   getAppbarColor,
   modeAppbarHeight,
 } from './utils';
+import { withInternalTheme } from '../../core/theming';
+import shadow from '../../styles/shadow';
+import type { InternalTheme } from '../../types';
 
 export type Props = React.ComponentProps<typeof Appbar> & {
   /**

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Animated, StyleSheet, StyleProp, ViewStyle } from 'react-native';
 
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import type { ThemeProp } from 'src/types';
 
 import { useInternalTheme } from '../../../core/theming';
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 type UnderlineProps = {
   parentState: {

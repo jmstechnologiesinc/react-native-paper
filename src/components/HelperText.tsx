@@ -12,8 +12,7 @@ import color from 'color';
 import { withInternalTheme } from '../core/theming';
 import type { $Omit, InternalTheme } from '../types';
 import AnimatedText from './Typography/AnimatedText';
-
-import {MD3LightTheme as theme} from '../styles/themes/v3/LightTheme';
+import { MD3LightTheme as theme } from '../styles/themes/v3/LightTheme';
 
 export type Props = $Omit<
   $Omit<React.ComponentProps<typeof AnimatedText>, 'padding'>,

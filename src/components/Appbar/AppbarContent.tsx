@@ -10,20 +10,19 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import color from 'color';
 
+import { modeTextVariant } from './utils';
 import { withInternalTheme } from '../../core/theming';
 import { white } from '../../styles/themes/v2/colors';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type {
   $RemoveChildren,
   InternalTheme,
   MD3TypescaleKey,
 } from '../../types';
 import Text from '../Typography/Text';
-import { modeTextVariant } from './utils';
-
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
-import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 export type Props = $RemoveChildren<typeof View> & {
   /**

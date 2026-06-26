@@ -17,10 +17,10 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { InternalTheme } from 'src/types';
 
+import Surface from './Surface';
 import { withInternalTheme } from '../core/theming';
 import { addEventListener } from '../utils/addEventListener';
 import useAnimatedValue from '../utils/useAnimatedValue';
-import Surface from './Surface';
 
 export type Props = {
   /**

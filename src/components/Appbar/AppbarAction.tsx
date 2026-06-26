@@ -1,13 +1,13 @@
 import * as React from 'react';
 import type { StyleProp, ViewStyle, View } from 'react-native';
 
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import color from 'color';
 
 import { useInternalTheme } from '../../core/theming';
 import { black } from '../../styles/themes/v2/colors';
 import type { IconSource } from '../Icon';
 import IconButton from '../IconButton/IconButton';
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 export type Props = React.ComponentPropsWithoutRef<typeof IconButton> & {
   /**

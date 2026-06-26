@@ -30,5 +30,5 @@ export const MD2DarkTheme: MD2Theme = {
     tooltip: 'rgba(230, 225, 229, 1)',
   },
   fonts: configureFonts({ isV3: false }) as Fonts,
-  spacing
+  spacing,
 };

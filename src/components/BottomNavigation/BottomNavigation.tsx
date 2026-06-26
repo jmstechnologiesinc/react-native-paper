@@ -11,12 +11,15 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import color from 'color';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import BottomNavigationRouteScreen from './BottomNavigationRouteScreen';
 import { withInternalTheme } from '../../core/theming';
 import overlay from '../../styles/overlay';
 import { black, white } from '../../styles/themes/v2/colors';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { InternalTheme } from '../../types';
 import useAnimatedValue from '../../utils/useAnimatedValue';
 import useAnimatedValueArray from '../../utils/useAnimatedValueArray';
@@ -27,10 +30,6 @@ import Icon, { IconSource } from '../Icon';
 import Surface from '../Surface';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
-import BottomNavigationRouteScreen from './BottomNavigationRouteScreen';
-
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
-import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 type Route = {
   key: string;
@@ -266,12 +265,12 @@ export type Props = {
   /**
    * @optional
    */
-   theme: InternalTheme;
-   /**
-    * TestID used for testing purposes
-    */
-   testID?: string;
-  };
+  theme: InternalTheme;
+  /**
+   * TestID used for testing purposes
+   */
+  testID?: string;
+};
 
 const MIN_RIPPLE_SCALE = 0.001; // Minimum scale is not 0 due to bug with animation
 const MIN_TAB_WIDTH = moderateScale(96);

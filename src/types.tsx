@@ -138,7 +138,7 @@ export type MD2Theme = ThemeBase & {
   isV3: false;
   colors: MD2Colors;
   fonts: Fonts;
-  spacing: MD2Spacing
+  spacing: MD2Spacing;
 };
 
 export type InternalTheme = MD2Theme | MD3Theme;
@@ -217,52 +217,50 @@ export type NavigationTheme = {
   };
 };
 
-
 export type MD3Spacing = {
-  base:  number;
-  x1: number
+  base: number;
+  x1: number;
   x2: number;
   x3: number;
   x4: number;
-  x5:  number;
+  x5: number;
   x6: number;
-  x7:  number;
-  x8:  number;
+  x7: number;
+  x8: number;
   x9: number;
-  x10:  number;
-  x11:  number;
+  x10: number;
+  x11: number;
   x12: number;
-  x13:  number;
+  x13: number;
   x14: number;
   x15: number;
   x16: number;
-  x17:  number;
+  x17: number;
   x18: number;
-  x19:  number;
-  x20:  number;
+  x19: number;
+  x20: number;
 };
 
-
 export type MD2Spacing = {
-  base:  number;
-  x1: number
+  base: number;
+  x1: number;
   x2: number;
   x3: number;
   x4: number;
-  x5:  number;
+  x5: number;
   x6: number;
-  x7:  number;
-  x8:  number;
+  x7: number;
+  x8: number;
   x9: number;
-  x10:  number;
-  x11:  number;
+  x10: number;
+  x11: number;
   x12: number;
-  x13:  number;
+  x13: number;
   x14: number;
   x15: number;
   x16: number;
-  x17:  number;
+  x17: number;
   x18: number;
-  x19:  number;
-  x20:  number;
+  x19: number;
+  x20: number;
 };

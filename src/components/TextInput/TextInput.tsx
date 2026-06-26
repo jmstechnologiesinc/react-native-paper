@@ -10,6 +10,8 @@ import {
   TextLayoutEventData,
 } from 'react-native';
 
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
+
 import TextInputAffix, {
   Props as TextInputAffixProps,
 } from './Adornment/TextInputAffix';
@@ -23,7 +25,6 @@ import { useInternalTheme } from '../../core/theming';
 import type { ThemeProp } from '../../types';
 import { forwardRef } from '../../utils/forwardRef';
 import { roundLayoutSize } from '../../utils/roundLayoutSize';
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 const BLUR_ANIMATION_DURATION = 180;
 const FOCUS_ANIMATION_DURATION = 150;

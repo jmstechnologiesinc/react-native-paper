@@ -240,7 +240,6 @@ const ActivityIndicator = ({
   );
 };
 
-
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',

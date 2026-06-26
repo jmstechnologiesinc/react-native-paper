@@ -7,9 +7,9 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { getSwitchColor } from './utils';
 import { withInternalTheme } from '../../core/theming';
 import type { InternalTheme } from '../../types';
-import { getSwitchColor } from './utils';
 
 const version = NativeModules.PlatformConstants
   ? NativeModules.PlatformConstants.reactNativeVersion

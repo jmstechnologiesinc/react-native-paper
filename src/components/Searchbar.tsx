@@ -13,6 +13,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import color from 'color';
 
 import { withInternalTheme } from '../core/theming';
@@ -22,8 +23,6 @@ import type { IconSource } from './Icon';
 import IconButton from './IconButton/IconButton';
 import MaterialCommunityIcon from './MaterialCommunityIcon';
 import Surface from './Surface';
-
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import { MD3LightTheme as theme } from '../styles/themes/v3/LightTheme';
 
 export type Props = React.ComponentPropsWithRef<typeof TextInput> & {
@@ -130,7 +129,7 @@ const Searchbar = React.forwardRef<TextInputHandles, Props>(
     {
       clearAccessibilityLabel = 'clear',
       clearIcon,
-      icon="magnify",
+      icon = 'magnify',
       iconColor: customIconColor,
       inputStyle,
       onIconPress,
@@ -208,7 +207,7 @@ const Searchbar = React.forwardRef<TextInputHandles, Props>(
             icon ||
             (({ size, color }) => (
               <MaterialCommunityIcon
-            // @ts-ignore
+                // @ts-ignore
                 name={icon}
                 color={color}
                 size={size}

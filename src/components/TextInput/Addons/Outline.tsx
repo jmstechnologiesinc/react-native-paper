@@ -7,8 +7,9 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { TextInputLabelProp } from '../types';
 import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
+
+import { TextInputLabelProp } from '../types';
 
 type OutlineProps = {
   isV3: boolean;

@@ -7,6 +7,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import color from 'color';
 import type { InternalTheme } from 'src/types';
 
@@ -16,7 +17,6 @@ import IconButton from '../IconButton/IconButton';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Menu from '../Menu/Menu';
 import Text from '../Typography/Text';
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 export type Props = React.ComponentPropsWithRef<typeof View> &
   PaginationControlsProps &

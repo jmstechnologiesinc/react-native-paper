@@ -11,14 +11,14 @@ import {
 import { withInternalTheme } from '../../core/theming';
 import type { InternalTheme } from '../../types';
 import Icon, { IconSource } from '../Icon';
-import TouchableRipple from '../TouchableRipple/TouchableRipple';
-import Text from '../Typography/Text';
 import {
   getContentMaxWidth,
   getMenuItemColor,
   MAX_WIDTH,
   MIN_WIDTH,
 } from './utils';
+import TouchableRipple from '../TouchableRipple/TouchableRipple';
+import Text from '../Typography/Text';
 
 export type Props = {
   /**

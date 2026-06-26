@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
-import { useInternalTheme } from '../../core/theming';
 import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
+
+import { useInternalTheme } from '../../core/theming';
 
 export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
@@ -61,7 +62,8 @@ const DialogActions = (props: Props) => {
               compact: true,
               uppercase: !isV3,
               style: isV3 && {
-                paddingRight: i + moderateScale(1) === actionsLength ? 0 : moderateScale(8),
+                paddingRight:
+                  i + moderateScale(1) === actionsLength ? 0 : moderateScale(8),
               },
             })
           : child

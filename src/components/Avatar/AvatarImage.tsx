@@ -9,9 +9,8 @@ import {
 } from 'react-native';
 
 import { withInternalTheme } from '../../core/theming';
-import type { InternalTheme } from '../../types';
-
 import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
+import type { InternalTheme } from '../../types';
 
 const defaultSize = theme.spacing.x16;
 

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { GestureResponderEvent, Platform } from 'react-native';
 
-import { withInternalTheme } from '../../core/theming';
-import type { InternalTheme } from '../../types';
 import RadioButtonAndroid from './RadioButtonAndroid';
 import RadioButtonIOS from './RadioButtonIOS';
+import { withInternalTheme } from '../../core/theming';
+import type { InternalTheme } from '../../types';
 
 export type Props = {
   /**

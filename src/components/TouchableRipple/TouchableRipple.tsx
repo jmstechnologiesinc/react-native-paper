@@ -8,9 +8,9 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { getTouchableRippleColors } from './utils';
 import { withInternalTheme } from '../../core/theming';
 import type { InternalTheme } from '../../types';
-import { getTouchableRippleColors } from './utils';
 
 export type Props = React.ComponentPropsWithRef<typeof Pressable> & {
   /**

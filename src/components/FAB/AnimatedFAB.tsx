@@ -18,19 +18,18 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import color from 'color';
 
 import { withInternalTheme } from '../../core/theming';
+import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { $RemoveChildren, InternalTheme } from '../../types';
 import type { IconSource } from '../Icon';
 import Icon from '../Icon';
 import Surface from '../Surface';
+import { getCombinedStyles, getFABColors } from './utils';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import AnimatedText from '../Typography/AnimatedText';
-import { getCombinedStyles, getFABColors } from './utils';
-
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
-import {MD3LightTheme as theme} from '../../styles/themes/v3/LightTheme';
 
 export type AnimatedFABIconMode = 'static' | 'dynamic';
 export type AnimatedFABAnimateFrom = 'left' | 'right';

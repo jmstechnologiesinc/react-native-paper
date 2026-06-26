@@ -148,10 +148,6 @@ const SegmentedButtons = ({
             ? 'last'
             : undefined;
 
-
-      
-        
-
         const checked =
           multiSelect && Array.isArray(value)
             ? value.includes(item.value)

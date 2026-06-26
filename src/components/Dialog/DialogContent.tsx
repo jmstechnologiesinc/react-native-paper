@@ -1,6 +1,7 @@
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import * as React from 'react';
 import { View, ViewStyle, StyleSheet, StyleProp } from 'react-native';
+
+import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 export type Props = React.ComponentPropsWithRef<typeof View> & {
   /**
