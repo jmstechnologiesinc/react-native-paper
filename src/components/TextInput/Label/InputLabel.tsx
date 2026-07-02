@@ -144,7 +144,7 @@ const InputLabel = (props: InputLabelProps) => {
         placeholderStyle,
         baseLabelTranslateX,
         topPosition,
-        label,
+        // label,
         backgroundColor,
         roundness,
         maxFontSizeMultiplier: maxFontSizeMultiplier,
