@@ -290,7 +290,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: moderateScale(18),
     paddingLeft: theme.spacing.x2,
-    alignSelf: 'stretch',
+    // alignSelf: 'stretch',
     textAlign: I18nManager.getConstants().isRTL ? 'right' : 'left',
     minWidth: 0,
   },
