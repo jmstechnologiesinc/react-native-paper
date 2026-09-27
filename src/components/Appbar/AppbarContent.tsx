@@ -119,48 +119,59 @@ const AppbarContent = ({
 
   const variant = modeTextVariant[mode] as MD3TypescaleKey;
 
+  const content = (
+    <View
+      pointerEvents="box-none"
+      style={[styles.container, isV3 && modeContainerStyles[mode], style]}
+      {...rest}
+    >
+      <Text
+        {...(isV3 && { variant })}
+        ref={titleRef}
+        style={[
+          {
+            color: titleTextColor,
+            ...(isV3
+              ? theme.fonts[variant]
+              : Platform.OS === 'ios'
+              ? theme.fonts.regular
+              : theme.fonts.medium),
+          },
+          !isV3 && styles.title,
+          titleStyle,
+        ]}
+        numberOfLines={1}
+        accessible
+        // @ts-ignore Type '"heading"' is not assignable to type ...
+        accessibilityRole={Platform.OS === 'web' ? 'heading' : 'header'}
+      >
+        {title}
+      </Text>
+      {!isV3 && subtitle ? (
+        <Text
+          style={[styles.subtitle, { color: subtitleColor }, subtitleStyle]}
+          numberOfLines={1}
+        >
+          {subtitle}
+        </Text>
+      ) : null}
+    </View>
+  );
+
+  // A title without a press handler is a heading, not a button: on the web a disabled wrapper would announce it as
+  // an unavailable button (upstream react-native-paper renders the wrapper only with `onPress`). iOS and Android keep
+  // the wrapper they always had.
+  if (Platform.OS === 'web' && !onPress) {
+    return content;
+  }
+
   return (
     <TouchableWithoutFeedback
       accessibilityRole="button"
       onPress={onPress}
       disabled={!onPress}
     >
-      <View
-        pointerEvents="box-none"
-        style={[styles.container, isV3 && modeContainerStyles[mode], style]}
-        {...rest}
-      >
-        <Text
-          {...(isV3 && { variant })}
-          ref={titleRef}
-          style={[
-            {
-              color: titleTextColor,
-              ...(isV3
-                ? theme.fonts[variant]
-                : Platform.OS === 'ios'
-                ? theme.fonts.regular
-                : theme.fonts.medium),
-            },
-            !isV3 && styles.title,
-            titleStyle,
-          ]}
-          numberOfLines={1}
-          accessible
-          // @ts-ignore Type '"heading"' is not assignable to type ...
-          accessibilityRole={Platform.OS === 'web' ? 'heading' : 'header'}
-        >
-          {title}
-        </Text>
-        {!isV3 && subtitle ? (
-          <Text
-            style={[styles.subtitle, { color: subtitleColor }, subtitleStyle]}
-            numberOfLines={1}
-          >
-            {subtitle}
-          </Text>
-        ) : null}
-      </View>
+      {content}
     </TouchableWithoutFeedback>
   );
 };

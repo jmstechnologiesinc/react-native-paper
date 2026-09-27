@@ -14,6 +14,7 @@ import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { $RemoveChildren, InternalTheme } from '../../types';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
+import accessibilityStateProps from '../../utils/accessibilityStateProps';
 
 export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
@@ -138,7 +139,7 @@ const CheckboxAndroid = ({
       onPress={onPress}
       disabled={disabled}
       accessibilityRole="checkbox"
-      accessibilityState={{ disabled, checked }}
+      {...accessibilityStateProps('checkbox', { disabled, checked })}
       accessibilityLiveRegion="polite"
       style={styles.container}
       testID={testID}

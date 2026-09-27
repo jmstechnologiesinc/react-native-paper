@@ -16,6 +16,7 @@ import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { InternalTheme, MD3TypescaleKey } from '../../types';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
+import accessibilityStateProps from '../../utils/accessibilityStateProps';
 
 export type Props = {
   /**
@@ -151,10 +152,10 @@ const CheckboxItem = ({
     <TouchableRipple
       accessibilityLabel={accessibilityLabel}
       accessibilityRole="checkbox"
-      accessibilityState={{
+      {...accessibilityStateProps('checkbox', {
         checked: status === 'checked',
         disabled,
-      }}
+      })}
       onPress={onPress}
       testID={testID}
       disabled={disabled}

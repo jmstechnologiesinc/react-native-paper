@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+import { Platform, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
 import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 import color from 'color';
@@ -62,7 +62,11 @@ const DataTableHeader = ({ children, style, theme, ...rest }: Props) => {
         .string();
 
   return (
-    <View {...rest} style={[styles.header, { borderBottomColor }, style]}>
+    <View
+      {...(Platform.OS === 'web' ? { role: 'row' as const } : {})}
+      {...rest}
+      style={[styles.header, { borderBottomColor }, style]}
+    >
       {children}
     </View>
   );

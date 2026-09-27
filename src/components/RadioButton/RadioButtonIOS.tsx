@@ -10,6 +10,7 @@ import type { $RemoveChildren, InternalTheme } from '../../types';
 import { getSelectionControlIOSColor } from '../Checkbox/utils';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
+import accessibilityStateProps from '../../utils/accessibilityStateProps';
 
 export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
@@ -101,7 +102,7 @@ const RadioButtonIOS = ({
                   }
             }
             accessibilityRole="radio"
-            accessibilityState={{ disabled, checked }}
+            {...accessibilityStateProps('radio', { disabled, checked })}
             accessibilityLiveRegion="polite"
             style={styles.container}
             testID={testID}

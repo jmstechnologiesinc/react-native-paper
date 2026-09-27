@@ -5,12 +5,15 @@ import {
   Pressable,
   StyleProp,
   StyleSheet,
+  View,
+  ViewProps,
   ViewStyle,
 } from 'react-native';
 
 import { getTouchableRippleColors } from './utils';
 import { withInternalTheme } from '../../core/theming';
 import type { InternalTheme } from '../../types';
+import hasTouchHandler from '../../utils/hasTouchHandler';
 
 export type Props = React.ComponentPropsWithRef<typeof Pressable> & {
   /**
@@ -227,6 +230,20 @@ const TouchableRipple = ({
     });
   };
 
+  // Without a press handler this is not a control: on the web a disabled `Pressable` would mark it `aria-disabled`
+  // (announced as an unavailable control), so it renders as a plain view. A control disabled on purpose keeps its
+  // `Pressable` and its disabled state.
+  if (!disabledProp && !hasTouchHandler(rest)) {
+    return (
+      <View
+        {...(rest as ViewProps)}
+        style={[styles.plain, borderless && styles.borderless, style]}
+      >
+        {React.Children.only(children)}
+      </View>
+    );
+  }
+
   const disabled = disabledProp || !rest.onPress;
 
   return (
@@ -254,6 +271,9 @@ const styles = StyleSheet.create({
   },
   borderless: {
     overflow: 'hidden',
+  },
+  plain: {
+    position: 'relative',
   },
 });
 

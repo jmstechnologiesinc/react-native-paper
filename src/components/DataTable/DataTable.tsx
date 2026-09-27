@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, StyleProp, View, ViewStyle } from 'react-native';
+import { Platform, StyleSheet, StyleProp, View, ViewStyle } from 'react-native';
 
 import DataTableCell from './DataTableCell';
 import DataTableHeader, {
@@ -88,8 +88,14 @@ export type Props = React.ComponentPropsWithRef<typeof View> & {
  * export default MyComponent;
  * ```
  */
+// react-native-web renders the table as nested `div`s: the web gets the ARIA table roles (table, row, columnheader,
+// cell) so a screen reader reads rows and columns. iOS and Android keep the plain views they always had.
 const DataTable = ({ children, style, ...rest }: Props) => (
-  <View {...rest} style={[styles.container, style]}>
+  <View
+    {...(Platform.OS === 'web' ? { role: 'table' as const } : {})}
+    {...rest}
+    style={[styles.container, style]}
+  >
     {children}
   </View>
 );

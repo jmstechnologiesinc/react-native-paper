@@ -5,6 +5,7 @@ import {
   ViewStyle,
   TextStyle,
   GestureResponderEvent,
+  Platform,
 } from 'react-native';
 
 import type { $RemoveChildren } from '../../types';
@@ -70,6 +71,7 @@ const DataTableCell = ({
   ...rest
 }: Props) => (
   <TouchableRipple
+    {...(Platform.OS === 'web' ? { role: 'cell' as const } : {})}
     {...rest}
     style={[styles.container, numeric && styles.right, style]}
   >

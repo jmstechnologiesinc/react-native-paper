@@ -10,6 +10,7 @@ import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { $RemoveChildren, InternalTheme } from '../../types';
 import { getAndroidSelectionControlColor } from '../Checkbox/utils';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
+import accessibilityStateProps from '../../utils/accessibilityStateProps';
 
 export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
@@ -148,7 +149,7 @@ const RadioButtonAndroid = ({
                   }
             }
             accessibilityRole="radio"
-            accessibilityState={{ disabled, checked }}
+            {...accessibilityStateProps('radio', { disabled, checked })}
             accessibilityLiveRegion="polite"
             style={styles.container}
             testID={testID}

@@ -18,6 +18,7 @@ import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import type { InternalTheme, MD3TypescaleKey } from '../../types';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
+import accessibilityStateProps from '../../utils/accessibilityStateProps';
 
 export type Props = {
   /**
@@ -186,10 +187,7 @@ const RadioButtonItem = ({
             }
             accessibilityLabel={accessibilityLabel}
             accessibilityRole="radio"
-            accessibilityState={{
-              checked,
-              disabled,
-            }}
+            {...accessibilityStateProps('radio', { checked, disabled })}
             testID={testID}
             disabled={disabled}
           >

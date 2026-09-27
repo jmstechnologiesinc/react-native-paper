@@ -27,6 +27,7 @@ import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import Surface from '../Surface';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
+import accessibilityStateProps from '../../utils/accessibilityStateProps';
 
 export type Props = $Omit<React.ComponentProps<typeof Surface>, 'mode'> & {
   /**
@@ -326,7 +327,7 @@ const Chip = ({
         disabled={disabled}
         accessibilityLabel={accessibilityLabel}
         accessibilityRole={accessibilityRole}
-        accessibilityState={accessibilityState}
+        {...accessibilityStateProps(accessibilityRole, accessibilityState)}
         testID={testID}
         theme={theme}
       >

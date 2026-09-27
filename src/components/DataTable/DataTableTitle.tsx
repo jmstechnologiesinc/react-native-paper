@@ -3,11 +3,13 @@ import {
   Animated,
   GestureResponderEvent,
   I18nManager,
+  Platform,
   StyleProp,
   StyleSheet,
   TextStyle,
   TouchableWithoutFeedback,
   View,
+  ViewProps,
   ViewStyle,
 } from 'react-native';
 
@@ -129,31 +131,69 @@ const DataTableTitle = ({
     </Animated.View>
   ) : null;
 
+  const label = (
+    <Text
+      style={[
+        styles.cell,
+        // height must scale with numberOfLines
+        { maxHeight: moderateScale(24 * numberOfLines) },
+        // if numberOfLines causes wrap, center is lost. Align directly, sensitive to numeric and RTL
+        numberOfLines > 1
+          ? numeric
+            ? I18nManager.getConstants().isRTL
+              ? styles.leftText
+              : styles.rightText
+            : styles.centerText
+          : {},
+        sortDirection ? styles.sorted : { color: alphaTextColor },
+        textStyle,
+      ]}
+      numberOfLines={numberOfLines}
+    >
+      {children}
+    </Text>
+  );
+
+  if (Platform.OS === 'web') {
+    // The web reads a title as its column's header: a `columnheader` with the column's sort (`aria-sort`) when it
+    // sorts. A title that sorts holds its own button (Enter and Space press it); a disabled press wrapper would
+    // mark a plain title `aria-disabled`, so a title that does not sort has none.
+    return (
+      <View
+        {...(onPress ? {} : (rest as ViewProps))}
+        role="columnheader"
+        {...(sortDirection || onPress
+          ? { 'aria-sort': sortDirection ?? ('none' as const) }
+          : {})}
+        style={[styles.container, numeric && styles.right, style]}
+      >
+        {onPress ? (
+          <TouchableWithoutFeedback
+            accessibilityRole="button"
+            onPress={onPress}
+            {...rest}
+          >
+            <View style={styles.webButton}>
+              {icon}
+              {label}
+            </View>
+          </TouchableWithoutFeedback>
+        ) : (
+          <>
+            {icon}
+            {label}
+          </>
+        )}
+      </View>
+    );
+  }
+
   return (
     <TouchableWithoutFeedback disabled={!onPress} onPress={onPress} {...rest}>
       <View style={[styles.container, numeric && styles.right, style]}>
         {icon}
 
-        <Text
-          style={[
-            styles.cell,
-            // height must scale with numberOfLines
-            { maxHeight: moderateScale(24 * numberOfLines) },
-            // if numberOfLines causes wrap, center is lost. Align directly, sensitive to numeric and RTL
-            numberOfLines > 1
-              ? numeric
-                ? I18nManager.getConstants().isRTL
-                  ? styles.leftText
-                  : styles.rightText
-                : styles.centerText
-              : {},
-            sortDirection ? styles.sorted : { color: alphaTextColor },
-            textStyle,
-          ]}
-          numberOfLines={numberOfLines}
-        >
-          {children}
-        </Text>
+        {label}
       </View>
     </TouchableWithoutFeedback>
   );
@@ -199,6 +239,12 @@ const styles = StyleSheet.create({
   icon: {
     height: moderateScale(24),
     justifyContent: 'center',
+  },
+
+  webButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexShrink: 1,
   },
 });
 

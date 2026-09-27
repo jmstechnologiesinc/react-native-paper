@@ -23,6 +23,7 @@ import {
 import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
 import Text from '../Typography/Text';
+import accessibilityStateProps from '../../utils/accessibilityStateProps';
 
 export type Props = {
   /**
@@ -179,7 +180,7 @@ const SegmentedButtonItem = ({
         borderless
         onPress={onPress}
         accessibilityLabel={accessibilityLabel}
-        accessibilityState={{ disabled, checked }}
+        {...accessibilityStateProps('button', { disabled, checked })}
         accessibilityRole="button"
         disabled={disabled}
         rippleColor={rippleColor}

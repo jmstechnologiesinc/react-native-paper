@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   GestureResponderEvent,
+  Platform,
   StyleProp,
   StyleSheet,
   View,
@@ -81,6 +82,7 @@ const DataTableRow = ({
 
   return (
     <TouchableRipple
+      {...(Platform.OS === 'web' ? { role: 'row' as const } : {})}
       {...rest}
       onPress={onPress}
       style={[styles.container, { borderBottomColor }, style]}

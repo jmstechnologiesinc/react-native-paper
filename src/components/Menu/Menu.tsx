@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   Animated,
-  BackHandler,
   Dimensions,
   Easing,
   EmitterSubscription,
@@ -27,6 +26,7 @@ import { APPROX_STATUSBAR_HEIGHT } from '../../constants';
 import { withInternalTheme } from '../../core/theming';
 import type { $Omit, InternalTheme } from '../../types';
 import { addEventListener } from '../../utils/addEventListener';
+import { BackHandler } from '../../utils/BackHandler/BackHandler';
 import Portal from '../Portal/Portal';
 import Surface from '../Surface';
 import MenuItem from './MenuItem';

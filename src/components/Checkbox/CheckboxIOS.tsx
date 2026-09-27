@@ -8,6 +8,7 @@ import type { $RemoveChildren, InternalTheme } from '../../types';
 import MaterialCommunityIcon from '../MaterialCommunityIcon';
 import { getSelectionControlIOSColor } from './utils';
 import TouchableRipple from '../TouchableRipple/TouchableRipple';
+import accessibilityStateProps from '../../utils/accessibilityStateProps';
 
 export type Props = $RemoveChildren<typeof TouchableRipple> & {
   /**
@@ -79,7 +80,7 @@ const CheckboxIOS = ({
       onPress={onPress}
       disabled={disabled}
       accessibilityRole="checkbox"
-      accessibilityState={{ disabled, checked }}
+      {...accessibilityStateProps('checkbox', { disabled, checked })}
       accessibilityLiveRegion="polite"
       style={styles.container}
       testID={testID}

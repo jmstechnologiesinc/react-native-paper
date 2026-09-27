@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   Animated,
   GestureResponderEvent,
+  Platform,
   StyleProp,
   StyleSheet,
   TouchableWithoutFeedback,
@@ -223,6 +224,21 @@ const Card = ({
 
   const borderRadius = (isV3 ? 3 : 1) * roundness;
 
+  const cardChildren = React.Children.map(children, (child, index) =>
+    React.isValidElement(child)
+      ? React.cloneElement(child as React.ReactElement<any>, {
+          index,
+          total,
+          siblings,
+        })
+      : child
+  );
+  const hasPressHandler = Boolean(onPress || onLongPress);
+  // A card without a press handler is not a control. On iOS and Android the wrapper keeps the card's content one
+  // accessible element, as it always has; on the web a disabled wrapper would mark the content `aria-disabled` and
+  // make it look like a control, so the content renders on its own there (as upstream react-native-paper does).
+  const pressable = hasPressHandler || Platform.OS !== 'web';
+
   return (
     <Surface
       style={[
@@ -255,28 +271,24 @@ const Card = ({
           ]}
         />
       )}
-      <TouchableWithoutFeedback
-        delayPressIn={0}
-        disabled={!(onPress || onLongPress)}
-        onLongPress={onLongPress}
-        onPress={onPress}
-        onPressIn={onPress || onLongPress ? handlePressIn : undefined}
-        onPressOut={onPress || onLongPress ? handlePressOut : undefined}
-        testID={testID}
-        accessible={accessible}
-      >
-        <View style={styles.innerContainer}>
-          {React.Children.map(children, (child, index) =>
-            React.isValidElement(child)
-              ? React.cloneElement(child as React.ReactElement<any>, {
-                  index,
-                  total,
-                  siblings,
-                })
-              : child
-          )}
+      {pressable ? (
+        <TouchableWithoutFeedback
+          delayPressIn={0}
+          disabled={!hasPressHandler}
+          onLongPress={onLongPress}
+          onPress={onPress}
+          onPressIn={hasPressHandler ? handlePressIn : undefined}
+          onPressOut={hasPressHandler ? handlePressOut : undefined}
+          testID={testID}
+          accessible={accessible}
+        >
+          <View style={styles.innerContainer}>{cardChildren}</View>
+        </TouchableWithoutFeedback>
+      ) : (
+        <View style={styles.innerContainer} testID={testID}>
+          {cardChildren}
         </View>
-      </TouchableWithoutFeedback>
+      )}
     </Surface>
   );
 };
