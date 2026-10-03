@@ -233,7 +233,14 @@ const TouchableRipple = ({
   // Without a press handler this is not a control: on the web a disabled `Pressable` would mark it `aria-disabled`
   // (announced as an unavailable control), so it renders as a plain view. A control disabled on purpose keeps its
   // `Pressable` and its disabled state.
-  if (!disabledProp && !hasTouchHandler(rest)) {
+  // `Pressable` types its handlers as nullable; hasTouchHandler only asks whether each is set.
+  const touchHandlers = {
+    onPress: rest.onPress,
+    onLongPress: rest.onLongPress ?? undefined,
+    onPressIn: rest.onPressIn ?? undefined,
+    onPressOut: rest.onPressOut ?? undefined,
+  };
+  if (!disabledProp && !hasTouchHandler(touchHandlers)) {
     return (
       <View
         {...(rest as ViewProps)}

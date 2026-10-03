@@ -2,8 +2,9 @@ import { Platform } from 'react-native';
 import type { AccessibilityRole, AccessibilityState, Role } from 'react-native';
 
 // The roles whose `checked` / `selected` state a browser reads as `aria-checked`; any other role (a toggle button, a
-// chip) reads a pressed state instead.
-const CHECKABLE_ROLES: ReadonlyArray<AccessibilityRole | Role> = [
+// chip) reads a pressed state instead. Typed as strings: `menuitemcheckbox` and `menuitemradio` are ARIA roles that
+// react-native-web passes through but React Native's `Role` type does not list.
+const CHECKABLE_ROLES: ReadonlyArray<string> = [
   'checkbox',
   'radio',
   'switch',
