@@ -4,7 +4,6 @@ import {
   Dimensions,
   Easing,
   EmitterSubscription,
-  findNodeHandle,
   I18nManager,
   Keyboard,
   KeyboardEvent as RNKeyboardEvent,
@@ -257,8 +256,10 @@ class Menu extends React.Component<Props, State> {
       // When in the browser, we want to focus the first focusable item on toggle
       // For example, when menu is shown, focus the first item in the menu
       // And when menu is dismissed, send focus back to the button to resume tabbing
-      const node: any = findNodeHandle(el);
-      const focusableNode = node.querySelector(
+      // On react-native-web a host component's ref is the DOM element itself;
+      // `findNodeHandle` is not supported there and throws.
+      const node: any = el;
+      const focusableNode = node.querySelector?.(
         // This is a rough list of selectors that can be focused
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
       );

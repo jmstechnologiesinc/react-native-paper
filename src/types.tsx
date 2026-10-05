@@ -56,6 +56,13 @@ export type MD3Colors = {
   background: string;
   error: string;
   errorContainer: string;
+  // Not MD3 baseline roles: Material 3 custom colors for statuses, so success
+  // and warning never borrow the (warm) tertiary and secondary roles. Optional,
+  // so a host's own complete MD3 palette still type-checks.
+  success?: string;
+  successContainer?: string;
+  warning?: string;
+  warningContainer?: string;
   onPrimary: string;
   onPrimaryContainer: string;
   onSecondary: string;
@@ -67,6 +74,10 @@ export type MD3Colors = {
   onSurfaceDisabled: string;
   onError: string;
   onErrorContainer: string;
+  onSuccess?: string;
+  onSuccessContainer?: string;
+  onWarning?: string;
+  onWarningContainer?: string;
   onBackground: string;
   outline: string;
   outlineVariant: string;

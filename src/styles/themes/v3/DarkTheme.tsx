@@ -43,6 +43,16 @@ export const MD3DarkTheme: MD3Theme = {
       .string(),
     onError: palette.error20,
     onErrorContainer: palette.error80,
+    // Material 3 custom colors (tones 80/20/30/90 of green and orange), the
+    // dark counterparts of the light theme's success and warning roles.
+    success: 'rgb(156, 214, 125)',
+    onSuccess: 'rgb(12, 57, 0)',
+    successContainer: 'rgb(32, 81, 7)',
+    onSuccessContainer: 'rgb(183, 243, 151)',
+    warning: 'rgb(255, 183, 134)',
+    onWarning: 'rgb(80, 36, 0)',
+    warningContainer: 'rgb(114, 54, 0)',
+    onWarningContainer: 'rgb(255, 220, 198)',
     onBackground: palette.neutral90,
     outline: palette.neutralVariant60,
     outlineVariant: palette.neutralVariant30,

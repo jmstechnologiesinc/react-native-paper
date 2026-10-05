@@ -28,6 +28,16 @@ export const MD3LightTheme: MD3Theme = {
     onError: 'rgb(255, 255, 255)',
     errorContainer: 'rgb(255, 218, 214)',
     onErrorContainer: 'rgb(65, 0, 2)',
+    // Material 3 custom colors (tones 40/100/90/10 of green and orange), so a
+    // status's success and warning never read alike in this warm palette.
+    success: 'rgb(56, 106, 32)',
+    onSuccess: 'rgb(255, 255, 255)',
+    successContainer: 'rgb(183, 243, 151)',
+    onSuccessContainer: 'rgb(4, 33, 0)',
+    warning: 'rgb(150, 73, 0)',
+    onWarning: 'rgb(255, 255, 255)',
+    warningContainer: 'rgb(255, 220, 198)',
+    onWarningContainer: 'rgb(49, 19, 0)',
     background: 'rgb(255, 251, 255)',
     onBackground: 'rgb(31, 27, 22)',
     surface: 'rgb(255, 251, 255)',
