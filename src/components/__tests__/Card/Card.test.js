@@ -6,6 +6,7 @@ import renderer from 'react-test-renderer';
 
 import { getTheme } from '../../../core/theming';
 import { black, white } from '../../../styles/themes/v2/colors';
+import { MD3LightTheme } from '../../../styles/themes/v3/LightTheme';
 import Button from '../../Button/Button';
 import Card from '../../Card/Card';
 import { getCardColors, getCardCoverStyle } from '../../Card/utils';
@@ -45,6 +46,42 @@ describe('CardActions', () => {
     expect(getByTestId('card-actions').props.children[0].props.mode).toBe(
       'contained'
     );
+  });
+});
+
+// Card lists its children by the exported components' own names (withTheme(Card.Cover), withTheme(Card.Title)):
+// a content after a cover or a title opens with the card's spacing.
+describe('CardContent', () => {
+  it('takes the top spacing after a cover', () => {
+    const { getByTestId } = render(
+      <Card>
+        <Card.Cover source={{ uri: 'https://example.com/cover.png' }} />
+        <Card.Content testID="card-content" />
+        <Card.Actions>
+          <Button>Ok</Button>
+        </Card.Actions>
+      </Card>
+    );
+
+    expect(getByTestId('card-content')).toHaveStyle({
+      paddingTop: MD3LightTheme.spacing.x4,
+    });
+  });
+
+  it('takes the top spacing after a title', () => {
+    const { getByTestId } = render(
+      <Card>
+        <Card.Title title="Title" />
+        <Card.Content testID="card-content" />
+        <Card.Actions>
+          <Button>Ok</Button>
+        </Card.Actions>
+      </Card>
+    );
+
+    expect(getByTestId('card-content')).toHaveStyle({
+      paddingTop: MD3LightTheme.spacing.x4,
+    });
   });
 });
 

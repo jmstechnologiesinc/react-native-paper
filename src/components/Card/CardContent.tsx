@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { StyleSheet, StyleProp, View, ViewStyle } from 'react-native';
 
+import CardCover from './CardCover';
+import CardTitle from './CardTitle';
 import { MD3LightTheme as theme } from '../../styles/themes/v3/LightTheme';
 
 export type Props = React.ComponentPropsWithRef<typeof View> & {
@@ -51,8 +53,11 @@ export type Props = React.ComponentPropsWithRef<typeof View> & {
  * ```
  */
 const CardContent = ({ index, total, siblings, style, ...rest }: Props) => {
-  const cover = 'withInternalTheme(CardCover)';
-  const title = 'withInternalTheme(CardTitle)';
+  // The names Card lists its children by (`child.type.displayName`): the exported Card.Cover and Card.Title are
+  // wrapped by withInternalTheme, whose withTheme renames them `withTheme(<displayName>)`. The literal names this
+  // compared before never matched, so a Card.Content after a cover or a title got none of its spacing.
+  const cover = CardCover.displayName;
+  const title = CardTitle.displayName;
 
   let contentStyle, prev, next;
 
