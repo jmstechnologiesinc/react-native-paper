@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Image, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
 import ImageBlurLoading from '@jmstechnologiesinc/react-native-image-blur-loading';
-import { moderateScale } from '@jmstechnologiesinc/react-native-size-matters';
 
 import { getCardCoverStyle } from './utils';
 import { withInternalTheme } from '../../core/theming';
@@ -72,9 +71,14 @@ const CardCover = ({ index, total, style, theme, ...rest }: Props) => {
 };
 
 CardCover.displayName = 'Card.Cover';
+
+// Material's card media keeps its aspect ratio and takes its height from the card's width (16:9, as Material's own
+// card media), so a photo shows the same framing on every screen instead of a band that thins as the card widens.
+const MEDIA_ASPECT_RATIO = 16 / 9;
+
 const styles = StyleSheet.create({
   container: {
-    height: moderateScale(195),
+    aspectRatio: MEDIA_ASPECT_RATIO,
     backgroundColor: grey200,
     overflow: 'hidden',
   },

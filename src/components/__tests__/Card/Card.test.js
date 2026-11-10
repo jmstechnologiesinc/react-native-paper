@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 
 import { render } from '@testing-library/react-native';
 import color from 'color';
@@ -8,6 +9,7 @@ import { getTheme } from '../../../core/theming';
 import { black, white } from '../../../styles/themes/v2/colors';
 import Button from '../../Button/Button';
 import Card from '../../Card/Card';
+import { CardCover } from '../../Card/CardCover';
 import { getCardColors, getCardCoverStyle } from '../../Card/utils';
 
 describe('Card', () => {
@@ -157,5 +159,22 @@ describe('getCardCoverStyle - border radius', () => {
     ).toMatchObject({
       borderBottomLeftRadius: getTheme(false, false).roundness,
     });
+  });
+});
+
+describe('Card.Cover', () => {
+  it('keeps a 16:9 frame whose height follows the card width', () => {
+    const { UNSAFE_getByType } = render(
+      <Card>
+        <Card.Cover source={{ uri: 'https://example.com/cover.jpg' }} />
+      </Card>
+    );
+    const [frame] = UNSAFE_getByType(CardCover).findAll(
+      (node) => typeof node.type === 'string'
+    );
+    const frameStyle = StyleSheet.flatten(frame.props.style);
+
+    expect(frameStyle).toMatchObject({ aspectRatio: 16 / 9 });
+    expect(frameStyle.height).toBeUndefined();
   });
 });
